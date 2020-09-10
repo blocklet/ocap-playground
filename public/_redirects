@@ -1,0 +1,7 @@
+/mini  /   200
+/full  /   200
+/orders  /   200
+/profile  /   200
+
+/api/local  http://54.84.194.134:8210/api  200
+/api/foreign  http://54.90.197.111:8210/api  200

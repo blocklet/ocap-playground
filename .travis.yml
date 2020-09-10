@@ -1,0 +1,17 @@
+sudo: false
+language: node_js
+node_js:
+- '12'
+branches:
+  only:
+  - master
+script: make travis
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: bash ./scripts/publish.sh
+  on:
+    branch: master
+    node_js: 12
+env:
+  global:

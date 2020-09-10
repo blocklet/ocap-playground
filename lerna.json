@@ -1,0 +1,13 @@
+{
+  "packages": [
+    ".",
+    "packages/*"
+  ],
+  "npmClient": "yarn",
+  "ignoreChanges": [
+    "**/tools/**",
+    "**/docs/**",
+    "**/test/**"
+  ],
+  "version": "1.8.5"
+}
