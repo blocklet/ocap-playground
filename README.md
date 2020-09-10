@@ -1,14 +1,12 @@
-# wallet-playground
+# blocklet-wallet-playground
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b9dda415-1d60-4745-9129-a0e858d1d33d/deploy-status)](https://app.netlify.com/sites/abt-wallet/deploys)
-
-ABT Wallet Playground
+ABT Wallet Playground Blocklet
 
 ## Usage
 
 ```shell
-git clone git@github.com:ArcBlock/wallet-playground.git
-cd wallet-playground
+git clone git@github.com:ArcBlock/blocklet-wallet-playground.git
+cd blocklet-wallet-playground
 yarn
 yarn start
 ```
@@ -21,7 +19,6 @@ Checkout `.env` file:
 SKIP_PREFLIGHT_CHECK=true
 
 # server only
-MONGO_URI="mongodb://127.0.0.1:27017/wallet-playground"
 APP_TOKEN_SECRET="c196792a8a1"
 APP_TOKEN_TTL="1d"
 APP_SK="0x2079dc31eada3064"
