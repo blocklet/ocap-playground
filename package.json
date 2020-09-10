@@ -1,6 +1,6 @@
 {
-  "name": "blocklet-wallet-playground",
-  "title": "Wallet Playground Blocklet",
+  "name": "wallet-playground",
+  "title": "Wallet Playground",
   "description": "A simple playground that shows the potential of ABT Wallet V2",
   "publishConfig": {
     "access": "public",
@@ -16,7 +16,7 @@
     "blocklet.json",
     "README.md"
   ],
-  "version": "1.8.5",
+  "version": "1.8.6",
   "author": "wangshijun <shijun@arcblock.io> https://github.com/wangshijun",
   "keywords": [
     "dapp",

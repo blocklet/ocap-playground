@@ -1,3 +1,7 @@
+## 1.8.6 (September 10, 2020)
+
+- update blocklet name to wallet-playground
+
 ## 1.8.5 (September 09, 2020)
 
 - update blocklet
