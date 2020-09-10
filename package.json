@@ -16,7 +16,7 @@
     "blocklet.json",
     "README.md"
   ],
-  "version": "1.8.6",
+  "version": "1.8.7",
   "author": "wangshijun <shijun@arcblock.io> https://github.com/wangshijun",
   "keywords": [
     "dapp",
@@ -111,7 +111,7 @@
     "build:server:debug": "netlify-lambda build api/functions --config api/webpack.functions.js",
     "build:server": "NODE_ENV=production netlify-lambda build api/functions --config api/webpack.functions.js",
     "bundle": "yarn clean && npm-run-all bundle:*",
-    "bundle:client": "PUBLIC_URL=\"/z8iZs6SPkTXxc8dNdSrUTKc8JBqfpKBoywNS9\" REACT_APP_API_PREFIX=\"\" REACT_APP_APP_NAME=\"Wallet Playground\" yarn build:client",
+    "bundle:client": "PUBLIC_URL=\"/z8iZpn7gP9WJNUonEMq7zAoCbv4fMMqX8JasV\" REACT_APP_API_PREFIX=\"\" REACT_APP_APP_NAME=\"Wallet Playground\" yarn build:client",
     "bundle:server": "DEBUG=@abtnode/* NODE_ENV=production abtnode bundle -w api/webpack.blocklet.js",
     "bundle-server": "DEBUG=@abtnode/* NODE_ENV=development abtnode bundle -w api/webpack.blocklet.js",
     "prepublishOnly": "npm run bundle && rm -f _blocklet/build/**/*.{js,css}.map && node scripts/prepare.js",
