@@ -1,6 +1,6 @@
 {
-  "name": "blocklet-wallet-playground",
-  "title": "Wallet Playground Blocklet",
+  "name": "wallet-playground",
+  "title": "Wallet Playground",
   "description": "A simple playground that shows the potential of ABT Wallet V2",
   "publishConfig": {
     "access": "public",
