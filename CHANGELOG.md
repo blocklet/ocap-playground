@@ -1,3 +1,7 @@
+## 1.9.1 (September 18, 2020)
+- auto deploy to ABT Node
+
+
 ## 1.9.0 (September 17, 2020)
 
 - remove map files when publish
