@@ -31,7 +31,7 @@ if (env.chainHost) {
   }
 }
 
-const wallet = fromSecretKey(process.env.BLOCKLET_APP_SK || process.env.APP_SK, type).toJSON();
+const wallet = fromSecretKey(process.env.APP_SK || process.env.BLOCKLET_APP_SK, type).toJSON();
 const netlifyPrefix = '/.netlify/functions/app';
 const isRestricted = process.env.APP_RESTRICTED_DECLARE && JSON.parse(process.env.APP_RESTRICTED_DECLARE);
 const isNetlify = process.env.NETLIFY && JSON.parse(process.env.NETLIFY);

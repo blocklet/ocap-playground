@@ -16,7 +16,7 @@
     "blocklet.json",
     "README.md"
   ],
-  "version": "1.8.7",
+  "version": "1.9.0",
   "author": "wangshijun <shijun@arcblock.io> https://github.com/wangshijun",
   "keywords": [
     "dapp",
@@ -114,7 +114,7 @@
     "bundle:client": "PUBLIC_URL=\"/z8iZpn7gP9WJNUonEMq7zAoCbv4fMMqX8JasV\" REACT_APP_API_PREFIX=\"\" REACT_APP_APP_NAME=\"Wallet Playground\" yarn build:client",
     "bundle:server": "DEBUG=@abtnode/* NODE_ENV=production abtnode bundle -w api/webpack.blocklet.js",
     "bundle-server": "DEBUG=@abtnode/* NODE_ENV=development abtnode bundle -w api/webpack.blocklet.js",
-    "prepublishOnly": "npm run bundle && rm -f _blocklet/build/**/*.{js,css}.map && node scripts/prepare.js",
+    "prepublishOnly": "npm run bundle && rm -f _blocklet/build/**/**/*.{js,css}.map && node scripts/prepare.js",
     "test": "react-scripts test",
     "echo": "export MESSAGE=$1 && echo $MESSAGE",
     "eject": "react-scripts eject"

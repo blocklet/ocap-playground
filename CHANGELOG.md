@@ -1,3 +1,8 @@
+## 1.9.0 (September 17, 2020)
+
+- remove map files when publish
+- change sk set logic, support custom sk in blocklet
+
 ## 1.8.7 (September 10, 2020)
 
 
