@@ -1,3 +1,7 @@
+## 1.9.2 (September 18, 2020)
+- fix: update aliyun access key in travis.yml
+
+
 ## 1.9.1 (September 18, 2020)
 - auto deploy to ABT Node
 
