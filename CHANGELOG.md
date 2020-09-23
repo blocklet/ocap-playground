@@ -1,3 +1,7 @@
+## 1.9.4 (September 23, 2020)
+
+- auto trigger build of ArcBlock/blocklets
+
 ## 1.9.3 (September 18, 2020)
 
 
