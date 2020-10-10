@@ -1,3 +1,7 @@
+## 1.9.6 (October 10, 2020)
+
+
+
 ## 1.9.5 (September 29, 2020)
 
 - ci: send notification to slack after deployed

@@ -38,10 +38,10 @@ module.exports = {
     process.env.ASSET_CHAIN_HOST_ZH ||
     process.env.assetChainHostZh,
   appId:
-    process.env.BLOCKLET_APP_ID ||
     process.env.REACT_APP_APP_ID ||
     process.env.GATSBY_APP_ID ||
     process.env.APP_ID ||
+    process.env.BLOCKLET_APP_ID ||
     process.env.appId ||
     '',
   appName:
