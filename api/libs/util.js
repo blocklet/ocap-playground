@@ -128,7 +128,9 @@ const fetchAndGzipSvg = async svg => {
     if (fs.existsSync(path.join(process.cwd(), svg))) {
       return toBase64(pako.gzip(fs.readFileSync(path.join(process.cwd(), svg), 'utf8')));
     }
-    throw Error('svg file is not exists');
+    const index = Math.floor(Math.random() * 10 + 1);
+    return badgeArray[index % 10];
+    // throw Error('svg file is not exists');
   } catch (error) {
     logger.error('download.svg.error', error);
     return null;
