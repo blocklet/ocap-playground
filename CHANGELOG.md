@@ -1,3 +1,8 @@
+## 1.9.7 (October 10, 2020)
+
+- fix app link empty
+- fix badge asset demo can not work
+
 ## 1.9.6 (October 10, 2020)
 
 
