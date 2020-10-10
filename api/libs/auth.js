@@ -32,20 +32,18 @@ if (env.chainHost) {
 }
 
 const wallet = fromSecretKey(process.env.APP_SK || process.env.BLOCKLET_APP_SK, type).toJSON();
-const netlifyPrefix = '/.netlify/functions/app';
 const isRestricted = process.env.APP_RESTRICTED_DECLARE && JSON.parse(process.env.APP_RESTRICTED_DECLARE);
-const isNetlify = process.env.NETLIFY && JSON.parse(process.env.NETLIFY);
 
 const icon = 'https://releases.arcblockio.cn/dapps/labs.png';
 const walletAuth = new WalletAuthenticator({
   wallet,
   baseUrl: env.baseUrl,
-  appInfo: {
+  appInfo: ({ baseUrl }) => ({
     name: env.appName,
     description: env.appDescription,
     icon: env.appIcon || icon,
-    link: env.appLink || (isNetlify ? env.baseUrl.replace(netlifyPrefix, '') : env.baseUrl.replace('3030', '3000')),
-  },
+    link: env.baseUrl || baseUrl,
+  }),
   chainInfo: ({ locale }) => {
     if (locale === 'zh' && env.chainHostZh) {
       return {
@@ -66,12 +64,12 @@ const walletAuth = new WalletAuthenticator({
 const agentAuth = new AgentAuthenticator({
   wallet,
   baseUrl: env.baseUrl,
-  appInfo: {
+  appInfo: ({ baseUrl }) => ({
     name: 'Agent Service',
     description: 'This is a demo agent service that can do did-auth on be-half-of another application',
     icon: env.appIcon || icon,
-    link: env.appLink || (isNetlify ? env.baseUrl.replace(netlifyPrefix, '') : env.baseUrl.replace('3030', '3000')),
-  },
+    link: env.baseUrl || baseUrl,
+  }),
   chainInfo: {
     host: env.chainHost,
     id: env.chainId,
