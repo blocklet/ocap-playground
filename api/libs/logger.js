@@ -6,7 +6,7 @@ const FileStreamRotator = require('file-stream-rotator');
 require('winston-daily-rotate-file');
 
 const config = {
-  logPath: path.resolve(process.env.APP_LOG_PATH || path.join(__dirname, '../../logs')),
+  logPath: path.resolve(process.env.BLOCKLET_LOG_DIR || path.join(__dirname, '../../logs')),
   logFormat:
     'date=:date[iso] | ip=:remote-addr | method=:method | url=:url | status=:status | time=:response-time | bytes=:res[content-length] | referrer=":referrer" | user-agent=":user-agent" | cookie=":req[cookie]"', // eslint-disable-line
 };

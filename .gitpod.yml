@@ -1,0 +1,8 @@
+image:
+  file: .gitpod.Dockerfile
+tasks:
+  - init: make dep && abtnode init -f --mode debug && cp .env.bac .env
+    command: export ABT_NODE_HTTP_PORT=8080 && export ABT_NODE_HTTPS_PORT=4430 && abtnode start && abtnode dev
+ports:
+  - port: 8080
+    # onOpen: open-browser

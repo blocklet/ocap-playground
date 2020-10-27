@@ -37,12 +37,11 @@ const isRestricted = process.env.APP_RESTRICTED_DECLARE && JSON.parse(process.en
 const icon = 'https://releases.arcblockio.cn/dapps/labs.png';
 const walletAuth = new WalletAuthenticator({
   wallet,
-  baseUrl: env.baseUrl,
   appInfo: ({ baseUrl }) => ({
     name: env.appName,
     description: env.appDescription,
     icon: env.appIcon || icon,
-    link: env.baseUrl || baseUrl,
+    link: baseUrl,
   }),
   chainInfo: ({ locale }) => {
     if (locale === 'zh' && env.chainHostZh) {
