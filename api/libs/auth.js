@@ -62,12 +62,11 @@ const walletAuth = new WalletAuthenticator({
 
 const agentAuth = new AgentAuthenticator({
   wallet,
-  baseUrl: env.baseUrl,
   appInfo: ({ baseUrl }) => ({
     name: 'Agent Service',
     description: 'This is a demo agent service that can do did-auth on be-half-of another application',
     icon: env.appIcon || icon,
-    link: env.baseUrl || baseUrl,
+    link: baseUrl,
   }),
   chainInfo: {
     host: env.chainHost,

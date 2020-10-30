@@ -57,7 +57,7 @@ module.exports = {
     process.env.appDescription ||
     'Sample application shows what you can build upon ArcBlock technologies',
   baseUrl:
-    process.env.REACT_APP_BASE_URL || process.env.GATSBY_BASE_URL || process.env.BASE_URL || process.env.baseUrl || '',
+    process.env.REACT_APP_BASE_URL || process.env.GATSBY_BASE_URL || process.env.BASE_URL || '',
   apiPrefix:
     process.env.REACT_APP_API_PREFIX ||
     process.env.GATSBY_API_PREFIX ||
