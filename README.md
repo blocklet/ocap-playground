@@ -24,7 +24,7 @@ abtnode dev
 
 ## What is ABT Node
 
-[TODO] link to ABT Node Doc Page
+[TODO] link to ABT Node Doc Page.
 
 ## License
 
