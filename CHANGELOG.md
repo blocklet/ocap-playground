@@ -1,3 +1,6 @@
+## 1.9.8 (October 30, 2020)
+
+
 ## 1.9.7 (October 10, 2020)
 
 - fix app link empty

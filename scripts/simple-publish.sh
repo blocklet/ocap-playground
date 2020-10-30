@@ -1,4 +1,4 @@
-git checkout master
+git checkout main
 
 # publish
 VERSION=$(cat version | awk '{$1=$1;print}')
