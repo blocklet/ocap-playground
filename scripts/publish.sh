@@ -1,16 +1,19 @@
+set -e
+
 VERSION=$(cat version | awk '{$1=$1;print}')
 echo "publish version ${VERSION}"
 
 git config --local user.name "wangshijun"
 git config --local user.email "wangshijun2010@gmail.com"
 
-make release
 npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
-npm install -g @abtnode/cli
+sudo npm install -g @abtnode/cli
 
-echo "publishing wallet demo blocklet..."
+echo "publishing to npm..."
 npm run bundle
 npm publish _blocklet
+
+make release
 
 # deploy to remote ABT Node
 set +e
@@ -39,5 +42,5 @@ fi
 
 # trigger ArcBlock/blocklets repo release
 echo "trigger ArcBlock/blocklets repo release"
-gem install travis
+sudo gem install travis
 .makefiles/trigger_registry_build.sh

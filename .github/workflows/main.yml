@@ -1,0 +1,34 @@
+name: Npm deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Deploy:
+
+    runs-on: ubuntu-latest
+
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+
+    steps:
+
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Test
+      run: make github-action-test
+
+    - name: Deploy
+      env:
+        AWS_ENDPOINT: http://54.213.55.12/admin
+        AWS_ACCESS_KEY: z1W9k2T7XTddPMtArMs7gs6pJYvsN63dggE
+        AWS_ACCESS_SECRET: ${{ secrets.AWS_ACCESS_SECRET }}
+        ALIYUN_ENDPOINT: http://39.98.93.191/admin
+        ALIYUN_ACCESS_SECRET: ${{ secrets.ALIYUN_ACCESS_SECRET }}
+        ALIYUN_ACCESS_KEY: z1aWXyf27QaUtAAT6wv4t5sL4visgBhRBPb
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
+      run: bash ./scripts/publish.sh

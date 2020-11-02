@@ -17,6 +17,7 @@ export default function AuthPrincipal() {
     if (data.error) {
       setError(data.error);
     } else {
+      // eslint-disable-next-line no-console
       console.log('authorization fetched', data);
       setAuthorizeId(data.authorizeId);
       setOpen(true);

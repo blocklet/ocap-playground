@@ -24,9 +24,6 @@ deploy-aliyun:
 init: install dep
 	@echo "Initializing the repo..."
 
-travis-init: install dep
-	@echo "Initialize software required for travis (normally ubuntu software)"
-
 install:
 	@echo "Install software required for this repo..."
 	@npm install -g lerna yarn @abtnode/cli @babel/cli
@@ -61,13 +58,9 @@ setenv:
 	@echo "Setup .env file..."
 	@echo "SKIP_PREFLIGHT_CHECK=true" > .env
 
-precommit: dep lint build test
+precommit: setenv dep lint test coverage
 
-travis: setenv init coverage
-
-travis-deploy:
-	@echo "Deploy the software by travis"
-	@bash ./scripts/publish.sh
+github-action-test: precommit
 
 clean:
 	@echo "Cleaning the build..."
@@ -78,4 +71,4 @@ run:
 
 include .makefiles/*.mk
 
-.PHONY: build init travis-init install dep pre-build post-build all test doc precommit travis clean watch run bump-version create-pr
+.PHONY: build init install dep pre-build post-build all test doc precommit github-action-test clean watch run bump-version create-pr

@@ -34,6 +34,7 @@ export default function IndexPage() {
         const { data } = await api.get(`/api/get_unconsumed_asset?userDid=${session.user.did}`);
         setAsset(data);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.warn('load available asset failed:', { error });
       }
     };

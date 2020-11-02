@@ -17,6 +17,7 @@ module.exports = {
       description: description[locale] || description.en,
     }),
   },
+  // eslint-disable-next-line consistent-return
   onAuth: async ({ claims, userDid, token, storage }) => {
     try {
       const profile = claims.find(x => x.type === 'profile');

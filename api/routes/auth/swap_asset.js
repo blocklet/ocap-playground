@@ -84,6 +84,7 @@ module.exports = {
             ...swap,
           };
         } catch (err) {
+          // eslint-disable-next-line no-console
           console.log(err);
           logger.error('asset create failed', err);
           throw new Error('asset create failed');

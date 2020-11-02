@@ -15,6 +15,7 @@ module.exports = {
       return res.jsonp(users.map(x => x.toJSON()));
     });
 
+    // eslint-disable-next-line consistent-return
     app.get('/api/users/verify/:token', async (req, res) => {
       try {
         const result = await VerificationToken.verify(req.params.token);
