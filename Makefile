@@ -60,7 +60,9 @@ setenv:
 
 precommit: setenv dep lint test coverage
 
-github-action-test: precommit
+github-action-test:
+	@sudo npm install -g lerna
+	@make precommit
 
 clean:
 	@echo "Cleaning the build..."
