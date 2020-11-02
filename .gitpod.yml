@@ -12,3 +12,5 @@ ports:
     onOpen: ignore
   - port: 8090
     onOpen: ignore
+  - port: 3030
+    onOpen: ignore
