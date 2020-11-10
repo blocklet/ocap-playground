@@ -42,5 +42,4 @@ fi
 
 # trigger ArcBlock/blocklets repo release
 echo "trigger ArcBlock/blocklets repo release"
-sudo gem install travis
 .makefiles/trigger_registry_build.sh
