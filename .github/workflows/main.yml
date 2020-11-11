@@ -22,12 +22,12 @@ jobs:
 
     - name: Deploy
       env:
-        AWS_ENDPOINT: http://54.213.55.12/admin
-        AWS_ACCESS_KEY: z1W9k2T7XTddPMtArMs7gs6pJYvsN63dggE
-        AWS_ACCESS_SECRET: ${{ secrets.AWS_ACCESS_SECRET }}
-        ALIYUN_ENDPOINT: http://39.98.93.191/admin
-        ALIYUN_ACCESS_SECRET: ${{ secrets.ALIYUN_ACCESS_SECRET }}
-        ALIYUN_ACCESS_KEY: z1aWXyf27QaUtAAT6wv4t5sL4visgBhRBPb
+        AWS_NODE_ENDPOINT: ${{ secrets.AWS_NODE_ENDPOINT }}
+        AWS_NODE_ACCESS_KEY: ${{ secrets.AWS_NODE_ACCESS_KEY }}
+        AWS_NODE_ACCESS_SECRET: ${{ secrets.AWS_NODE_ACCESS_SECRET }}
+        ALIYUN_NODE_ENDPOINT: ${{ secrets.ALIYUN_NODE_ENDPOINT }}
+        ALIYUN_NODE_ACCESS_SECRET: ${{ secrets.ALIYUN_NODE_ACCESS_SECRET }}
+        ALIYUN_NODE_ACCESS_KEY: ${{ secrets.ALIYUN_NODE_ACCESS_KEY }}
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
