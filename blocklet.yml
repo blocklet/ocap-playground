@@ -1,0 +1,50 @@
+name: wallet-playground
+description: A simple playground that shows the potential of ABT Wallet V2
+group: dapp
+version: 1.11.0
+main: api/index.js
+title: Wallet Playground
+publicUrl: /
+adminUrl: ''
+configUrl: ''
+logo: logo.png
+author: 'wangshijun <shijun@arcblock.io> https://github.com/wangshijun'
+charging:
+  price: 0
+color: secondary
+keywords:
+  - dapp
+  - playground
+  - wallet
+repository:
+  type: git
+  url: >-
+    https://github.com/ArcBlock/forge-dapp-starters/tree/master/packages/forge-react-starter
+hooks:
+  pre-start: node api/libs/hooks/pre-start.js
+  pre-deploy: npm run bundle
+hookFiles:
+  - api/libs/hooks/pre-start.js
+environments:
+  - name: LOCAL_CHAIN_ID
+    description: Please provide id of local chain
+    required: true
+    default: playground
+  - name: LOCAL_CHAIN_HOST
+    description: Please provide endpoint of local chain
+    required: true
+    default: 'https://playground.network.arcblockio.cn/api'
+  - name: FOREIGN_CHAIN_ID
+    description: Please provide id of foreign chain
+    required: true
+    default: zinc-2019-05-17
+  - name: FOREIGN_CHAIN_HOST
+    description: Please provide endpoint of foreign chain
+    required: true
+    default: 'https://zinc.network.arcblockio.cn/api'
+capabilities:
+  dynamicPathPrefix: true
+scripts:
+  dev: npm run start
+specVersion: 1.0.0
+did: z8iZpn7gP9WJNUonEMq7zAoCbv4fMMqX8JasV

@@ -1,3 +1,11 @@
+## 1.11.0 (November 12, 2020)
+
+
+
+## 1.10.0 (November 11, 2020)
+
+- chore: migrate to blocklet.yml
+
 ## 1.9.9 (November 02, 2020)
 
 ## 1.9.8 (October 30, 2020)
@@ -539,5 +547,3 @@
 - fix link error and token symbol in order list page #7
 
 ## 0.39.0 (December 04, 2019)
-
-
