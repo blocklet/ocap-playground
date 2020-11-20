@@ -1,17 +1,19 @@
 name: wallet-playground
-description: A simple playground that shows the potential of ABT Wallet V2
-group: dapp
-version: 1.11.0
-main: api/index.js
 title: Wallet Playground
-publicUrl: /
-adminUrl: ''
-configUrl: ''
-logo: logo.png
-author: 'wangshijun <shijun@arcblock.io> https://github.com/wangshijun'
-charging:
-  price: 0
-color: secondary
+description: A simple playground that shows the potential of ABT Wallet V2
+files:
+  - build
+  - screenshots
+  - logo.png
+  - blocklet.md
+  - blocklet.js
+  - blocklet.yml
+  - README.md
+  - api/libs/hooks/pre-start.js
+version: 1.11.0
+author:
+  name: wangshijun
+  email: shijun@arcblock.io
 keywords:
   - dapp
   - playground
@@ -20,31 +22,45 @@ repository:
   type: git
   url: >-
     https://github.com/ArcBlock/forge-dapp-starters/tree/master/packages/forge-react-starter
-hooks:
-  pre-start: node api/libs/hooks/pre-start.js
-  pre-deploy: npm run bundle
-hookFiles:
-  - api/libs/hooks/pre-start.js
+license: Apache-2.0
+group: dapp
+main: api/index.js
+logo: logo.png
 environments:
   - name: LOCAL_CHAIN_ID
     description: Please provide id of local chain
     required: true
     default: playground
+    secure: false
   - name: LOCAL_CHAIN_HOST
     description: Please provide endpoint of local chain
     required: true
     default: 'https://playground.network.arcblockio.cn/api'
+    secure: false
   - name: FOREIGN_CHAIN_ID
     description: Please provide id of foreign chain
     required: true
     default: zinc-2019-05-17
+    secure: false
   - name: FOREIGN_CHAIN_HOST
     description: Please provide endpoint of foreign chain
     required: true
     default: 'https://zinc.network.arcblockio.cn/api'
-capabilities:
-  dynamicPathPrefix: true
+    secure: false
 scripts:
+  preDeploy: npm run bundle
+  preStart: node api/libs/hooks/pre-start.js
   dev: npm run start
-specVersion: 1.0.0
+specVersion: 1.0.1
 did: z8iZpn7gP9WJNUonEMq7zAoCbv4fMMqX8JasV
+community: ''
+documentation: ''
+homepage: ''
+interfaces:
+  - type: web
+    name: publicUrl
+    path: /
+    prefix: '*'
+    port: BLOCKLET_PORT
+    protocol: tcp
+screenshots: []
