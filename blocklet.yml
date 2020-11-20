@@ -1,31 +1,25 @@
 name: wallet-playground
-title: Wallet Playground
 description: A simple playground that shows the potential of ABT Wallet V2
-files:
-  - build
-  - screenshots
-  - logo.png
-  - blocklet.md
-  - blocklet.js
-  - blocklet.yml
-  - README.md
-  - api/libs/hooks/pre-start.js
-version: 1.11.0
+group: dapp
+version: 1.11.1
+main: api/index.js
+title: Wallet Playground
+logo: logo.png
 author:
   name: wangshijun
   email: shijun@arcblock.io
+community: ''
+documentation: ''
+homepage: ''
 keywords:
   - dapp
   - playground
   - wallet
+screenshots: []
 repository:
   type: git
   url: >-
     https://github.com/ArcBlock/forge-dapp-starters/tree/master/packages/forge-react-starter
-license: Apache-2.0
-group: dapp
-main: api/index.js
-logo: logo.png
 environments:
   - name: LOCAL_CHAIN_ID
     description: Please provide id of local chain
@@ -52,15 +46,9 @@ scripts:
   preStart: node api/libs/hooks/pre-start.js
   dev: npm run start
 specVersion: 1.0.1
+color: primary
+capabilities:
+  dynamicPathPrefix: true
+charging:
+  price: 0
 did: z8iZpn7gP9WJNUonEMq7zAoCbv4fMMqX8JasV
-community: ''
-documentation: ''
-homepage: ''
-interfaces:
-  - type: web
-    name: publicUrl
-    path: /
-    prefix: '*'
-    port: BLOCKLET_PORT
-    protocol: tcp
-screenshots: []

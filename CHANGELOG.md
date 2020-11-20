@@ -1,3 +1,7 @@
+## 1.11.1 (November 20, 2020)
+
+- fit with the latest spec
+
 ## 1.11.0 (November 12, 2020)
 
 
