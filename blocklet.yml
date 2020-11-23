@@ -15,6 +15,8 @@ keywords:
   - dapp
   - playground
   - wallet
+files:
+  - api/libs/hooks/pre-start.js
 screenshots: []
 repository:
   type: git
@@ -45,6 +47,13 @@ scripts:
   preDeploy: npm run bundle
   preStart: node api/libs/hooks/pre-start.js
   dev: npm run start
+interfaces:
+  - type: web
+    name: publicUrl
+    path: /
+    prefix: '*'
+    port: BLOCKLET_PORT
+    protocol: tcp
 specVersion: 1.0.1
 color: primary
 capabilities:
