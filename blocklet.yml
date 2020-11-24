@@ -8,7 +8,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 1.11.2
+version: 1.11.3
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -54,8 +54,6 @@ scripts:
   preStart: node api/libs/hooks/pre-start.js
   dev: npm run start
 specVersion: 1.0.1
-capabilities:
-  dynamicPathPrefix: true
 did: z8iZpn7gP9WJNUonEMq7zAoCbv4fMMqX8JasV
 interfaces:
   - type: web
