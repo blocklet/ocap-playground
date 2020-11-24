@@ -1,3 +1,7 @@
+## 1.11.2 (November 24, 2020)
+
+-  update blocklet yml
+
 ## 1.11.1 (November 20, 2020)
 
 - fit with the latest spec

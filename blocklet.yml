@@ -1,11 +1,6 @@
 name: wallet-playground
 title: Wallet Playground
-version: 1.11.1
 description: A simple playground that shows the potential of ABT Wallet V2
-keywords:
-  - dapp
-  - playground
-  - wallet
 files:
   - api/libs/hooks/pre-start.js
   - screenshots
@@ -13,9 +8,14 @@ files:
   - blocklet.md
   - README.md
   - build
+version: 1.11.2
 author:
   name: wangshijun
   email: shijun@arcblock.io
+keywords:
+  - dapp
+  - playground
+  - wallet
 repository:
   type: git
   url: >-
@@ -66,4 +66,3 @@ interfaces:
     protocol: tcp
 timeout:
   start: 15
-
