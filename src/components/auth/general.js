@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import Auth from '@arcblock/did-react/lib/Auth';
 import Button from '@arcblock/ux/lib/Button';
 
 import Alert from '../alert';
 import api from '../../libs/api';
+import getWebWalletUrl from '../../libs/util';
 
 // eslint-disable-next-line object-curly-newline
 export default function GeneralAuthButton({ button, action, messages, timeout, extraParams }) {
@@ -17,6 +17,8 @@ export default function GeneralAuthButton({ button, action, messages, timeout, e
     setOpen(false);
     setComplete(false);
   };
+
+  const webWalletUrl = getWebWalletUrl();
 
   return (
     <React.Fragment>
@@ -34,6 +36,7 @@ export default function GeneralAuthButton({ button, action, messages, timeout, e
           extraParams={extraParams}
           onSuccess={() => setComplete(true)}
           messages={messages}
+          webWalletUrl={webWalletUrl}
         />
       )}
       {isComplete && <Alert onClose={onClose} message={messages.success} />}

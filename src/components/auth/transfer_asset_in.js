@@ -7,17 +7,14 @@ import Auth from '@arcblock/did-react/lib/Auth';
 import Button from '@arcblock/ux/lib/Button';
 
 import api from '../../libs/api';
+import getWebWalletUrl from '../../libs/util';
 
 export default function TransferTokenIn() {
   const [isOpen, setOpen] = useToggle(false);
+  const webWalletUrl = getWebWalletUrl();
   return (
     <React.Fragment>
-      <Button
-        color="secondary"
-        variant="contained"
-        size="large"
-        className="action"
-        onClick={() => setOpen(true)}>
+      <Button color="secondary" variant="contained" size="large" className="action" onClick={() => setOpen(true)}>
         Send 1 Certificate to Wallet
       </Button>
       {isOpen && (
@@ -34,6 +31,7 @@ export default function TransferTokenIn() {
             confirm: 'Confirm on your ABT Wallet',
             success: 'Certificate transfer sent!',
           }}
+          webWalletUrl={webWalletUrl}
         />
       )}
     </React.Fragment>

@@ -7,18 +7,15 @@ import Auth from '@arcblock/did-react/lib/Auth';
 import Button from '@arcblock/ux/lib/Button';
 
 import api from '../../libs/api';
+import getWebWalletUrl from '../../libs/util';
 
 export default function AcquireMovieTicket({ count }) {
   const [isOpen, setOpen] = useToggle(false);
+  const webWalletUrl = getWebWalletUrl();
 
   return (
     <React.Fragment>
-      <Button
-        color="secondary"
-        variant="contained"
-        size="large"
-        className="action"
-        onClick={() => setOpen(true)}>
+      <Button color="secondary" variant="contained" size="large" className="action" onClick={() => setOpen(true)}>
         Acquire {count} movie {count <= 1 ? 'ticket' : 'tickets'}
       </Button>
       {isOpen && (
@@ -38,6 +35,7 @@ export default function AcquireMovieTicket({ count }) {
           extraParams={{
             count,
           }}
+          webWalletUrl={webWalletUrl}
         />
       )}
     </React.Fragment>

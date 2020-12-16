@@ -1,18 +1,19 @@
+## 1.11.4 (十二月 15, 2020)
+
+- fix: update package version
+- fix: add web wallet url use localstorage
+
 ## 1.11.3 (November 24, 2020)
-
-
 
 ## 1.11.2 (November 24, 2020)
 
--  update blocklet yml
+- update blocklet yml
 
 ## 1.11.1 (November 20, 2020)
 
 - fit with the latest spec
 
 ## 1.11.0 (November 12, 2020)
-
-
 
 ## 1.10.0 (November 11, 2020)
 
@@ -22,15 +23,12 @@
 
 ## 1.9.8 (October 30, 2020)
 
-
 ## 1.9.7 (October 10, 2020)
 
 - fix app link empty
 - fix badge asset demo can not work
 
 ## 1.9.6 (October 10, 2020)
-
-
 
 ## 1.9.5 (September 29, 2020)
 
@@ -42,15 +40,13 @@
 
 ## 1.9.3 (September 18, 2020)
 
-
-
 ## 1.9.2 (September 18, 2020)
+
 - fix: update aliyun access key in travis.yml
 
-
 ## 1.9.1 (September 18, 2020)
-- auto deploy to ABT Node
 
+- auto deploy to ABT Node
 
 ## 1.9.0 (September 17, 2020)
 
@@ -58,8 +54,6 @@
 - change sk set logic, support custom sk in blocklet
 
 ## 1.8.7 (September 10, 2020)
-
-
 
 ## 1.8.6 (September 10, 2020)
 
@@ -110,8 +104,6 @@
 
 ## 1.6.0 (July 22, 2020)
 
-
-
 ## 1.5.0 (July 22, 2020)
 
 - fix: netlify build error
@@ -127,27 +119,15 @@
 
 ## 1.4.10 (July 13, 2020)
 
-
-
 ## 1.4.9 (July 13, 2020)
-
-
 
 ## 1.4.8 (June 26, 2020)
 
-
-
 ## 1.4.7 (June 17, 2020)
-
-
 
 ## 1.4.6 (June 16, 2020)
 
-
-
 ## 1.4.5 (June 15, 2020)
-
-
 
 ## 1.4.4 (May 27, 2020)
 
@@ -155,23 +135,15 @@
 
 ## 1.4.3 (May 26, 2020)
 
-
-
 ## 1.4.2 (May 25, 2020)
 
-
-
 ## 1.4.1 (May 24, 2020)
-
-
 
 ## 1.4.0 (May 24, 2020)
 
 - fix: travis build
 
 ## 1.3.0 (May 24, 2020)
-
-
 
 ## 1.2.0 (May 24, 2020)
 
@@ -187,8 +159,6 @@
 - feat: we can now run as blocklet in abt node
 
 ## 0.93.1 (May 20, 2020)
-
-
 
 ## 0.93.0 (May 12, 2020)
 
@@ -265,15 +235,11 @@
 
 ## 0.86.0 (March 27, 2020)
 
-
-
 ## 0.85.0 (March 25, 2020)
 
 - add preview when signature
 
 ## 0.84.0 (March 25, 2020)
-
-
 
 ## 0.83.0 (March 24, 2020)
 
@@ -315,11 +281,7 @@
 
 ## 0.75.3 (March 20, 2020)
 
-
-
 ## 0.75.3 (March 19, 2020)
-
-
 
 ## 0.75.2 (March 19, 2020)
 
@@ -342,8 +304,6 @@
 - fix asset content
 
 ## 0.74.4 (March 16, 2020)
-
-
 
 ## 0.74.3 (March 13, 2020)
 
@@ -484,75 +444,51 @@
 
 ## 0.62.0 (February 26, 2020)
 
-
 ## 0.61.0 (February 14, 2020)
-
 
 ## 0.60.0 (February 14, 2020)
 
-
 ## 0.59.0 (February 14, 2020)
-
 
 ## 0.58.0 (February 14, 2020)
 
-
 ## 0.57.0 (February 14, 2020)
-
 
 ## 0.56.0 (February 14, 2020)
 
-
 ## 0.55.0 (February 14, 2020)
-
 
 ## 0.54.1 (二月 13, 2020)
 
-
 ## 0.54.0 (February 12, 2020)
-
 
 ## 0.53.0 (February 12, 2020)
 
-
 ## 0.52.0 (January 17, 2020)
-
 
 ## 0.51.0 (January 14, 2020)
 
-
 ## 0.50.0 (January 13, 2020)
-
 
 ## 0.49.0 (January 13, 2020)
 
-
 ## 0.48.0 (January 09, 2020)
-
 
 ## 0.47.0 (January 09, 2020)
 
-
 ## 0.46.0 (January 07, 2020)
-
 
 ## 0.45.0 (January 07, 2020)
 
-
 ## 0.44.0 (January 02, 2020)
-
 
 ## 0.43.0 (December 23, 2019)
 
-
 ## 0.42.0 (December 23, 2019)
-
 
 ## 0.41.0 (December 17, 2019)
 
-
 ## 0.40.0 (December 12, 2019)
-
 
 ## 0.39.1 (December 09, 2019)
 
