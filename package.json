@@ -112,7 +112,7 @@
     "bundle:client": "PUBLIC_URL=\"/z8iZpn7gP9WJNUonEMq7zAoCbv4fMMqX8JasV\" REACT_APP_API_PREFIX=\"\" REACT_APP_APP_NAME=\"Wallet Playground\" yarn build:client",
     "bundle:server": "abtnode bundle -w api/webpack.blocklet.js --create-release",
     "prepublishOnly": "npm run bundle",
-    "release": "npm run clean && npm run bundle",
+    "release": "npm run clean && lerna run build --scope @arcblock/* && npm run bundle",
     "deploy": "npm run release && abtnode deploy .blocklet/bundle --skip-hooks",
     "test": "react-scripts test",
     "echo": "export MESSAGE=$1 && echo $MESSAGE",
