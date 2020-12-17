@@ -11,7 +11,7 @@ sudo npm install -g @abtnode/cli
 
 echo "publishing to npm..."
 npm run release
-lerna publish $VERSION --yes
+npm publish .blocklet/bundle
 
 make release
 
