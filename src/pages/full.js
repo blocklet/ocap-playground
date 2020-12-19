@@ -552,10 +552,10 @@ export default function IndexPage() {
             <SignButton {...session} type="transaction" />
             <SignButton {...session} type="text" />
             <SignButton {...session} type="html" />
-            <SignButton {...session} type="digest" />
-            <SignButton {...session} type="evil_digest" />
-            <SignButton {...session} type="evil_text" />
-            <SignButton {...session} type="evil_html" />
+            {/* <SignButton {...session} type="digest" /> */}
+            {/* <SignButton {...session} type="evil_digest" /> */}
+            {/* <SignButton {...session} type="evil_text" /> */}
+            {/* <SignButton {...session} type="evil_html" /> */}
             <SignButton {...session} type="skip_hash" />
             <AgentButton {...session} />
             <AuthButton
@@ -762,7 +762,7 @@ export default function IndexPage() {
 
 const Main = styled.main`
   a {
-    color: ${props => props.theme.colors.green};
+    color: ${(props) => props.theme.colors.green};
     text-decoration: none;
   }
 
@@ -789,7 +789,7 @@ const Main = styled.main`
       .action {
         margin-bottom: 16px;
         margin-right: 32px;
-        @media (max-width: ${props => props.theme.breakpoints.values.sm}px) {
+        @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
           margin-right: 0;
         }
         width: 100%;

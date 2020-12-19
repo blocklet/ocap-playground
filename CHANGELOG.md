@@ -1,3 +1,7 @@
+## 1.11.6 (December 19, 2020)
+
+- hide some sign claims tests
+
 ## 1.11.5 (十二月 18, 2020)
 
 - fix: bump package lib to latest
