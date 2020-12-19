@@ -1,3 +1,7 @@
+## 1.11.5 (十二月 18, 2020)
+
+- fix: bump package lib to latest
+
 ## 1.11.4 (十二月 15, 2020)
 
 - fix: update package version
