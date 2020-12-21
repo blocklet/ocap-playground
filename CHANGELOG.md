@@ -1,3 +1,7 @@
+## 1.11.7 (十二月 21, 2020)
+
+- fix: bump version to latest
+
 ## 1.11.6 (December 19, 2020)
 
 - hide some sign claims tests
