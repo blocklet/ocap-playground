@@ -1,5 +1,6 @@
 ## 1.11.7 (十二月 21, 2020)
 
+- fix: .eslint
 - fix: bump version to latest
 
 ## 1.11.6 (December 19, 2020)
