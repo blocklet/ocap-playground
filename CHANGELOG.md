@@ -1,3 +1,7 @@
+## 1.11.8 (December 24, 2020)
+
+- update forge related lib version
+
 ## 1.11.7 (十二月 21, 2020)
 
 - fix: .eslint
