@@ -4,7 +4,7 @@ ABT Wallet Playground Blocklet
 
 ## Install on my ABT Node
 
-[![Install on my ABT Node](https://raw.githubusercontent.com/blocklet/development-guide/main/assets/install_on_abtnode.svg)](https://install.arcblock.io/?action=blocklet-install&meta_url=https%3A%2F%2Fgithub.com%2Fblocklet%2Fwallet-playground%2Freleases%2Fdownload%2F1.11.8%2Fblocklet.json)
+[![Install on my ABT Node](https://raw.githubusercontent.com/blocklet/development-guide/main/assets/install_on_abtnode.svg)](https://install.arcblock.io/?action=blocklet-install&meta_url=https%3A%2F%2Fgithub.com%2Fblocklet%2Fwallet-playground%2Freleases%2Fdownload%2F1.11.10%2Fblocklet.json)
 
 ## Run and debug in the cloud with Gitpod
 Click the "Open in Gitpod" button, Gitpod will start ABT Node and the blocklet.
