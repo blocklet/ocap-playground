@@ -35,3 +35,4 @@ blocklet.js
 .blocklet
 .env.dev
 *.db
+.eslintcache
