@@ -9,11 +9,13 @@ import { SessionContext, PlaygroundAction } from '@arcblock/did-playground';
 import Layout from '../components/layout';
 
 import { version } from '../../package.json';
+import getWebWalletUrl from '../libs/util';
 
 // 临时 demo 的页面
 export default function MiniPage() {
   const { session } = useContext(SessionContext);
   const { token } = session;
+  const webWalletUrl = getWebWalletUrl();
 
   return (
     <Layout title="Home">
@@ -39,6 +41,7 @@ export default function MiniPage() {
               buttonVariant="contained"
               buttonText="Please Login"
               successMessage="Hello (%user.name%)"
+              webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               action="receive_foreign_token"
@@ -46,12 +49,14 @@ export default function MiniPage() {
               buttonVariant="contained"
               amount={10}
               title={`Get 10 ${token.foreign.symbol}`}
+              webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               action="receive_local_token"
               className="action"
               amount={20}
               title={`Get 20 ${token.local.symbol}`}
+              webWalletUrl={webWalletUrl}
             />
           </div>
         </section>
@@ -70,6 +75,7 @@ export default function MiniPage() {
               buttonVariant="contained"
               buttonText={`Buy 1 ${token.foreign.symbol} with 19.58 ${token.local.symbol}`}
               exchangeRate={19.58}
+              webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               action="exchange_to_local_token"
@@ -78,6 +84,7 @@ export default function MiniPage() {
               buttonVariant="contained"
               buttonText={`Sell 1 ${token.foreign.symbol} for 19.58 ${token.local.symbol}`}
               exchangeRate={19.58}
+              webWalletUrl={webWalletUrl}
             />
           </div>
         </section>
@@ -95,6 +102,7 @@ export default function MiniPage() {
               buttonVariant="contained"
               amount={0.1}
               title={`Send 0.1 ${token.foreign.symbol}`}
+              webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               action="send_local_token"
@@ -102,6 +110,7 @@ export default function MiniPage() {
               buttonVariant="contained"
               amount={10}
               title={`Send 10 ${token.local.symbol}`}
+              webWalletUrl={webWalletUrl}
             />
           </div>
         </section>
