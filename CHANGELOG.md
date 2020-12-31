@@ -1,3 +1,8 @@
+## 1.11.11 (December 31, 2020)
+
+- chore: bump forge sdk version
+- fix: add web wallet btn for playground action (#17)
+
 ## 1.11.10 (December 28, 2020)
 
 - fix github actions error when build client
