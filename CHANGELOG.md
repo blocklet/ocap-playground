@@ -1,3 +1,7 @@
+## 1.11.12 (December 31, 2020)
+
+- add no chain info test
+
 ## 1.11.11 (December 31, 2020)
 
 - chore: bump forge sdk version
