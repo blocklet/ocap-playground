@@ -19,7 +19,7 @@ const logger = require('../libs/logger');
 // Routes: due to limitations of netlify functions, we need to import routes here
 // ------------------------------------------------------------------------------
 const { decode } = require('../libs/jwt');
-const { walletHandlers, swapHandlers, agentHandlers } = require('../libs/auth');
+const { walletHandlers, walletHandlersWithNoChainInfo, swapHandlers, agentHandlers } = require('../libs/auth');
 
 const netlifyPrefix = '/.netlify/functions/app';
 const isProduction = process.env.NODE_ENV === 'production' || !!process.env.BLOCKLET_APP_ID;
@@ -91,6 +91,10 @@ swapHandlers.attach(Object.assign({ app: router }, require('../routes/auth/swap_
 
 // Assets
 swapHandlers.attach(Object.assign({ app: router }, require('../routes/auth/swap_asset')));
+// No ChainInfo
+walletHandlersWithNoChainInfo.attach(
+  Object.assign({ app: router }, require('../routes/auth/claim_profile_no_chain_info'))
+);
 
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/login')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_profile')));
@@ -133,7 +137,6 @@ if (isProduction) {
     if (process.env.BLOCKLET_DID) {
       app.use(`/${process.env.BLOCKLET_DID}`, router);
     }
-
 
     const staticDir = process.env.BLOCKLET_APP_ID ? './' : '../../';
     const staticDirNew = path.resolve(__dirname, staticDir, 'build');

@@ -547,6 +547,16 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button="Request Profile WithOut ChainInfo"
+              action="profile_no_chain_info"
+              messages={{
+                title: 'Profile Required',
+                scan: 'Scan QR code to provide profile',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'Profile provided',
+              }}
+            />
+            <AuthButton
               button="Show DApp Error"
               action="error"
               messages={{
@@ -812,7 +822,7 @@ export default function IndexPage() {
 
 const Main = styled.main`
   a {
-    color: ${(props) => props.theme.colors.green};
+    color: ${props => props.theme.colors.green};
     text-decoration: none;
   }
 
@@ -839,7 +849,7 @@ const Main = styled.main`
       .action {
         margin-bottom: 16px;
         margin-right: 32px;
-        @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
+        @media (max-width: ${props => props.theme.breakpoints.values.sm}px) {
           margin-right: 0;
         }
         width: 100%;

@@ -60,6 +60,17 @@ const walletAuth = new WalletAuthenticator({
   },
 });
 
+const walletAuthWithNoChainInfo = new WalletAuthenticator({
+  wallet,
+  appInfo: ({ baseUrl }) => ({
+    name: env.appName,
+    description: env.appDescription,
+    icon: env.appIcon || icon,
+    link: baseUrl,
+  }),
+  chainInfo: { host: '<none>', id: '<none>', restrictedDeclare: false },
+});
+
 const agentAuth = new AgentAuthenticator({
   wallet,
   appInfo: ({ baseUrl }) => ({
@@ -102,6 +113,10 @@ const agentStorage = new AgentNedbStorage({
 
 const walletHandlers = new WalletHandlers({
   authenticator: walletAuth,
+  tokenStorage,
+});
+const walletHandlersWithNoChainInfo = new WalletHandlers({
+  authenticator: walletAuthWithNoChainInfo,
   tokenStorage,
 });
 
@@ -154,6 +169,7 @@ module.exports = {
   agentStorage,
 
   walletHandlers,
+  walletHandlersWithNoChainInfo,
   swapHandlers,
   agentHandlers,
 
