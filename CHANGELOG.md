@@ -1,3 +1,7 @@
+## 1.11.13 (一月 05, 2021)
+
+- fix: show web wallet btn for children react component
+
 ## 1.11.12 (December 31, 2020)
 
 - add no chain info test

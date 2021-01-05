@@ -68,7 +68,7 @@ const walletAuthWithNoChainInfo = new WalletAuthenticator({
     icon: env.appIcon || icon,
     link: baseUrl,
   }),
-  chainInfo: { host: '<none>', id: '<none>', restrictedDeclare: false },
+  chainInfo: { host: 'none', id: 'none', restrictedDeclare: false },
 });
 
 const agentAuth = new AgentAuthenticator({

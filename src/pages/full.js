@@ -484,8 +484,8 @@ export default function IndexPage() {
               title="Children React Component"
               action="claim_signature"
               type="text"
-              name="Local Ticket (%token.local.symbol%)">
-              webWalletUrl={webWalletUrl}
+              name="Local Ticket (%token.local.symbol%)"
+              webWalletUrl={webWalletUrl}>
               <PlaygroundAction
                 className="action"
                 title="Simple Message"
