@@ -19,7 +19,7 @@ git clone git@github.com:blocklet/blocklet-wallet-playground.git
 cd blocklet-wallet-playground
 cp .env.bac .env
 yarn
-abtnode dev
+blocklet dev
 ```
 
 ## License
