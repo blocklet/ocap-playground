@@ -8,7 +8,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 1.11.14
+version: 1.11.15
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -64,3 +64,7 @@ interfaces:
     protocol: tcp
 timeout:
   start: 15
+requirements:
+  abtnode: '>=1.1.0'
+  os: '*'
+  cpu: '*'
