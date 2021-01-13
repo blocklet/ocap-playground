@@ -11,7 +11,6 @@ module.exports = {
     {
       authPrincipal: async ({ sessionDid }) => {
         const user = await User.findOne({ did: sessionDid });
-        console.log(user);
         if (!user) {
           throw new Error('You are not a valid user, please login and retry');
         }
