@@ -11,7 +11,7 @@ class UserState extends BaseState {
   }
 
   async update(user) {
-    return this.asyncDB.update(user._id, { $set: user });
+    return this.asyncDB.update({ _id: user._id }, { $set: user });
   }
 
   async findOne(condition) {

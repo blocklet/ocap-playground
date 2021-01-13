@@ -1,3 +1,7 @@
+## 1.11.15 (January 13, 2021)
+
+- fix create new did
+
 ## 1.11.14 (January 07, 2021)
 
 - replace abtnode command with blocklet command
