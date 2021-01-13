@@ -11,6 +11,7 @@ class UserState extends BaseState {
   }
 
   async update(user) {
+    console.log(user);
     return this.asyncDB.update(user._id, { $set: user });
   }
 
