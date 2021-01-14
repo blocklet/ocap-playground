@@ -1,3 +1,8 @@
+## 1.11.16 (January 14, 2021)
+
+- feat: support publish to blocklet registry
+- [skip ci] Update README.md
+
 ## 1.11.15 (January 13, 2021)
 
 - fix create new did
