@@ -3,15 +3,16 @@ set -e
 VERSION=$(cat version | awk '{$1=$1;print}')
 echo "publish version ${VERSION}"
 
-git config --local user.name "wangshijun"
-git config --local user.email "wangshijun2010@gmail.com"
-
 npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
 sudo npm install -g @abtnode/cli
 
 echo "publishing to npm..."
 npm run release
 npm publish .blocklet/bundle
+
+echo "publishing to blocklet registry"
+blocklet config registry ${BLOCKLET_REGISTRY}
+blocklet publish --developer-sk ${ABTNODE_DEV_SK}
 
 make release
 
@@ -40,6 +41,4 @@ if [ "${AWS_NODE_ENDPOINT}" != "" ]; then
   fi
 fi
 
-# trigger ArcBlock/blocklets repo release
-echo "trigger ArcBlock/blocklets repo release"
-.makefiles/trigger_registry_build.sh
+curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"${NAME} v${VERSION} was successfully published\"}" ${SLACK_WEBHOOK}

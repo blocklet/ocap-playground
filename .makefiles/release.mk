@@ -3,8 +3,8 @@ GIT_BRANCH=$(strip $(shell git symbolic-ref --short HEAD))
 GIT_VERSION="$(strip $(shell git rev-parse --short HEAD))"
 
 release:
-	@git config --local user.name "wangshijun"
-	@git config --local user.email "wangshijun2010@gmail.com"
+	@git config --local user.name "bot"
+	@git config --local user.email "bot@arcblock.io"
 	@git tag -a $(RELEASE_VERSION) -m "Release $(RELEASE_VERSION). Revision is: $(GIT_VERSION)" | true
 	@git push origin $(RELEASE_VERSION) | true
 
