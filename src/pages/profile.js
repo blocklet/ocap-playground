@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { fromUnitToToken } from '@arcblock/forge-util';
 import { SessionContext } from '@arcblock/did-playground';
@@ -17,11 +18,12 @@ import Layout from '../components/layout';
 
 export default function ProfilePage() {
   const browser = useBrowser();
+  const history = useHistory();
   const { session } = useContext(SessionContext);
 
   const onLogout = () => {
     session.logout();
-    window.location.href = '/';
+    history.push('/');
   };
 
   const { user, token } = session;
