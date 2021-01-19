@@ -1,3 +1,7 @@
+## 1.11.17 (January 19, 2021)
+
+- fix logout url error
+
 ## 1.11.16 (January 14, 2021)
 
 - feat: support publish to blocklet registry
