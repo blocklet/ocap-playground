@@ -7,7 +7,7 @@ import useBrowser from '@arcblock/react-hooks/lib/useBrowser';
 import Typography from '@material-ui/core/Typography';
 import WalletDownload from '@arcblock/ux/lib/Wallet/Download';
 import Tag from '@arcblock/ux/lib/Tag';
-import { SessionContext, PlaygroundAction } from '@arcblock/did-playground';
+import { PlaygroundAction } from '@arcblock/did-playground';
 
 import Button from '@arcblock/ux/lib/Button';
 import Layout from '../components/layout';
@@ -24,10 +24,11 @@ import api from '../libs/api';
 import getWebWalletUrl from '../libs/util';
 
 import { version } from '../../package.json';
+import { UserContext } from '../context/user';
 
 export default function IndexPage() {
   const browser = useBrowser();
-  const { session } = useContext(SessionContext);
+  const { session } = useContext(UserContext);
   const [asset, setAsset] = useState(null);
   const webWalletUrl = getWebWalletUrl();
 

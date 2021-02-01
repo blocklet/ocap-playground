@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { fromUnitToToken } from '@arcblock/forge-util';
-import { SessionContext } from '@arcblock/did-playground';
 
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
@@ -14,19 +13,21 @@ import Avatar from '@arcblock/did-react/lib/Avatar';
 import Button from '@arcblock/ux/lib/Button';
 import useBrowser from '@arcblock/react-hooks/lib/useBrowser';
 
+import { UserContext } from '../context/user';
 import Layout from '../components/layout';
 
 export default function ProfilePage() {
   const browser = useBrowser();
   const history = useHistory();
-  const { session } = useContext(SessionContext);
+  const { session } = useContext(UserContext);
+
+  const { user, token } = session;
 
   const onLogout = () => {
     session.logout();
     history.push('/');
+    window.location.reload();
   };
-
-  const { user, token } = session;
 
   return (
     <Layout title="Profile">

@@ -44,7 +44,7 @@ export default function Layout({ title, children, contentOnly }) {
   if (window.env.assetChainHost) {
     links.push({ url: getExplorerUrl(window.env.assetChainHost, 'foreign'), title: 'Foreign Chain' });
   }
-  links.push({ url: 'https://github.com/ArcBlock/wallet-playground', title: 'GitHub' });
+  links.push({ url: 'https://github.com/blocklet/wallet-playground', title: 'GitHub' });
 
   return (
     <BaseLayout title={title} brand={window.env.appName} links={links} contentOnly={contentOnly} baseUrl="/">

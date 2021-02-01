@@ -9,6 +9,8 @@ import { SessionProvider } from '@arcblock/did-playground';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+import { UserProvider } from './context/user';
+
 import HomePage from './pages/full';
 import ProfilePage from './pages/profile';
 import OrdersPage from './pages/orders';
@@ -39,27 +41,33 @@ const webWalletUrl = getWebWalletUrl();
 export const App = () => (
   <MuiThemeProvider theme={theme}>
     <ThemeProvider theme={theme}>
-      <SessionProvider serviceHost={apiPrefix} autoLogin webWalletUrl={webWalletUrl}>
+      <SessionProvider serviceHost={apiPrefix} webWalletUrl={webWalletUrl}>
         {({ session }) => {
           if (session.loading) {
             return <CircularProgress />;
           }
 
-          return (
-            <React.Fragment>
-              <CssBaseline />
-              <GlobalStyle />
-              <div className="wrapper">
-                <Switch>
-                  <Route exact path="/" component={MiniPage} />
-                  <Route exact path="/full" component={HomePage} />
-                  <Route exact path="/profile" component={ProfilePage} />
-                  <Route exact path="/orders" component={OrdersPage} />
-                  <Redirect to="/" />
-                </Switch>
-              </div>
-            </React.Fragment>
-          );
+          if (session.user) {
+            return (
+              <UserProvider>
+                <React.Fragment>
+                  <CssBaseline />
+                  <GlobalStyle />
+                  <div className="wrapper">
+                    <Switch>
+                      <Route exact path="/" component={MiniPage} />
+                      <Route exact path="/full" component={HomePage} />
+                      <Route exact path="/profile" component={ProfilePage} />
+                      <Route exact path="/orders" component={OrdersPage} />
+                      <Redirect to="/" />
+                    </Switch>
+                  </div>
+                </React.Fragment>
+              </UserProvider>
+            );
+          }
+
+          return null;
         }}
       </SessionProvider>
     </ThemeProvider>

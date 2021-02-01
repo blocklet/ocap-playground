@@ -4,8 +4,9 @@ import styled from 'styled-components';
 
 import Typography from '@material-ui/core/Typography';
 import Tag from '@arcblock/ux/lib/Tag';
-import { SessionContext, PlaygroundAction } from '@arcblock/did-playground';
+import { PlaygroundAction } from '@arcblock/did-playground';
 
+import { UserContext } from '../context/user';
 import Layout from '../components/layout';
 
 import { version } from '../../package.json';
@@ -13,7 +14,7 @@ import getWebWalletUrl from '../libs/util';
 
 // 临时 demo 的页面
 export default function MiniPage() {
-  const { session } = useContext(SessionContext);
+  const { session } = useContext(UserContext);
   const { token } = session;
   const webWalletUrl = getWebWalletUrl();
 

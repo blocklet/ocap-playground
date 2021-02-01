@@ -8,7 +8,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 1.11.17
+version: 1.12.0
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -62,9 +62,14 @@ interfaces:
     prefix: '*'
     port: BLOCKLET_PORT
     protocol: tcp
+    services:
+      - name: '@abtnode/auth-service'
+        config:
+          ignoreUrls:
+            - /api/did/**
 timeout:
   start: 15
 requirements:
-  abtnode: '>=1.1.0'
+  abtnode: '>=1.1.17'
   os: '*'
   cpu: '*'

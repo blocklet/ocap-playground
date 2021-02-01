@@ -9,7 +9,6 @@ const express = require('express');
 const serverless = require('serverless-http');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const bearerToken = require('express-bearer-token');
 const fallback = require('express-history-api-fallback');
 const compression = require('compression');
 const EventServer = require('@arcblock/event-server');
@@ -18,7 +17,6 @@ const logger = require('../libs/logger');
 // ------------------------------------------------------------------------------
 // Routes: due to limitations of netlify functions, we need to import routes here
 // ------------------------------------------------------------------------------
-const { decode } = require('../libs/jwt');
 const { walletHandlers, walletHandlersWithNoChainInfo, swapHandlers, agentHandlers } = require('../libs/auth');
 
 const netlifyPrefix = '/.netlify/functions/app';
@@ -65,21 +63,14 @@ app.use(
   })
 );
 
-app.use(bearerToken());
 app.use((req, res, next) => {
-  if (!req.token) {
-    next();
-    return;
+  if (req.headers['x-user-did']) {
+    req.user = {
+      did: req.headers['x-user-did'],
+    };
   }
 
-  decode(req.token)
-    .then(user => {
-      req.user = user;
-      next();
-    })
-    .catch(() => {
-      next();
-    });
+  next();
 });
 
 const router = express.Router();
@@ -96,7 +87,6 @@ walletHandlersWithNoChainInfo.attach(
   Object.assign({ app: router }, require('../routes/auth/claim_profile_no_chain_info'))
 );
 
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/login')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_profile')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_signature')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_create_did')));

@@ -1,3 +1,8 @@
+## 1.12.0 (January 29, 2021)
+
+- update SessionProvider
+- migrate auth from custom auth to @abtnode/auth-service
+
 ## 1.11.17 (January 19, 2021)
 
 - fix logout url error
