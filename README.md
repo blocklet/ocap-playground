@@ -15,10 +15,12 @@ Click the "Open in Gitpod" button, Gitpod will start ABT Node and the blocklet.
 
 ```shell
 yarn global add @abtnode/cli
-git clone git@github.com:blocklet/blocklet-wallet-playground.git
-cd blocklet-wallet-playground
+git clone git@github.com:blocklet/wallet-playground.git
+cd wallet-playground
 cp .env.bac .env
 yarn
+abtnode init -f --mode debug
+abtnode start
 blocklet dev
 ```
 
