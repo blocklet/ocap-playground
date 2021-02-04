@@ -1,3 +1,7 @@
+## 1.12.1 (February 04, 2021)
+
+- fix: cannot logout if served in relative path
+
 ## 1.12.0 (January 29, 2021)
 
 - update SessionProvider
