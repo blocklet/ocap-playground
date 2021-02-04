@@ -87,14 +87,14 @@
     lodash "^4.17.20"
     lodash.get "^4.4.2"
 
-"@arcblock/did-playground@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-1.11.0.tgz#71f973cf0d74291f9a59d0f886209aed40affca1"
-  integrity sha512-ty7tpMWSPATppN3U4B1fEgUbKwGNG8REMlmrtIro26MARzSeBOxz583bg518dMLEFT/OTKFERkhnVth912BhnQ==
+"@arcblock/did-playground@^1.11.2":
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-1.11.2.tgz#9f5568b123f141bd480547cd5a17d576f085863f"
+  integrity sha512-DgsI1UMYTokDMuZS35kFFidAyaZax6446UlYZ4WVDIbs90c946fTGJGCkEogIyBqfea//E3254dRyo7YVWFIFQ==
   dependencies:
-    "@arcblock/did-react" "^1.11.0"
-    "@arcblock/react-hooks" "^1.11.0"
-    "@arcblock/ux" "^1.11.0"
+    "@arcblock/did-react" "^1.11.2"
+    "@arcblock/react-hooks" "^1.11.2"
+    "@arcblock/ux" "^1.11.2"
     "@material-ui/core" "^4.11.0"
     axios "^0.19.2"
     core-js "^3.6.4"
@@ -102,14 +102,14 @@
     react-use "^13.27.0"
     styled-components "^5.0.1"
 
-"@arcblock/did-react@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-react/-/did-react-1.11.0.tgz#6f2dbc0880780e8d0a78ef6b273364c8dca64ffe"
-  integrity sha512-nVSY/CQ0t2aAAeiFWQjbXgG2uLvnTNDh2MCJgZiv0JEJmrBFLDwlcxf8cf7wBsZZdPwpL5qZw5X/m/Qqc0UVUQ==
+"@arcblock/did-react@^1.11.2":
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-react/-/did-react-1.11.2.tgz#5ea79985126501a6f64c96a66cab554577dd8c6d"
+  integrity sha512-pyl/QB+csbUm11EqhhSsu6rCQbjmk7QpwUy86rs1KNus3Ar+zsx6OeCpDfqWp53yZGMMn3dIQ2scS3Uh58AlSg==
   dependencies:
     "@arcblock/event-client" "^1.0.23"
-    "@arcblock/react-hooks" "^1.11.0"
-    "@arcblock/ux" "^1.11.0"
+    "@arcblock/react-hooks" "^1.11.2"
+    "@arcblock/ux" "^1.11.2"
     "@material-ui/core" "^4.10.1"
     axios "^0.19.2"
     core-js "^3.6.4"
@@ -299,10 +299,10 @@
     lodash "^4.17.20"
     pako "^1.0.11"
 
-"@arcblock/react-hooks@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-1.11.0.tgz#b02e665982f11ba3461ac5ce2bdae7a566faca6f"
-  integrity sha512-M3WZEGUd0d9M9Qfd615Ty4dU9ohrFrEaODHVu3mEApeeW0rtv0piq7ZB5U6Ym4i27ie459erlBbp8pVJyZ5mTg==
+"@arcblock/react-hooks@^1.11.2":
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-1.11.2.tgz#872954719a1b2949e188f195ce1d41e25abaa7a5"
+  integrity sha512-fvFJbEBPA2YddfRWWWWEQFL/YKTTSYlZz8DjkLsIP7lkjE0dUYqo4hkNDsHdomODxpdU93Xero2tqnWt5OT1Cg==
   dependencies:
     core-js "^3.6.4"
     event-target-shim "^5.0.1"
@@ -351,12 +351,12 @@
     "@arcblock/forge-sdk" "^1.5.8"
     debug "^4.3.1"
 
-"@arcblock/ux@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-1.11.0.tgz#ce4f68de8284f7e8686cc8704f44e1b07c5efb76"
-  integrity sha512-HuBA8UmjIo6+MvMydMdpGshjrixU97GlWgOY7/0KF3tsUwacEz64FsyNmGMYexAN35dIkAmFpta0ZcogKdeiTw==
+"@arcblock/ux@^1.11.2":
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-1.11.2.tgz#21c6ad005cd6639a0e0c58dd507811ec1cdaf4a6"
+  integrity sha512-3kvslfG4ji1CNqHKOoX6bqmQQxxIovv9f7eJ6ZGfoXB5UmOjglUng/Dc2gBE4mnXFV5bCSSwRtngma4VFi38KQ==
   dependencies:
-    "@arcblock/react-hooks" "^1.11.0"
+    "@arcblock/react-hooks" "^1.11.2"
     "@babel/plugin-syntax-dynamic-import" "^7.8.3"
     "@material-ui/core" "^4.10.1"
     "@material-ui/icons" "4.5.1"
