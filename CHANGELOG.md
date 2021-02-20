@@ -1,3 +1,7 @@
+## 1.12.2 (February 20, 2021)
+
+- fix missing style after consume vc
+
 ## 1.12.1 (February 04, 2021)
 
 - fix: cannot logout if served in relative path
