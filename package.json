@@ -15,7 +15,7 @@
     "blocklet.yml",
     "README.md"
   ],
-  "version": "1.12.1",
+  "version": "1.12.2",
   "author": "wangshijun <shijun@arcblock.io> https://github.com/wangshijun",
   "keywords": [
     "dapp",
@@ -54,7 +54,7 @@
     "@arcblock/tx-util": "^1.5.8",
     "@arcblock/ux": "^1.11.2",
     "@arcblock/vc": "^1.5.8",
-    "@material-ui/core": "4.10.2",
+    "@material-ui/core": "^4.10.1",
     "@material-ui/icons": "4.5.1",
     "axios": "^0.19.2",
     "batch-promises": "^0.0.3",
