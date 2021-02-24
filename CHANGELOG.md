@@ -1,3 +1,7 @@
+## 1.12.3 (February 25, 2021)
+
+- feat: pre-start hook should respect chain tx config for poke and declare
+
 ## 1.12.2 (February 20, 2021)
 
 - fix missing style after consume vc
