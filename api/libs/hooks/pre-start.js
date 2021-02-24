@@ -15,6 +15,13 @@ const env = require('../env');
 
 // Check for application account
 const ensureAccountDeclared = async chainId => {
+  const {
+    state: { txConfig },
+  } = await ForgeSDK.getForgeState();
+  if (txConfig.declare.restricted) {
+    return null;
+  }
+
   const { state } = await ForgeSDK.getAccountState(
     { address: wallet.address },
     { ...getAccountStateOptions, conn: chainId }
@@ -39,6 +46,13 @@ const ensureAccountDeclared = async chainId => {
 };
 
 const ensureAccountFunded = async (chainId, chainHost) => {
+  const {
+    state: { txConfig },
+  } = await ForgeSDK.getForgeState();
+  if (txConfig.poke.enabled === false) {
+    return;
+  }
+
   const { state } = await ForgeSDK.getAccountState(
     { address: wallet.address },
     { ...getAccountStateOptions, conn: chainId }
