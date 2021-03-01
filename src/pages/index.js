@@ -63,34 +63,6 @@ export default function MiniPage() {
         </section>
         <section className="section">
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
-            Atomic Swap Scenarios{' '}
-            <Typography component="small" color="textSecondary">
-              Show the full potential of cross-chain transactions.
-            </Typography>
-          </Typography>
-          <div className="section__content">
-            <PlaygroundAction
-              action="exchange_to_foreign_token"
-              title="Exchange Currency"
-              className="action"
-              buttonVariant="contained"
-              buttonText={`Buy 1 ${token.foreign.symbol} with 19.58 ${token.local.symbol}`}
-              exchangeRate={19.58}
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              action="exchange_to_local_token"
-              title="Exchange Currency"
-              className="action"
-              buttonVariant="contained"
-              buttonText={`Sell 1 ${token.foreign.symbol} for 19.58 ${token.local.symbol}`}
-              exchangeRate={19.58}
-              webWalletUrl={webWalletUrl}
-            />
-          </div>
-        </section>
-        <section className="section">
-          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
             Transfer Scenarios{' '}
             <Typography component="small" color="textSecondary">
               Help to generate different transfer transactions in ABT Wallet
