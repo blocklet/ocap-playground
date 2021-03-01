@@ -72,7 +72,7 @@ module.exports = {
     }
 
     // 4. save generated did to user session store
-    const user = await User.findOne({ did: sessionDid });
+    const user = await User.ensureOne({ did: sessionDid });
     user.extraDid = [userDid].concat(Array.isArray(user.extraDid) ? user.extraDid : []);
     await User.update(user);
   },

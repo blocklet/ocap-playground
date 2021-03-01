@@ -113,7 +113,6 @@ swapHandlers.attach(Object.assign({ app: router }, require('../routes/auth/picku
 agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_profile'))); // we can reuse something here
 require('../routes/session').init(router);
 require('../routes/authorizations').init(router);
-require('../routes/users').init(router);
 require('../routes/orders').init(router);
 require('../routes/charge').init(router);
 require('../routes/assets').init(router);

@@ -1,3 +1,7 @@
+## 1.13.0 (February 25, 2021)
+
+- feat: get user data by blocklet sdk
+
 ## 1.12.3 (February 25, 2021)
 
 - feat: pre-start hook should respect chain tx config for poke and declare

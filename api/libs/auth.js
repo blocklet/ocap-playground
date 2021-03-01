@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+const path = require('path');
 const Mcrypto = require('@arcblock/mcrypto');
 const ForgeSDK = require('@arcblock/forge-sdk');
 const AuthNedbStorage = require('@arcblock/did-auth-storage-nedb');
@@ -13,7 +14,7 @@ const {
   SwapHandlers,
   AgentWalletHandlers,
 } = require('@arcblock/did-auth');
-const path = require('path');
+const AuthService = require('@blocklet/sdk/service/auth');
 const env = require('./env');
 
 const type = WalletType({
@@ -176,4 +177,6 @@ module.exports = {
   wallet,
   localFactory,
   foreignFactory,
+
+  authClient: new AuthService(),
 };

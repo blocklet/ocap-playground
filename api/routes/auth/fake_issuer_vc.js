@@ -4,8 +4,8 @@ const Mcrypto = require('@arcblock/mcrypto');
 const { toTypeInfo } = require('@arcblock/did');
 const { create } = require('@arcblock/vc');
 
-const { User } = require('../../models');
 const { getRandomMessage } = require('../../libs/util');
+const { authClient } = require('../../libs/auth');
 
 const hasher = Mcrypto.getHasher(Mcrypto.types.HashType.SHA3);
 
@@ -32,7 +32,7 @@ module.exports = {
       }
     }
 
-    const vt = await User.findOne({ did: userDid });
+    const { user: vt } = await authClient.getUser(userDid);
 
     const w = ForgeWallet.fromRandom();
     const emailDigest = hasher(vt.email, 1);

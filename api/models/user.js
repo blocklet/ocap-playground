@@ -17,6 +17,14 @@ class UserState extends BaseState {
   async findOne(condition) {
     return this.asyncDB.findOne(condition);
   }
+
+  async ensureOne(user) {
+    const doc = await this.asyncDB.findOne({ did: user.did });
+    if (!doc) {
+      return this.insert(user);
+    }
+    return doc;
+  }
 }
 
 module.exports = UserState;

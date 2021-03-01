@@ -1,9 +1,9 @@
 const ForgeSDK = require('@arcblock/forge-sdk');
 const { verifyPresentation } = require('@arcblock/vc');
 const { types, getHasher } = require('@arcblock/mcrypto');
-const { User } = require('../../models');
 const env = require('../../libs/env');
 const { wallet } = require('../../libs/auth');
+const { authClient } = require('../../libs/auth');
 
 module.exports = {
   action: 'consume_vc',
@@ -15,8 +15,8 @@ module.exports = {
         .concat(w.toAddress());
       let tag = '';
       if (type === 'EmailVerificationCredential') {
-        const exist = await User.findOne({ did: userDid });
-        tag = exist.email;
+        const { user } = await authClient.getUser(userDid);
+        tag = user.email;
       }
       return {
         description: 'Please provide your vc which proves your information',
@@ -44,9 +44,9 @@ module.exports = {
     }
 
     if (type === 'EmailVerificationCredential') {
-      const exist = await User.findOne({ did: userDid });
+      const { user } = await authClient.getUser(userDid);
       const hasher = getHasher(types.HashType.SHA3);
-      const digest = ForgeSDK.Util.toBase64(hasher(exist.email, 1));
+      const digest = ForgeSDK.Util.toBase64(hasher(user.email, 1));
       if (vc.credentialSubject.emailDigest !== digest) {
         throw Error('VC 与您的邮箱不匹配');
       }
