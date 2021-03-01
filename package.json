@@ -31,7 +31,7 @@
     "email": "shijun@arcblock.io"
   },
   "dependencies": {
-    "@abtnode/util": "^1.1.18",
+    "@abtnode/util": "^1.2.2",
     "@arcblock/did": "^1.5.8",
     "@arcblock/did-agent-storage-nedb": "^1.5.8",
     "@arcblock/did-auth": "^1.5.8",
@@ -54,7 +54,7 @@
     "@arcblock/tx-util": "^1.5.8",
     "@arcblock/ux": "^1.11.2",
     "@arcblock/vc": "^1.5.8",
-    "@blocklet/sdk": "^1.2.1",
+    "@blocklet/sdk": "^1.2.2",
     "@material-ui/core": "^4.10.1",
     "@material-ui/icons": "4.5.1",
     "axios": "^0.19.2",
