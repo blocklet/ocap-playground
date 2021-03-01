@@ -1,3 +1,7 @@
+## 1.14.0 (March 01, 2021)
+
+- hide atomic swap use case
+
 ## 1.13.0 (February 25, 2021)
 
 - feat: get user data by blocklet sdk
