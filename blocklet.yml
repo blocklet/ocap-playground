@@ -1,6 +1,6 @@
-name: wallet-playground
-title: Wallet Playground
-description: A simple playground that shows the potential of ABT Wallet V2
+name: ocap-playground
+title: OCAP Playground
+description: A simple playground that shows the potential of OCAP powered blockchain and ABT Wallet V2
 files:
   - api/libs/hooks/pre-start.js
   - screenshots
@@ -8,7 +8,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 1.14.0
+version: 0.1.0
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -19,7 +19,7 @@ keywords:
 repository:
   type: git
   url: >-
-    https://github.com/ArcBlock/forge-dapp-starters/tree/master/packages/forge-react-starter
+    https://github.com/blocklet/ocap-playground
 license: Apache-2.0
 group: dapp
 main: api/index.js
@@ -54,7 +54,6 @@ scripts:
   preStart: node api/libs/hooks/pre-start.js
   dev: npm run start
 specVersion: 1.0.1
-did: z8iZpn7gP9WJNUonEMq7zAoCbv4fMMqX8JasV
 interfaces:
   - type: web
     name: publicUrl

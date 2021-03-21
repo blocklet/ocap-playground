@@ -1,7 +1,7 @@
 {
-  "name": "wallet-playground",
-  "title": "Wallet Playground",
-  "description": "A simple playground that shows the potential of ABT Wallet V2",
+  "name": "ocap-playground",
+  "title": "OCAP Playground",
+  "description": "A simple playground that shows the potential of OCAP powered blockchain and ABT Wallet V2",
   "publishConfig": {
     "access": "public",
     "directory": ".blocklet/bundle"
@@ -15,7 +15,7 @@
     "blocklet.yml",
     "README.md"
   ],
-  "version": "1.14.0",
+  "version": "0.1.0",
   "author": "wangshijun <shijun@arcblock.io> https://github.com/wangshijun",
   "keywords": [
     "dapp",
@@ -24,10 +24,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ArcBlock/forge-dapp-starters/tree/master/packages/forge-react-starter"
+    "url": "https://github.com/blocklet/ocap-playground"
   },
   "bugs": {
-    "url": "https://github.com/ArcBlock/forge-dapp-starters/issues",
+    "url": "https://github.com/blocklet/ocap-playground/issues",
     "email": "shijun@arcblock.io"
   },
   "dependencies": {
