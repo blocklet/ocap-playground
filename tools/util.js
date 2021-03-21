@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 
 const { fromSecretKey } = ForgeSDK.Wallet;
 const { bytesToHex, isHexStrict, fromBase64 } = ForgeSDK.Util;

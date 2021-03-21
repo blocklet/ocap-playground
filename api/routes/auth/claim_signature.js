@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 const Mcrypto = require('@arcblock/mcrypto');
 const { toTypeInfo } = require('@arcblock/did');
 

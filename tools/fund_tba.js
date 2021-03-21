@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 require('dotenv').config();
 
-const ForgeSDK = require('@arcblock/forge-sdk');
-const { WalletType } = require('@arcblock/forge-wallet');
+const ForgeSDK = require('@ocap/sdk');
+const { WalletType } = require('@ocap/wallet');
 const { types } = require('@arcblock/mcrypto');
 
 const { ensureModeratorSecretKey } = require('./util');

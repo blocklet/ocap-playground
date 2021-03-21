@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@arcblock/forge-sdk');
-const { fromTokenToUnit } = require('@arcblock/forge-util');
-const { fromAddress } = require('@arcblock/forge-wallet');
+const ForgeSDK = require('@ocap/sdk');
+const { fromTokenToUnit } = require('@ocap/util');
+const { fromAddress } = require('@ocap/wallet');
 const { wallet } = require('../../libs/auth');
 const { getTokenInfo } = require('../../libs/util');
 const env = require('../../libs/env');

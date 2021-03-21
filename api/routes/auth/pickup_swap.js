@@ -1,4 +1,4 @@
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 const { swapStorage, wallet } = require('../../libs/auth');
 
 module.exports = {

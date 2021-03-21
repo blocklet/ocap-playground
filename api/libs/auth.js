@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 const path = require('path');
 const Mcrypto = require('@arcblock/mcrypto');
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 const AuthNedbStorage = require('@arcblock/did-auth-storage-nedb');
 const AgentNedbStorage = require('@arcblock/did-agent-storage-nedb');
 const SwapNedbStorage = require('@arcblock/swap-storage-nedb');
 const { NFTFactory } = require('@arcblock/nft');
-const { fromSecretKey, fromJSON, WalletType } = require('@arcblock/forge-wallet');
+const { fromSecretKey, fromJSON, WalletType } = require('@ocap/wallet');
 const {
   WalletAuthenticator,
   AgentAuthenticator,

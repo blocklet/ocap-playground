@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 const logger = require('winston');
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 const { NFTType } = require('@arcblock/nft/lib/enum');
 const { toTypeInfo } = require('@arcblock/did');
 const upperFirst = require('lodash/upperFirst');

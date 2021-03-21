@@ -3,10 +3,10 @@ require('dotenv').config();
 require('../api/libs/contracts/create_movie_ticket_contract/.compiled/create_movie_ticket/javascript/index');
 
 /* eslint-disable no-console */
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 const { toAssetAddress } = require('@arcblock/did-util');
-const { decodeAny } = require('@arcblock/forge-message/lite');
-const { fromRandom } = require('@arcblock/forge-wallet');
+const { decodeAny } = require('@ocap/message/lite');
+const { fromRandom } = require('@ocap/wallet');
 
 require('../api/libs/auth');
 

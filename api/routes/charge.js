@@ -1,4 +1,4 @@
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
 
 const { wallet } = require('../libs/auth');

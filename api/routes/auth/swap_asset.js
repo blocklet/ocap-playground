@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 const logger = require('winston');
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 
 const env = require('../../libs/env');
 const { swapStorage, wallet, foreignFactory, localFactory } = require('../../libs/auth');

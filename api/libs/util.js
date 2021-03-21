@@ -1,5 +1,5 @@
 /* eslint-disable object-curly-newline */
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 const Mcrypto = require('@arcblock/mcrypto');
 const { createZippedSvgDisplay, createCertSvg, createTicketSvg } = require('@arcblock/nft-template');
 const { NFTRecipient, NFTIssuer } = require('@arcblock/nft');
@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const pako = require('pako');
 const logger = require('winston');
-const { toBase64 } = require('@arcblock/forge-util');
+const { toBase64 } = require('@ocap/util');
 
 const env = require('./env');
 const { wallet } = require('./auth');

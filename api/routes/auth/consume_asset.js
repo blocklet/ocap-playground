@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 const { NFTType } = require('@arcblock/nft/lib/enum');
 const { wallet } = require('../../libs/auth');
 const { PFC } = require('../../libs/constant');

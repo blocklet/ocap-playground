@@ -2,7 +2,7 @@
 require('dotenv').config();
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 const { wallet } = require('../api/libs/auth');
 const env = require('../api/libs/env');
 

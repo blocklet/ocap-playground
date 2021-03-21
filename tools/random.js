@@ -4,7 +4,7 @@ require('dotenv').config();
 // Generates a random wallet for the application
 // Run this script and save the secret key to `.env` of project root
 const Mcrypto = require('@arcblock/mcrypto');
-const { fromRandom, WalletType } = require('@arcblock/forge-wallet');
+const { fromRandom, WalletType } = require('@ocap/wallet');
 
 const type = WalletType({
   role: Mcrypto.types.RoleType.ROLE_APPLICATION,

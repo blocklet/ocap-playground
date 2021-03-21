@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 const { toAssetAddress } = require('@arcblock/did-util');
-const { decodeAny } = require('@arcblock/forge-message/lite');
-const { fromAddress } = require('@arcblock/forge-wallet');
+const { decodeAny } = require('@ocap/message/lite');
+const { fromAddress } = require('@ocap/wallet');
 
 module.exports = {
   action: 'acquire_asset',

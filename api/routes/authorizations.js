@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const Mcrypto = require('@arcblock/mcrypto');
-const ForgeSDK = require('@arcblock/forge-sdk');
-const { WalletType } = require('@arcblock/forge-wallet');
+const ForgeSDK = require('@ocap/sdk');
+const { WalletType } = require('@ocap/wallet');
 const { JWT } = require('@arcblock/did-auth');
 const { wallet, agentStorage } = require('../libs/auth');
 const env = require('../libs/env');

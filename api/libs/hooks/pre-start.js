@@ -4,7 +4,7 @@
 require('dotenv').config();
 require('@abtnode/util/lib/error-handler');
 
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 const { verifyTxAsync, verifyAccountAsync } = require('@arcblock/tx-util');
 const batchPromises = require('batch-promises');
 const range = require('lodash/range');

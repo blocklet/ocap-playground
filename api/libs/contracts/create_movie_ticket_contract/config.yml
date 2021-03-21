@@ -1,9 +1,0 @@
----
-name: create_movie_ticket
-version: 4
-namespace: CoreTx
-description: Create movie ticket that can be sold within the vending machine
-type_urls:
-  fg:t:create_movie_ticket: ForgeAbi.CreateMovieTicketTx
-  fg:x:movie_ticket: ForgeAbi.MovieTicket
-proto: movie_ticket.proto

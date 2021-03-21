@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 require('dotenv').config();
 
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 
 const { ensureModeratorSecretKey } = require('./util');
 // eslint-disable-next-line no-unused-vars

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@arcblock/forge-sdk');
-const ForgeWallet = require('@arcblock/forge-wallet');
+const ForgeSDK = require('@ocap/sdk');
+const ForgeWallet = require('@ocap/wallet');
 const Mcrypto = require('@arcblock/mcrypto');
 const { toTypeInfo } = require('@arcblock/did');
 const { create } = require('@arcblock/vc');

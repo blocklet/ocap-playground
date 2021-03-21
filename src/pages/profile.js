@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { fromUnitToToken } from '@arcblock/forge-util';
+import { fromUnitToToken } from '@ocap/util';
 
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';

@@ -1,4 +1,4 @@
-const ForgeSDK = require('@arcblock/forge-sdk');
+const ForgeSDK = require('@ocap/sdk');
 const { verifyPresentation } = require('@arcblock/vc');
 const { types, getHasher } = require('@arcblock/mcrypto');
 const env = require('../../libs/env');
