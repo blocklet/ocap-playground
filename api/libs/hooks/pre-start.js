@@ -99,7 +99,7 @@ const ensureAccountFunded = async (chainId, chainHost) => {
     }
     process.exit(0);
   } catch (err) {
-    console.error('wallet-playground pre-start error', err);
+    console.error('ocap-playground pre-start error', err);
     process.exit(1);
   }
 })();

@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'wallet-playground',
+      name: 'ocap-playground',
       script: 'api/index.js',
 
       // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/

@@ -18,7 +18,7 @@ deploy-aliyun:
 	@echo "Building the software..."
 	@git pull origin master
 	@make build
-	@pm2 restart wallet-playground
+	@pm2 restart ocap-playground
 	@pm2 restart i-did-it
 
 init: install dep
