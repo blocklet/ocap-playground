@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable arrow-parens */
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import useBrowser from '@arcblock/react-hooks/lib/useBrowser';
 
@@ -20,7 +20,6 @@ import TransferAssetOut from '../components/auth/transfer_asset_out';
 import TransferAssetIn from '../components/auth/transfer_asset_in';
 import TransferTokenAssetIn from '../components/auth/transfer_token_asset_in';
 import TransferTokenAssetOut from '../components/auth/transfer_token_asset_out';
-import api from '../libs/api';
 import getWebWalletUrl from '../libs/util';
 
 import { version } from '../../package.json';
@@ -29,23 +28,7 @@ import { UserContext } from '../context/user';
 export default function IndexPage() {
   const browser = useBrowser();
   const { session } = useContext(UserContext);
-  const [asset, setAsset] = useState(null);
   const webWalletUrl = getWebWalletUrl();
-
-  useEffect(() => {
-    const getUnconsumedAsset = async () => {
-      try {
-        const { data } = await api.get(`/api/get_unconsumed_asset?userDid=${session.user.did}`);
-        setAsset(data);
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.warn('load available asset failed:', { error });
-      }
-    };
-
-    getUnconsumedAsset();
-    return () => {};
-  }, [session.user.did]);
 
   const { token } = session;
 
@@ -231,88 +214,6 @@ export default function IndexPage() {
               successMessage={<Typography component="p">Complete!</Typography>}
               webWalletUrl={webWalletUrl}
             />
-          </div>
-        </section>
-        <section className="section">
-          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
-            Consume Asset Scenarios{' '}
-            <Typography component="small" color="textSecondary">
-              Consume an asset
-            </Typography>
-          </Typography>
-          <div className="section__content">
-            <PlaygroundAction
-              className="action"
-              title="Consume Local Certificate"
-              action="consume_local_asset"
-              type="certificate"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              className="action"
-              title="Consume Local Badge"
-              action="consume_local_asset"
-              type="badge"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              className="action"
-              title="Consume Local Ticket"
-              action="consume_local_asset"
-              type="ticket"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              className="action"
-              title="Consume Foreign Certificate"
-              action="consume_foreign_asset"
-              type="certificate"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              className="action"
-              title="Consume Foreign Badge"
-              action="consume_foreign_asset"
-              type="badge"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              className="action"
-              title="Consume Foreign Ticket"
-              action="consume_foreign_asset"
-              type="ticket"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              className="action"
-              title="Consume Local Asset by Asset Name"
-              action="consume_local_asset_by_name"
-              name="Local Ticket (%token.local.symbol%)"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              className="action"
-              title="Consume Local Asset with Wrong Ticket Name"
-              action="consume_local_asset_by_name"
-              name="Local Ticket"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              className="action"
-              title="Consume The Asset Named Local Ticket"
-              action="consume_local_asset_by_name"
-              name="Local Ticket (%token.local.symbol%)"
-              webWalletUrl={webWalletUrl}
-            />
-            {asset && (
-              <PlaygroundAction
-                className="action"
-                title="Consume Local Asset by Address"
-                action="consume_local_asset_by_did"
-                did={asset.address}
-                webWalletUrl={webWalletUrl}
-              />
-            )}
           </div>
         </section>
         <section className="section">
