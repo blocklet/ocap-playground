@@ -5,6 +5,7 @@ const { NFTType } = require('@arcblock/nft/lib/enum');
 const { toTypeInfo } = require('@arcblock/did');
 const upperFirst = require('lodash/upperFirst');
 
+const env = require('../../libs/env');
 const { wallet, factory: assetFactory } = require('../../libs/auth');
 const { ensureAsset, getTransferrableAssets, transferVCTypeToAssetType } = require('../../libs/util');
 
@@ -33,7 +34,7 @@ const getAssets = async ({ amount = 1, type, userPk, userDid, name, desc, start,
   return assets;
 };
 
-const getTransactionAssetType = type => (type === 'token' ? 'value' : 'assets');
+const getTransactionAssetType = type => (type === 'token' ? 'tokens' : 'assets');
 
 const getTransferSig = async ({
   userPk,
@@ -82,13 +83,11 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   let receiverPayload = null;
 
   if (pt === 'token') {
-    senderPayload = await SDK.fromTokenToUnit(pa);
+    senderPayload = [{ address: env.tokenId, value: (await SDK.fromTokenToUnit(pa)).toString() }];
   } else {
     const assets = await getTransferrableAssets(userDid);
     senderPayload = assets
-      .filter(
-        item => (transferVCTypeToAssetType(JSON.parse(item.data.value).type) === NFTType[pt])
-      )
+      .filter(item => transferVCTypeToAssetType(JSON.parse(item.data.value).type) === NFTType[pt])
       .map(item => item.address)
       .slice(0, pa);
 
@@ -98,7 +97,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   }
 
   if (rt === 'token') {
-    receiverPayload = await SDK.fromTokenToUnit(ra);
+    receiverPayload = [{ address: env.tokenId, value: (await SDK.fromTokenToUnit(ra)).toString() }];
   } else {
     const assets = await getAssets({
       amount: ra,
@@ -140,15 +139,15 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   logger.info('exchange.claims.signed', tx);
 
   return {
-    type: 'ExchangeTx',
+    type: 'ExchangeV2Tx',
     data: tx,
-    description: 'Exchange between assets and primary tokens',
+    description: 'Exchange between assets and secondary token',
   };
 };
 
 const transferAsset = async ({ claim, userDid, userPk }) => {
   try {
-    logger.info('exchange_asset.onAuth', { claim, userDid });
+    logger.info('swap_asset.onAuth', { claim, userDid });
     const type = toTypeInfo(userDid);
     const user = SDK.Wallet.fromPublicKey(userPk, type);
 
@@ -168,10 +167,10 @@ const transferAsset = async ({ claim, userDid, userPk }) => {
       wallet: appWallet,
     });
 
-    logger.info('exchange_asset.onAuth', hash);
+    logger.info('swap_asset.onAuth', hash);
     return { hash, tx: claim.origin };
   } catch (err) {
-    logger.info('exchange_asset.onAuth.error', err);
+    logger.info('swap_asset.onAuth.error', err);
     throw new Error('交易失败', err.message);
   }
 };
@@ -197,7 +196,7 @@ const exchangeAsset = async claim => {
  * rt => receive type
  */
 module.exports = {
-  action: 'exchange_assets',
+  action: 'swap_asset_v2',
   claims: {
     signature: async ({
       userPk,
@@ -254,7 +253,7 @@ module.exports = {
         });
         return sig;
       } catch (error) {
-        logger.info('exchange_asset.generate_exchange.error:');
+        logger.info('swap_asset.generate_exchange.error:');
         logger.info(error);
 
         throw new Error(`Exchange failed: ${error.message}`);
@@ -274,7 +273,7 @@ module.exports = {
       const tx = await exchangeAsset(claim);
       return tx;
     } catch (err) {
-      logger.info('exchange_asset.error:');
+      logger.info('swap_asset.error:');
       logger.info(err);
 
       throw new Error(`Exchange failed: ${err.message}`);

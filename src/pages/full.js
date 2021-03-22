@@ -96,7 +96,7 @@ export default function IndexPage() {
         </section>
         <section className="section">
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
-            Exchange Scenarios{' '}
+            Exchange Scenarios (primary token){' '}
             <Typography component="small" color="textSecondary">
               Help to generate different exchange transactions in ABT Wallet
             </Typography>
@@ -216,6 +216,155 @@ export default function IndexPage() {
             />
           </div>
         </section>
+
+        <section className="section">
+          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
+            Exchange Scenarios (cross tokens){' '}
+            <Typography component="small" color="textSecondary">
+              Show the full potential of cross-token transactions.
+            </Typography>
+          </Typography>
+          <div className="section__content">
+            <PlaygroundAction
+              action="exchange_to_foreign_token_v2"
+              title="Exchange Currency"
+              className="action"
+              buttonVariant="contained"
+              buttonText={`Buy 1 ${token.foreign.symbol} with 5 ${token.local.symbol}`}
+              exchangeRate={5}
+              amount={1}
+              webWalletUrl={webWalletUrl}
+            />
+            <PlaygroundAction
+              action="exchange_to_local_token_v2"
+              title="Exchange Currency"
+              className="action"
+              buttonVariant="contained"
+              buttonText={`Sell 1 ${token.foreign.symbol} for 5 ${token.local.symbol}`}
+              exchangeRate={5}
+              amount={1}
+              webWalletUrl={webWalletUrl}
+            />
+          </div>
+        </section>
+
+        <section className="section">
+          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
+            Exchange Scenarios (secondary token){' '}
+            <Typography component="small" color="textSecondary">
+              Buy/sell assets with secondary tokens
+            </Typography>
+          </Typography>
+          <div className="section__content">
+            <PlaygroundAction
+              action="buy_local_certificate_with_foreign_token_v2"
+              className="action"
+              price={0.99}
+              title={`Buy Local Certificate with 0.99 ${token.foreign.symbol}`}
+              name="Local Certificate (%token.local.symbol%)"
+              description="This is a test certificate that is on local chain"
+              webWalletUrl={webWalletUrl}
+            />
+            <PlaygroundAction
+              action="sell_local_certificate_for_foreign_token_v2"
+              className="action"
+              price={1}
+              title={`Sell Local Certificate for 1 ${token.foreign.symbol}`}
+              name="Local Certificate (%token.local.symbol%)"
+              webWalletUrl={webWalletUrl}
+            />
+
+            <PlaygroundAction
+              action="buy_local_badge_with_foreign_token_v2"
+              className="action"
+              price={0.99}
+              title={`Buy Local Badge with 0.99 ${token.foreign.symbol}`}
+              name="Local Badge (%token.local.symbol%)"
+              svg="./public/static/images/badge.svg"
+              description="This is a test badge that is on local chain"
+              webWalletUrl={webWalletUrl}
+            />
+            <PlaygroundAction
+              action="sell_local_badge_for_foreign_token_v2"
+              className="action"
+              price={1}
+              title={`Sell Local Badge for 1 ${token.foreign.symbol}`}
+              name="Local Badge (%token.local.symbol%)"
+              webWalletUrl={webWalletUrl}
+            />
+
+            <PlaygroundAction
+              action="buy_local_ticket_with_foreign_token_v2"
+              className="action"
+              price={0.99}
+              title={`Buy Local Ticket with 0.99 ${token.foreign.symbol}`}
+              name="Local Ticket (%token.local.symbol%)"
+              description="This is a test ticket that is on local chain"
+              webWalletUrl={webWalletUrl}
+            />
+            <PlaygroundAction
+              action="sell_local_ticket_for_foreign_token_v2"
+              className="action"
+              price={1}
+              title={`Sell Local Ticket for 1 ${token.foreign.symbol}`}
+              name="Local Ticket (%token.local.symbol%)"
+              webWalletUrl={webWalletUrl}
+            />
+            <PlaygroundAction
+              action="buy_foreign_certificate_with_local_token_v2"
+              className="action"
+              price={0.99}
+              title={`Buy Foreign Certificate with 0.99 ${token.local.symbol}`}
+              name="Foreign Certificate (%token.foreign.symbol%)"
+              description="This is a test certificate that is on foreign chain"
+              webWalletUrl={webWalletUrl}
+            />
+            <PlaygroundAction
+              action="sell_foreign_certificate_for_local_token_v2"
+              className="action"
+              price={1}
+              title={`Sell Foreign Certificate for 1 ${token.local.symbol}`}
+              name="Foreign Certificate (%token.foreign.symbol%)"
+              webWalletUrl={webWalletUrl}
+            />
+            <PlaygroundAction
+              action="buy_foreign_badge_with_local_token_v2"
+              className="action"
+              price={0.99}
+              title={`Buy Foreign Badge with 0.99 ${token.local.symbol}`}
+              name="Foreign Badge (%token.foreign.symbol%)"
+              description="This is a test badge that is on foreign chain"
+              svg="./public/static/images/badge.svg"
+              webWalletUrl={webWalletUrl}
+            />
+            <PlaygroundAction
+              action="sell_foreign_badge_for_local_token_v2"
+              className="action"
+              price={1}
+              title={`Sell Foreign Badge for 1 ${token.local.symbol}`}
+              name="Foreign Badge (%token.foreign.symbol%)"
+              webWalletUrl={webWalletUrl}
+            />
+            <PlaygroundAction
+              action="buy_foreign_ticket_with_local_token_v2"
+              className="action"
+              price={0.99}
+              title={`Buy Foreign Ticket with 0.99 ${token.local.symbol}`}
+              name="Foreign Ticket (%token.foreign.symbol%)"
+              description="This is a test ticket that is on foreign chain"
+              webWalletUrl={webWalletUrl}
+            />
+            <PlaygroundAction
+              action="sell_foreign_ticket_for_local_token_v2"
+              className="action"
+              price={1}
+              title={`Sell Foreign Ticket for 1 ${token.local.symbol}`}
+              name="Foreign Ticket (%token.foreign.symbol%)"
+              webWalletUrl={webWalletUrl}
+            />
+          </div>
+        </section>
+
         <section className="section">
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
             Custom Success Message Scenarios{' '}

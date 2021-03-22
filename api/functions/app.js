@@ -96,6 +96,8 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/tra
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer_token_asset_out')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/acquire_asset')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/exchange_asset')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/swap_asset')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/swap_token')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/fake_issuer_vc')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/fake_email_vc')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/consume_vc')));
