@@ -12,6 +12,7 @@ const range = require('lodash/range');
 const { wallet } = require('../auth');
 const { getAccountStateOptions } = require('../util');
 const token = require('../token');
+const factory = require('../factory');
 const env = require('../env');
 
 const { chainId, chainHost, tokenId } = env;
@@ -128,6 +129,18 @@ const ensureTokenFunded = async () => {
   }
 };
 
+const ensureFactoryCreated = async itx => {
+  const { state } = await SDK.getAssetState({ address: itx.address }, { ...getAccountStateOptions });
+  if (!state) {
+    const hash = await SDK.sendCreateAssetTx({ tx: { itx }, wallet: app });
+    console.log(`factory created on chain ${itx.address}`, hash);
+  } else {
+    console.log(`factory exist on chain ${itx.address}`);
+  }
+
+  return state;
+};
+
 (async () => {
   try {
     await ensureAccountDeclared();
@@ -135,6 +148,9 @@ const ensureTokenFunded = async () => {
     await ensureAccountFunded();
     await ensureTokenCreated();
     await ensureTokenFunded();
+    await ensureFactoryCreated(factory.nodePurchaseFactory);
+    await ensureFactoryCreated(factory.nodeOwnerFactory);
+    await ensureFactoryCreated(factory.blockletPurchaseFactory);
     process.exit(0);
   } catch (err) {
     console.error('ocap-playground pre-start error', err.message);
