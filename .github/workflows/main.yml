@@ -1,41 +1,41 @@
-name: Npm deployment
+# name: Npm deployment
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  Deploy:
+# jobs:
+#   Deploy:
 
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
 
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+#     if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
 
-    steps:
+#     steps:
 
-    - name: Checkout repo
-      uses: actions/checkout@v2
+#     - name: Checkout repo
+#       uses: actions/checkout@v2
 
-    - name: Test
-      run: make github-action-test
+#     - name: Test
+#       run: make github-action-test
 
-    - name: Deploy
-      env:
-        AWS_NODE_ENDPOINT: ${{ secrets.AWS_NODE_ENDPOINT }}
-        AWS_NODE_ACCESS_KEY: ${{ secrets.AWS_NODE_ACCESS_KEY }}
-        AWS_NODE_ACCESS_SECRET: ${{ secrets.AWS_NODE_ACCESS_SECRET }}
-        ALIYUN_NODE_ENDPOINT: ${{ secrets.ALIYUN_NODE_ENDPOINT }}
-        ALIYUN_NODE_ACCESS_SECRET: ${{ secrets.ALIYUN_NODE_ACCESS_SECRET }}
-        ALIYUN_NODE_ACCESS_KEY: ${{ secrets.ALIYUN_NODE_ACCESS_KEY }}
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
-        BLOCKLET_REGISTRY: ${{ secrets.BLOCKLET_REGISTRY }}
-        ABTNODE_DEV_SK: ${{ secrets.ABTNODE_DEV_SK }}
-      run: bash ./scripts/publish.sh
+#     - name: Deploy
+#       env:
+#         AWS_NODE_ENDPOINT: ${{ secrets.AWS_NODE_ENDPOINT }}
+#         AWS_NODE_ACCESS_KEY: ${{ secrets.AWS_NODE_ACCESS_KEY }}
+#         AWS_NODE_ACCESS_SECRET: ${{ secrets.AWS_NODE_ACCESS_SECRET }}
+#         ALIYUN_NODE_ENDPOINT: ${{ secrets.ALIYUN_NODE_ENDPOINT }}
+#         ALIYUN_NODE_ACCESS_SECRET: ${{ secrets.ALIYUN_NODE_ACCESS_SECRET }}
+#         ALIYUN_NODE_ACCESS_KEY: ${{ secrets.ALIYUN_NODE_ACCESS_KEY }}
+#         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+#         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+#         GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
+#         BLOCKLET_REGISTRY: ${{ secrets.BLOCKLET_REGISTRY }}
+#         ABTNODE_DEV_SK: ${{ secrets.ABTNODE_DEV_SK }}
+#       run: bash ./scripts/publish.sh
 
-    - name: Release to Github
-      uses: blocklet/action-release-to-github@v1.0.0
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+#     - name: Release to Github
+#       uses: blocklet/action-release-to-github@v1.0.0
+#       with:
+#         token: ${{ secrets.GITHUB_TOKEN }}
