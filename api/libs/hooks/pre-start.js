@@ -107,7 +107,7 @@ const ensureTokenFunded = async () => {
     await batchPromises(5, range(1, limit + 1), async () => {
       const slave = SDK.Wallet.fromRandom();
       try {
-        await SDK.declare({ moniker: 'sweeper', wallet: slave });
+        await SDK.declare({ moniker: 'token-sweeper', wallet: slave });
         await verifyAccountAsync({ chainId, chainHost, address: slave.toAddress() });
         const hash = await SDK.checkin({ wallet: slave, token: tokenId });
         await verifyTxAsync({ chainId, chainHost, hash });
