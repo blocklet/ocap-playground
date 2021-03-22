@@ -51,7 +51,7 @@ module.exports = {
       }
 
       const appWallet = SDK.Wallet.fromJSON(wallet);
-      const hash = await SDK.sendTransferTx({
+      const hash = await SDK.sendTransferV2Tx({
         tx: {
           itx: {
             to: userDid,

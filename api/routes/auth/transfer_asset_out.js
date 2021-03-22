@@ -29,7 +29,7 @@ module.exports = {
       const tx = SDK.decodeTx(claim.origin);
       const user = fromAddress(userDid);
 
-      const hash = await SDK.sendTransferTx(
+      const hash = await SDK.sendTransferV2Tx(
         {
           tx,
           wallet: user,

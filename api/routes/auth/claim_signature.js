@@ -117,7 +117,7 @@ module.exports = {
 
     if (claim.meta && claim.meta.origin) {
       const tx = SDK.decodeTx(claim.meta.origin);
-      const hash = await SDK.sendTransferTx(
+      const hash = await SDK.sendTransferV2Tx(
         {
           tx,
           wallet: user,

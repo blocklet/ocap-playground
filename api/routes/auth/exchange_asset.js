@@ -117,7 +117,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
     receiverPayload = assets.map(asset => asset.address);
   }
 
-  const tx = await SDK.signExchangeTx({
+  const tx = await SDK.signExchangeV2Tx({
     tx: {
       itx: {
         to: userDid,
@@ -158,7 +158,7 @@ const transferAsset = async ({ claim, userDid, userPk }) => {
 
     const appWallet = SDK.Wallet.fromJSON(wallet);
     const asset = JSON.parse(SDK.Util.fromBase58(claim.origin));
-    const hash = await SDK.sendTransferTx({
+    const hash = await SDK.sendTransferV2Tx({
       tx: {
         itx: {
           to: userDid,
