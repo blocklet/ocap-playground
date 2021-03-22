@@ -32,12 +32,12 @@ export default function Layout({ title, children, contentOnly }) {
 
   const links = [
     { url: `${apiPrefix}/`, title: 'Home' },
-    { url: `${apiPrefix}/profile`, title: 'Profile' },
     { url: `${apiPrefix}/full`, title: 'Everything' },
+    { url: `${apiPrefix}/profile`, title: 'Profile' },
   ];
 
   if (window.env.chainHost) {
-    links.push({ url: getExplorerUrl(window.env.chainHost, 'local'), title: 'Local Chain' });
+    links.push({ url: getExplorerUrl(window.env.chainHost, 'local'), title: 'Explorer' });
   }
   links.push({ url: 'https://github.com/blocklet/ocap-playground', title: 'GitHub' });
 

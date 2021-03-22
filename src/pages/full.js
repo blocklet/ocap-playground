@@ -204,16 +204,6 @@ export default function IndexPage() {
               name="Ticket (%token.local.symbol%)"
               webWalletUrl={webWalletUrl}
             />
-            <PlaygroundAction
-              className="action"
-              title="Buy Ticket for Free [Success React Component]"
-              action="buy_local_ticket_with_local_token"
-              payAmount={0}
-              receiveAmount={1}
-              name="Ticket (%token.local.symbol%)"
-              successMessage={<Typography component="p">Complete!</Typography>}
-              webWalletUrl={webWalletUrl}
-            />
           </div>
         </section>
 

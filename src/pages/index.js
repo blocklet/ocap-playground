@@ -55,8 +55,8 @@ export default function MiniPage() {
             <PlaygroundAction
               action="receive_local_token"
               className="action"
-              amount={20}
-              title={`Get 20 ${token.local.symbol}`}
+              amount={10}
+              title={`Get 10 ${token.local.symbol}`}
               webWalletUrl={webWalletUrl}
             />
           </div>
@@ -73,16 +73,16 @@ export default function MiniPage() {
               action="send_foreign_token"
               className="action"
               buttonVariant="contained"
-              amount={0.1}
-              title={`Send 0.1 ${token.foreign.symbol}`}
+              amount={0.5}
+              title={`Send 0.5 ${token.foreign.symbol}`}
               webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               action="send_local_token"
               className="action"
               buttonVariant="contained"
-              amount={10}
-              title={`Send 10 ${token.local.symbol}`}
+              amount={0.5}
+              title={`Send 0.5 ${token.local.symbol}`}
               webWalletUrl={webWalletUrl}
             />
           </div>

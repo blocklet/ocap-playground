@@ -69,12 +69,12 @@ module.exports = {
   },
   onAuth: async ({ claims, userDid }) => {
     const claim = claims.find(x => x.type === 'signature');
-    logger.info('did_auth_acquire.auth.claim', claim);
+    logger.info('acquire.auth.claim', claim);
 
     const tx = SDK.decodeTx(claim.origin);
     tx.signature = claim.sig;
 
-    logger.info('did_auth_acquire.auth.tx', tx);
+    logger.info('acquire.auth.tx', tx);
     const hash = await SDK.sendAcquireAssetTx({ tx, wallet: fromAddress(userDid) });
     logger.info('hash:', hash);
     return { hash, tx: claim.origin };

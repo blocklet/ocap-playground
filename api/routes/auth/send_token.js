@@ -9,7 +9,6 @@ const env = require('../../libs/env');
 
 module.exports = {
   action: 'send_token',
-  authPrincipal: false,
   claims: {
     signature: async ({ extraParams: { locale, chain, amount } }) => {
       const token = await getTokenInfo();

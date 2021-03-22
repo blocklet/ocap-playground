@@ -19,7 +19,6 @@ const messages = {
 
 module.exports = {
   action: 'receive_token',
-  authPrincipal: false,
   claims: {
     signature: async ({ extraParams: { locale, chain, amount } }) => {
       const token = await getTokenInfo();
