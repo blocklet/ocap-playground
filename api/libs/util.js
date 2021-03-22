@@ -35,7 +35,7 @@ const getTransferrableAssets = async (userDid, assetCount, chainId) => {
 };
 
 const getTokenInfo = async () => {
-  const [{ getForgeState: data }, { getForgeState: data2 }] = await Promise.all([
+  const [{ getForgeState: data }, { state: data2 }] = await Promise.all([
     ForgeSDK.doRawQuery(
       `{
       getForgeState {
@@ -50,48 +50,29 @@ const getTokenInfo = async () => {
     }`,
       { conn: env.chainId }
     ),
-    ForgeSDK.doRawQuery(
-      `{
-      getForgeState {
-        code
-        state {
-          token {
-            decimal
-            symbol
-          }
-        }
-      }
-    }`,
-      { conn: env.chainId }
-    ),
+    ForgeSDK.getTokenState({ address: env.tokenId }),
   ]);
 
-  return {
-    [env.chainId]: data.state.token,
+  const result = {
     local: data.state.token,
-    foreign: data2.state.token,
+    foreign: { symbol: data2.symbol, decimal: data.state.token.decimal },
   };
+
+  return result;
 };
 
 const getAccountBalance = async userDid => {
-  const [{ getAccountState: data }, { getAccountState: data2 }] = await Promise.all([
+  const [{ getAccountState: data }] = await Promise.all([
     ForgeSDK.doRawQuery(
       `{
       getAccountState(address: "${userDid}") {
         code
         state {
           balance
-        }
-      }
-    }`,
-      { conn: env.chainId }
-    ),
-    ForgeSDK.doRawQuery(
-      `{
-      getAccountState(address: "${userDid}") {
-        code
-        state {
-          balance
+          tokens {
+            key
+            value
+          }
         }
       }
     }`,
@@ -99,11 +80,20 @@ const getAccountBalance = async userDid => {
     ),
   ]);
 
+  let local = 0;
+  let foreign = 0;
+  if (data.state) {
+    local = data.state.balance;
+
+    const token = data.state.tokens.find(x => x.key === env.tokenId);
+    if (token) {
+      foreign = token.value;
+    }
+  }
+
   return {
-    [env.chainId]: data.state ? data.state.balance : 0,
-    [env.chainId]: data2.state ? data2.state.balance : 0,
-    local: data.state ? data.state.balance : 0,
-    foreign: data2.state ? data2.state.balance : 0,
+    local,
+    foreign,
   };
 };
 
@@ -185,9 +175,10 @@ const ensureAsset = async (
       location: 'China, Beijing',
     }),
   };
-  const display = type === 'badge'
-    ? gzipSvg
-    : createZippedSvgDisplay(type === 'ticket' ? createTicketSvg({ data }) : createCertSvg({ data }));
+  const display =
+    type === 'badge'
+      ? gzipSvg
+      : createZippedSvgDisplay(type === 'ticket' ? createTicketSvg({ data }) : createCertSvg({ data }));
   const [asset, hash] = await methods[type]({
     display,
     backgroundUrl,

@@ -34,15 +34,10 @@ export default function Layout({ title, children, contentOnly }) {
     { url: `${apiPrefix}/`, title: 'Home' },
     { url: `${apiPrefix}/profile`, title: 'Profile' },
     { url: `${apiPrefix}/full`, title: 'Everything' },
-    { url: `${apiPrefix}/orders`, title: 'Orders' },
-    { url: 'https://www.arcblock.io/en/try-identity-now/', title: 'Demos' },
   ];
 
   if (window.env.chainHost) {
     links.push({ url: getExplorerUrl(window.env.chainHost, 'local'), title: 'Local Chain' });
-  }
-  if (window.env.chainHost) {
-    links.push({ url: getExplorerUrl(window.env.chainHost, 'foreign'), title: 'Foreign Chain' });
   }
   links.push({ url: 'https://github.com/blocklet/ocap-playground', title: 'GitHub' });
 

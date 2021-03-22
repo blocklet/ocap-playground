@@ -5,18 +5,18 @@ module.exports = {
   init(app) {
     app.get('/api/did/session', async (req, res) => {
       try {
-        const data = await getTokenInfo();
+        const token = await getTokenInfo();
         if (req.user) {
           const balance = await getAccountBalance(req.user.did);
           return res.json({
             user: req.user,
-            token: { local: data[env.chainId], foreign: data[env.chainId] },
+            token,
             balance,
           });
         }
         return res.json({
           user: req.user,
-          token: { local: data[env.chainId], foreign: data[env.chainId] },
+          token,
           balance: {},
         });
       } catch (e) {
