@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const path = require('path');
 const Mcrypto = require('@ocap/mcrypto');
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const AuthNedbStorage = require('@arcblock/did-auth-storage-nedb');
 const AgentNedbStorage = require('@arcblock/did-agent-storage-nedb');
 const { NFTFactory } = require('@arcblock/nft');
@@ -17,7 +17,7 @@ const type = WalletType({
 });
 
 if (env.chainHost) {
-  ForgeSDK.connect(env.chainHost, { chainId: env.chainId, name: env.chainId, default: true });
+  SDK.connect(env.chainHost, { chainId: env.chainId, name: env.chainId, default: true });
   console.log('Connected to chainHost', env.chainHost);
 }
 

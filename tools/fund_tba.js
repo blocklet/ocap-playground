@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 require('dotenv').config();
 
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { WalletType } = require('@ocap/wallet');
 const { types } = require('@ocap/mcrypto');
 
@@ -18,11 +18,11 @@ const type = WalletType({
 
 (async () => {
   const sk = ensureModeratorSecretKey();
-  const moderator = ForgeSDK.Wallet.fromSecretKey(sk, type);
+  const moderator = SDK.Wallet.fromSecretKey(sk, type);
   // console.log('moderator', moderator.toJSON());
 
   // Transfer to application
-  const hash = await ForgeSDK.transfer({
+  const hash = await SDK.transfer({
     to: env.appId,
     token: 10000,
     wallet: moderator,

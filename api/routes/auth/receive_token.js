@@ -1,5 +1,5 @@
 const logger = require('winston');
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
 
 const { wallet } = require('../../libs/auth');
@@ -51,15 +51,15 @@ module.exports = {
 
     try {
       const type = toTypeInfo(userDid);
-      const user = ForgeSDK.Wallet.fromPublicKey(userPk, type);
+      const user = SDK.Wallet.fromPublicKey(userPk, type);
       const claim = claims.find(x => x.type === 'signature');
 
       if (user.verify(claim.origin, claim.sig) === false) {
         throw new Error('要求的消息签名不正确');
       }
 
-      const app = ForgeSDK.Wallet.fromJSON(wallet);
-      const hash = await ForgeSDK.transfer({
+      const app = SDK.Wallet.fromJSON(wallet);
+      const hash = await SDK.transfer({
         to: userDid,
         token: chain === 'local' ? amount : 0,
         tokens: chain === 'local' ? [] : [{ address: env.tokenId, value: amount }],

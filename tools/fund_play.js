@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 require('dotenv').config();
 
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 
 const { ensureModeratorSecretKey } = require('./util');
 // eslint-disable-next-line no-unused-vars
@@ -10,11 +10,11 @@ const env = require('../api/libs/env');
 
 (async () => {
   const sk = ensureModeratorSecretKey();
-  const moderator = ForgeSDK.Wallet.fromSecretKey(sk);
+  const moderator = SDK.Wallet.fromSecretKey(sk);
   console.log('moderator', moderator.toAddress());
 
   // Transfer to application
-  const hash = await ForgeSDK.transfer({
+  const hash = await SDK.transfer({
     to: env.appId,
     token: 100000000,
     wallet: moderator,

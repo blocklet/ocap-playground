@@ -1,9 +1,9 @@
 require('dotenv').config();
 
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 
-const { fromSecretKey } = ForgeSDK.Wallet;
-const { bytesToHex, isHexStrict, fromBase64 } = ForgeSDK.Util;
+const { fromSecretKey } = SDK.Wallet;
+const { bytesToHex, isHexStrict, fromBase64 } = SDK.Util;
 
 function ensureModeratorSecretKey() {
   const sk = process.env.FORGE_MODERATOR_SK;

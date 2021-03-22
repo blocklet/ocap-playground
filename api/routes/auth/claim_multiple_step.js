@@ -1,4 +1,4 @@
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { getRandomMessage } = require('../../libs/util');
 
 const { wallet } = require('../../libs/auth');
@@ -13,7 +13,7 @@ module.exports = {
         data: {
           itx: {
             to: wallet.address,
-            value: ForgeSDK.Util.fromTokenToUnit(1),
+            value: SDK.Util.fromTokenToUnit(1),
           },
         },
         description: 'Please sign the transaction, you will send 1 token',
@@ -44,7 +44,7 @@ module.exports = {
   onAuth: async ({ userDid, userPk, claims, step }) => {
     logger.info('claim.multiStep.onAuth', { step, userPk, userDid, claims });
     // const type = toTypeInfo(userDid);
-    // const user = ForgeSDK.Wallet.fromPublicKey(userPk, type);
+    // const user = SDK.Wallet.fromPublicKey(userPk, type);
     // const claim = claims.find(x => x.type === 'signature');
   },
 };

@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { fromAddress } = require('@ocap/wallet');
 
 const { wallet } = require('../../libs/auth');
@@ -8,7 +8,7 @@ module.exports = {
   action: 'transfer_token_asset_out',
   claims: {
     signature: async ({ userDid }) => {
-      const { assets } = await ForgeSDK.listAssets({ ownerAddress: userDid });
+      const { assets } = await SDK.listAssets({ ownerAddress: userDid });
 
       if (!assets) {
         throw new Error('You do not have any asset, use other test to earn one');
@@ -19,7 +19,7 @@ module.exports = {
         throw new Error('You do not have any asset that can be transferred to me');
       }
 
-      const { state } = await ForgeSDK.getForgeState();
+      const { state } = await SDK.getForgeState();
       logger.info('transfer to:', wallet.address);
       logger.info('asset:', asset.address);
       return {
@@ -28,7 +28,7 @@ module.exports = {
           itx: {
             to: wallet.address,
             assets: [asset.address],
-            value: ForgeSDK.Util.fromTokenToUnit(1),
+            value: SDK.Util.fromTokenToUnit(1),
           },
         },
         description: `请发给我证书 ${asset.address} 和 1 ${state.token.symbol}`,
@@ -39,10 +39,10 @@ module.exports = {
     try {
       logger.info('transfer_asset_token_out.onAuth', { claims, userDid });
       const claim = claims.find(({ type }) => type === 'signature');
-      const tx = ForgeSDK.decodeTx(claim.origin);
+      const tx = SDK.decodeTx(claim.origin);
       const user = fromAddress(userDid);
 
-      const hash = await ForgeSDK.sendTransferTx({
+      const hash = await SDK.sendTransferTx({
         tx,
         wallet: user,
         signature: claim.sig,

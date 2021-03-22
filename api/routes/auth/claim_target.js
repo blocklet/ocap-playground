@@ -1,4 +1,4 @@
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
 
 const { User } = require('../../models');
@@ -51,7 +51,7 @@ module.exports = {
     }
 
     const type = toTypeInfo(userDid);
-    const w = ForgeSDK.Wallet.fromPublicKey(userPk, type);
+    const w = SDK.Wallet.fromPublicKey(userPk, type);
     if (w.verify(claim.origin, claim.sig) === false) {
       throw new Error('签名错误');
     }

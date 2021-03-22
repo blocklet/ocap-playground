@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const ForgeWallet = require('@ocap/wallet');
 const { create } = require('@arcblock/vc');
 const { toTypeInfo } = require('@arcblock/did');
@@ -29,7 +29,7 @@ module.exports = {
 
   onAuth: async ({ userDid, userPk, claims }) => {
     const type = toTypeInfo(userDid);
-    const user = ForgeSDK.Wallet.fromPublicKey(userPk, type);
+    const user = SDK.Wallet.fromPublicKey(userPk, type);
     const claim = claims.find(x => x.type === 'signature');
     if (user.verify(claim.origin, claim.sig) === false) {
       throw new Error('签名错误');

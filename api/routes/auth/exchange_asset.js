@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 const logger = require('winston');
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { NFTType } = require('@arcblock/nft/lib/enum');
 const { toTypeInfo } = require('@arcblock/did');
 const upperFirst = require('lodash/upperFirst');
@@ -82,7 +82,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   let receiverPayload = null;
 
   if (pt === 'token') {
-    senderPayload = await ForgeSDK.fromTokenToUnit(pa);
+    senderPayload = await SDK.fromTokenToUnit(pa);
   } else {
     const assets = await getTransferrableAssets(userDid);
     senderPayload = assets
@@ -98,7 +98,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   }
 
   if (rt === 'token') {
-    receiverPayload = await ForgeSDK.fromTokenToUnit(ra);
+    receiverPayload = await SDK.fromTokenToUnit(ra);
   } else {
     const assets = await getAssets({
       amount: ra,
@@ -117,7 +117,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
     receiverPayload = assets.map(asset => asset.address);
   }
 
-  const tx = await ForgeSDK.signExchangeTx({
+  const tx = await SDK.signExchangeTx({
     tx: {
       itx: {
         to: userDid,
@@ -129,11 +129,11 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
         },
       },
     },
-    wallet: ForgeSDK.Wallet.fromJSON(wallet),
+    wallet: SDK.Wallet.fromJSON(wallet),
   });
 
   tx.signaturesList.push({
-    pk: ForgeSDK.Util.fromBase58(userPk),
+    pk: SDK.Util.fromBase58(userPk),
     signer: userDid,
   });
 
@@ -150,15 +150,15 @@ const transferAsset = async ({ claim, userDid, userPk }) => {
   try {
     logger.info('exchange_asset.onAuth', { claim, userDid });
     const type = toTypeInfo(userDid);
-    const user = ForgeSDK.Wallet.fromPublicKey(userPk, type);
+    const user = SDK.Wallet.fromPublicKey(userPk, type);
 
     if (user.verify(claim.origin, claim.sig) === false) {
       throw new Error('签名错误');
     }
 
-    const appWallet = ForgeSDK.Wallet.fromJSON(wallet);
-    const asset = JSON.parse(ForgeSDK.Util.fromBase58(claim.origin));
-    const hash = await ForgeSDK.sendTransferTx({
+    const appWallet = SDK.Wallet.fromJSON(wallet);
+    const asset = JSON.parse(SDK.Util.fromBase58(claim.origin));
+    const hash = await SDK.sendTransferTx({
       tx: {
         itx: {
           to: userDid,
@@ -177,13 +177,13 @@ const transferAsset = async ({ claim, userDid, userPk }) => {
 };
 
 const exchangeAsset = async claim => {
-  const tx = ForgeSDK.decodeTx(claim.origin);
+  const tx = SDK.decodeTx(claim.origin);
 
   tx.signaturesList[0].signature = claim.sig;
 
-  const hash = await ForgeSDK.exchange({
+  const hash = await SDK.exchange({
     tx,
-    wallet: ForgeSDK.Wallet.fromJSON(wallet),
+    wallet: SDK.Wallet.fromJSON(wallet),
   });
 
   logger.info('exchange tx hash:', hash);

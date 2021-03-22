@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
 
 const { wallet, factory: assetFactory } = require('../../libs/auth');
@@ -43,15 +43,15 @@ module.exports = {
     try {
       logger.info('transfer_asset_in.onAuth', { claims, userDid });
       const type = toTypeInfo(userDid);
-      const user = ForgeSDK.Wallet.fromPublicKey(userPk, type);
+      const user = SDK.Wallet.fromPublicKey(userPk, type);
       const claim = claims.find(x => x.type === 'signature');
 
       if (user.verify(claim.origin, claim.sig) === false) {
         throw new Error('签名错误');
       }
 
-      const appWallet = ForgeSDK.Wallet.fromJSON(wallet);
-      const hash = await ForgeSDK.sendTransferTx({
+      const appWallet = SDK.Wallet.fromJSON(wallet);
+      const hash = await SDK.sendTransferTx({
         tx: {
           itx: {
             to: userDid,

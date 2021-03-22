@@ -1,4 +1,4 @@
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { verifyPresentation } = require('@arcblock/vc');
 const { types, getHasher } = require('@ocap/mcrypto');
 const env = require('../../libs/env');
@@ -9,7 +9,7 @@ module.exports = {
   action: 'consume_vc',
   claims: {
     verifiableCredential: async ({ userDid, extraParams: { type } }) => {
-      const w = ForgeSDK.Wallet.fromJSON(wallet);
+      const w = SDK.Wallet.fromJSON(wallet);
       const trustedIssuers = (env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ')
         .split(',')
         .concat(w.toAddress());
@@ -46,13 +46,13 @@ module.exports = {
     if (type === 'EmailVerificationCredential') {
       const { user } = await authClient.getUser(userDid);
       const hasher = getHasher(types.HashType.SHA3);
-      const digest = ForgeSDK.Util.toBase64(hasher(user.email, 1));
+      const digest = SDK.Util.toBase64(hasher(user.email, 1));
       if (vc.credentialSubject.emailDigest !== digest) {
         throw Error('VC 与您的邮箱不匹配');
       }
     }
 
-    const w = ForgeSDK.Wallet.fromJSON(wallet);
+    const w = SDK.Wallet.fromJSON(wallet);
     const trustedIssuers = (env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ')
       .split(',')
       .concat(w.toAddress());

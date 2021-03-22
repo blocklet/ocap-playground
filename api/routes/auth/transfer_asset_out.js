@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { fromAddress } = require('@ocap/wallet');
 const { wallet } = require('../../libs/auth');
 const { getTransferrableAssets } = require('../../libs/util');
@@ -26,10 +26,10 @@ module.exports = {
     try {
       logger.info('transfer_asset_out.onAuth', { claims, userDid });
       const claim = claims.find(x => x.type === 'signature');
-      const tx = ForgeSDK.decodeTx(claim.origin);
+      const tx = SDK.decodeTx(claim.origin);
       const user = fromAddress(userDid);
 
-      const hash = await ForgeSDK.sendTransferTx(
+      const hash = await SDK.sendTransferTx(
         {
           tx,
           wallet: user,

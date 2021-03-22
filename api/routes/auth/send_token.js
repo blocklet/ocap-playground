@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { fromTokenToUnit } = require('@ocap/util');
 const { fromAddress } = require('@ocap/wallet');
 
@@ -50,10 +50,10 @@ module.exports = {
   onAuth: async ({ claims, userDid, extraParams: { locale } }) => {
     try {
       const claim = claims.find(x => x.type === 'signature');
-      const tx = ForgeSDK.decodeTx(claim.origin);
+      const tx = SDK.decodeTx(claim.origin);
       const user = fromAddress(userDid);
 
-      const hash = await ForgeSDK.sendTransferV2Tx(
+      const hash = await SDK.sendTransferV2Tx(
         {
           tx,
           wallet: user,

@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const Mcrypto = require('@ocap/mcrypto');
 const { toTypeInfo } = require('@arcblock/did');
 
@@ -13,18 +13,18 @@ module.exports = {
   action: 'claim_signature',
   claims: {
     signature: async ({ userDid, userPk, extraParams: { type } }) => {
-      const encoded = await ForgeSDK.encodeTransferTx(
+      const encoded = await SDK.encodeTransferTx(
         {
           tx: {
             itx: {
               to: wallet.address,
-              value: await ForgeSDK.fromTokenToUnit(1),
+              value: await SDK.fromTokenToUnit(1),
             },
           },
-          wallet: ForgeSDK.Wallet.fromPublicKey(userPk),
+          wallet: SDK.Wallet.fromPublicKey(userPk),
         },
       );
-      const origin = ForgeSDK.Util.toBase58(encoded.buffer);
+      const origin = SDK.Util.toBase58(encoded.buffer);
       console.log({ encoded, origin });
 
       const params = {
@@ -57,12 +57,12 @@ module.exports = {
         // NOTE: this should fail in latest ABT Wallet
         digest: {
           // A developer should convert the hash of his data to base58 format => digest
-          digest: ForgeSDK.Util.toBase58(hasher(data, 1)),
+          digest: SDK.Util.toBase58(hasher(data, 1)),
         },
 
         // NOTE: this should fail in latest ABT Wallet
         evil_digest: {
-          digest: ForgeSDK.Util.toBase58(hasher(origin, 1)),
+          digest: SDK.Util.toBase58(hasher(origin, 1)),
           meta: { origin },
         },
 
@@ -97,7 +97,7 @@ module.exports = {
   // eslint-disable-next-line consistent-return
   onAuth: async ({ userDid, userPk, claims }) => {
     const type = toTypeInfo(userDid);
-    const user = ForgeSDK.Wallet.fromPublicKey(userPk, type);
+    const user = SDK.Wallet.fromPublicKey(userPk, type);
     const claim = claims.find(x => x.type === 'signature');
 
     logger.info('claim.signature.onAuth', { userPk, userDid, claim });
@@ -116,8 +116,8 @@ module.exports = {
     }
 
     if (claim.meta && claim.meta.origin) {
-      const tx = ForgeSDK.decodeTx(claim.meta.origin);
-      const hash = await ForgeSDK.sendTransferTx(
+      const tx = SDK.decodeTx(claim.meta.origin);
+      const hash = await SDK.sendTransferTx(
         {
           tx,
           wallet: user,

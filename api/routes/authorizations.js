@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const Mcrypto = require('@ocap/mcrypto');
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { WalletType } = require('@ocap/wallet');
 const { JWT } = require('@arcblock/did-auth');
 const { wallet, agentStorage } = require('../libs/auth');
@@ -23,11 +23,11 @@ module.exports = {
       // We need to create a new application for this user
       // Then make a fake authorization between the application and this dapp
       const type = WalletType({ role: Mcrypto.types.RoleType.ROLE_APPLICATION });
-      const authorizer = ForgeSDK.Wallet.fromRandom(type);
+      const authorizer = SDK.Wallet.fromRandom(type);
       const authorizeId = authorizer.toAddress();
 
       // Declare the application
-      const hash = await ForgeSDK.declare({
+      const hash = await SDK.declare({
         issuer: ownerDid,
         moniker: 'demo_application',
         wallet: authorizer,
@@ -40,7 +40,7 @@ module.exports = {
         iat: now,
         nbf: now,
         exp: now + 365 * 24 * 60 * 60, // authorize for a year
-        agentDid: ForgeSDK.Util.toDid(wallet.address),
+        agentDid: SDK.Util.toDid(wallet.address),
         ops: {
           profile: ['fullName', 'email', 'avatar'],
         },
@@ -51,8 +51,8 @@ module.exports = {
         ownerDid,
         agentDid: wallet.address,
         appDid: authorizeId,
-        appPk: ForgeSDK.Util.toBase58(authorizer.publicKey),
-        appSk: ForgeSDK.Util.toBase58(authorizer.secretKey), // Please delete this line in production
+        appPk: SDK.Util.toBase58(authorizer.publicKey),
+        appSk: SDK.Util.toBase58(authorizer.secretKey), // Please delete this line in production
         appName: 'My Demo Application',
         appDescription: `This is a random application generated to user ${ownerDid}`,
         appIcon: 'https://releases.arcblockio.cn/demo.png',

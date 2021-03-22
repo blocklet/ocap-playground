@@ -1,5 +1,5 @@
 /* eslint-disable object-curly-newline */
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const Mcrypto = require('@ocap/mcrypto');
 const { createZippedSvgDisplay, createCertSvg, createTicketSvg } = require('@arcblock/nft-template');
 const { NFTRecipient, NFTIssuer } = require('@arcblock/nft');
@@ -17,7 +17,7 @@ const { wallet } = require('./auth');
 const badgeArray = require('./svg');
 
 const getTransferrableAssets = async (userDid, assetCount) => {
-  const { assets } = await ForgeSDK.listAssets({ ownerAddress: userDid, paging: { size: 200 } });
+  const { assets } = await SDK.listAssets({ ownerAddress: userDid, paging: { size: 200 } });
   if (!assets || assets.length === 0) {
     throw new Error('You do not have any asset, use other test to earn one');
   }
@@ -36,7 +36,7 @@ const getTransferrableAssets = async (userDid, assetCount) => {
 
 const getTokenInfo = async () => {
   const [{ getForgeState: data }, { state: data2 }] = await Promise.all([
-    ForgeSDK.doRawQuery(
+    SDK.doRawQuery(
       `{
       getForgeState {
         code
@@ -49,7 +49,7 @@ const getTokenInfo = async () => {
       }
     }`
     ),
-    ForgeSDK.getTokenState({ address: env.tokenId }),
+    SDK.getTokenState({ address: env.tokenId }),
   ]);
 
   const result = {
@@ -62,7 +62,7 @@ const getTokenInfo = async () => {
 
 const getAccountBalance = async userDid => {
   const [{ getAccountState: data }] = await Promise.all([
-    ForgeSDK.doRawQuery(
+    SDK.doRawQuery(
       `{
       getAccountState(address: "${userDid}") {
         code
@@ -164,11 +164,11 @@ const ensureAsset = async (
     expireTime: Date.now() + 365 * 3600,
     host: new NFTIssuer({
       // Only for tickets?
-      wallet: ForgeSDK.Wallet.fromJSON(wallet),
+      wallet: SDK.Wallet.fromJSON(wallet),
       name: 'Wallet Playground',
     }),
     recipient: new NFTRecipient({
-      wallet: ForgeSDK.Wallet.fromPublicKey(userPk),
+      wallet: SDK.Wallet.fromPublicKey(userPk),
       name: userDid,
       location: 'China, Beijing',
     }),

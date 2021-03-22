@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
 const { types } = require('@ocap/mcrypto');
 
@@ -56,7 +56,7 @@ module.exports = {
     }
 
     // 2. we need to ensure that the did is declared onchain
-    const { state } = await ForgeSDK.getAccountState({ address: userDid }, getAccountStateOptions);
+    const { state } = await SDK.getAccountState({ address: userDid }, getAccountStateOptions);
     if (!state) {
       throw new Error('The created DID is not created on chain as required');
     }
@@ -66,7 +66,7 @@ module.exports = {
     // }
 
     // 3. we need to ensure that the did has the same signature
-    const w = ForgeSDK.Wallet.fromPublicKey(userPk, type);
+    const w = SDK.Wallet.fromPublicKey(userPk, type);
     if (w.verify(claim.origin, claim.sig) === false) {
       throw new Error('签名错误');
     }

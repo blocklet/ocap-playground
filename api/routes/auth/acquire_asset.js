@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const ForgeSDK = require('@ocap/sdk');
+const SDK = require('@ocap/sdk');
 const { toAssetAddress } = require('@arcblock/did-util');
 const { decodeAny } = require('@ocap/message');
 const { fromAddress } = require('@ocap/wallet');
@@ -10,7 +10,7 @@ module.exports = {
     signature: async ({ userPk, userDid }) => {
       const factoryAddress = 'zjdsHpUWuUjj41jY1P9Epno8Jvz5f5YKLMm3';
 
-      const { state } = await ForgeSDK.getAssetState({ address: factoryAddress });
+      const { state } = await SDK.getAssetState({ address: factoryAddress });
       if (!state) {
         throw new Error('Asset factory address does not exist on chain');
       }
@@ -71,11 +71,11 @@ module.exports = {
     const claim = claims.find(x => x.type === 'signature');
     logger.info('did_auth_acquire.auth.claim', claim);
 
-    const tx = ForgeSDK.decodeTx(claim.origin);
+    const tx = SDK.decodeTx(claim.origin);
     tx.signature = claim.sig;
 
     logger.info('did_auth_acquire.auth.tx', tx);
-    const hash = await ForgeSDK.sendAcquireAssetTx({ tx, wallet: fromAddress(userDid) });
+    const hash = await SDK.sendAcquireAssetTx({ tx, wallet: fromAddress(userDid) });
     logger.info('hash:', hash);
     return { hash, tx: claim.origin };
   },
