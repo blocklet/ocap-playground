@@ -14,8 +14,8 @@ module.exports = {
       authPrincipal: async ({ extraParams: { chain } }) => ({
         description: 'Please select the required DID',
         chainInfo: {
-          host: chain === 'local' ? env.chainHost : env.assetChainHost,
-          id: chain === 'local' ? env.chainId : env.assetChainId,
+          host: chain === 'local' ? env.chainHost : env.chainHost,
+          id: chain === 'local' ? env.chainId : env.chainId,
         },
       }),
     },
@@ -46,8 +46,8 @@ module.exports = {
           },
           description: description[locale] || description.en,
           chainInfo: {
-            host: chain === 'local' ? env.chainHost : env.assetChainHost,
-            id: chain === 'local' ? env.chainId : env.assetChainId,
+            host: chain === 'local' ? env.chainHost : env.chainHost,
+            id: chain === 'local' ? env.chainId : env.chainId,
           },
         };
       },
@@ -65,7 +65,7 @@ module.exports = {
           wallet: user,
           signature: claim.sig,
         },
-        { conn: chain === 'local' ? env.chainId : env.assetChainId }
+        { conn: chain === 'local' ? env.chainId : env.chainId }
       );
 
       logger.info('send_token.onAuth', { claims, userDid, hash });

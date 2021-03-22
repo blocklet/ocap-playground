@@ -8,7 +8,7 @@ const env = require('../../libs/env');
 
 const app = ForgeSDK.Wallet.fromJSON(wallet);
 
-const getChainConnection = pfc => (pfc === PFC.local ? env.chainId : env.assetChainId);
+const getChainConnection = pfc => (pfc === PFC.local ? env.chainId : env.chainId);
 
 const checkParams = ({ pfc, type }) => {
   if (!PFC[pfc]) {
@@ -99,8 +99,8 @@ module.exports = {
         data: tx,
         description: `Sign this transaction to confirm the ${asset.moniker} consumption`,
         chainInfo: {
-          host: pfc === 'local' ? env.chainHost : env.assetChainHost,
-          id: pfc === 'local' ? env.chainId : env.assetChainId,
+          host: pfc === 'local' ? env.chainHost : env.chainHost,
+          id: pfc === 'local' ? env.chainId : env.chainId,
         },
       };
     },

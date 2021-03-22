@@ -37,17 +37,7 @@ environments:
   - name: LOCAL_CHAIN_HOST
     description: Please provide endpoint of local chain
     required: true
-    default: 'https://playground.network.arcblockio.cn/api'
-    secure: false
-  - name: FOREIGN_CHAIN_ID
-    description: Please provide id of foreign chain
-    required: true
-    default: zinc-2019-05-17
-    secure: false
-  - name: FOREIGN_CHAIN_HOST
-    description: Please provide endpoint of foreign chain
-    required: true
-    default: 'https://zinc.network.arcblockio.cn/api'
+    default: 'http://192.168.123.236:4000'
     secure: false
 scripts:
   preDeploy: npm run bundle

@@ -24,8 +24,8 @@ module.exports = {
       authPrincipal: async ({ extraParams: { chain } }) => ({
         description: 'Please select the required DID',
         chainInfo: {
-          host: chain === 'local' ? env.chainHost : env.assetChainHost,
-          id: chain === 'local' ? env.chainId : env.assetChainId,
+          host: chain === 'local' ? env.chainHost : env.chainHost,
+          id: chain === 'local' ? env.chainId : env.chainId,
         },
       }),
     },
@@ -44,8 +44,8 @@ module.exports = {
           data: random,
           type: 'mime:text/plain',
           chainInfo: {
-            host: chain === 'local' ? env.chainHost : env.assetChainHost,
-            id: chain === 'local' ? env.chainId : env.assetChainId,
+            host: chain === 'local' ? env.chainHost : env.chainHost,
+            id: chain === 'local' ? env.chainId : env.chainId,
           },
         };
       },
@@ -79,7 +79,7 @@ module.exports = {
           token: amount,
           wallet: app,
         },
-        { conn: chain === 'local' ? env.chainId : env.assetChainId }
+        { conn: chain === 'local' ? env.chainId : env.chainId }
       );
       logger.info('receive_token.onAuth', hash, amount);
       return { hash };

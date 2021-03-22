@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const ForgeSDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
-const { types } = require('@arcblock/mcrypto');
+const { types } = require('@ocap/mcrypto');
 
 const { wallet } = require('../../libs/auth');
 const { getAccountStateOptions, getRandomMessage } = require('../../libs/util');

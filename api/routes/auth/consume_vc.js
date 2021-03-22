@@ -1,6 +1,6 @@
 const ForgeSDK = require('@ocap/sdk');
 const { verifyPresentation } = require('@arcblock/vc');
-const { types, getHasher } = require('@arcblock/mcrypto');
+const { types, getHasher } = require('@ocap/mcrypto');
 const env = require('../../libs/env');
 const { wallet } = require('../../libs/auth');
 const { authClient } = require('../../libs/auth');

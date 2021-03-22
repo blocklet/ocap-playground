@@ -30,7 +30,7 @@ module.exports = {
 
       const master = ForgeSDK.Wallet.fromJSON(wallet);
       const hash1 = await ForgeSDK.transfer({ to: appDid, token: 100000, wallet: master }, { conn: env.chainId });
-      const hash2 = await ForgeSDK.transfer({ to: appDid, token: 200, wallet: master }, { conn: env.assetChainId });
+      const hash2 = await ForgeSDK.transfer({ to: appDid, token: 200, wallet: master }, { conn: env.chainId });
       return res.jsonp({
         status: 'ok',
         local: hash1,

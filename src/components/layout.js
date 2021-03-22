@@ -41,8 +41,8 @@ export default function Layout({ title, children, contentOnly }) {
   if (window.env.chainHost) {
     links.push({ url: getExplorerUrl(window.env.chainHost, 'local'), title: 'Local Chain' });
   }
-  if (window.env.assetChainHost) {
-    links.push({ url: getExplorerUrl(window.env.assetChainHost, 'foreign'), title: 'Foreign Chain' });
+  if (window.env.chainHost) {
+    links.push({ url: getExplorerUrl(window.env.chainHost, 'foreign'), title: 'Foreign Chain' });
   }
   links.push({ url: 'https://github.com/blocklet/ocap-playground', title: 'GitHub' });
 

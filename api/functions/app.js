@@ -78,10 +78,7 @@ const router = express.Router();
 // Currency
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/receive_token')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/send_token')));
-swapHandlers.attach(Object.assign({ app: router }, require('../routes/auth/swap_token')));
 
-// Assets
-swapHandlers.attach(Object.assign({ app: router }, require('../routes/auth/swap_asset')));
 // No ChainInfo
 walletHandlersWithNoChainInfo.attach(
   Object.assign({ app: router }, require('../routes/auth/claim_profile_no_chain_info'))
@@ -109,7 +106,6 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/con
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/issue_badge')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/issue_badge_asset')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/extra_params')));
-swapHandlers.attach(Object.assign({ app: router }, require('../routes/auth/pickup_swap')));
 agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_profile'))); // we can reuse something here
 require('../routes/session').init(router);
 require('../routes/authorizations').init(router);

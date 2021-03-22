@@ -20,7 +20,7 @@ module.exports = {
         throw new Error('You do not have any asset that can be transferred to me');
       }
 
-      const { state } = await ForgeSDK.getForgeState({ conn: env.assetChainId });
+      const { state } = await ForgeSDK.getForgeState({ conn: env.chainId });
       logger.info('transfer to:', wallet.address);
       logger.info('asset:', asset.address);
       return {

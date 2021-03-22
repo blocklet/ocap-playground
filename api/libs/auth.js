@@ -1,19 +1,13 @@
 /* eslint-disable no-console */
 const path = require('path');
-const Mcrypto = require('@arcblock/mcrypto');
+const Mcrypto = require('@ocap/mcrypto');
 const ForgeSDK = require('@ocap/sdk');
 const AuthNedbStorage = require('@arcblock/did-auth-storage-nedb');
 const AgentNedbStorage = require('@arcblock/did-agent-storage-nedb');
 const SwapNedbStorage = require('@arcblock/swap-storage-nedb');
 const { NFTFactory } = require('@arcblock/nft');
 const { fromSecretKey, fromJSON, WalletType } = require('@ocap/wallet');
-const {
-  WalletAuthenticator,
-  AgentAuthenticator,
-  WalletHandlers,
-  SwapHandlers,
-  AgentWalletHandlers,
-} = require('@arcblock/did-auth');
+const { WalletAuthenticator, AgentAuthenticator, WalletHandlers, AgentWalletHandlers } = require('@arcblock/did-auth');
 const AuthService = require('@blocklet/sdk/service/auth');
 const env = require('./env');
 
@@ -26,14 +20,13 @@ const type = WalletType({
 if (env.chainHost) {
   ForgeSDK.connect(env.chainHost, { chainId: env.chainId, name: env.chainId, default: true });
   console.log('Connected to chainHost', env.chainHost);
-  if (env.assetChainHost) {
-    ForgeSDK.connect(env.assetChainHost, { chainId: env.assetChainId, name: env.assetChainId });
-    console.log('Connected to assetChainHost', env.assetChainHost);
+  if (env.chainHost) {
+    ForgeSDK.connect(env.chainHost, { chainId: env.chainId, name: env.chainId });
+    console.log('Connected to chainHost', env.chainHost);
   }
 }
 
 const wallet = fromSecretKey(process.env.APP_SK || process.env.BLOCKLET_APP_SK, type).toJSON();
-const isRestricted = process.env.APP_RESTRICTED_DECLARE && JSON.parse(process.env.APP_RESTRICTED_DECLARE);
 
 const icon = 'https://releases.arcblockio.cn/dapps/labs.png';
 const walletAuth = new WalletAuthenticator({
@@ -44,21 +37,10 @@ const walletAuth = new WalletAuthenticator({
     icon: env.appIcon || icon,
     link: baseUrl,
   }),
-  chainInfo: ({ locale }) => {
-    if (locale === 'zh' && env.chainHostZh) {
-      return {
-        host: env.chainHostZh,
-        id: env.chainId,
-        restrictedDeclare: isRestricted,
-      };
-    }
-
-    return {
-      host: env.chainHost,
-      id: env.chainId,
-      restrictedDeclare: isRestricted,
-    };
-  },
+  chainInfo: () => ({
+    host: env.chainHost,
+    id: env.chainId,
+  }),
 });
 
 const walletAuthWithNoChainInfo = new WalletAuthenticator({
@@ -83,7 +65,6 @@ const agentAuth = new AgentAuthenticator({
   chainInfo: {
     host: env.chainHost,
     id: env.chainId,
-    restrictedDeclare: isRestricted,
   },
 });
 
@@ -121,21 +102,6 @@ const walletHandlersWithNoChainInfo = new WalletHandlers({
   tokenStorage,
 });
 
-const swapHandlers = new SwapHandlers({
-  authenticator: walletAuth,
-  tokenStorage,
-  swapStorage,
-  swapContext: {
-    offerChainId: env.chainId,
-    offerChainHost: env.chainHost,
-    demandChainId: env.assetChainId,
-    demandChainHost: env.assetChainHost,
-  },
-  options: {
-    swapKey: 'tid',
-  },
-});
-
 const agentHandlers = new AgentWalletHandlers({
   authenticator: agentAuth,
   tokenStorage,
@@ -154,8 +120,8 @@ const localFactory = new NFTFactory({
 });
 
 const foreignFactory = new NFTFactory({
-  chainId: env.assetChainId,
-  chainHost: env.assetChainHost,
+  chainId: env.chainId,
+  chainHost: env.chainHost,
   wallet: fromJSON(wallet),
   issuer: {
     name: 'ArcBlock',
@@ -171,7 +137,6 @@ module.exports = {
 
   walletHandlers,
   walletHandlersWithNoChainInfo,
-  swapHandlers,
   agentHandlers,
 
   wallet,

@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const ForgeSDK = require('@ocap/sdk');
 const { WalletType } = require('@ocap/wallet');
-const { types } = require('@arcblock/mcrypto');
+const { types } = require('@ocap/mcrypto');
 
 const { ensureModeratorSecretKey } = require('./util');
 // eslint-disable-next-line no-unused-vars
@@ -28,7 +28,7 @@ const type = WalletType({
       token: 10000,
       wallet: moderator,
     },
-    { conn: env.assetChainId }
+    { conn: env.chainId }
   );
 
   console.log(`application funded: ${hash}`);

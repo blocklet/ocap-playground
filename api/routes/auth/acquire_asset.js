@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const ForgeSDK = require('@ocap/sdk');
 const { toAssetAddress } = require('@arcblock/did-util');
-const { decodeAny } = require('@ocap/message/lite');
+const { decodeAny } = require('@ocap/message');
 const { fromAddress } = require('@ocap/wallet');
 
 module.exports = {

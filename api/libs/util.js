@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 const ForgeSDK = require('@ocap/sdk');
-const Mcrypto = require('@arcblock/mcrypto');
+const Mcrypto = require('@ocap/mcrypto');
 const { createZippedSvgDisplay, createCertSvg, createTicketSvg } = require('@arcblock/nft-template');
 const { NFTRecipient, NFTIssuer } = require('@arcblock/nft');
 const { NFTType } = require('@arcblock/nft/lib/enum');
@@ -62,13 +62,12 @@ const getTokenInfo = async () => {
         }
       }
     }`,
-      { conn: env.assetChainId }
+      { conn: env.chainId }
     ),
   ]);
 
   return {
     [env.chainId]: data.state.token,
-    [env.assetChainId]: data2.state.token,
     local: data.state.token,
     foreign: data2.state.token,
   };
@@ -96,13 +95,13 @@ const getAccountBalance = async userDid => {
         }
       }
     }`,
-      { conn: env.assetChainId }
+      { conn: env.chainId }
     ),
   ]);
 
   return {
     [env.chainId]: data.state ? data.state.balance : 0,
-    [env.assetChainId]: data2.state ? data2.state.balance : 0,
+    [env.chainId]: data2.state ? data2.state.balance : 0,
     local: data.state ? data.state.balance : 0,
     foreign: data2.state ? data2.state.balance : 0,
   };

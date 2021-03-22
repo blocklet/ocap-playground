@@ -5,7 +5,7 @@ require('dotenv').config();
 require('@abtnode/util/lib/error-handler');
 
 const ForgeSDK = require('@ocap/sdk');
-const { verifyTxAsync, verifyAccountAsync } = require('@arcblock/tx-util');
+const { verifyTxAsync, verifyAccountAsync } = require('@ocap/tx-util');
 const batchPromises = require('batch-promises');
 const range = require('lodash/range');
 
@@ -92,10 +92,10 @@ const ensureAccountFunded = async (chainId, chainHost) => {
       await ensureAccountFunded(env.chainId, env.chainHost);
     }
 
-    if (env.assetChainId) {
-      await ensureAccountDeclared(env.assetChainId);
-      await verifyAccountAsync({ chainId: env.assetChainId, chainHost: env.assetChainHost, address: wallet.address });
-      await ensureAccountFunded(env.assetChainId, env.assetChainHost);
+    if (env.chainId) {
+      await ensureAccountDeclared(env.chainId);
+      await verifyAccountAsync({ chainId: env.chainId, chainHost: env.chainHost, address: wallet.address });
+      await ensureAccountFunded(env.chainId, env.chainHost);
     }
     process.exit(0);
   } catch (err) {

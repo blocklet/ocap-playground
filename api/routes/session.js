@@ -10,13 +10,13 @@ module.exports = {
           const balance = await getAccountBalance(req.user.did);
           return res.json({
             user: req.user,
-            token: { local: data[env.chainId], foreign: data[env.assetChainId] },
+            token: { local: data[env.chainId], foreign: data[env.chainId] },
             balance,
           });
         }
         return res.json({
           user: req.user,
-          token: { local: data[env.chainId], foreign: data[env.assetChainId] },
+          token: { local: data[env.chainId], foreign: data[env.chainId] },
           balance: {},
         });
       } catch (e) {

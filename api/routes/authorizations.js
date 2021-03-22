@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const Mcrypto = require('@arcblock/mcrypto');
+const Mcrypto = require('@ocap/mcrypto');
 const ForgeSDK = require('@ocap/sdk');
 const { WalletType } = require('@ocap/wallet');
 const { JWT } = require('@arcblock/did-auth');

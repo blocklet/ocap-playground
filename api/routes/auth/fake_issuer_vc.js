@@ -1,6 +1,6 @@
 const ForgeSDK = require('@ocap/sdk');
 const ForgeWallet = require('@ocap/wallet');
-const Mcrypto = require('@arcblock/mcrypto');
+const Mcrypto = require('@ocap/mcrypto');
 const { toTypeInfo } = require('@arcblock/did');
 const { create } = require('@arcblock/vc');
 

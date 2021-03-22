@@ -12,31 +12,6 @@ module.exports = {
     process.env.GATSBY_CHAIN_HOST ||
     process.env.CHAIN_HOST ||
     process.env.chainHost,
-  chainHostZh:
-    process.env.LOCAL_CHAIN_HOST_ZH ||
-    process.env.REACT_APP_CHAIN_HOST_ZH ||
-    process.env.GATSBY_CHAIN_HOST_ZH ||
-    process.env.CHAIN_HOST_ZH ||
-    process.env.chainHostZh,
-  assetChainId:
-    process.env.FOREIGN_CHAIN_ID ||
-    process.env.REACT_APP_ASSET_CHAIN_ID ||
-    process.env.GATSBY_ASSET_CHAIN_ID ||
-    process.env.ASSET_CHAIN_ID ||
-    process.env.assetChainId ||
-    'foreign-chain',
-  assetChainHost:
-    process.env.FOREIGN_CHAIN_HOST ||
-    process.env.REACT_APP_ASSET_CHAIN_HOST ||
-    process.env.GATSBY_ASSET_CHAIN_HOST ||
-    process.env.ASSET_CHAIN_HOST ||
-    process.env.assetChainHost,
-  assetChainHostZh:
-    process.env.FOREIGN_CHAIN_HOST_ZH ||
-    process.env.REACT_APP_ASSET_CHAIN_HOST_ZH ||
-    process.env.GATSBY_ASSET_CHAIN_HOST_ZH ||
-    process.env.ASSET_CHAIN_HOST_ZH ||
-    process.env.assetChainHostZh,
   appId:
     process.env.REACT_APP_APP_ID ||
     process.env.GATSBY_APP_ID ||
