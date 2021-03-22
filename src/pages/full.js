@@ -104,104 +104,104 @@ export default function IndexPage() {
           <div className="section__content">
             <PlaygroundAction
               className="action"
-              title={`Buy 1 Local Certificate with 1 ${token.local.symbol}`}
+              title={`Buy 1 Certificate with 1 ${token.local.symbol}`}
               action="buy_local_certificate_with_local_token"
               payAmount={1}
               receiveAmount={1}
-              name="Local Certificate (%token.local.symbol%)"
+              name="Certificate (%token.local.symbol%)"
               webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
-              title="Buy 1 Local Certificate for Free"
+              title="Buy 1 Certificate for Free"
               action="buy_local_certificate_with_local_token"
               payAmount={0}
               receiveAmount={1}
-              name="Local Certificate (%token.local.symbol%)"
+              name="Certificate (%token.local.symbol%)"
               webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
-              title={`Sell 1 Local Certificate For 1 ${token.local.symbol}`}
+              title={`Sell 1 Certificate For 1 ${token.local.symbol}`}
               action="sell_local_certificate_for_local_token"
               payAmount={1}
               receiveAmount={1}
-              name="Local Certificate (%token.local.symbol%)"
+              name="Certificate (%token.local.symbol%)"
               webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
-              title={`Buy 1 Local Badge with 1 ${token.local.symbol}`}
+              title={`Buy 1 Badge with 1 ${token.local.symbol}`}
               action="buy_local_badge_with_local_token"
               payAmount={1}
               receiveAmount={1}
-              name="Local Badge (%token.local.symbol%)"
+              name="Badge (%token.local.symbol%)"
               svg="./public/static/images/badge.svg"
               webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
-              title="Buy 1 Local Badge for Free"
+              title="Buy 1 Badge for Free"
               action="buy_local_badge_with_local_token"
               payAmount={0}
               receiveAmount={1}
-              name="Local Badge (%token.local.symbol%)"
+              name="Badge (%token.local.symbol%)"
               svg="./public/static/images/badge.svg"
               webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
-              title={`Sell 1 Local Badge For 1 ${token.local.symbol}`}
+              title={`Sell 1 Badge For 1 ${token.local.symbol}`}
               action="sell_local_badge_for_local_token"
               payAmount={1}
               receiveAmount={1}
-              name="Local Badge (%token.local.symbol%)"
+              name="Badge (%token.local.symbol%)"
               svg="./public/static/images/badge.svg"
               webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
-              title={`Buy 1 Local Ticket with 1 ${token.local.symbol}`}
+              title={`Buy 1 Ticket with 1 ${token.local.symbol}`}
               action="buy_local_ticket_with_local_token"
               payAmount={1}
               receiveAmount={1}
-              name="Local Ticket (%token.local.symbol%)"
+              name="Ticket (%token.local.symbol%)"
               webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
-              title="Buy 1 Local Ticket for Free"
+              title="Buy 1 Ticket for Free"
               action="buy_local_ticket_with_local_token"
               payAmount={0}
               receiveAmount={1}
-              name="Local Ticket (%token.local.symbol%)"
+              name="Ticket (%token.local.symbol%)"
               webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
-              title={`Sell 1 Local Ticket For 1 ${token.local.symbol}`}
+              title={`Sell 1 Ticket For 1 ${token.local.symbol}`}
               action="sell_local_ticket_for_local_token"
               payAmount={1}
               receiveAmount={1}
-              name="Local Ticket (%token.local.symbol%)"
+              name="Ticket (%token.local.symbol%)"
               webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
-              title="Buy 1 Local Ticket with 1 Certificate"
+              title="Buy 1 Ticket with 1 Certificate"
               action="buy_local_ticket_with_local_certificate"
               payAmount={1}
               receiveAmount={1}
-              name="Local Ticket (%token.local.symbol%)"
+              name="Ticket (%token.local.symbol%)"
               webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
-              title="Buy 1 Local Certificate with 1 Ticket"
+              title="Buy 1 Certificate with 1 Ticket"
               action="buy_local_certificate_with_local_ticket"
               payAmount={1}
               receiveAmount={1}
-              name="Local Ticket (%token.local.symbol%)"
+              name="Ticket (%token.local.symbol%)"
               webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
@@ -210,7 +210,7 @@ export default function IndexPage() {
               action="buy_local_ticket_with_local_token"
               payAmount={0}
               receiveAmount={1}
-              name="Local Ticket (%token.local.symbol%)"
+              name="Ticket (%token.local.symbol%)"
               successMessage={<Typography component="p">Complete!</Typography>}
               webWalletUrl={webWalletUrl}
             />
@@ -260,8 +260,8 @@ export default function IndexPage() {
               action="buy_local_certificate_with_foreign_token_v2"
               className="action"
               price={0.99}
-              title={`Buy Local Certificate with 0.99 ${token.foreign.symbol}`}
-              name="Local Certificate (%token.local.symbol%)"
+              title={`Buy Certificate with 0.99 ${token.foreign.symbol}`}
+              name="Certificate (%token.local.symbol%)"
               description="This is a test certificate that is on local chain"
               webWalletUrl={webWalletUrl}
             />
@@ -269,17 +269,16 @@ export default function IndexPage() {
               action="sell_local_certificate_for_foreign_token_v2"
               className="action"
               price={1}
-              title={`Sell Local Certificate for 1 ${token.foreign.symbol}`}
-              name="Local Certificate (%token.local.symbol%)"
+              title={`Sell Certificate for 1 ${token.foreign.symbol}`}
+              name="Certificate (%token.local.symbol%)"
               webWalletUrl={webWalletUrl}
             />
-
             <PlaygroundAction
               action="buy_local_badge_with_foreign_token_v2"
               className="action"
               price={0.99}
-              title={`Buy Local Badge with 0.99 ${token.foreign.symbol}`}
-              name="Local Badge (%token.local.symbol%)"
+              title={`Buy Badge with 0.99 ${token.foreign.symbol}`}
+              name="Badge (%token.local.symbol%)"
               svg="./public/static/images/badge.svg"
               description="This is a test badge that is on local chain"
               webWalletUrl={webWalletUrl}
@@ -288,17 +287,16 @@ export default function IndexPage() {
               action="sell_local_badge_for_foreign_token_v2"
               className="action"
               price={1}
-              title={`Sell Local Badge for 1 ${token.foreign.symbol}`}
+              title={`Sell Badge for 1 ${token.foreign.symbol}`}
               name="Local Badge (%token.local.symbol%)"
               webWalletUrl={webWalletUrl}
             />
-
             <PlaygroundAction
               action="buy_local_ticket_with_foreign_token_v2"
               className="action"
               price={0.99}
-              title={`Buy Local Ticket with 0.99 ${token.foreign.symbol}`}
-              name="Local Ticket (%token.local.symbol%)"
+              title={`Buy Ticket with 0.99 ${token.foreign.symbol}`}
+              name="Ticket (%token.local.symbol%)"
               description="This is a test ticket that is on local chain"
               webWalletUrl={webWalletUrl}
             />
@@ -306,60 +304,8 @@ export default function IndexPage() {
               action="sell_local_ticket_for_foreign_token_v2"
               className="action"
               price={1}
-              title={`Sell Local Ticket for 1 ${token.foreign.symbol}`}
-              name="Local Ticket (%token.local.symbol%)"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              action="buy_foreign_certificate_with_local_token_v2"
-              className="action"
-              price={0.99}
-              title={`Buy Foreign Certificate with 0.99 ${token.local.symbol}`}
-              name="Foreign Certificate (%token.foreign.symbol%)"
-              description="This is a test certificate that is on foreign chain"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              action="sell_foreign_certificate_for_local_token_v2"
-              className="action"
-              price={1}
-              title={`Sell Foreign Certificate for 1 ${token.local.symbol}`}
-              name="Foreign Certificate (%token.foreign.symbol%)"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              action="buy_foreign_badge_with_local_token_v2"
-              className="action"
-              price={0.99}
-              title={`Buy Foreign Badge with 0.99 ${token.local.symbol}`}
-              name="Foreign Badge (%token.foreign.symbol%)"
-              description="This is a test badge that is on foreign chain"
-              svg="./public/static/images/badge.svg"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              action="sell_foreign_badge_for_local_token_v2"
-              className="action"
-              price={1}
-              title={`Sell Foreign Badge for 1 ${token.local.symbol}`}
-              name="Foreign Badge (%token.foreign.symbol%)"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              action="buy_foreign_ticket_with_local_token_v2"
-              className="action"
-              price={0.99}
-              title={`Buy Foreign Ticket with 0.99 ${token.local.symbol}`}
-              name="Foreign Ticket (%token.foreign.symbol%)"
-              description="This is a test ticket that is on foreign chain"
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              action="sell_foreign_ticket_for_local_token_v2"
-              className="action"
-              price={1}
-              title={`Sell Foreign Ticket for 1 ${token.local.symbol}`}
-              name="Foreign Ticket (%token.foreign.symbol%)"
+              title={`Sell Ticket for 1 ${token.foreign.symbol}`}
+              name="Ticket (%token.local.symbol%)"
               webWalletUrl={webWalletUrl}
             />
           </div>
