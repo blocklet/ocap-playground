@@ -33,17 +33,14 @@ environments:
     description: Please provide id of local chain
     required: true
     default: playground
-    secure: false
   - name: CHAIN_HOST
     description: Please provide endpoint of local chain
     required: true
     default: 'http://192.168.123.236:4000'
-    secure: false
   - name: TOKEN_ID
     description: Please provide secondary token for the playground
     required: true
-    default: ''
-    secure: false
+    default: 'z35n3kwEXMakjzfaf24DLd67dTJRByTf8y1FN'
 scripts:
   preDeploy: npm run bundle
   preStart: node api/libs/hooks/pre-start.js

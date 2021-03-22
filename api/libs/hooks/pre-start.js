@@ -11,9 +11,11 @@ const range = require('lodash/range');
 
 const { wallet } = require('../auth');
 const { getAccountStateOptions } = require('../util');
+const token = require('../token');
 const env = require('../env');
 
 const { chainId, chainHost, tokenId } = env;
+const app = SDK.Wallet.fromJSON(wallet);
 
 // Check for application account
 const ensureAccountDeclared = async () => {
@@ -28,7 +30,6 @@ const ensureAccountDeclared = async () => {
   if (!state) {
     console.error('Application account not declared on chain');
 
-    const app = SDK.Wallet.fromJSON(wallet);
     const hash = await SDK.declare({
       moniker: 'abt_wallet_playground',
       wallet: app,
@@ -44,7 +45,10 @@ const ensureAccountDeclared = async () => {
 const ensureTokenCreated = async () => {
   const { state } = await SDK.getTokenState({ address: tokenId }, { ...getAccountStateOptions });
   if (!state) {
-    throw new Error(`token ${tokenId} not found on chain`);
+    const hash = await SDK.sendCreateTokenTx({ tx: { itx: token }, wallet: app });
+    console.log(`token created on chain ${chainId}`, hash);
+  } else {
+    console.log(`token exist on chain ${chainId}`, tokenId);
   }
 
   return state;
@@ -95,9 +99,6 @@ const ensureTokenFunded = async () => {
   }
 
   const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
-
-  // console.log('application account state', state);
-
   const balance = await SDK.fromUnitToToken(state.tokens[tokenId] || '0');
   console.info(`application account balance on chain ${chainId} is ${balance}`);
   const amount = 250;

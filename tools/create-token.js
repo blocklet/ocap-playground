@@ -4,6 +4,7 @@ require('dotenv').config();
 const SDK = require('@ocap/sdk');
 
 const { wallet } = require('../api/libs/auth');
+const itx = require('../api/libs/token');
 
 (async () => {
   const app = SDK.Wallet.fromJSON(wallet);
@@ -14,16 +15,10 @@ const { wallet } = require('../api/libs/auth');
   console.log({ totalSupply, faucetSupply });
 
   // Transfer to application
-  const [hash, address] = await SDK.createToken({
-    name: 'Playground Token',
-    description: 'Token for OCAP Playground',
-    symbol: 'PLAY',
-    unit: 'p',
-    totalSupply,
-    faucetSupply,
-    data: { type: 'json', value: { purpose: 'test' } },
+  const hash = await SDK.sendCreateTokenTx({
+    tx: { itx },
     wallet: app,
   });
 
-  console.log('token created', { hash, address });
+  console.log('token created', { hash, itx });
 })();
