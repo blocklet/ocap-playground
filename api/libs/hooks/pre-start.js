@@ -13,8 +13,10 @@ const { wallet } = require('../auth');
 const { getAccountStateOptions } = require('../util');
 const env = require('../env');
 
+const { chainId, chainHost, tokenId } = env;
+
 // Check for application account
-const ensureAccountDeclared = async chainId => {
+const ensureAccountDeclared = async () => {
   const {
     state: { txConfig },
   } = await ForgeSDK.getForgeState();
@@ -45,7 +47,16 @@ const ensureAccountDeclared = async chainId => {
   return state;
 };
 
-const ensureAccountFunded = async (chainId, chainHost) => {
+const ensureTokenCreated = async () => {
+  const { state } = await ForgeSDK.getTokenState({ address: tokenId }, { ...getAccountStateOptions, conn: chainId });
+  if (!state) {
+    throw new Error(`token ${tokenId} not found on chain`);
+  }
+
+  return state;
+};
+
+const ensureAccountFunded = async () => {
   const {
     state: { txConfig },
   } = await ForgeSDK.getForgeState();
@@ -72,7 +83,10 @@ const ensureAccountFunded = async (chainId, chainHost) => {
         await verifyAccountAsync({ chainId, chainHost, address: slave.toAddress() });
         const hash = await ForgeSDK.checkin({ wallet: slave }, { conn: chainId });
         await verifyTxAsync({ chainId, chainHost, hash });
-        await ForgeSDK.transfer({ to: wallet.address, token: 25, wallet: slave }, { conn: chainId });
+        await ForgeSDK.transfer(
+          { to: wallet.address, token: 25, memo: 'found-primary-token', wallet: slave },
+          { conn: chainId }
+        );
         console.info('Collect success', slave.toAddress());
       } catch (err) {
         console.info('Collect failed', err);
@@ -84,22 +98,63 @@ const ensureAccountFunded = async (chainId, chainHost) => {
   }
 };
 
+const ensureTokenFunded = async () => {
+  const {
+    state: { txConfig },
+  } = await ForgeSDK.getForgeState();
+  if (txConfig.poke.enabled === false) {
+    return;
+  }
+
+  const { state } = await ForgeSDK.getAccountState(
+    { address: wallet.address },
+    { ...getAccountStateOptions, conn: chainId }
+  );
+
+  // console.log('application account state', state);
+
+  const balance = await ForgeSDK.fromUnitToToken(state.tokens[tokenId] || '0', { conn: chainId });
+  console.info(`application account balance on chain ${chainId} is ${balance}`);
+  const amount = 250;
+  if (+balance < amount) {
+    const limit = amount / 25;
+    await batchPromises(5, range(1, limit + 1), async () => {
+      const slave = ForgeSDK.Wallet.fromRandom();
+      try {
+        await ForgeSDK.declare({ moniker: 'sweeper', wallet: slave }, { conn: chainId });
+        await verifyAccountAsync({ chainId, chainHost, address: slave.toAddress() });
+        const hash = await ForgeSDK.checkin({ wallet: slave, token: tokenId }, { conn: chainId });
+        await verifyTxAsync({ chainId, chainHost, hash });
+        await ForgeSDK.transfer(
+          {
+            to: wallet.address,
+            tokens: [{ address: tokenId, value: 25 }],
+            memo: 'fund-secondary-token',
+            wallet: slave,
+          },
+          { conn: chainId }
+        );
+        console.info('Collect success', slave.toAddress());
+      } catch (err) {
+        console.info('Collect failed', err);
+      }
+    });
+    console.info(`token funded with another ${amount}`);
+  } else {
+    console.info(`token balance greater than ${amount}`);
+  }
+};
+
 (async () => {
   try {
-    if (env.chainId) {
-      await ensureAccountDeclared(env.chainId);
-      await verifyAccountAsync({ chainId: env.chainId, chainHost: env.chainHost, address: wallet.address });
-      await ensureAccountFunded(env.chainId, env.chainHost);
-    }
-
-    if (env.chainId) {
-      await ensureAccountDeclared(env.chainId);
-      await verifyAccountAsync({ chainId: env.chainId, chainHost: env.chainHost, address: wallet.address });
-      await ensureAccountFunded(env.chainId, env.chainHost);
-    }
+    await ensureAccountDeclared();
+    await verifyAccountAsync({ chainId: env.chainId, chainHost: env.chainHost, address: wallet.address });
+    await ensureAccountFunded();
+    await ensureTokenCreated();
+    await ensureTokenFunded();
     process.exit(0);
   } catch (err) {
-    console.error('ocap-playground pre-start error', err);
+    console.error('ocap-playground pre-start error', err.message);
     process.exit(1);
   }
 })();

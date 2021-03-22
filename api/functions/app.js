@@ -14,10 +14,7 @@ const compression = require('compression');
 const EventServer = require('@arcblock/event-server');
 const logger = require('../libs/logger');
 
-// ------------------------------------------------------------------------------
-// Routes: due to limitations of netlify functions, we need to import routes here
-// ------------------------------------------------------------------------------
-const { walletHandlers, walletHandlersWithNoChainInfo, swapHandlers, agentHandlers } = require('../libs/auth');
+const { walletHandlers, walletHandlersWithNoChainInfo, agentHandlers } = require('../libs/auth');
 
 const netlifyPrefix = '/.netlify/functions/app';
 const isProduction = process.env.NODE_ENV === 'production' || !!process.env.BLOCKLET_APP_ID;

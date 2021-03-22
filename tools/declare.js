@@ -22,18 +22,6 @@ const app = ForgeSDK.Wallet.fromJSON(wallet);
     );
 
     console.log(`Application declared on chain ${env.chainId}`, hash);
-
-    if (env.chainId) {
-      hash = await ForgeSDK.declare(
-        {
-          moniker: 'abt_wallet_playground',
-          wallet: app,
-        },
-        { conn: env.chainId }
-      );
-      console.log(`Application declared on chain ${env.chainId}`, hash);
-    }
-
     process.exit(0);
   } catch (err) {
     console.error(err.errors);

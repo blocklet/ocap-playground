@@ -19,13 +19,9 @@ const type = WalletType({
 if (env.chainHost) {
   ForgeSDK.connect(env.chainHost, { chainId: env.chainId, name: env.chainId, default: true });
   console.log('Connected to chainHost', env.chainHost);
-  if (env.chainHost) {
-    ForgeSDK.connect(env.chainHost, { chainId: env.chainId, name: env.chainId });
-    console.log('Connected to chainHost', env.chainHost);
-  }
 }
 
-const wallet = fromSecretKey(process.env.APP_SK || process.env.BLOCKLET_APP_SK, type).toJSON();
+const wallet = fromSecretKey(process.env.BLOCKLET_APP_SK, type).toJSON();
 
 const icon = 'https://releases.arcblockio.cn/dapps/labs.png';
 const walletAuth = new WalletAuthenticator({
@@ -101,18 +97,7 @@ const agentHandlers = new AgentWalletHandlers({
   agentStorage,
 });
 
-const localFactory = new NFTFactory({
-  chainId: env.chainId,
-  chainHost: env.chainHost,
-  wallet: fromJSON(wallet),
-  issuer: {
-    name: 'ArcBlock',
-    url: 'https://www.arcblock.io',
-    logo: icon,
-  },
-});
-
-const foreignFactory = new NFTFactory({
+const factory = new NFTFactory({
   chainId: env.chainId,
   chainHost: env.chainHost,
   wallet: fromJSON(wallet),
@@ -132,8 +117,7 @@ module.exports = {
   agentHandlers,
 
   wallet,
-  localFactory,
-  foreignFactory,
+  factory,
 
   authClient: new AuthService(),
 };

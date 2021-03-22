@@ -29,15 +29,20 @@ documentation: ''
 homepage: ''
 screenshots: []
 environments:
-  - name: LOCAL_CHAIN_ID
+  - name: CHAIN_ID
     description: Please provide id of local chain
     required: true
     default: playground
     secure: false
-  - name: LOCAL_CHAIN_HOST
+  - name: CHAIN_HOST
     description: Please provide endpoint of local chain
     required: true
     default: 'http://192.168.123.236:4000'
+    secure: false
+  - name: TOKEN_ID
+    description: Please provide secondary token for the playground
+    required: true
+    default: ''
     secure: false
 scripts:
   preDeploy: npm run bundle

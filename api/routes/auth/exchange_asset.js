@@ -5,7 +5,7 @@ const { NFTType } = require('@arcblock/nft/lib/enum');
 const { toTypeInfo } = require('@arcblock/did');
 const upperFirst = require('lodash/upperFirst');
 
-const { wallet, localFactory: assetFactory } = require('../../libs/auth');
+const { wallet, factory: assetFactory } = require('../../libs/auth');
 const { ensureAsset, getTransferrableAssets, transferVCTypeToAssetType } = require('../../libs/util');
 
 const getAssets = async ({ amount = 1, type, userPk, userDid, name, desc, start, end, bg, logo, loc, svg }) => {
