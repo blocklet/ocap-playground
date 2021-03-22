@@ -2,7 +2,6 @@
 const ForgeSDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
 
-const env = require('../../libs/env');
 const { wallet, factory: assetFactory } = require('../../libs/auth');
 const { getRandomMessage, ensureAsset } = require('../../libs/util');
 
@@ -31,7 +30,7 @@ module.exports = {
   action: 'transfer_token_asset_in',
   claims: {
     signature: async () => {
-      const { state } = await ForgeSDK.getForgeState({ conn: env.chainId });
+      const { state } = await ForgeSDK.getForgeState();
 
       return {
         description: `签名该文本，你将获得 1 个测试用的 ${state.token.symbol}  和一个证书`,
@@ -63,15 +62,12 @@ module.exports = {
       }
 
       const appWallet = ForgeSDK.Wallet.fromJSON(wallet);
-      const hash = await ForgeSDK.transfer(
-        {
-          to: userDid,
-          token: 1,
-          assets: [asset.address],
-          wallet: appWallet,
-        },
-        { conn: env.chainId }
-      );
+      const hash = await ForgeSDK.transfer({
+        to: userDid,
+        token: 1,
+        assets: [asset.address],
+        wallet: appWallet,
+      });
 
       logger.info('transfer_asset_token_in.onAuth.hash', hash);
       return { hash, tx: claim.origin };

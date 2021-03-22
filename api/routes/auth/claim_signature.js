@@ -3,7 +3,6 @@ const ForgeSDK = require('@ocap/sdk');
 const Mcrypto = require('@ocap/mcrypto');
 const { toTypeInfo } = require('@arcblock/did');
 
-const env = require('../../libs/env');
 const { wallet } = require('../../libs/auth');
 const { getRandomMessage } = require('../../libs/util');
 
@@ -24,7 +23,6 @@ module.exports = {
           },
           wallet: ForgeSDK.Wallet.fromPublicKey(userPk),
         },
-        { conn: env.chainId }
       );
       const origin = ForgeSDK.Util.toBase58(encoded.buffer);
       console.log({ encoded, origin });
@@ -125,7 +123,6 @@ module.exports = {
           wallet: user,
           signature: claim.sig,
         },
-        { conn: env.chainId }
       );
 
       logger.info('signature.evil.onAuth', { claims, userDid, hash });

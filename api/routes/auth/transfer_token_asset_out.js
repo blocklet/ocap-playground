@@ -2,7 +2,6 @@
 const ForgeSDK = require('@ocap/sdk');
 const { fromAddress } = require('@ocap/wallet');
 
-const env = require('../../libs/env');
 const { wallet } = require('../../libs/auth');
 
 module.exports = {
@@ -20,7 +19,7 @@ module.exports = {
         throw new Error('You do not have any asset that can be transferred to me');
       }
 
-      const { state } = await ForgeSDK.getForgeState({ conn: env.chainId });
+      const { state } = await ForgeSDK.getForgeState();
       logger.info('transfer to:', wallet.address);
       logger.info('asset:', asset.address);
       return {

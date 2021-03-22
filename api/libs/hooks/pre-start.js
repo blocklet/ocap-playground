@@ -24,21 +24,15 @@ const ensureAccountDeclared = async () => {
     return null;
   }
 
-  const { state } = await ForgeSDK.getAccountState(
-    { address: wallet.address },
-    { ...getAccountStateOptions, conn: chainId }
-  );
+  const { state } = await ForgeSDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
   if (!state) {
     console.error('Application account not declared on chain');
 
     const app = ForgeSDK.Wallet.fromJSON(wallet);
-    const hash = await ForgeSDK.declare(
-      {
-        moniker: 'abt_wallet_playground',
-        wallet: app,
-      },
-      { conn: chainId }
-    );
+    const hash = await ForgeSDK.declare({
+      moniker: 'abt_wallet_playground',
+      wallet: app,
+    });
 
     console.log(`Application declared on chain ${chainId}`, hash);
     return { balance: 0, address: wallet.address };
@@ -48,7 +42,7 @@ const ensureAccountDeclared = async () => {
 };
 
 const ensureTokenCreated = async () => {
-  const { state } = await ForgeSDK.getTokenState({ address: tokenId }, { ...getAccountStateOptions, conn: chainId });
+  const { state } = await ForgeSDK.getTokenState({ address: tokenId }, { ...getAccountStateOptions });
   if (!state) {
     throw new Error(`token ${tokenId} not found on chain`);
   }
@@ -64,14 +58,11 @@ const ensureAccountFunded = async () => {
     return;
   }
 
-  const { state } = await ForgeSDK.getAccountState(
-    { address: wallet.address },
-    { ...getAccountStateOptions, conn: chainId }
-  );
+  const { state } = await ForgeSDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
 
   // console.log('application account state', state);
 
-  const balance = await ForgeSDK.fromUnitToToken(state.balance, { conn: chainId });
+  const balance = await ForgeSDK.fromUnitToToken(state.balance);
   console.info(`application account balance on chain ${chainId} is ${balance}`);
   const amount = 250;
   if (+balance < amount) {
@@ -79,14 +70,11 @@ const ensureAccountFunded = async () => {
     await batchPromises(5, range(1, limit + 1), async () => {
       const slave = ForgeSDK.Wallet.fromRandom();
       try {
-        await ForgeSDK.declare({ moniker: 'sweeper', wallet: slave }, { conn: chainId });
+        await ForgeSDK.declare({ moniker: 'sweeper', wallet: slave });
         await verifyAccountAsync({ chainId, chainHost, address: slave.toAddress() });
-        const hash = await ForgeSDK.checkin({ wallet: slave }, { conn: chainId });
+        const hash = await ForgeSDK.checkin({ wallet: slave });
         await verifyTxAsync({ chainId, chainHost, hash });
-        await ForgeSDK.transfer(
-          { to: wallet.address, token: 25, memo: 'found-primary-token', wallet: slave },
-          { conn: chainId }
-        );
+        await ForgeSDK.transfer({ to: wallet.address, token: 25, memo: 'found-primary-token', wallet: slave });
         console.info('Collect success', slave.toAddress());
       } catch (err) {
         console.info('Collect failed', err);
@@ -106,14 +94,11 @@ const ensureTokenFunded = async () => {
     return;
   }
 
-  const { state } = await ForgeSDK.getAccountState(
-    { address: wallet.address },
-    { ...getAccountStateOptions, conn: chainId }
-  );
+  const { state } = await ForgeSDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
 
   // console.log('application account state', state);
 
-  const balance = await ForgeSDK.fromUnitToToken(state.tokens[tokenId] || '0', { conn: chainId });
+  const balance = await ForgeSDK.fromUnitToToken(state.tokens[tokenId] || '0');
   console.info(`application account balance on chain ${chainId} is ${balance}`);
   const amount = 250;
   if (+balance < amount) {
@@ -121,19 +106,16 @@ const ensureTokenFunded = async () => {
     await batchPromises(5, range(1, limit + 1), async () => {
       const slave = ForgeSDK.Wallet.fromRandom();
       try {
-        await ForgeSDK.declare({ moniker: 'sweeper', wallet: slave }, { conn: chainId });
+        await ForgeSDK.declare({ moniker: 'sweeper', wallet: slave });
         await verifyAccountAsync({ chainId, chainHost, address: slave.toAddress() });
-        const hash = await ForgeSDK.checkin({ wallet: slave, token: tokenId }, { conn: chainId });
+        const hash = await ForgeSDK.checkin({ wallet: slave, token: tokenId });
         await verifyTxAsync({ chainId, chainHost, hash });
-        await ForgeSDK.transfer(
-          {
-            to: wallet.address,
-            tokens: [{ address: tokenId, value: 25 }],
-            memo: 'fund-secondary-token',
-            wallet: slave,
-          },
-          { conn: chainId }
-        );
+        await ForgeSDK.transfer({
+          to: wallet.address,
+          tokens: [{ address: tokenId, value: 25 }],
+          memo: 'fund-secondary-token',
+          wallet: slave,
+        });
         console.info('Collect success', slave.toAddress());
       } catch (err) {
         console.info('Collect failed', err);

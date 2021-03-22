@@ -16,8 +16,8 @@ const env = require('./env');
 const { wallet } = require('./auth');
 const badgeArray = require('./svg');
 
-const getTransferrableAssets = async (userDid, assetCount, chainId) => {
-  const { assets } = await ForgeSDK.listAssets({ ownerAddress: userDid, paging: { size: 200 } }, { conn: chainId });
+const getTransferrableAssets = async (userDid, assetCount) => {
+  const { assets } = await ForgeSDK.listAssets({ ownerAddress: userDid, paging: { size: 200 } });
   if (!assets || assets.length === 0) {
     throw new Error('You do not have any asset, use other test to earn one');
   }
@@ -47,8 +47,7 @@ const getTokenInfo = async () => {
           }
         }
       }
-    }`,
-      { conn: env.chainId }
+    }`
     ),
     ForgeSDK.getTokenState({ address: env.tokenId }),
   ]);
@@ -75,8 +74,7 @@ const getAccountBalance = async userDid => {
           }
         }
       }
-    }`,
-      { conn: env.chainId }
+    }`
     ),
   ]);
 

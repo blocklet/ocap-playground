@@ -1,6 +1,7 @@
 const logger = require('winston');
 const ForgeSDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
+
 const { wallet } = require('../../libs/auth');
 const { getTokenInfo, getRandomMessage } = require('../../libs/util');
 const env = require('../../libs/env');
@@ -19,38 +20,23 @@ const messages = {
 module.exports = {
   action: 'receive_token',
   authPrincipal: false,
-  claims: [
-    {
-      authPrincipal: async ({ extraParams: { chain } }) => ({
-        description: 'Please select the required DID',
-        chainInfo: {
-          host: chain === 'local' ? env.chainHost : env.chainHost,
-          id: chain === 'local' ? env.chainId : env.chainId,
-        },
-      }),
-    },
-    {
-      signature: async ({ extraParams: { locale, chain, amount } }) => {
-        const token = await getTokenInfo();
-        const description = {
-          en: `Sign following text to get ${amount} ${token[chain].symbol} for test`,
-          zh: `签名如下随机串，以获得测试用的 ${token[chain].symbol}`,
-        };
+  claims: {
+    signature: async ({ extraParams: { locale, chain, amount } }) => {
+      const token = await getTokenInfo();
+      const description = {
+        en: `Sign following text to get ${amount} ${token[chain].symbol} for test`,
+        zh: `签名如下随机串，以获得测试用的 ${token[chain].symbol}`,
+      };
 
-        const random = getRandomMessage();
+      const random = getRandomMessage();
 
-        return {
-          description: description[locale],
-          data: random,
-          type: 'mime:text/plain',
-          chainInfo: {
-            host: chain === 'local' ? env.chainHost : env.chainHost,
-            id: chain === 'local' ? env.chainId : env.chainId,
-          },
-        };
-      },
+      return {
+        description: description[locale],
+        data: random,
+        type: 'mime:text/plain',
+      };
     },
-  ],
+  },
 
   // eslint-disable-next-line object-curly-newline
   onAuth: async ({ userDid, userPk, claims, extraParams: { chain, locale, amount } }) => {
@@ -73,14 +59,12 @@ module.exports = {
       }
 
       const app = ForgeSDK.Wallet.fromJSON(wallet);
-      const hash = await ForgeSDK.transfer(
-        {
-          to: userDid,
-          token: amount,
-          wallet: app,
-        },
-        { conn: chain === 'local' ? env.chainId : env.chainId }
-      );
+      const hash = await ForgeSDK.transfer({
+        to: userDid,
+        token: chain === 'local' ? amount : 0,
+        tokens: chain === 'local' ? [] : [{ address: env.tokenId, value: amount }],
+        wallet: app,
+      });
       logger.info('receive_token.onAuth', hash, amount);
       return { hash };
     } catch (err) {

@@ -22,14 +22,11 @@ const type = WalletType({
   // console.log('moderator', moderator.toJSON());
 
   // Transfer to application
-  const hash = await ForgeSDK.transfer(
-    {
-      to: env.appId,
-      token: 10000,
-      wallet: moderator,
-    },
-    { conn: env.chainId }
-  );
+  const hash = await ForgeSDK.transfer({
+    to: env.appId,
+    token: 10000,
+    wallet: moderator,
+  });
 
   console.log(`application funded: ${hash}`);
 })();

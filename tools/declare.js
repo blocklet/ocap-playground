@@ -13,13 +13,10 @@ const app = ForgeSDK.Wallet.fromJSON(wallet);
   console.log(ForgeSDK.Util.toBase64(app.publicKey));
   console.log(ForgeSDK.Util.toBase64(app.secretKey));
   try {
-    let hash = await ForgeSDK.declare(
-      {
-        moniker: 'abt_wallet_playground',
-        wallet: app,
-      },
-      { conn: env.chainId }
-    );
+    const hash = await ForgeSDK.declare({
+      moniker: 'abt_wallet_playground',
+      wallet: app,
+    });
 
     console.log(`Application declared on chain ${env.chainId}`, hash);
     process.exit(0);

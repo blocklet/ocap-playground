@@ -27,14 +27,11 @@ module.exports = {
       const authorizeId = authorizer.toAddress();
 
       // Declare the application
-      const hash = await ForgeSDK.declare(
-        {
-          issuer: ownerDid,
-          moniker: 'demo_application',
-          wallet: authorizer,
-        },
-        { conn: env.chainId }
-      );
+      const hash = await ForgeSDK.declare({
+        issuer: ownerDid,
+        moniker: 'demo_application',
+        wallet: authorizer,
+      });
       logger.info('application.declare', { ownerDid, authorizeId, hash });
 
       // Sign the token

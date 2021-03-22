@@ -14,14 +14,11 @@ const env = require('../api/libs/env');
   console.log('moderator', moderator.toAddress());
 
   // Transfer to application
-  const hash = await ForgeSDK.transfer(
-    {
-      to: env.appId,
-      token: 100000000,
-      wallet: moderator,
-    },
-    { conn: env.chainId }
-  );
+  const hash = await ForgeSDK.transfer({
+    to: env.appId,
+    token: 100000000,
+    wallet: moderator,
+  });
 
   console.log(`application funded: ${hash}`);
 })();

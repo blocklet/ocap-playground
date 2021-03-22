@@ -3,7 +3,6 @@ const ForgeSDK = require('@ocap/sdk');
 const { fromAddress } = require('@ocap/wallet');
 const { wallet } = require('../../libs/auth');
 const { getTransferrableAssets } = require('../../libs/util');
-const env = require('../../libs/env');
 
 module.exports = {
   action: 'transfer_asset_out',
@@ -36,7 +35,6 @@ module.exports = {
           wallet: user,
           signature: claim.sig,
         },
-        { conn: env.chainId }
       );
 
       logger.info('transfer_asset_out.onAuth', hash);
