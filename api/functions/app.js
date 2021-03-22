@@ -97,7 +97,6 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/tra
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer_asset_in')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer_token_asset_in')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer_token_asset_out')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/consume_asset')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/acquire_asset')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/exchange_asset')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/fake_issuer_vc')));
@@ -109,9 +108,6 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/ext
 agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_profile'))); // we can reuse something here
 require('../routes/session').init(router);
 require('../routes/authorizations').init(router);
-require('../routes/orders').init(router);
-require('../routes/charge').init(router);
-require('../routes/assets').init(router);
 
 if (isProduction) {
   app.use(compression());

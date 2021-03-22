@@ -50,7 +50,6 @@
     "@arcblock/nft": "^1.7.4",
     "@arcblock/nft-template": "^1.6.0",
     "@arcblock/react-hooks": "^1.11.3",
-    "@arcblock/swap-storage-nedb": "^1.6.2",
     "@ocap/tx-util": "^1.7.4",
     "@arcblock/ux": "^1.11.3",
     "@arcblock/vc": "^1.7.4",

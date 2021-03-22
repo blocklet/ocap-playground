@@ -13,7 +13,6 @@ import { UserProvider } from './context/user';
 
 import HomePage from './pages/full';
 import ProfilePage from './pages/profile';
-import OrdersPage from './pages/orders';
 import MiniPage from './pages/index';
 
 import theme from './libs/theme';
@@ -58,7 +57,6 @@ export const App = () => (
                       <Route exact path="/" component={MiniPage} />
                       <Route exact path="/full" component={HomePage} />
                       <Route exact path="/profile" component={ProfilePage} />
-                      <Route exact path="/orders" component={OrdersPage} />
                       <Redirect to="/" />
                     </Switch>
                   </div>

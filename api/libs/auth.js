@@ -4,7 +4,6 @@ const Mcrypto = require('@ocap/mcrypto');
 const ForgeSDK = require('@ocap/sdk');
 const AuthNedbStorage = require('@arcblock/did-auth-storage-nedb');
 const AgentNedbStorage = require('@arcblock/did-agent-storage-nedb');
-const SwapNedbStorage = require('@arcblock/swap-storage-nedb');
 const { NFTFactory } = require('@arcblock/nft');
 const { fromSecretKey, fromJSON, WalletType } = require('@ocap/wallet');
 const { WalletAuthenticator, AgentAuthenticator, WalletHandlers, AgentWalletHandlers } = require('@arcblock/did-auth');
@@ -80,12 +79,6 @@ const tokenStorage = new AuthNedbStorage({
     dbOnload(err, 'auth.db');
   },
 });
-const swapStorage = new SwapNedbStorage({
-  dbPath: path.join(process.env.BLOCKLET_DATA_DIR || './', 'swap.db'),
-  onload: err => {
-    dbOnload(err, 'swap.db');
-  },
-});
 const agentStorage = new AgentNedbStorage({
   dbPath: path.join(process.env.BLOCKLET_DATA_DIR || './', 'agent.db'),
   onload: err => {
@@ -132,7 +125,6 @@ const foreignFactory = new NFTFactory({
 
 module.exports = {
   tokenStorage,
-  swapStorage,
   agentStorage,
 
   walletHandlers,
