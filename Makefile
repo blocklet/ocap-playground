@@ -5,32 +5,18 @@ VERSION=$(strip $(shell cat version))
 
 build: init
 	@echo "Building the software..."
-	@yarn link @arcblock/did-playground
-	@yarn build
-
-build-netlify: build patch-netlify
-
-patch-netlify:
-	@echo "Patching index.html for netlify"
-	@sed -i -e "s#/api/env#/.netlify/functions/app/api/env#g" build/index.html
-
-deploy-aliyun:
-	@echo "Building the software..."
-	@git pull origin master
-	@make build
-	@pm2 restart ocap-playground
-	@pm2 restart i-did-it
+	@npm run bundle
 
 init: install dep
 	@echo "Initializing the repo..."
 
 install:
 	@echo "Install software required for this repo..."
-	@npm install -g lerna yarn @abtnode/cli @babel/cli
+	@npm install -g yarn @abtnode/cli @babel/cli
 
 dep:
 	@echo "Install dependencies required for this repo..."
-	@lerna bootstrap
+	@yarn
 
 pre-build: install dep
 	@echo "Running scripts before the build..."
@@ -48,11 +34,10 @@ doc:
 
 coverage:
 	@echo "Collecting test coverage ..."
-	@lerna run coverage
 
 lint:
 	@echo "Linting the software..."
-	@lerna run lint
+	@npm run lint
 
 setenv:
 	@echo "Setup .env file..."
@@ -60,8 +45,8 @@ setenv:
 
 precommit: setenv dep lint test coverage
 
-github-action-test:
-	@sudo npm install -g lerna
+github-action-init:
+	@sudo npm install -g yarn @abtnode/cli @babel/cli
 	@make precommit
 
 clean:
@@ -69,7 +54,7 @@ clean:
 
 run:
 	@echo "Running the software..."
-	@yarn start
+	@npm run start
 
 include .makefiles/*.mk
 

@@ -33,12 +33,12 @@ environments:
   - name: CHAIN_ID
     description: Please provide id of local chain
     required: true
-    default: playground
+    default: staging
     secure: false
   - name: CHAIN_HOST
     description: Please provide endpoint of local chain
     required: true
-    default: 'http://192.168.123.236:4000'
+    default: 'https://staging.abt.abtnetwork.io'
     secure: false
   - name: TOKEN_ID
     description: Please provide secondary token for the playground
