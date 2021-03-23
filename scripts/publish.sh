@@ -3,9 +3,6 @@ set -e
 VERSION=$(cat version | awk '{$1=$1;print}')
 echo "publish version ${VERSION}"
 
-echo "bundling the blocklet..."
-npm run bundle
-
 echo "publishing to dev registry..."
 blocklet config registry ${STAGING_REGISTRY}
 blocklet publish --developer-sk ${ABTNODE_DEV_STAGING_SK}

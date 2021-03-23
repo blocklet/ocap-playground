@@ -45,7 +45,7 @@ setenv:
 
 precommit: setenv dep lint test coverage
 
-github-action-init:
+github-init:
 	@sudo npm install -g yarn @abtnode/cli @babel/cli
 	@make precommit
 
