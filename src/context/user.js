@@ -43,8 +43,7 @@ function UserProvider({ children }) {
   if (userInfo) {
     const value = {
       ...session,
-      balance: userInfo.balance,
-      token: userInfo.token,
+      ...userInfo,
       error,
     };
     return <Provider value={{ session: value }}>{children}</Provider>;

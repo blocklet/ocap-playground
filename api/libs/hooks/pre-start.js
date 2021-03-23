@@ -32,7 +32,7 @@ const ensureAccountDeclared = async () => {
     console.error('Application account not declared on chain');
 
     const hash = await SDK.declare({
-      moniker: 'abt_wallet_playground',
+      moniker: 'ocap-playground',
       wallet: app,
     });
 

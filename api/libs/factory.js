@@ -1,7 +1,13 @@
 const { fromTokenToUnit } = require('@ocap/util');
 const { toAssetAddress } = require('@arcblock/did-util');
 
-const { getFactoryProps, nodePurchaseOutput, nodeOwnerOutput, blockletPurchaseOutput } = require('./nft');
+const {
+  getFactoryProps,
+  nodePurchaseOutput,
+  nodeOwnerOutput,
+  blockletPurchaseOutput,
+  formatFactoryState,
+} = require('./nft');
 const { wallet } = require('./auth');
 const token = require('./token');
 
@@ -139,8 +145,31 @@ const blockletPurchaseFactory = createFactoryItx(
   })
 );
 
+const factories = {
+  nodePurchase: nodePurchaseFactory.address,
+  nodeOwner: nodeOwnerFactory.address,
+  blockletPurchase: blockletPurchaseFactory.address,
+};
+
+const inputs = {
+  nodePurchase: {
+    name: 'TestNode',
+    description: 'My awesome node',
+  },
+  nodeOwner: {
+    nodeId: 'TestNode',
+    nodeProvider: 'AWS',
+    nodeUrl: 'https://prod-node-01.arcblock.io/admin',
+    nodeUrlAlt: 'https://44-238-208-212.ip.abtnet.io/admin',
+  },
+  blockletPurchase: {},
+};
+
 module.exports = {
   nodePurchaseFactory,
   nodeOwnerFactory,
   blockletPurchaseFactory,
+  formatFactoryState,
+  factories,
+  inputs,
 };

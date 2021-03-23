@@ -303,6 +303,50 @@ export default function IndexPage() {
 
         <section className="section">
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
+            NFT Scenarios{' '}
+            <Typography component="small" color="textSecondary">
+              Acquire assets with token or assets
+            </Typography>
+          </Typography>
+          <div className="section__content">
+            <AuthButton
+              button="Purchase ABT Node"
+              action="acquire_asset"
+              extraParams={{ factory: 'nodePurchase' }}
+              messages={{
+                title: `Pay ${token.foreign.symbol} to Purchase`,
+                scan: 'Scan QR code to complete the purchase',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'The purchase was successful, now you can launch your node',
+              }}
+            />
+            <AuthButton
+              button="Launch ABT Node"
+              action="acquire_asset"
+              extraParams={{ factory: 'nodeOwner' }}
+              messages={{
+                title: 'Provide Purchase Receipt to Launch',
+                scan: 'Scan QR code to launch your node',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'The launch was successful, please check your wallet',
+              }}
+            />
+            <AuthButton
+              button="Purchase Blocklet"
+              action="acquire_asset"
+              extraParams={{ factory: 'blockletPurchase' }}
+              messages={{
+                title: `Pay ${token.foreign.symbol} to Purchase`,
+                scan: 'Scan QR code to complete the purchase',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'The purchase was successful, now you can install blocklet on your node',
+              }}
+            />
+          </div>
+        </section>
+
+        <section className="section">
+          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
             Custom Success Message Scenarios{' '}
             <Typography component="small" color="textSecondary">
               Custom Success Message

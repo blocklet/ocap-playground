@@ -1,69 +1,49 @@
 /* eslint-disable no-console */
 const SDK = require('@ocap/sdk');
-const { toAssetAddress } = require('@arcblock/did-util');
-const { decodeAny } = require('@ocap/message');
 const { fromAddress } = require('@ocap/wallet');
+const { preMintFromFactory } = require('@ocap/asset');
+
+const { formatFactoryState, factories, inputs } = require('../../libs/factory');
+const { wallet } = require('../../libs/auth');
+
+const app = SDK.Wallet.fromJSON(wallet);
 
 module.exports = {
   action: 'acquire_asset',
   claims: {
-    signature: async ({ userPk, userDid }) => {
-      const factoryAddress = 'zjdsHpUWuUjj41jY1P9Epno8Jvz5f5YKLMm3';
+    signature: async ({ userPk, userDid, extraParams: { factory } }) => {
+      if (!factories[factory]) {
+        throw new Error('Asset factory is not in whitelist');
+      }
 
-      const { state } = await SDK.getAssetState({ address: factoryAddress });
+      const { state } = await SDK.getFactoryState({ address: factories[factory] });
       if (!state) {
-        throw new Error('Asset factory address does not exist on chain');
+        throw new Error('Asset factory does not exist on chain');
       }
 
-      const decoded = decodeAny(state.data);
-      if (!decoded) {
-        throw new Error('Asset factory state cannot be decoded');
-      }
-
-      const factory = decoded.value;
-
-      const assetVariables = [
-        {
-          cinema: '万达影院',
-          name: '阿甘正传',
-          location: '朝阳区',
-          row: '6',
-          seat: '6',
-          datetime: new Date().toISOString(),
-        },
-      ];
-
-      const assets = assetVariables.map(x => {
-        const payload = {
-          readonly: true,
-          transferrable: factory.attributes.transferrable,
-          ttl: factory.attributes.ttl,
-          parent: factoryAddress,
-          data: {
-            type: factory.assetName,
-            value: x,
-          },
-        };
-
-        const address = toAssetAddress(payload);
-
-        return { address, data: JSON.stringify(x) };
+      const preMint = preMintFromFactory({
+        factory: formatFactoryState(state),
+        inputs: inputs[factory],
+        owner: userDid,
+        issuer: { wallet: app, name: 'ocap-playground' }, // NOTE: using moniker must be enforced to make mint work
       });
 
-      const data = {
-        from: userDid,
-        itx: {
-          to: factoryAddress,
-          specs: assets,
-        },
-        pk: userPk,
-      };
+      logger.info('preMint', { factory, preMint });
 
-      logger.info('acquire asset data:');
-      logger.info(JSON.stringify(data, null, 2));
       return {
-        type: 'AcquireAssetTx',
-        data,
+        type: 'AcquireAssetV2Tx',
+        data: {
+          // The tx must from user
+          from: userDid,
+          pk: userPk,
+          itx: {
+            factory: factories[factory],
+            address: preMint.address,
+            assets: [],
+            variables: Object.entries(preMint.variables).map(([key, value]) => ({ name: key, value })),
+            issuer: preMint.issuer,
+          },
+        },
       };
     },
   },
@@ -75,7 +55,7 @@ module.exports = {
     tx.signature = claim.sig;
 
     logger.info('acquire.auth.tx', tx);
-    const hash = await SDK.sendAcquireAssetTx({ tx, wallet: fromAddress(userDid) });
+    const hash = await SDK.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) });
     logger.info('hash:', hash);
     return { hash, tx: claim.origin };
   },
