@@ -108,7 +108,7 @@
     "build": "npm run clean && npm-run-all build:*",
     "build:client": "react-scripts build && rm -f build/**/**/*.{js,css}.map",
     "bundle": "npm run clean && npm run bundle:client && npm run bundle:server",
-    "bundle:client": "PUBLIC_URL=\"/z8iZpn7gP9WJNUonEMq7zAoCbv4fMMqX8JasV\" REACT_APP_API_PREFIX=\"\" REACT_APP_APP_NAME=\"OCAP Playground\" npm run build:client",
+    "bundle:client": "PUBLIC_URL=\"/.blocklet/proxy\" REACT_APP_API_PREFIX=\"\" REACT_APP_APP_NAME=\"OCAP Playground\" npm run build:client",
     "bundle:server": "blocklet bundle -w api/webpack.blocklet.js --create-release",
     "prepublishOnly": "npm run bundle",
     "release": "npm run clean && npm run bundle",
