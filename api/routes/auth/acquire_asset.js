@@ -42,8 +42,6 @@ module.exports = {
         }),
       };
 
-      console.log({ display });
-
       return {
         type: 'AcquireAssetV2Tx',
         display: JSON.stringify(display), // Since the asset is not minted yet, we need to tell ABT Wallet how to display it
