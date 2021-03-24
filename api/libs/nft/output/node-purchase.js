@@ -20,7 +20,7 @@ module.exports = {
       },
       display: {
         type: 'url',
-        content: 'TODO: make me work',
+        content: `${process.env.BASE_URL}/api/nft/display`,
       },
     },
     credentialStatus: {

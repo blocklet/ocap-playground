@@ -104,8 +104,11 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/con
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/issue_badge')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/issue_badge_asset')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/extra_params')));
+
 agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_profile'))); // we can reuse something here
+
 require('../routes/session').init(router);
+require('../routes/nft').init(router);
 require('../routes/authorizations').init(router);
 
 if (isProduction) {
