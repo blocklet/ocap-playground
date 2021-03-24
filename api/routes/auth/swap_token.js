@@ -7,8 +7,7 @@ const { wallet } = require('../../libs/auth');
 module.exports = {
   action: 'swap_token_v2',
   claims: {
-    // eslint-disable-next-line object-curly-newline
-    swap: async ({ userDid, userPk, extraParams: { action, rate, amount } }) => {
+    signature: async ({ userDid, userPk, extraParams: { action, rate, amount } }) => {
       if (Number(rate) <= 0) {
         throw new Error('Invalid exchange rate param for swap token action');
       }
@@ -55,7 +54,7 @@ module.exports = {
   onAuth: async ({ claims }) => {
     try {
       const claim = claims.find(x => x.type === 'signature');
-      logger.info('exchange.auth.claim', claim);
+      logger.info('swap_token.auth.claim', claim);
 
       const tx = SDK.decodeTx(claim.origin);
 
@@ -66,13 +65,13 @@ module.exports = {
         wallet: SDK.Wallet.fromJSON(wallet),
       });
 
-      logger.info('exchange tx hash:', hash);
+      logger.info('swap_token tx hash:', hash);
       return { hash, tx: claim.origin };
     } catch (err) {
-      logger.info('swap_asset.error:');
+      logger.info('swap_token.error:');
       logger.info(err);
 
-      throw new Error(`Exchange failed: ${err.message}`);
+      throw new Error(`swap_token failed: ${err.message}`);
     }
   },
 };
