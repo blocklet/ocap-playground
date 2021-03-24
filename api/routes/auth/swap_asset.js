@@ -136,12 +136,12 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
     signer: userDid,
   });
 
-  logger.info('exchange.claims.signed', tx);
+  logger.info('swap_asset.claims.signed', tx);
 
   return {
     type: 'ExchangeV2Tx',
     data: tx,
-    description: 'Exchange between assets and secondary token',
+    description: 'swap_asset between assets and secondary token',
   };
 };
 
@@ -185,7 +185,7 @@ const exchangeAsset = async claim => {
     wallet: SDK.Wallet.fromJSON(wallet),
   });
 
-  logger.info('exchange tx hash:', hash);
+  logger.info('swap_asset tx hash:', hash);
   return { hash, tx: claim.origin };
 };
 
@@ -194,6 +194,9 @@ const exchangeAsset = async claim => {
  * pt => pay type
  * ra => receive amount
  * rt => receive type
+ *
+ * action => buy/sell
+ * type =>
  */
 module.exports = {
   action: 'swap_asset_v2',
@@ -256,14 +259,14 @@ module.exports = {
         logger.info('swap_asset.generate_exchange.error:');
         logger.info(error);
 
-        throw new Error(`Exchange failed: ${error.message}`);
+        throw new Error(`swap_asset failed: ${error.message}`);
       }
     },
   },
   onAuth: async ({ claims, userDid, userPk }) => {
     try {
       const claim = claims.find(x => x.type === 'signature');
-      logger.info('exchange.auth.claim', claim);
+      logger.info('swap_asset.auth.claim', claim);
 
       if (claim.typeUrl === 'mime:text/plain') {
         const tx = await transferAsset({ claim, userDid, userPk });
@@ -276,7 +279,7 @@ module.exports = {
       logger.info('swap_asset.error:');
       logger.info(err);
 
-      throw new Error(`Exchange failed: ${err.message}`);
+      throw new Error(`swap_asset failed: ${err.message}`);
     }
   },
 };
