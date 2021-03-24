@@ -6,17 +6,6 @@ const { create } = require('../libs/nft/display');
 
 const options = { ignoreFields: ['state.context'] };
 
-const getNftName = type => {
-  const names = {
-    NodePurchaseCredential: 'ABT Node Purchase Receipt',
-    NodeOwnerCredential: 'Proof of ABT Node Ownership',
-    BlockletPurchaseCredential: 'Blocklet Purchase Receipt',
-  };
-
-  const key = Object.keys(names).find(x => type.includes(x));
-  return names[key];
-};
-
 module.exports = {
   init(app) {
     app.get('/api/nft/display', async (req, res) => {
@@ -49,8 +38,7 @@ module.exports = {
 
       res.type('svg');
       res.send(
-        create({
-          name: getNftName(vc.type),
+        create(vc, {
           owner: ownerState.address,
           issuer: issuerState.moniker,
           description: factoryState.description,

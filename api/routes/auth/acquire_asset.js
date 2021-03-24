@@ -5,6 +5,7 @@ const { preMintFromFactory } = require('@ocap/asset');
 
 const { formatFactoryState, factories, inputs } = require('../../libs/factory');
 const { wallet } = require('../../libs/auth');
+const { create } = require('../../libs/nft/display');
 
 const app = SDK.Wallet.fromJSON(wallet);
 
@@ -30,8 +31,22 @@ module.exports = {
 
       logger.info('preMint', { factory, preMint });
 
+      const vc = preMint.asset.data.value;
+      const display = {
+        type: 'svg',
+        content: create(vc, {
+          owner: userDid,
+          issuer: 'ocap-playground',
+          description: state.description,
+          date: vc.issuanceDate,
+        }),
+      };
+
+      console.log({ display });
+
       return {
         type: 'AcquireAssetV2Tx',
+        display: JSON.stringify(display), // Since the asset is not minted yet, we need to tell ABT Wallet how to display it
         data: {
           // The tx must from user
           from: userDid,

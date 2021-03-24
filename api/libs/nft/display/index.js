@@ -1,4 +1,15 @@
-const create = data => `<svg width="100%" height="100%" viewBox="0 0 374 130" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+const getNftName = ({ type }) => {
+  const names = {
+    NodePurchaseCredential: 'ABT Node Purchase Receipt',
+    NodeOwnerCredential: 'Proof of ABT Node Ownership',
+    BlockletPurchaseCredential: 'Blocklet Purchase Receipt',
+  };
+
+  const key = Object.keys(names).find(x => type.includes(x));
+  return names[key];
+};
+
+const create = (vc, data) => `<svg width="100%" height="100%" viewBox="0 0 374 130" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <rect rx="4" ry="4" width="374" height="130" stroke="none" fill="#2f3036" />
   <svg x="3" y="3" width="368" height="124" fill="none">
     <defs>
@@ -19,7 +30,7 @@ const create = data => `<svg width="100%" height="100%" viewBox="0 0 374 130" ve
     </g>
   </svg>
   <text x="187" y="20" text-anchor="middle" font-size="10" font-family="Arial,Helvetica,sans-serif" fill="#4E6AF6">
-    ${data.name}
+    ${getNftName(vc)}
   </text>
   <svg x="146" y="24" width="82" height="1">
     <defs>
