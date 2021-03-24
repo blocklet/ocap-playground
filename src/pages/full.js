@@ -6,7 +6,6 @@ import useBrowser from '@arcblock/react-hooks/lib/useBrowser';
 
 import Typography from '@material-ui/core/Typography';
 import WalletDownload from '@arcblock/ux/lib/Wallet/Download';
-import Tag from '@arcblock/ux/lib/Tag';
 import { PlaygroundAction } from '@arcblock/did-playground';
 
 import Button from '@arcblock/ux/lib/Button';
@@ -22,7 +21,6 @@ import TransferTokenAssetIn from '../components/auth/transfer_token_asset_in';
 import TransferTokenAssetOut from '../components/auth/transfer_token_asset_out';
 import getWebWalletUrl from '../libs/util';
 
-import { version } from '../../package.json';
 import { UserContext } from '../context/user';
 
 export default function IndexPage() {
@@ -35,11 +33,8 @@ export default function IndexPage() {
   return (
     <Layout title="Home">
       <Main>
-        <Typography component="h2" variant="h5" className="page-header" color="textPrimary">
-          ABT Wallet Playground<Tag type="success">V{version}</Tag>
-        </Typography>
         <Typography component="h3" variant="subtitle1" color="textSecondary">
-          {token.local.symbol} is the token on Local Chain, {token.foreign.symbol} is the token on Foreign Chain.
+          {token.local.symbol} is the primary token, {token.foreign.symbol} is the secondary token.
         </Typography>
         <section className="section">
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>

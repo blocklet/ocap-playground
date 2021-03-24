@@ -3,13 +3,11 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import Typography from '@material-ui/core/Typography';
-import Tag from '@arcblock/ux/lib/Tag';
 import { PlaygroundAction } from '@arcblock/did-playground';
 
 import { UserContext } from '../context/user';
 import Layout from '../components/layout';
 
-import { version } from '../../package.json';
 import getWebWalletUrl from '../libs/util';
 
 // 临时 demo 的页面
@@ -21,11 +19,8 @@ export default function MiniPage() {
   return (
     <Layout title="Home">
       <Main>
-        <Typography component="h2" variant="h5" className="page-header" color="textPrimary">
-          ABT Wallet Playground Mini<Tag type="success">V{version}</Tag>
-        </Typography>
         <Typography component="h3" variant="subtitle1" color="textSecondary">
-          {token.local.symbol} is the token on Local Chain, {token.foreign.symbol} is the token on Foreign Chain.
+          {token.local.symbol} is the primary token, {token.foreign.symbol} is the secondary token.
         </Typography>
         <section className="section">
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
