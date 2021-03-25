@@ -1,9 +1,13 @@
-const cloneDeep = require('lodash/cloneDeep');
-const { isValidFactory } = require('@ocap/asset');
+const { isValidFactory, formatFactoryState } = require('@ocap/asset');
+const {
+  getNodePurchaseTemplate,
+  getNodeOwnerTemplate,
+  getBlockletPurchaseTemplate,
+} = require('@arcblock/nft/lib/templates');
 
-const nodePurchaseOutput = require('./output/node-purchase');
-const nodeOwnerOutput = require('./output/node-owner');
-const blockletPurchaseOutput = require('./output/blocklet-purchase');
+const nodePurchaseOutput = getNodePurchaseTemplate(process.env.BASE_URL);
+const nodeOwnerOutput = getNodeOwnerTemplate(process.env.BASE_URL);
+const blockletPurchaseOutput = getBlockletPurchaseTemplate(process.env.BASE_URL);
 
 const getFactoryProps = ({
   name,
@@ -53,20 +57,6 @@ const getFactoryProps = ({
   }
 
   throw new Error('factory props invalid: please check input/output/hooks');
-};
-
-const formatFactoryState = state => {
-  const { address, output, data } = state;
-  const outputX = cloneDeep(output);
-
-  outputX.data.value = JSON.parse(outputX.data.value);
-  outputX.data.type = outputX.data.typeUrl;
-
-  return {
-    address,
-    output: outputX,
-    data: JSON.parse(data.value),
-  };
 };
 
 module.exports = { getFactoryProps, formatFactoryState, nodePurchaseOutput, nodeOwnerOutput, blockletPurchaseOutput };
