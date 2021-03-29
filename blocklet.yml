@@ -68,6 +68,7 @@ interfaces:
           ignoreUrls:
             - /api/did/**
             - /api/agent/**
+            - /api/nft/**
 timeout:
   start: 15
 requirements:
