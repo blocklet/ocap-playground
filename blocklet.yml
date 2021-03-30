@@ -51,7 +51,6 @@ environments:
     default: ''
     secure: false
 scripts:
-  preDeploy: npm run bundle
   preStart: node api/libs/hooks/pre-start.js
   dev: npm run start
 specVersion: 1.0.1
