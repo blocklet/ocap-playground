@@ -215,7 +215,7 @@ export default function IndexPage() {
               title="Exchange Currency"
               className="action"
               buttonVariant="contained"
-              buttonText={`Buy 1 ${token.foreign.symbol} with 5 ${token.local.symbol}`}
+              buttonText={`Buy 1 ${token.local.symbol} with 5 ${token.foreign.symbol}`}
               exchangeRate={5}
               amount={1}
               webWalletUrl={webWalletUrl}
@@ -225,7 +225,7 @@ export default function IndexPage() {
               title="Exchange Currency"
               className="action"
               buttonVariant="contained"
-              buttonText={`Sell 1 ${token.foreign.symbol} for 5 ${token.local.symbol}`}
+              buttonText={`Sell 1 ${token.local.symbol} for 5 ${token.foreign.symbol}`}
               exchangeRate={5}
               amount={1}
               webWalletUrl={webWalletUrl}
