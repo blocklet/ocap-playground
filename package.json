@@ -105,7 +105,7 @@
     "start:client": "PUBLIC_URL=\"\" react-scripts start",
     "start:server": "nodemon api/index.js -w api",
     "build": "npm run clean && npm-run-all build:*",
-    "build:client": "react-scripts build && rm -f build/**/**/*.{js,css}.map",
+    "build:client": "react-scripts build && rm -f build/static/**/*.map",
     "bundle": "npm run clean && npm run bundle:client && npm run bundle:server",
     "bundle:client": "PUBLIC_URL=\"/.blocklet/proxy\" REACT_APP_API_PREFIX=\"\" REACT_APP_APP_NAME=\"OCAP Playground\" npm run build:client",
     "bundle:server": "blocklet bundle --zip --create-release",

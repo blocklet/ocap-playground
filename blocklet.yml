@@ -30,11 +30,6 @@ documentation: ''
 homepage: ''
 screenshots: []
 environments:
-  - name: CHAIN_ID
-    description: Please provide id of local chain
-    required: true
-    default: ''
-    secure: false
   - name: CHAIN_HOST
     description: Please provide endpoint of local chain
     required: true
@@ -45,7 +40,7 @@ environments:
     required: true
     default: z35n3kwEXMakjzfaf24DLd67dTJRByTf8y1FN
     secure: false
-  - name: BASE_URL
+  - name: SERVER_URL
     description: Please provide base url for the playground
     required: true
     default: ''

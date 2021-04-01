@@ -29,7 +29,7 @@ module.exports = {
       const tokens = [
         {
           address: env.tokenId,
-          value: fromTokenToUnit(chain === 'local' ? amount : 0, token[chain].decimal),
+          value: fromTokenToUnit(chain === 'local' ? 0 : amount, token[chain].decimal).toString(),
         },
       ];
 

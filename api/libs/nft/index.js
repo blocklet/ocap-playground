@@ -5,9 +5,9 @@ const {
   getBlockletPurchaseTemplate,
 } = require('@arcblock/nft/lib/templates');
 
-const nodePurchaseOutput = getNodePurchaseTemplate(process.env.BASE_URL);
-const nodeOwnerOutput = getNodeOwnerTemplate(process.env.BASE_URL);
-const blockletPurchaseOutput = getBlockletPurchaseTemplate(process.env.BASE_URL);
+const nodePurchaseOutput = getNodePurchaseTemplate(process.env.SERVER_URL);
+const nodeOwnerOutput = getNodeOwnerTemplate(process.env.SERVER_URL);
+const blockletPurchaseOutput = getBlockletPurchaseTemplate(process.env.SERVER_URL);
 
 const getFactoryProps = ({
   name,
