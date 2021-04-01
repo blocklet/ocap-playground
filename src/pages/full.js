@@ -316,17 +316,6 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Launch ABT Node"
-              action="acquire_asset"
-              extraParams={{ factory: 'nodeOwner' }}
-              messages={{
-                title: 'Provide Purchase Receipt to Launch',
-                scan: 'Scan QR code to launch your node',
-                confirm: 'Confirm on your ABT Wallet',
-                success: 'The launch was successful, please check your wallet',
-              }}
-            />
-            <AuthButton
               button="Purchase Blocklet"
               action="acquire_asset"
               extraParams={{ factory: 'blockletPurchase' }}
