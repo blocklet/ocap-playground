@@ -92,6 +92,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/con
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/issue_badge')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/issue_badge_asset')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/extra_params')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/delegate')));
 
 agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_profile'))); // we can reuse something here
 

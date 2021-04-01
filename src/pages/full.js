@@ -342,6 +342,50 @@ export default function IndexPage() {
 
         <section className="section">
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
+            Delegation Scenarios{' '}
+            <Typography component="small" color="textSecondary">
+              Wallet should use delegation to complete payment if current balance is not enough
+            </Typography>
+          </Typography>
+          <div className="section__content">
+            <AuthButton
+              button="Acquire Asset"
+              action="delegate"
+              extraParams={{ type: 'AcquireAssetV2Tx' }}
+              messages={{
+                title: `Pay ${token.foreign.symbol} to Purchase`,
+                scan: 'Scan QR code to complete the purchase',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'The purchase was successful, now you can install blocklet on your node',
+              }}
+            />
+            <AuthButton
+              button="Transfer"
+              action="delegate"
+              extraParams={{ type: 'TransferV2Tx' }}
+              messages={{
+                title: `Pay ${token.foreign.symbol}`,
+                scan: 'Scan QR code to complete the transfer',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'Payment successful',
+              }}
+            />
+            <AuthButton
+              button="Exchange"
+              action="delegate"
+              extraParams={{ type: 'ExchangeV2Tx' }}
+              messages={{
+                title: `Exchange ${token.foreign.symbol} for ${token.local.symbol}`,
+                scan: 'Scan QR code to complete the exchange',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'Exchange successful',
+              }}
+            />
+          </div>
+        </section>
+
+        <section className="section">
+          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
             Custom Success Message Scenarios{' '}
             <Typography component="small" color="textSecondary">
               Custom Success Message
