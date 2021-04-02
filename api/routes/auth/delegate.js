@@ -154,10 +154,12 @@ module.exports = {
     // 3. ensure that delegator is set in response claim
     const claim = claims.find(x => x.type === 'signature');
     logger.info('acquire.auth.claim', claim);
-    if (claim.delegator) {
-      throw new Error('Delegator must be set to send this tx');
+    if (!claim.delegator) {
+      throw new Error('claim.delegator must be set to send this tx');
     }
-
+    if (!claim.from) {
+      throw new Error('claim.from must be set to send this tx');
+    }
 
     const tx = SDK.decodeTx(claim.origin);
     logger.info('acquire.auth.tx', tx);
