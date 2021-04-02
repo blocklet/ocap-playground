@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.5.9
+version: 0.5.10
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -71,7 +71,6 @@ requirements:
   cpu: '*'
 did: z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM
 children: []
-nftFactory: ''
 charging:
   price: 0
   tokens: []

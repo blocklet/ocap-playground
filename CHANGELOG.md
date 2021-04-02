@@ -1,3 +1,7 @@
+## 0.5.10 (April 02, 2021)
+
+fix: delegated aut process
+
 ## 0.5.9 (April 01, 2021)
 
 
