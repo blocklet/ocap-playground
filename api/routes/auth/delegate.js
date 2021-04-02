@@ -165,6 +165,7 @@ module.exports = {
     if (type === 'AcquireAssetV2Tx') {
       tx.signature = claim.sig;
       tx.delegator = claim.delegator;
+      tx.from = claim.from;
       const hash = await SDK.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) });
       return { hash, tx: claim.origin };
     }
@@ -172,13 +173,15 @@ module.exports = {
     if (type === 'TransferV2Tx') {
       tx.signature = claim.sig;
       tx.delegator = claim.delegator;
+      tx.from = claim.from;
       const hash = await SDK.sendTransferV2Tx({ tx, wallet: fromAddress(userDid) });
       return { hash, tx: claim.origin };
     }
 
     if (type === 'ExchangeV2Tx') {
       tx.signaturesList[0].signature = claim.sig;
-      tx.signaturesList[0].signer = claim.delegator; // NOTE: this is weird
+      tx.signaturesList[0].signer = claim.from;
+      tx.signaturesList[0].delegator = claim.delegator;
       const hash = await SDK.sendExchangeV2Tx({ tx, wallet: fromAddress(userDid) });
       return { hash, tx: claim.origin };
     }
