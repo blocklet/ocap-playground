@@ -5,7 +5,7 @@ const { createStatusList } = require('@arcblock/vc');
 const { isValid } = require('@arcblock/did');
 
 const { create } = require('../libs/nft/display');
-const { wallet } = require('../libs/env');
+const { wallet } = require('../libs/auth');
 
 const options = { ignoreFields: ['state.context'] };
 
@@ -121,14 +121,26 @@ module.exports = {
         id: vc.id,
         description: `Status of ${type}`,
         verifiableCredential: createStatusList({
-          issuer: fromJSON(wallet),
+          issuer: { wallet: fromJSON(wallet), name: 'ocap-playground' },
           statusList: list[type],
         }),
       });
     });
 
     app.get('/blocklet/:did', ensureVc, async (req, res) => {
-      res.jsonp(req.vc);
+      const messages = {
+        zh: `你正在查看 Blocklet 详情页：${req.query.assetId}`,
+        en: `You are viewing blocklet detail：${req.query.assetId}`,
+      };
+      res.jsonp({ message: messages[req.query.locale || 'en'] });
+    });
+
+    app.get('/instance/dashboard', ensureVc, async (req, res) => {
+      const messages = {
+        zh: `你正在查看节点控制台：${req.query.assetId}`,
+        en: `You are viewing node dashboard：${req.query.assetId}`,
+      };
+      res.jsonp({ message: messages[req.query.locale || 'en'] });
     });
   },
 };

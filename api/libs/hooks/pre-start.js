@@ -100,8 +100,9 @@ const ensureTokenFunded = async () => {
   }
 
   const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
-  const balance = await SDK.fromUnitToToken(state.tokens[tokenId] || '0');
-  console.info(`application account balance on chain ${chainId} is ${balance}`);
+  const t = state.tokens.find(x => x.key === tokenId);
+  const balance = await SDK.fromUnitToToken(t ? t.value : '0');
+  console.info(`application account token balance on chain ${chainId} is ${balance}`);
   const amount = 250;
   if (+balance < amount) {
     const limit = amount / 25;

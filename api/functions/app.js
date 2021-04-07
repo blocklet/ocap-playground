@@ -9,6 +9,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const fallback = require('express-history-api-fallback');
 const compression = require('compression');
+const displayRoutes = require('express-routemap');
+
 const logger = require('../libs/logger');
 
 const { walletHandlers, walletHandlersWithNoChainInfo, agentHandlers } = require('../libs/auth');
@@ -104,15 +106,13 @@ require('../routes/authorizations').init(router);
 if (isProduction) {
   app.use(compression());
   app.use(router);
-  if (process.env.BLOCKLET_DID) {
-    app.use(`/${process.env.BLOCKLET_DID}`, router);
+
+  if (process.env.PRINT_ROUTES) {
+    displayRoutes(app);
   }
 
   const staticDir = path.resolve(__dirname, '../../', 'build');
   app.use(express.static(staticDir, { maxAge: '365d', index: false }));
-  if (process.env.BLOCKLET_DID) {
-    app.use(`/${process.env.BLOCKLET_DID}`, express.static(staticDir, { maxAge: '365d', index: false }));
-  }
   app.use(fallback('index.html', { root: staticDir }));
 
   app.use((req, res) => {

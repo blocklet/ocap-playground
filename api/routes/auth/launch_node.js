@@ -57,5 +57,7 @@ module.exports = {
 
     const hash = await SDK.mintAsset({ itx, wallet: app });
     logger.info('minted', hash);
+
+    return { hash };
   },
 };

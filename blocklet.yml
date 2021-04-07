@@ -63,6 +63,8 @@ interfaces:
             - /api/did/**
             - /api/agent/**
             - /api/nft/**
+            - /blocklet/**
+            - /instance/**
 timeout:
   start: 15
 requirements:
