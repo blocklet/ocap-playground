@@ -64,17 +64,49 @@ module.exports = {
       const { vc } = req;
 
       const list = {
+        NodePurchaseCredential: [
+          {
+            type: 'boolean',
+            value: 'consumed',
+            reason: 'A node already launched for this NFT',
+            translations: {
+              label: {
+                zh: '使用状态',
+                en: 'Consume Status',
+              },
+              value: {
+                zh: '已使用',
+                en: 'Launched',
+              },
+            },
+          },
+        ],
         NodeOwnershipCredential: [
           {
-            status: 'running',
+            type: 'boolean',
+            value: 'valid',
+            reason: 'This credential is not expired',
+            translations: {
+              label: {
+                zh: 'NFT 状态',
+                en: 'Credential Status',
+              },
+              value: {
+                zh: '有效',
+                en: 'Valid',
+              },
+            },
+          },
+          {
             type: 'text',
+            value: 'running',
             reason: 'ABT Node is running',
             translations: {
               label: {
                 zh: '节点状态',
                 en: 'Node Status',
               },
-              status: {
+              value: {
                 zh: '运行中',
                 en: 'Running',
               },
