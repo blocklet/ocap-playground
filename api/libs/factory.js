@@ -54,16 +54,7 @@ const nodePurchaseFactory = createFactoryItx(
     value: '0',
     assets: [],
     tokens: [{ address: token.address, value: toBNStr(5) }],
-    variables: [
-      {
-        name: 'name',
-        required: true,
-      },
-      {
-        name: 'description',
-        required: true,
-      },
-    ],
+    variables: [],
     output: nodePurchaseOutput,
     data: {
       type: 'json',
@@ -93,14 +84,6 @@ const nodeOwnerFactory = createFactoryItx(
       },
       {
         name: 'nodeProvider',
-        required: true,
-      },
-      {
-        name: 'nodeUrl',
-        required: true,
-      },
-      {
-        name: 'nodeUrlAlt',
         required: true,
       },
     ],
@@ -153,14 +136,12 @@ const factories = {
 
 const inputs = {
   nodePurchase: {
-    name: 'TestNode',
-    description: 'My awesome node',
+    // name: 'TestNode',
+    // description: 'My awesome node',
   },
   nodeOwner: {
-    nodeId: 'TestNode',
+    nodeId: 'zNKpGKR2BY6CQzPhTwGd8QqLXdunzsQh9e37',
     nodeProvider: 'AWS',
-    nodeUrl: 'https://prod-node-01.arcblock.io/admin',
-    nodeUrlAlt: 'https://44-238-208-212.ip.abtnet.io/admin',
   },
   blockletPurchase: {},
 };

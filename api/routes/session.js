@@ -24,11 +24,6 @@ module.exports = {
       }
     });
 
-    app.post('/api/logout', (req, res) => {
-      req.user = null;
-      res.json({ user: null });
-    });
-
     app.get('/api/env', (req, res) => {
       res.type('js');
       res.send(`window.env = ${JSON.stringify(env, null, 2)}`);
