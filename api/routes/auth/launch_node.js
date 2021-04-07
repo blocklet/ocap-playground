@@ -7,7 +7,7 @@ const { formatFactoryState, factories, inputs } = require('../../libs/factory');
 const { wallet } = require('../../libs/auth');
 
 module.exports = {
-  action: 'launch-node',
+  action: 'launch-instance',
   claims: {
     verifiableCredential: () => ({
       description: 'Please provide your node purchase NFT',

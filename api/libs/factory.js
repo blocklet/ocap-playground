@@ -136,8 +136,8 @@ const factories = {
 
 const inputs = {
   nodePurchase: {
-    name: 'TestNode',
-    description: 'My awesome node',
+    // name: 'TestNode',
+    // description: 'My awesome node',
   },
   nodeOwner: {
     nodeId: 'zNKpGKR2BY6CQzPhTwGd8QqLXdunzsQh9e37',
