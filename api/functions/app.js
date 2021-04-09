@@ -15,7 +15,7 @@ const logger = require('../libs/logger');
 
 const { walletHandlers, walletHandlersWithNoChainInfo, agentHandlers } = require('../libs/auth');
 
-const isProduction = process.env.NODE_ENV !== 'development';
+const isDev = process.env.NODE_ENV === 'development';
 
 // Create and config express application
 
@@ -41,7 +41,7 @@ app.use(
       'ms',
     ].join(' ');
 
-    if (isProduction) {
+    if (!isDev) {
       // Log only in AWS context to get back function logs
       console.log(log);
     }
@@ -104,7 +104,9 @@ require('../routes/session').init(router);
 require('../routes/nft').init(router);
 require('../routes/authorizations').init(router);
 
-if (isProduction) {
+if (isDev) {
+  app.use(router);
+} else {
   app.use(compression());
   app.use(router);
 
@@ -125,8 +127,6 @@ if (isProduction) {
     console.error(err.stack);
     res.status(500).send('Something broke!');
   });
-} else {
-  app.use(router);
 }
 
 exports.server = server;
