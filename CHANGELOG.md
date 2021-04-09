@@ -1,3 +1,8 @@
+## 0.5.17 (April 09, 2021)
+
+- feat: support nextWorkflow in did-auth
+- [skip ci] Update README.md
+
 ## 0.5.16 (April 09, 2021)
 
 - fix: launch node test case
