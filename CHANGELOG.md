@@ -1,3 +1,8 @@
+## 0.5.19 (April 09, 2021)
+
+- fix: remove hooks from nft factory
+- [skip ci] Update README.md
+
 ## 0.5.18 (April 09, 2021)
 
 - fix: server port in production
