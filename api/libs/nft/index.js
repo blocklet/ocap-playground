@@ -43,13 +43,7 @@ const getFactoryProps = ({
       data: output,
     },
     data,
-    hooks: (Array.isArray(hooks) ? hooks : []).concat([
-      {
-        name: 'postMint',
-        type: 'url',
-        hook: 'http://launcher.arcblock.io/api/purchases',
-      },
-    ]),
+    hooks: (Array.isArray(hooks) ? hooks : []),
   };
 
   if (isValidFactory(props)) {
