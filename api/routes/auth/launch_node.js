@@ -55,7 +55,7 @@ module.exports = {
       owner: userDid,
     };
 
-    const hash = await SDK.mintAsset({ itx, wallet: app });
+    const hash = await SDK.sendMintAssetTx({ tx: { itx }, wallet: app });
     logger.info('minted', hash);
 
     return { hash };
