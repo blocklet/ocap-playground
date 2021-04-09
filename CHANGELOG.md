@@ -1,3 +1,7 @@
+## 0.5.16 (April 09, 2021)
+
+- fix: launch node test case
+
 ## 0.5.15 (April 08, 2021)
 
 - [skip ci] Update README.md
