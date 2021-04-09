@@ -15,7 +15,7 @@ const logger = require('../libs/logger');
 
 const { walletHandlers, walletHandlersWithNoChainInfo, agentHandlers } = require('../libs/auth');
 
-const isProduction = process.env.NODE_ENV === 'production' || !!process.env.BLOCKLET_APP_ID;
+const isProduction = process.env.NODE_ENV !== 'development';
 
 // Create and config express application
 
@@ -78,6 +78,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/cla
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_overwrite')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_multiple')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_multiple_step')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_multiple_workflow')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/error')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/timeout')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer_asset_out')));

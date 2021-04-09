@@ -550,6 +550,16 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button="Multiple Workflow"
+              action="claim_multiple_workflow"
+              messages={{
+                title: 'Multiple Workflow',
+                scan: 'Scan QR code to start a workflow that redirect to another',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'You should not see this',
+              }}
+            />
+            <AuthButton
               button="Extra Params"
               action="extra_params"
               extraParams={{
