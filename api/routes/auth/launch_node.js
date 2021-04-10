@@ -17,7 +17,7 @@ module.exports = {
     }),
   },
 
-  onAuth: async ({ userDid, claims, challenge }) => {
+  onAuth: async ({ userDid, claims, challenge, extraParams: { assetId } }) => {
     const presentation = JSON.parse(claims.find(x => x.type === 'verifiableCredential').presentation);
     if (challenge !== presentation.challenge) {
       throw Error('Verifiable credential presentation does not have correct challenge');
@@ -49,7 +49,7 @@ module.exports = {
     const itx = {
       factory: factories.nodeOwner,
       address: preMint.address,
-      assets: [],
+      assets: [assetId],
       variables: Object.entries(preMint.variables).map(([key, value]) => ({ name: key, value })),
       issuer: preMint.issuer,
       owner: userDid,
