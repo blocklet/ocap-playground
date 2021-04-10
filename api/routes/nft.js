@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 const SDK = require('@ocap/sdk');
 const { fromJSON } = require('@ocap/wallet');
-const { createStatusList } = require('@arcblock/vc');
+const { createCredentialList } = require('@arcblock/vc');
 const { isValid } = require('@arcblock/did');
 
 const { create } = require('../libs/nft/display');
@@ -61,13 +61,13 @@ module.exports = {
     });
 
     app.get('/api/nft/status', ensureVc, async (req, res) => {
-      const { vc } = req;
+      const { vc, asset } = req;
 
-      const list = {
+      const status = {
         NodePurchaseCredential: [
           {
             type: 'boolean',
-            value: 'consumed',
+            value: asset.consumedTime ? 'consumed' : 'not-consumed',
             reason: 'A node already launched for this NFT',
             translations: {
               label: {
@@ -75,8 +75,8 @@ module.exports = {
                 en: 'Consume Status',
               },
               value: {
-                zh: '已使用',
-                en: 'Launched',
+                zh: asset.consumedTime ? '已使用' : '未使用',
+                en: asset.consumedTime ? 'Launched' : 'Node Not Launched',
               },
             },
           },
@@ -120,9 +120,9 @@ module.exports = {
       res.jsonp({
         id: vc.id,
         description: `Status of ${type}`,
-        verifiableCredential: createStatusList({
+        verifiableCredential: createCredentialList({
           issuer: { wallet: fromJSON(wallet), name: 'ocap-playground' },
-          statusList: list[type],
+          claims: status[type],
         }),
       });
     });
