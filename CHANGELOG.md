@@ -1,3 +1,8 @@
+## 0.5.21 (April 11, 2021)
+
+- chore: bump ocap sdk dependency version
+- [skip ci] Update README.md
+
 ## 0.5.20 (April 10, 2021)
 
 - feat: add nft action list endpoints
