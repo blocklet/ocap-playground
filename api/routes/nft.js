@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable consistent-return */
 const SDK = require('@ocap/sdk');
 const { fromJSON } = require('@ocap/wallet');
@@ -6,6 +7,7 @@ const { isValid } = require('@arcblock/did');
 
 const { create } = require('../libs/nft/display');
 const { wallet } = require('../libs/auth');
+const env = require('../libs/env');
 
 const options = { ignoreFields: ['state.context'] };
 
@@ -127,7 +129,63 @@ module.exports = {
       });
     });
 
-    app.get('/blocklet/:did', ensureVc, async (req, res) => {
+    app.get('/api/nft/actions', ensureVc, async (req, res) => {
+      const { vc, asset } = req;
+
+      const actions = {
+        NodePurchaseCredential: asset.consumedTime
+          ? []
+          : [
+              {
+                id: `${env.serverUrl}/api/did/launch-instance/token`,
+                type: 'api',
+                name: 'launch-node',
+                scope: 'private',
+                translations: {
+                  zh: '启动节点',
+                  en: 'Launch Node',
+                },
+              },
+            ],
+        NodeOwnershipCredential: [
+          {
+            id: `${env.serverUrl}/instance/dashboard`,
+            type: 'navigate',
+            name: 'manage-node',
+            scope: 'private',
+            translations: {
+              zh: '管理节点',
+              en: 'Manage Node',
+            },
+          },
+        ],
+        BlockletPurchaseCredential: [
+          {
+            id: `${env.serverUrl}/blocklet/detail`,
+            type: 'navigate',
+            name: 'view-blocklet',
+            scope: 'public',
+            translations: {
+              zh: '查看 Blocklet',
+              en: 'View Blocklet',
+            },
+          },
+        ],
+      };
+
+      const type = vc.type.pop();
+
+      res.jsonp({
+        id: vc.id,
+        description: `Actions for ${type}`,
+        verifiableCredential: createCredentialList({
+          issuer: { wallet: fromJSON(wallet), name: 'ocap-playground' },
+          claims: actions[type],
+        }),
+      });
+    });
+
+    app.get('/blocklet/detail', ensureVc, async (req, res) => {
       const messages = {
         zh: `你正在查看 Blocklet 详情页：${req.query.assetId}`,
         en: `You are viewing blocklet detail：${req.query.assetId}`,

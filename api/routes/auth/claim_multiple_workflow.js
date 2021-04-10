@@ -1,4 +1,5 @@
 const axios = require('axios');
+const env = require('../../libs/env');
 
 module.exports = {
   action: 'claim_multiple_workflow',
@@ -11,7 +12,7 @@ module.exports = {
 
   onAuth: async ({ extraParams: { locale } }) => {
     const { data } = await axios.get(
-      `${process.env.SERVER_URL}/api/did/receive_token/token?locale=${locale}&chain=local&amount=random`
+      `${env.serverUrl}/api/did/receive_token/token?locale=${locale}&chain=local&amount=random`
     );
     return { nextWorkflow: data.url };
   },
