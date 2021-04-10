@@ -1,3 +1,10 @@
+## 0.5.20 (April 10, 2021)
+
+- feat: add nft action list endpoints
+- chore: bump ocap sdk dependency version
+- feat: dynamic status list
+- fix: should burn nft when launch node
+
 ## 0.5.19 (April 09, 2021)
 
 - fix: remove hooks from nft factory
