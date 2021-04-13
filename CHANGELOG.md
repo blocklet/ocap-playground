@@ -1,3 +1,7 @@
+## 0.6.1 (April 13, 2021)
+
+- fix: boolean and switch type in nft status
+
 ## 0.6.0 (April 13, 2021)
 
 - feat: new nft endpoint
