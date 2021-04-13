@@ -1,13 +1,10 @@
 /* eslint-disable indent */
 /* eslint-disable consistent-return */
 const SDK = require('@ocap/sdk');
-const { fromJSON } = require('@ocap/wallet');
-const { createCredentialList } = require('@arcblock/vc');
 const { isValid } = require('@arcblock/did');
 
 const { create } = require('../libs/nft/display');
-const { wallet } = require('../libs/auth');
-const env = require('../libs/env');
+const { getCredentialList } = require('../libs/nft');
 
 const options = { ignoreFields: ['state.context'] };
 
@@ -64,125 +61,7 @@ module.exports = {
 
     app.get('/api/nft/status', ensureVc, async (req, res) => {
       const { vc, asset } = req;
-
-      const status = {
-        NodePurchaseCredential: [
-          {
-            type: 'boolean',
-            value: asset.consumedTime ? 'consumed' : 'not-consumed',
-            reason: 'A node already launched for this NFT',
-            translations: {
-              label: {
-                zh: '使用状态',
-                en: 'Consume Status',
-              },
-              value: {
-                zh: asset.consumedTime ? '已使用' : '未使用',
-                en: asset.consumedTime ? 'Launched' : 'Node Not Launched',
-              },
-            },
-          },
-        ],
-        NodeOwnershipCredential: [
-          {
-            type: 'boolean',
-            value: 'valid',
-            reason: 'This credential is not expired',
-            translations: {
-              label: {
-                zh: 'NFT 状态',
-                en: 'Credential Status',
-              },
-              value: {
-                zh: '有效',
-                en: 'Valid',
-              },
-            },
-          },
-          {
-            type: 'text',
-            value: 'running',
-            reason: 'ABT Node is running',
-            translations: {
-              label: {
-                zh: '节点状态',
-                en: 'Node Status',
-              },
-              value: {
-                zh: '运行中',
-                en: 'Running',
-              },
-            },
-          },
-        ],
-      };
-
-      const type = vc.type.pop();
-
-      res.jsonp({
-        id: vc.id,
-        description: `Status of ${type}`,
-        verifiableCredential: createCredentialList({
-          issuer: { wallet: fromJSON(wallet), name: 'ocap-playground' },
-          claims: status[type],
-        }),
-      });
-    });
-
-    app.get('/api/nft/actions', ensureVc, async (req, res) => {
-      const { vc, asset } = req;
-
-      const actions = {
-        NodePurchaseCredential: asset.consumedTime
-          ? []
-          : [
-              {
-                id: `${env.serverUrl}/api/did/launch-instance/token`,
-                type: 'api',
-                name: 'launch-node',
-                scope: 'private',
-                translations: {
-                  zh: '启动节点',
-                  en: 'Launch Node',
-                },
-              },
-            ],
-        NodeOwnershipCredential: [
-          {
-            id: `${env.serverUrl}/instance/dashboard`,
-            type: 'navigate',
-            name: 'manage-node',
-            scope: 'private',
-            translations: {
-              zh: '管理节点',
-              en: 'Manage Node',
-            },
-          },
-        ],
-        BlockletPurchaseCredential: [
-          {
-            id: `${env.serverUrl}/blocklet/detail`,
-            type: 'navigate',
-            name: 'view-blocklet',
-            scope: 'public',
-            translations: {
-              zh: '查看 Blocklet',
-              en: 'View Blocklet',
-            },
-          },
-        ],
-      };
-
-      const type = vc.type.pop();
-
-      res.jsonp({
-        id: vc.id,
-        description: `Actions for ${type}`,
-        verifiableCredential: createCredentialList({
-          issuer: { wallet: fromJSON(wallet), name: 'ocap-playground' },
-          claims: actions[type],
-        }),
-      });
+      res.jsonp(getCredentialList(asset, vc, req.query.locale || 'en'));
     });
 
     app.get('/blocklet/detail', ensureVc, async (req, res) => {

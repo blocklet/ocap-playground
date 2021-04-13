@@ -5,6 +5,7 @@ const { preMintFromFactory } = require('@ocap/asset');
 
 const { formatFactoryState, factories, inputs } = require('../../libs/factory');
 const { wallet } = require('../../libs/auth');
+const { getCredentialList } = require('../../libs/nft');
 
 module.exports = {
   action: 'launch-instance',
@@ -17,7 +18,7 @@ module.exports = {
     }),
   },
 
-  onAuth: async ({ userDid, claims, challenge, extraParams: { assetId } }) => {
+  onAuth: async ({ userDid, claims, challenge, extraParams: { assetId, locale } }) => {
     const presentation = JSON.parse(claims.find(x => x.type === 'verifiableCredential').presentation);
     if (challenge !== presentation.challenge) {
       throw Error('Verifiable credential presentation does not have correct challenge');
@@ -57,6 +58,24 @@ module.exports = {
 
     const hash = await SDK.sendMintAssetTx({ tx: { itx }, wallet: app });
     logger.info('minted', hash);
+
+    try {
+      const { state: asset } = await SDK.getAssetState({ address: preMint.address }, { ignoreFields: ['context'] });
+      if (asset && asset.data && asset.data.typeUrl === 'vc') {
+        const minted = JSON.parse(asset.data.value);
+        logger.error('launch.auth.vc', minted);
+        return {
+          disposition: 'attachment',
+          type: 'VerifiableCredential',
+          data: vc,
+          tag: preMint.address,
+          assetId: preMint.address,
+          ...getCredentialList(asset, vc, locale),
+        };
+      }
+    } catch (err) {
+      logger.error('launch.auth.asset.error', err);
+    }
 
     return { hash };
   },

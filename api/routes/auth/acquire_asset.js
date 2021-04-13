@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const SDK = require('@ocap/sdk');
+const { decodeAny } = require('@ocap/message');
 const { fromAddress } = require('@ocap/wallet');
 const { preMintFromFactory } = require('@ocap/asset');
 
@@ -70,6 +71,28 @@ module.exports = {
     logger.info('acquire.auth.tx', tx);
     const hash = await SDK.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) });
     logger.info('hash:', hash);
+
+    // return the nft(vc) if exists
+    try {
+      const { address } = decodeAny(tx.itx).value;
+      const { state } = await SDK.getAssetState({ address }, { ignoreFields: ['context'] });
+      if (state && state.data && state.data.typeUrl === 'vc') {
+        const vc = JSON.parse(state.data.value);
+        logger.error('acquire.auth.vc', vc);
+        return {
+          disposition: 'attachment',
+          type: 'VerifiableCredential',
+          data: vc,
+          tag: address,
+          assetId: address,
+          hash,
+          tx: claim.origin,
+        };
+      }
+    } catch (err) {
+      logger.error('acquire.auth.asset.error', err);
+    }
+
     return { hash, tx: claim.origin };
   },
 };
