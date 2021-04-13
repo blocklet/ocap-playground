@@ -112,16 +112,18 @@ const getCredentialList = (asset, vc, locale) => {
         name: 'consume-status',
         reason: 'A node already launched for this NFT',
         label: translations.purchase.label[locale],
-        value: translations.purchase.value[locale],
+        text: translations.purchase.value[locale],
+        value: !!asset.consumedTime,
       },
     ],
     NodeOwnershipCredential: [
       {
-        type: 'boolean',
+        type: 'switch',
         name: 'validity',
         reason: 'This credential is not expired',
         label: translations.ownership.label[locale],
-        value: translations.ownership.value[locale],
+        text: translations.ownership.value[locale],
+        value: 'on',
       },
       {
         type: 'text',
