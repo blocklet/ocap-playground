@@ -113,7 +113,7 @@ const getCredentialList = (asset, vc, locale) => {
         reason: 'A node already launched for this NFT',
         label: translations.purchase.label[locale],
         text: translations.purchase.value[locale],
-        value: !!asset.consumedTime,
+        value: String(!!asset.consumedTime),
       },
     ],
     NodeOwnershipCredential: [
