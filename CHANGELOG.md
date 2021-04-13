@@ -1,3 +1,7 @@
+## 0.6.3 (April 13, 2021)
+
+- fix: nft status api and nft play api bug
+
 ## 0.6.2 (April 13, 2021)
 
 - nft endpoint: boolean to string type
