@@ -1,3 +1,7 @@
+## 0.6.2 (April 13, 2021)
+
+- nft endpoint: boolean to string type
+
 ## 0.6.1 (April 13, 2021)
 
 - fix: boolean and switch type in nft status
