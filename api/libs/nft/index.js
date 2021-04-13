@@ -167,19 +167,33 @@ const getCredentialList = (asset, vc, locale) => {
     ],
   };
 
-  const type = vc.type.pop();
+  const supportedTypes = ['NodePurchaseCredential', 'NodeOwnershipCredential', 'BlockletPurchaseCredential'];
+  const types = Array.isArray(vc.type) ? vc.type : [vc.type];
+  const type = types.find(t => supportedTypes.includes(t));
+
+  let statusList = [];
+  let actionList = [];
+  const issuer = { wallet: fromJSON(wallet), name: 'ocap-playground' };
+
+  if (status[type]) {
+    statusList = createCredentialList({
+      issuer,
+      claims: status[type],
+    });
+  }
+
+  if (actions[type]) {
+    actionList = createCredentialList({
+      issuer,
+      claims: actions[type],
+    });
+  }
 
   return {
     id: vc.id,
     description: `Status and Actions of ${type}`,
-    statusList: createCredentialList({
-      issuer: { wallet: fromJSON(wallet), name: 'ocap-playground' },
-      claims: status[type],
-    }),
-    actionList: createCredentialList({
-      issuer: { wallet: fromJSON(wallet), name: 'ocap-playground' },
-      claims: actions[type],
-    }),
+    statusList,
+    actionList,
   };
 };
 

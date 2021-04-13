@@ -1,7 +1,7 @@
 const getNftName = ({ type }) => {
   const names = {
     NodePurchaseCredential: 'ABT Node Purchase Receipt',
-    NodeOwnerCredential: 'Proof of ABT Node Ownership',
+    NodeOwnershipCredential: 'Proof of ABT Node Ownership',
     BlockletPurchaseCredential: 'Blocklet Purchase Receipt',
   };
 
