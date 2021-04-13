@@ -1,7 +1,10 @@
+## 0.6.0 (April 13, 2021)
+
+- feat: new nft endpoint
+
 ## 0.5.21 (April 11, 2021)
 
 - chore: bump ocap sdk dependency version
-- [skip ci] Update README.md
 
 ## 0.5.20 (April 10, 2021)
 
@@ -13,17 +16,14 @@
 ## 0.5.19 (April 09, 2021)
 
 - fix: remove hooks from nft factory
-- [skip ci] Update README.md
 
 ## 0.5.18 (April 09, 2021)
 
 - fix: server port in production
-- [skip ci] Update README.md
 
 ## 0.5.17 (April 09, 2021)
 
 - feat: support nextWorkflow in did-auth
-- [skip ci] Update README.md
 
 ## 0.5.16 (April 09, 2021)
 
