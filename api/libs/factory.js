@@ -14,6 +14,8 @@ const token = require('./token');
 const decimal = 18;
 const toBNStr = n => fromTokenToUnit(n, decimal).toString();
 
+const blockletDid = 'z1fEMZ6LoTw9FTBdiXQGCF7kqKAguvg9ExC';
+
 const createFactoryItx = (moniker, props) => {
   const factoryProps = {
     name: props.name,
@@ -119,8 +121,8 @@ const blockletPurchaseFactory = createFactoryItx(
     data: {
       type: 'json',
       value: {
-        did: 'z1fEMZ6LoTw9FTBdiXQGCF7kqKAguvg9ExC',
-        url: 'https://registry.arcblock.io/blocklet/z1fEMZ6LoTw9FTBdiXQGCF7kqKAguvg9ExC',
+        did: blockletDid,
+        url: `https://registry.arcblock.io/blocklet/${blockletDid}`,
         name: 'Demo Blocklet',
         owner: wallet.address,
       },
@@ -153,4 +155,5 @@ module.exports = {
   formatFactoryState,
   factories,
   inputs,
+  blockletDid,
 };
