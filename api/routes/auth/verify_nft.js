@@ -11,7 +11,7 @@ module.exports = {
       if (type === 'node') {
         return {
           description: 'Please provide your node ownership NFT',
-          item: 'NodePurchaseCredential',
+          item: 'NodeOwnershipCredential',
           trustedIssuers: [wallet.address],
           tag: factories.nodeOwner.nodeId,
         };
