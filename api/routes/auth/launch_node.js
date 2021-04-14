@@ -68,7 +68,6 @@ module.exports = {
           disposition: 'attachment',
           type: 'VerifiableCredential',
           data: vc,
-          tag: preMint.address,
           assetId: preMint.address,
           ...getCredentialList(asset, vc, locale),
         };

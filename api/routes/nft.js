@@ -64,6 +64,10 @@ module.exports = {
       res.jsonp(getCredentialList(asset, vc, req.query.locale || 'en'));
     });
 
+    app.get('/api/nft/public-action', async (req, res) => {
+      res.jsonp({ message: 'Hello from public NFT Action', date: new Date().toISOString(), ...req.query });
+    });
+
     app.get('/blocklet/detail', ensureVc, async (req, res) => {
       const messages = {
         zh: `你正在查看 Blocklet 详情页：${req.query.assetId}`,

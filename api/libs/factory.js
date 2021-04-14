@@ -1,3 +1,4 @@
+const joinUrl = require('url-join');
 const { fromTokenToUnit } = require('@ocap/util');
 const { toAssetAddress } = require('@arcblock/did-util');
 
@@ -10,6 +11,7 @@ const {
 } = require('./nft');
 const { wallet } = require('./auth');
 const token = require('./token');
+const env = require('./env');
 
 const decimal = 18;
 const toBNStr = n => fromTokenToUnit(n, decimal).toString();
@@ -65,6 +67,56 @@ const nodePurchaseFactory = createFactoryItx(
         period: '1 month',
         owner: wallet.address,
       },
+    },
+  })
+);
+
+const endpointTestFactory = createFactoryItx(
+  'EndpointTestFactoryForPlayground',
+  getFactoryProps({
+    name: 'EndpointTestFactory',
+    description: 'This is a factory to mint assets that have various test case for nft endpoints',
+    moniker: 'EndpointTestNFT',
+    limit: 0,
+    value: toBNStr(5),
+    assets: [],
+    tokens: [],
+    variables: [],
+    output: {
+      type: 'vc',
+      value: {
+        '@context': 'https://schema.arcblock.io/v0.1/context.jsonld',
+        id: '{{input.id}}',
+        type: ['VerifiableCredential', 'NFTBadge', 'EndpointTestCredential'],
+        issuer: {
+          id: '{{ctx.issuer.id}}',
+          pk: '{{ctx.issuer.pk}}',
+          name: '{{ctx.issuer.name}}',
+        },
+        issuanceDate: '{{input.issuanceDate}}',
+        credentialSubject: {
+          id: '{{ctx.owner}}',
+          display: {
+            type: 'url',
+            content: joinUrl(env.serverUrl, '/api/nft/display'), // accept asset-did in query param
+          },
+        },
+        credentialStatus: {
+          id: joinUrl(env.serverUrl, '/api/did/nft-private-status/token'),
+          type: 'NFTStatusList2021',
+          scope: 'private',
+        },
+        proof: {
+          type: '{{input.proofType}}',
+          created: '{{input.issuanceDate}}',
+          proofPurpose: 'assertionMethod',
+          jws: '{{input.signature}}',
+        },
+      },
+    },
+    data: {
+      type: 'json',
+      value: {},
     },
   })
 );
@@ -134,6 +186,7 @@ const factories = {
   nodePurchase: nodePurchaseFactory.address,
   nodeOwner: nodeOwnerFactory.address,
   blockletPurchase: blockletPurchaseFactory.address,
+  endpointTest: endpointTestFactory.address,
 };
 
 const inputs = {
@@ -152,6 +205,7 @@ module.exports = {
   nodePurchaseFactory,
   nodeOwnerFactory,
   blockletPurchaseFactory,
+  endpointTestFactory,
   formatFactoryState,
   factories,
   inputs,

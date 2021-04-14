@@ -133,6 +133,54 @@ const getCredentialList = (asset, vc, locale) => {
         value: translations.node.value[locale],
       },
     ],
+    EndpointTestCredential: [
+      {
+        type: 'boolean',
+        name: 'boolean-true',
+        reason: 'Just for test purposes',
+        label: 'Health Status',
+        text: 'Healthy',
+        value: 'true',
+      },
+      {
+        type: 'boolean',
+        name: 'boolean-false',
+        reason: 'Just for test purposes',
+        label: 'Node Status',
+        text: 'Broken',
+        value: 'false',
+      },
+      {
+        type: 'switch',
+        name: 'switch-on',
+        reason: 'Just for test purposes',
+        label: 'Security Mode',
+        text: 'On',
+        value: 'on',
+      },
+      {
+        type: 'switch',
+        name: 'switch-off',
+        reason: 'Just for test purposes',
+        label: 'Dark Mode',
+        text: 'Off',
+        value: 'off',
+      },
+      {
+        type: 'text',
+        name: 'text-short',
+        reason: 'Just for testing purposes',
+        label: 'Text Short',
+        value: 'Short Text',
+      },
+      {
+        type: 'text',
+        name: 'text-long',
+        reason: 'Just for testing purposes',
+        label: 'Text Long',
+        value: 'Loooooooooooooooooooooooooooooooooooooooooooooooooong Text',
+      },
+    ],
   };
 
   const actions = {
@@ -152,7 +200,7 @@ const getCredentialList = (asset, vc, locale) => {
         id: `${env.serverUrl}/instance/dashboard`,
         type: 'navigate',
         name: 'manage-node',
-        scope: 'private',
+        scope: 'public',
         label: translations.manage[locale],
       },
     ],
@@ -164,6 +212,44 @@ const getCredentialList = (asset, vc, locale) => {
         scope: 'public',
         label: translations.view[locale],
       },
+    ],
+    EndpointTestCredential: [
+      {
+        id: `${env.serverUrl}/api/nft/public-action`,
+        type: 'api',
+        scope: 'public',
+        name: 'call-public-api',
+        label: 'Call Public API',
+      },
+      {
+        id: `${env.serverUrl}/api/did/nft-private-action/token`,
+        type: 'api',
+        scope: 'private',
+        name: 'call-private-api',
+        label: 'Call Private API',
+      },
+      {
+        id: `${env.serverUrl}`,
+        type: 'navigate',
+        scope: 'public',
+        name: 'open-dapp',
+        label: 'Open DApp',
+      },
+      {
+        id: 'https://github.com/arcblock',
+        type: 'navigate',
+        scope: 'public',
+        name: 'open-github',
+        label: 'Open Github',
+      },
+      // TODO: make this work
+      // {
+      //   id: 'https://github.com/arcblock',
+      //   type: 'navigate',
+      //   scope: 'public',
+      //   name: 'open-github',
+      //   label: 'Login before Open',
+      // },
     ],
   };
 

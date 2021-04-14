@@ -327,6 +327,17 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button="Buy Endpoint Test NFT"
+              action="acquire_asset"
+              extraParams={{ factory: 'endpointTest' }}
+              messages={{
+                title: `Pay ${token.foreign.symbol} to Purchase`,
+                scan: 'Scan QR code to complete the purchase',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'The purchase was successful, now you can play with the nft in ABT Wallet',
+              }}
+            />
+            <AuthButton
               button="Verify Node Ownership"
               action="verify-nft"
               extraParams={{ type: 'node' }}

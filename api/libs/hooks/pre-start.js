@@ -152,6 +152,7 @@ const ensureFactoryCreated = async itx => {
     await ensureFactoryCreated(factory.nodePurchaseFactory);
     await ensureFactoryCreated(factory.nodeOwnerFactory);
     await ensureFactoryCreated(factory.blockletPurchaseFactory);
+    await ensureFactoryCreated(factory.endpointTestFactory);
     process.exit(0);
   } catch (err) {
     console.error('ocap-playground pre-start error', err.message);

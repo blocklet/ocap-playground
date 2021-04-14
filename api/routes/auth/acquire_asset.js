@@ -83,7 +83,6 @@ module.exports = {
           disposition: 'attachment',
           type: 'VerifiableCredential',
           data: vc,
-          tag: address,
           assetId: address,
           hash,
           tx: claim.origin,
