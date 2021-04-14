@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.6.6
+version: 0.6.7
 author:
   name: wangshijun
   email: shijun@arcblock.io

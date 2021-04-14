@@ -1,3 +1,7 @@
+## 0.6.7 (April 15, 2021)
+
+- feat: add more test case for nft-endpoints
+
 ## 0.6.6 (April 14, 2021)
 
 - fix: verify nft test case
