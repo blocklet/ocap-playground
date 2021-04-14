@@ -1,3 +1,7 @@
+## 0.6.6 (April 14, 2021)
+
+- fix: verify nft test case
+
 ## 0.6.5 (April 14, 2021)
 
 - fix: verify nft test case
