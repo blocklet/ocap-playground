@@ -47,12 +47,14 @@ module.exports = {
       if (get(vc, 'credentialSubject.isOwnerOf.abtnode.id') !== factories.nodeOwner.nodeId) {
         throw new Error('Invalid node ownership credential');
       }
+      return;
     }
 
     if (type === 'blocklet') {
       if (get(vc, 'credentialSubject.purchased.blocklet.id') !== blockletDid) {
         throw new Error('Invalid node ownership credential');
       }
+      return;
     }
 
     throw new Error(`Unknown type ${type}`);
