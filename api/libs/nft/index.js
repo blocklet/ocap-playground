@@ -253,7 +253,12 @@ const getCredentialList = (asset, vc, locale) => {
     ],
   };
 
-  const supportedTypes = ['NodePurchaseCredential', 'NodeOwnershipCredential', 'BlockletPurchaseCredential'];
+  const supportedTypes = [
+    'NodePurchaseCredential',
+    'NodeOwnershipCredential',
+    'BlockletPurchaseCredential',
+    'EndpointTestCredential',
+  ];
   const types = Array.isArray(vc.type) ? vc.type : [vc.type];
   const type = types.find(t => supportedTypes.includes(t));
 
