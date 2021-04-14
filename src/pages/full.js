@@ -326,6 +326,28 @@ export default function IndexPage() {
                 success: 'The purchase was successful, now you can install blocklet on your node',
               }}
             />
+            <AuthButton
+              button="Verify Node Ownership"
+              action="verify-nft"
+              extraParams={{ type: 'node' }}
+              messages={{
+                title: 'Provide Node Ownership NFT',
+                scan: 'Scan QR code to provide',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'Ownership verified',
+              }}
+            />
+            <AuthButton
+              button="Verify Blocklet Purchase"
+              action="verify-nft"
+              extraParams={{ type: 'blocklet' }}
+              messages={{
+                title: 'Provide Blocklet Purchase NFT',
+                scan: 'Scan QR code to provide',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'Purchase verified',
+              }}
+            />
           </div>
         </section>
 
