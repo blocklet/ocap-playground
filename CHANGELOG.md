@@ -1,3 +1,7 @@
+## 0.6.5 (April 14, 2021)
+
+- fix: verify nft test case
+
 ## 0.6.4 (April 14, 2021)
 
 - feat: support verify node ownership and blocklet purchase nft by tag
