@@ -1,3 +1,7 @@
+## 0.6.4 (April 14, 2021)
+
+- feat: support verify node ownership and blocklet purchase nft by tag
+
 ## 0.6.3 (April 13, 2021)
 
 - fix: nft status api and nft play api bug
