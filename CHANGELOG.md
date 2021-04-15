@@ -1,3 +1,7 @@
+## 0.6.8 (April 15, 2021)
+
+- fix: public action should be mounted as post api
+
 ## 0.6.7 (April 15, 2021)
 
 - feat: add more test case for nft-endpoints
