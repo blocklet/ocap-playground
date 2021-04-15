@@ -64,7 +64,7 @@ module.exports = {
       res.jsonp(getCredentialList(asset, vc, req.query.locale || 'en'));
     });
 
-    app.get('/api/nft/public-action', async (req, res) => {
+    app.post('/api/nft/public-action', async (req, res) => {
       res.jsonp({ message: 'Hello from public NFT Action', date: new Date().toISOString(), ...req.query });
     });
 
