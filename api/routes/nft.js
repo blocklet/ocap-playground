@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 /* eslint-disable consistent-return */
 const SDK = require('@ocap/sdk');
+const cache = require('express-cache-headers');
 const { isValid } = require('@arcblock/did');
 
 const { create } = require('../libs/nft/display');
@@ -38,7 +39,8 @@ module.exports = {
       next();
     };
 
-    app.get('/api/nft/display', ensureVc, async (req, res) => {
+    // Client should respect cache headers to avoid too many requests
+    app.get('/api/nft/display', cache({ ttl: 24 * 60 * 60 }), ensureVc, async (req, res) => {
       const { vc, asset } = req;
       const { owner, parent, issuer } = asset;
 
