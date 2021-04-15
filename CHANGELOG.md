@@ -1,3 +1,7 @@
+## 0.6.9 (April 16, 2021)
+
+- feat: set proper cache headers for nft-display api
+
 ## 0.6.8 (April 15, 2021)
 
 - fix: public action should be mounted as post api
