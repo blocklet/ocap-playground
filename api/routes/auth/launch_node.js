@@ -67,7 +67,7 @@ module.exports = {
         return {
           disposition: 'attachment',
           type: 'VerifiableCredential',
-          data: vc,
+          data: minted,
           assetId: preMint.address,
           ...getCredentialList(asset, vc, locale),
         };
