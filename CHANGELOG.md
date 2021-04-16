@@ -1,3 +1,7 @@
+## 0.6.10 (April 16, 2021)
+
+- fix: should return ownership nft on launch node
+
 ## 0.6.9 (April 16, 2021)
 
 - feat: set proper cache headers for nft-display api
