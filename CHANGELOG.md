@@ -1,3 +1,7 @@
+## 0.6.11 (April 27, 2021)
+
+- chore: bump dependency version
+
 ## 0.6.10 (April 16, 2021)
 
 - fix: should return ownership nft on launch node
