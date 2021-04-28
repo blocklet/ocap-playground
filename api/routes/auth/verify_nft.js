@@ -1,7 +1,7 @@
 const get = require('lodash/get');
 const { verifyPresentation } = require('@arcblock/vc');
 
-const { factories, blockletDid } = require('../../libs/factory');
+const { inputs, blockletDid } = require('../../libs/factory');
 const { wallet } = require('../../libs/auth');
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
           description: 'Please provide your node ownership NFT',
           item: 'NodeOwnershipCredential',
           trustedIssuers: [wallet.address],
-          tag: factories.nodeOwner.nodeId,
+          tag: inputs.nodeOwner.nodeId,
         };
       }
       if (type === 'blocklet') {
@@ -44,7 +44,7 @@ module.exports = {
     const vc = JSON.parse(vcArray[0]);
 
     if (type === 'node') {
-      if (get(vc, 'credentialSubject.isOwnerOf.abtnode.id') !== factories.nodeOwner.nodeId) {
+      if (get(vc, 'credentialSubject.isOwnerOf.abtnode.id') !== inputs.nodeOwner.nodeId) {
         throw new Error('Invalid node ownership credential');
       }
       return;
