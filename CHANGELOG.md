@@ -1,3 +1,7 @@
+## 0.6.12 (四月 28, 2021)
+
+- fix: verify node ownership
+
 ## 0.6.11 (April 27, 2021)
 
 - chore: bump dependency version
