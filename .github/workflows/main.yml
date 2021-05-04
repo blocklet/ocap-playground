@@ -29,8 +29,8 @@ jobs:
         AWS_NODE_ACCESS_KEY: ${{ secrets.STAGING_NODE_ACCESS_KEY }}
         AWS_NODE_ACCESS_SECRET: ${{ secrets.STAGING_NODE_ACCESS_SECRET }}
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        STAGING_REGISTRY: ${{ secrets.STAGING_REGISTRY }}
-        ABTNODE_DEV_STAGING_SK: ${{ secrets.ABTNODE_DEV_STAGING_SK }}
+        STAGING_REGISTRY: ${{ secrets.BLOCKLET_REGISTRY }}
+        ABTNODE_DEV_STAGING_SK: ${{ secrets.ABTNODE_DEV_SK }}
       run: bash ./scripts/publish.sh
 
     - name: Release to Github
