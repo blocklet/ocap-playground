@@ -1,3 +1,7 @@
+## 0.7.0 (May 04, 2021)
+
+- chore: publish to production registry
+
 ## 0.6.12 (四月 28, 2021)
 
 - fix: verify node ownership
