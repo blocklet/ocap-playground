@@ -1,3 +1,7 @@
+## 0.7.1 (May 06, 2021)
+
+- feat: change purchase nft case to non silent
+
 ## 0.7.0 (May 04, 2021)
 
 - chore: publish to production registry

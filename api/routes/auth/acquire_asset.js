@@ -78,7 +78,7 @@ module.exports = {
       const { state } = await SDK.getAssetState({ address }, { ignoreFields: ['context'] });
       if (state && state.data && state.data.typeUrl === 'vc') {
         const vc = JSON.parse(state.data.value);
-        logger.error('acquire.auth.vc', vc);
+        logger.info('acquire.auth.vc', vc);
         return {
           disposition: 'attachment',
           type: 'VerifiableCredential',
