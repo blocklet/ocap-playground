@@ -10,6 +10,10 @@ const { getCredentialList } = require('../../libs/nft');
 module.exports = {
   action: 'launch-instance',
   claims: {
+    profile: () => ({
+      description: 'Please provide your profile',
+      fields: ['fullName', 'email', 'phone'],
+    }),
     verifiableCredential: () => ({
       description: 'Please provide your node purchase NFT',
       item: 'NodePurchaseCredential',
@@ -19,6 +23,7 @@ module.exports = {
   },
 
   onAuth: async ({ userDid, claims, challenge, extraParams: { assetId, locale } }) => {
+    logger.info('launch-instance claims', { claims });
     const presentation = JSON.parse(claims.find(x => x.type === 'verifiableCredential').presentation);
     if (challenge !== presentation.challenge) {
       throw Error('Verifiable credential presentation does not have correct challenge');

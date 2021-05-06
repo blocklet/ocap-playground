@@ -44,7 +44,7 @@ const ensureAccountDeclared = async () => {
 };
 
 const ensureTokenCreated = async () => {
-  const { state } = await SDK.getTokenState({ address: tokenId }, { ...getAccountStateOptions });
+  const { state } = await SDK.getTokenState({ address: token.address }, { ...getAccountStateOptions });
   if (!state) {
     const hash = await SDK.sendCreateTokenTx({ tx: { itx: token }, wallet: app });
     console.log(`token created on chain ${chainId}`, hash);
