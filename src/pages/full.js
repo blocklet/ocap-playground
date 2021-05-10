@@ -19,6 +19,7 @@ import TransferAssetOut from '../components/auth/transfer_asset_out';
 import TransferAssetIn from '../components/auth/transfer_asset_in';
 import TransferTokenAssetIn from '../components/auth/transfer_token_asset_in';
 import TransferTokenAssetOut from '../components/auth/transfer_token_asset_out';
+import NotificationButton from '../components/notification/button';
 import getWebWalletUrl from '../libs/util';
 
 import { UserContext } from '../context/user';
@@ -753,6 +754,69 @@ export default function IndexPage() {
                 success: 'Badge have been verified',
               }}
             />
+          </div>
+        </section>
+        <section className="section">
+          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
+            Notification Scenarios{' '}
+            <Typography component="small" color="textSecondary">
+              Send a notification to your wallet
+            </Typography>
+          </Typography>
+          <div className="section__content">
+            <NotificationButton
+              type="text"
+              data={{ message: 'this is a message' }}
+              className="action"
+            >
+              Send text
+            </NotificationButton>
+            <NotificationButton
+              type="asset"
+              data={{
+                did: 'z1ha9kvzJrDGDgqG8AntbXbux3eAjdVFx3P',
+                chainHost: 'http://a.b.com',
+                chainId: 'abc',
+              }}
+              className="action"
+            >
+              Send asset
+            </NotificationButton>
+            <NotificationButton
+              type="vc"
+              data={{
+                credential: {
+                  key1: 'value1',
+                  key2: 'value2',
+                },
+                tag: 'tagA',
+              }}
+              className="action"
+            >
+              Send VC
+            </NotificationButton>
+            <NotificationButton
+              type="token"
+              data={{
+                address: 'z1ha9kvzJrDGDgqG8AntbXbux3eAjdVFx3P',
+                amount: '10',
+                symbol: 'ABT',
+                senderDid: 'z1ha9kvzJrDGDgqG8AntbXbux3eAjdVFx3P',
+                chainHost: 'http://a.b.com',
+                chainId: 'abc',
+              }}
+              className="action"
+            >
+              Send Token
+            </NotificationButton>
+            <NotificationButton
+              type="text"
+              data={{ message: 'this is a message wth actions' }}
+              actions={[{ name: 'launch', title: 'Launch ABT Node', link: 'https://arcblock.io' }]}
+              className="action"
+            >
+              Send text with action
+            </NotificationButton>
           </div>
         </section>
         {!browser.wallet && (

@@ -106,6 +106,7 @@ agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/clai
 require('../routes/session').init(router);
 require('../routes/nft').init(router);
 require('../routes/authorizations').init(router);
+require('../routes/notification').init(router);
 
 if (isDev) {
   app.use(router);
