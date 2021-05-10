@@ -24,10 +24,9 @@ export default function NotificationButton({ type, data, actions, children }) {
           actions,
         },
       })
-      .then(res => {
+      .then(() => {
         setLoading(false);
         setMessage({ variant: 'success', text: 'Message has been sent!' });
-        console.log(res.data);
       })
       .catch(err => {
         setLoading(false);
