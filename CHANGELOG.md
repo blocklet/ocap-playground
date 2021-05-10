@@ -1,3 +1,7 @@
+## 0.8.0 (May 10, 2021)
+
+- feat: support send notifications to wallet
+
 ## 0.7.1 (May 06, 2021)
 
 - feat: change purchase nft case to non silent
