@@ -7,6 +7,7 @@ const { create } = require('@arcblock/vc');
 const { wallet, authClient, factory: assetFactory } = require('../libs/auth');
 const env = require('../libs/env');
 const { ensureAsset } = require('../libs/util');
+const itx = require('../libs/token');
 
 const hasher = Mcrypto.getHasher(Mcrypto.types.HashType.SHA3);
 
@@ -29,7 +30,7 @@ module.exports = {
           });
 
           await Notification.sendToUser(userDid, type, {
-            address: userDid,
+            address: itx.address,
             amount: (await SDK.fromTokenToUint(amount)).toString(),
             symbol: 'PLAY',
             senderDid: env.appId,
