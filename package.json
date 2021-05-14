@@ -15,7 +15,7 @@
     "blocklet.yml",
     "README.md"
   ],
-  "version": "0.8.0",
+  "version": "0.8.1",
   "author": "wangshijun <shijun@arcblock.io> https://github.com/wangshijun",
   "keywords": [
     "dapp",
@@ -95,9 +95,7 @@
     "set-npm-auth-token-for-ci": "^2.0.13",
     "store": "^2.0.12",
     "styled-components": "^5.0.1",
-    "url-join": "^4.0.1",
-    "winston": "^3.2.1",
-    "winston-daily-rotate-file": "^4.4.0"
+    "url-join": "^4.0.1"
   },
   "scripts": {
     "lint": "eslint src api",

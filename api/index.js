@@ -2,6 +2,8 @@
 /* eslint-disable no-console */
 require('dotenv').config();
 
+global.logger = console;
+
 const isDev = process.env.NODE_ENV === 'development';
 
 const { name, version } = require('../package.json');
