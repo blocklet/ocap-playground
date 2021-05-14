@@ -1,4 +1,3 @@
-const logger = require('winston');
 const SDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
 

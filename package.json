@@ -95,9 +95,7 @@
     "set-npm-auth-token-for-ci": "^2.0.13",
     "store": "^2.0.12",
     "styled-components": "^5.0.1",
-    "url-join": "^4.0.1",
-    "winston": "^3.2.1",
-    "winston-daily-rotate-file": "^4.4.0"
+    "url-join": "^4.0.1"
   },
   "scripts": {
     "lint": "eslint src api",
