@@ -9,7 +9,6 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 const pako = require('pako');
-const logger = require('winston');
 const { toBase64 } = require('@ocap/util');
 
 const env = require('./env');

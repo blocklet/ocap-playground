@@ -1,5 +1,4 @@
 /* eslint-disable object-curly-newline */
-const logger = require('winston');
 const SDK = require('@ocap/sdk');
 const { NFTType } = require('@arcblock/nft/lib/enum');
 const { toTypeInfo } = require('@arcblock/did');

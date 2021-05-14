@@ -11,8 +11,6 @@ const fallback = require('express-history-api-fallback');
 const compression = require('compression');
 const displayRoutes = require('express-routemap');
 
-const logger = require('../libs/logger');
-
 const { walletHandlers, walletHandlersWithNoChainInfo, agentHandlers } = require('../libs/auth');
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -21,7 +19,6 @@ const isDev = process.env.NODE_ENV === 'development';
 
 const app = express();
 const server = http.createServer(app);
-logger.initialize(app);
 
 app.set('trust proxy', true);
 app.use(cookieParser());
@@ -40,11 +37,6 @@ app.use(
       tokens['response-time'](req, res),
       'ms',
     ].join(' ');
-
-    if (!isDev) {
-      // Log only in AWS context to get back function logs
-      console.log(log);
-    }
 
     return log;
   })
