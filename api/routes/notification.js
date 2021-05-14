@@ -20,7 +20,7 @@ module.exports = {
         // token
         if (type === 'token') {
           // send secondary token
-          const amount = Math.random();
+          const amount = Math.random().toFixed(6);
           await SDK.transfer({
             to: userDid,
             token: 0,
@@ -30,7 +30,7 @@ module.exports = {
 
           await Notification.sendToUser(userDid, type, {
             address: userDid,
-            amount: `${amount}`,
+            amount: (await SDK.fromTokenToUint(amount)).toString(),
             symbol: 'PLAY',
             senderDid: env.appId,
             chainHost: env.chainHost,
