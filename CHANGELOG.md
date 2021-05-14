@@ -1,3 +1,7 @@
+## 0.8.1 (May 14, 2021)
+
+- fix: use console for logger
+
 ## 0.8.0 (May 10, 2021)
 
 - feat: support send notifications to wallet
