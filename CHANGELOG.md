@@ -1,3 +1,7 @@
+## 0.8.2 (May 14, 2021)
+
+- feat: send real notification data to user
+
 ## 0.8.1 (May 14, 2021)
 
 - fix: use console for logger
