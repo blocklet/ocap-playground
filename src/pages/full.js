@@ -773,41 +773,21 @@ export default function IndexPage() {
             </NotificationButton>
             <NotificationButton
               type="asset"
-              data={{
-                did: 'z1ha9kvzJrDGDgqG8AntbXbux3eAjdVFx3P',
-                chainHost: 'http://a.b.com',
-                chainId: 'abc',
-              }}
               className="action"
             >
               Send asset
             </NotificationButton>
             <NotificationButton
               type="vc"
-              data={{
-                credential: {
-                  key1: 'value1',
-                  key2: 'value2',
-                },
-                tag: 'tagA',
-              }}
               className="action"
             >
               Send VC
             </NotificationButton>
             <NotificationButton
               type="token"
-              data={{
-                address: 'z1ha9kvzJrDGDgqG8AntbXbux3eAjdVFx3P',
-                amount: '10',
-                symbol: 'ABT',
-                senderDid: 'z1ha9kvzJrDGDgqG8AntbXbux3eAjdVFx3P',
-                chainHost: 'http://a.b.com',
-                chainId: 'abc',
-              }}
               className="action"
             >
-              Send Token
+              Send random {token.foreign.symbol}
             </NotificationButton>
             <NotificationButton
               type="text"
