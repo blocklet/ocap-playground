@@ -2,6 +2,7 @@ const Notification = require('@blocklet/sdk/service/notification');
 const SDK = require('@ocap/sdk');
 const ForgeWallet = require('@ocap/wallet');
 const Mcrypto = require('@ocap/mcrypto');
+const { fromTokenToUnit } = require('@ocap/util');
 const { create } = require('@arcblock/vc');
 
 const { wallet, authClient, factory: assetFactory } = require('../libs/auth');
@@ -31,7 +32,7 @@ module.exports = {
 
           await Notification.sendToUser(userDid, type, {
             address: itx.address,
-            amount: (await SDK.fromTokenToUint(amount)).toString(),
+            amount: fromTokenToUnit(amount).toString(),
             symbol: 'PLAY',
             senderDid: env.appId,
             chainHost: env.chainHost,

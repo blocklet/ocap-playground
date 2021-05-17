@@ -1,3 +1,7 @@
+## 0.8.3 (May 17, 2021)
+
+- fix: send token notification failed
+
 ## 0.8.2 (May 14, 2021)
 
 - feat: send real notification data to user
