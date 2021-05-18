@@ -1,3 +1,7 @@
+## 0.8.4 (May 18, 2021)
+
+- fix: should logout as expected
+
 ## 0.8.3 (May 17, 2021)
 
 - fix: send token notification failed
