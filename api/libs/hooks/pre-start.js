@@ -18,15 +18,7 @@ const env = require('../env');
 const { chainId, chainHost, tokenId } = env;
 const app = SDK.Wallet.fromJSON(wallet);
 
-// Check for application account
 const ensureAccountDeclared = async () => {
-  const {
-    state: { txConfig },
-  } = await SDK.getForgeState();
-  if (txConfig.declare.restricted) {
-    return null;
-  }
-
   const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
   if (!state) {
     console.error('Application account not declared on chain');
@@ -56,16 +48,7 @@ const ensureTokenCreated = async () => {
 };
 
 const ensureAccountFunded = async () => {
-  const {
-    state: { txConfig },
-  } = await SDK.getForgeState();
-  if (txConfig.poke.enabled === false) {
-    return;
-  }
-
   const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
-
-  // console.log('application account state', state);
 
   const balance = await SDK.fromUnitToToken(state.balance);
   console.info(`application account balance on chain ${chainId} is ${balance}`);
@@ -92,13 +75,6 @@ const ensureAccountFunded = async () => {
 };
 
 const ensureTokenFunded = async () => {
-  const {
-    state: { txConfig },
-  } = await SDK.getForgeState();
-  if (txConfig.poke.enabled === false) {
-    return;
-  }
-
   const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
   const t = state.tokens.find(x => x.key === tokenId);
   const balance = await SDK.fromUnitToToken(t ? t.value : '0');
