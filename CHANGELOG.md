@@ -1,3 +1,13 @@
+## 0.8.5 (May 20, 2021)
+
+- feat: support request vc of multiple types
+- fix: default token address
+- fix: remove checkin code from pre-start
+- fix: can not work with latest ocap sdk
+- chore: upgrade dependency version
+- fix: update token config and symbol
+- fix: do not poke on start
+
 ## 0.8.4 (May 18, 2021)
 
 - fix: should logout as expected

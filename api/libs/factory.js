@@ -1,6 +1,6 @@
 const joinUrl = require('url-join');
 const { fromTokenToUnit } = require('@ocap/util');
-const { toAssetAddress } = require('@arcblock/did-util');
+const { toFactoryAddress } = require('@arcblock/did-util');
 
 const {
   getFactoryProps,
@@ -19,7 +19,7 @@ const toBNStr = n => fromTokenToUnit(n, decimal).toString();
 const blockletDid = 'z1fEMZ6LoTw9FTBdiXQGCF7kqKAguvg9ExC';
 
 const createFactoryItx = (moniker, props) => {
-  const factoryProps = {
+  const itx = {
     name: props.name,
     description: props.description,
     settlement: 'instant',
@@ -31,19 +31,7 @@ const createFactoryItx = (moniker, props) => {
     hooks: props.hooks || [],
   };
 
-  const itx = {
-    moniker,
-    readonly: true,
-    transferrable: false,
-    ttl: 0,
-    data: {
-      type: 'AssetFactory',
-      value: factoryProps,
-    },
-  };
-
-  const factoryAddress = toAssetAddress(itx);
-  itx.address = factoryAddress;
+  itx.address = toFactoryAddress(itx);
 
   return itx;
 };

@@ -18,15 +18,7 @@ const env = require('../env');
 const { chainId, chainHost, tokenId } = env;
 const app = SDK.Wallet.fromJSON(wallet);
 
-// Check for application account
 const ensureAccountDeclared = async () => {
-  const {
-    state: { txConfig },
-  } = await SDK.getForgeState();
-  if (txConfig.declare.restricted) {
-    return null;
-  }
-
   const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
   if (!state) {
     console.error('Application account not declared on chain');
@@ -56,84 +48,22 @@ const ensureTokenCreated = async () => {
 };
 
 const ensureAccountFunded = async () => {
-  const {
-    state: { txConfig },
-  } = await SDK.getForgeState();
-  if (txConfig.poke.enabled === false) {
-    return;
-  }
-
   const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
-
-  // console.log('application account state', state);
-
   const balance = await SDK.fromUnitToToken(state.balance);
   console.info(`application account balance on chain ${chainId} is ${balance}`);
-  const amount = 250;
-  if (+balance < amount) {
-    const limit = amount / 25;
-    await batchPromises(5, range(1, limit + 1), async () => {
-      const slave = SDK.Wallet.fromRandom();
-      try {
-        await SDK.declare({ moniker: 'sweeper', wallet: slave });
-        await verifyAccountAsync({ chainId, chainHost, address: slave.toAddress() });
-        const hash = await SDK.checkin({ wallet: slave });
-        await verifyTxAsync({ chainId, chainHost, hash });
-        await SDK.transfer({ to: wallet.address, token: 25, memo: 'found-primary-token', wallet: slave });
-        console.info('Collect success', slave.toAddress());
-      } catch (err) {
-        console.info('Collect failed', err);
-      }
-    });
-    console.info(`Application account funded with another ${amount}`);
-  } else {
-    console.info(`Application account balance greater than ${amount}`);
-  }
 };
 
 const ensureTokenFunded = async () => {
-  const {
-    state: { txConfig },
-  } = await SDK.getForgeState();
-  if (txConfig.poke.enabled === false) {
-    return;
-  }
-
   const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
   const t = state.tokens.find(x => x.key === tokenId);
   const balance = await SDK.fromUnitToToken(t ? t.value : '0');
   console.info(`application account token balance on chain ${chainId} is ${balance}`);
-  const amount = 250;
-  if (+balance < amount) {
-    const limit = amount / 25;
-    await batchPromises(5, range(1, limit + 1), async () => {
-      const slave = SDK.Wallet.fromRandom();
-      try {
-        await SDK.declare({ moniker: 'token-sweeper', wallet: slave });
-        await verifyAccountAsync({ chainId, chainHost, address: slave.toAddress() });
-        const hash = await SDK.checkin({ wallet: slave, token: tokenId });
-        await verifyTxAsync({ chainId, chainHost, hash });
-        await SDK.transfer({
-          to: wallet.address,
-          tokens: [{ address: tokenId, value: 25 }],
-          memo: 'fund-secondary-token',
-          wallet: slave,
-        });
-        console.info('Collect success', slave.toAddress());
-      } catch (err) {
-        console.info('Collect failed', err);
-      }
-    });
-    console.info(`token funded with another ${amount}`);
-  } else {
-    console.info(`token balance greater than ${amount}`);
-  }
 };
 
 const ensureFactoryCreated = async itx => {
-  const { state } = await SDK.getAssetState({ address: itx.address }, { ...getAccountStateOptions });
+  const { state } = await SDK.getFactoryState({ address: itx.address }, { ...getAccountStateOptions });
   if (!state) {
-    const hash = await SDK.sendCreateAssetTx({ tx: { itx }, wallet: app });
+    const hash = await SDK.sendCreateFactoryTx({ tx: { itx }, wallet: app });
     console.log(`factory created on chain ${itx.address}`, hash);
   } else {
     console.log(`factory exist on chain ${itx.address}`);

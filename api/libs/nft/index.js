@@ -52,11 +52,8 @@ const getFactoryProps = ({
     hooks: Array.isArray(hooks) ? hooks : [],
   };
 
-  if (isValidFactory(props)) {
-    return props;
-  }
-
-  throw new Error('factory props invalid: please check input/output/hooks');
+  isValidFactory(props, true);
+  return props;
 };
 
 const getCredentialList = (asset, vc, locale) => {
