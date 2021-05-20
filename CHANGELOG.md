@@ -1,3 +1,7 @@
+## 0.8.6 (May 20, 2021)
+
+- chore: bump dependency version
+
 ## 0.8.5 (May 20, 2021)
 
 - feat: support request vc of multiple types
