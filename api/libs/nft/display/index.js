@@ -3,6 +3,9 @@ const getNftName = ({ type }) => {
     NodePurchaseCredential: 'ABT Node Purchase Receipt',
     NodeOwnershipCredential: 'Proof of ABT Node Ownership',
     BlockletPurchaseCredential: 'Blocklet Purchase Receipt',
+    EndpointTestCredential: 'Endpoint Test NFT',
+    TokenInputTestCredential: 'Token Input Test NFT',
+    AssetInputTestCredential: 'Asset Input Test NFT',
   };
 
   const key = Object.keys(names).find(x => type.includes(x));

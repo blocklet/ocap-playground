@@ -109,6 +109,96 @@ const endpointTestFactory = createFactoryItx(
   })
 );
 
+const tokenInputTestFactory = createFactoryItx(
+  'TokenInputTestFactoryForPlayground',
+  getFactoryProps({
+    name: 'TokenInputTestFactory',
+    description: 'This is a factory to mint assets that use 2 tokens as input',
+    moniker: 'TokenInputTestNFT',
+    limit: 0,
+    value: toBNStr(1.99),
+    assets: [],
+    tokens: [{ address: token.address, value: toBNStr(2.99) }],
+    variables: [],
+    output: {
+      type: 'vc',
+      value: {
+        '@context': 'https://schema.arcblock.io/v0.1/context.jsonld',
+        id: '{{input.id}}',
+        type: ['VerifiableCredential', 'NFTBadge', 'TokenInputTestCredential'],
+        issuer: {
+          id: '{{ctx.issuer.id}}',
+          pk: '{{ctx.issuer.pk}}',
+          name: '{{ctx.issuer.name}}',
+        },
+        issuanceDate: '{{input.issuanceDate}}',
+        credentialSubject: {
+          id: '{{ctx.owner}}',
+          display: {
+            type: 'url',
+            content: joinUrl(env.serverUrl, '/api/nft/display'), // accept asset-did in query param
+          },
+        },
+        proof: {
+          type: '{{input.proofType}}',
+          created: '{{input.issuanceDate}}',
+          proofPurpose: 'assertionMethod',
+          jws: '{{input.signature}}',
+        },
+      },
+    },
+    data: {
+      type: 'json',
+      value: {},
+    },
+  })
+);
+
+const assetInputTestFactory = createFactoryItx(
+  'AssetInputTestFactoryForPlayground',
+  getFactoryProps({
+    name: 'AssetInputTestFactory',
+    description: 'This is a factory to mint assets that use assets as input',
+    moniker: 'AssetInputTestNFT',
+    limit: 0,
+    value: 0,
+    assets: [tokenInputTestFactory.address],
+    tokens: [],
+    variables: [],
+    output: {
+      type: 'vc',
+      value: {
+        '@context': 'https://schema.arcblock.io/v0.1/context.jsonld',
+        id: '{{input.id}}',
+        type: ['VerifiableCredential', 'NFTBadge', 'AssetInputTestCredential'],
+        issuer: {
+          id: '{{ctx.issuer.id}}',
+          pk: '{{ctx.issuer.pk}}',
+          name: '{{ctx.issuer.name}}',
+        },
+        issuanceDate: '{{input.issuanceDate}}',
+        credentialSubject: {
+          id: '{{ctx.owner}}',
+          display: {
+            type: 'url',
+            content: joinUrl(env.serverUrl, '/api/nft/display'), // accept asset-did in query param
+          },
+        },
+        proof: {
+          type: '{{input.proofType}}',
+          created: '{{input.issuanceDate}}',
+          proofPurpose: 'assertionMethod',
+          jws: '{{input.signature}}',
+        },
+      },
+    },
+    data: {
+      type: 'json',
+      value: {},
+    },
+  })
+);
+
 const nodeOwnerFactory = createFactoryItx(
   'NodeOwnerFactoryForPlayground',
   getFactoryProps({
@@ -175,6 +265,8 @@ const factories = {
   nodeOwner: nodeOwnerFactory.address,
   blockletPurchase: blockletPurchaseFactory.address,
   endpointTest: endpointTestFactory.address,
+  tokenInputTest: tokenInputTestFactory.address,
+  assetInputTest: assetInputTestFactory.address,
 };
 
 const inputs = {
@@ -194,6 +286,8 @@ module.exports = {
   nodeOwnerFactory,
   blockletPurchaseFactory,
   endpointTestFactory,
+  tokenInputTestFactory,
+  assetInputTestFactory,
   formatFactoryState,
   factories,
   inputs,

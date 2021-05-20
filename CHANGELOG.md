@@ -1,3 +1,7 @@
+## 0.8.7 (May 21, 2021)
+
+- feat: add test case for token/asset input when acquire asset
+
 ## 0.8.6 (May 20, 2021)
 
 - chore: bump dependency version
