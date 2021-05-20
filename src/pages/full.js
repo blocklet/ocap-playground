@@ -14,7 +14,6 @@ import Layout from '../components/layout';
 import AuthButton from '../components/auth/general';
 import SignButton from '../components/auth/auth/sign';
 import AgentButton from '../components/auth/auth/agent';
-import AcquireMovieTicket from '../components/auth/acquire_ticket';
 import TransferAssetOut from '../components/auth/transfer_asset_out';
 import TransferAssetIn from '../components/auth/transfer_asset_in';
 import TransferTokenAssetIn from '../components/auth/transfer_token_asset_in';
@@ -339,6 +338,28 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button="Buy Token Input Test NFT"
+              action="acquire_asset"
+              extraParams={{ factory: 'tokenInputTest' }}
+              messages={{
+                title: 'Pay 2 tokens to Purchase',
+                scan: 'Scan QR code to complete the purchase',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'The purchase was successful, now you can play with the nft in ABT Wallet',
+              }}
+            />
+            <AuthButton
+              button="Buy Asset Input Test NFT"
+              action="acquire_asset"
+              extraParams={{ factory: 'assetInputTest' }}
+              messages={{
+                title: 'Consume TokenInputTest NFT to Purchase',
+                scan: 'Scan QR code to complete the purchase',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'The purchase was successful, now you can play with the nft in ABT Wallet',
+              }}
+            />
+            <AuthButton
               button="Verify Node Ownership"
               action="verify-nft"
               extraParams={{ type: 'node' }}
@@ -629,25 +650,6 @@ export default function IndexPage() {
                 confirm: 'Confirm on your ABT Wallet',
                 success: 'You will never see this, if so, wallet has bug',
               }}
-            />
-          </div>
-        </section>
-        <section className="section" style={{ display: 'none' }}>
-          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
-            Asset Scenarios{' '}
-            <Typography component="small" color="textSecondary">
-              Consume/Acquire an asset
-            </Typography>
-          </Typography>
-          <div className="section__content">
-            <AcquireMovieTicket count={1} />
-            <AcquireMovieTicket count={2} />
-            <PlaygroundAction
-              className="action"
-              title="Consume Movie Ticket"
-              action="consume_local_asset"
-              typeUrl="fg:x:movie_ticket"
-              webWalletUrl={webWalletUrl}
             />
           </div>
         </section>
