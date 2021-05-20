@@ -49,29 +49,8 @@ const ensureTokenCreated = async () => {
 
 const ensureAccountFunded = async () => {
   const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
-
   const balance = await SDK.fromUnitToToken(state.balance);
   console.info(`application account balance on chain ${chainId} is ${balance}`);
-  const amount = 250;
-  if (+balance < amount) {
-    const limit = amount / 25;
-    await batchPromises(5, range(1, limit + 1), async () => {
-      const slave = SDK.Wallet.fromRandom();
-      try {
-        await SDK.declare({ moniker: 'sweeper', wallet: slave });
-        await verifyAccountAsync({ chainId, chainHost, address: slave.toAddress() });
-        const hash = await SDK.checkin({ wallet: slave });
-        await verifyTxAsync({ chainId, chainHost, hash });
-        await SDK.transfer({ to: wallet.address, token: 25, memo: 'found-primary-token', wallet: slave });
-        console.info('Collect success', slave.toAddress());
-      } catch (err) {
-        console.info('Collect failed', err);
-      }
-    });
-    console.info(`Application account funded with another ${amount}`);
-  } else {
-    console.info(`Application account balance greater than ${amount}`);
-  }
 };
 
 const ensureTokenFunded = async () => {
@@ -79,31 +58,6 @@ const ensureTokenFunded = async () => {
   const t = state.tokens.find(x => x.key === tokenId);
   const balance = await SDK.fromUnitToToken(t ? t.value : '0');
   console.info(`application account token balance on chain ${chainId} is ${balance}`);
-  const amount = 250;
-  if (+balance < amount) {
-    const limit = amount / 25;
-    await batchPromises(5, range(1, limit + 1), async () => {
-      const slave = SDK.Wallet.fromRandom();
-      try {
-        await SDK.declare({ moniker: 'token-sweeper', wallet: slave });
-        await verifyAccountAsync({ chainId, chainHost, address: slave.toAddress() });
-        const hash = await SDK.checkin({ wallet: slave, token: tokenId });
-        await verifyTxAsync({ chainId, chainHost, hash });
-        await SDK.transfer({
-          to: wallet.address,
-          tokens: [{ address: tokenId, value: 25 }],
-          memo: 'fund-secondary-token',
-          wallet: slave,
-        });
-        console.info('Collect success', slave.toAddress());
-      } catch (err) {
-        console.info('Collect failed', err);
-      }
-    });
-    console.info(`token funded with another ${amount}`);
-  } else {
-    console.info(`token balance greater than ${amount}`);
-  }
 };
 
 const ensureFactoryCreated = async itx => {
