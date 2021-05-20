@@ -5,9 +5,7 @@ require('dotenv').config();
 require('@abtnode/util/lib/error-handler');
 
 const SDK = require('@ocap/sdk');
-const { verifyTxAsync, verifyAccountAsync } = require('@ocap/tx-util');
-const batchPromises = require('batch-promises');
-const range = require('lodash/range');
+const { verifyAccountAsync } = require('@ocap/tx-util');
 
 const { wallet } = require('../auth');
 const { getAccountStateOptions } = require('../util');
@@ -15,7 +13,7 @@ const token = require('../token');
 const factory = require('../factory');
 const env = require('../env');
 
-const { chainId, chainHost, tokenId } = env;
+const { chainId, tokenId } = env;
 const app = SDK.Wallet.fromJSON(wallet);
 
 const ensureAccountDeclared = async () => {
