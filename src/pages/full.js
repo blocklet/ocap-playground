@@ -754,6 +754,17 @@ export default function IndexPage() {
                 success: 'Badge have been verified',
               }}
             />
+            <AuthButton
+              button="Request NFT: Multiple Type"
+              action="consume_vc"
+              extraParams={{ type: ['NodePurchaseCredential', 'BlockletPurchaseCredential'] }}
+              messages={{
+                title: 'NFT Required',
+                scan: 'Scan QR code to provide your NodePurchase or Blocklet Purchase NFT',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'NFT have been verified',
+              }}
+            />
           </div>
         </section>
         <section className="section">
@@ -764,37 +775,23 @@ export default function IndexPage() {
             </Typography>
           </Typography>
           <div className="section__content">
-            <NotificationButton
-              type="text"
-              data={{ message: 'this is a message' }}
-              className="action"
-            >
+            <NotificationButton type="text" data={{ message: 'this is a message' }} className="action">
               Send text
             </NotificationButton>
-            <NotificationButton
-              type="asset"
-              className="action"
-            >
+            <NotificationButton type="asset" className="action">
               Send asset
             </NotificationButton>
-            <NotificationButton
-              type="vc"
-              className="action"
-            >
+            <NotificationButton type="vc" className="action">
               Send VC
             </NotificationButton>
-            <NotificationButton
-              type="token"
-              className="action"
-            >
+            <NotificationButton type="token" className="action">
               Send random {token.foreign.symbol}
             </NotificationButton>
             <NotificationButton
               type="text"
               data={{ message: 'this is a message wth actions' }}
               actions={[{ name: 'launch', title: 'Launch ABT Node', link: 'https://arcblock.io' }]}
-              className="action"
-            >
+              className="action">
               Send text with action
             </NotificationButton>
           </div>
