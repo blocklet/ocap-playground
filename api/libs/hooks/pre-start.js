@@ -107,9 +107,9 @@ const ensureTokenFunded = async () => {
 };
 
 const ensureFactoryCreated = async itx => {
-  const { state } = await SDK.getAssetState({ address: itx.address }, { ...getAccountStateOptions });
+  const { state } = await SDK.getFactoryState({ address: itx.address }, { ...getAccountStateOptions });
   if (!state) {
-    const hash = await SDK.sendCreateAssetTx({ tx: { itx }, wallet: app });
+    const hash = await SDK.sendCreateFactoryTx({ tx: { itx }, wallet: app });
     console.log(`factory created on chain ${itx.address}`, hash);
   } else {
     console.log(`factory exist on chain ${itx.address}`);
