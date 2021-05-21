@@ -42,7 +42,7 @@ const txCreators = {
         from: userDid,
         pk: userPk,
         itx: {
-          factory: factories.blockletPurchase,
+          factory: inputFactories[input],
           address: preMint.address,
           assets: [],
           variables: Object.entries(preMint.variables).map(([key, value]) => ({ name: key, value })),
