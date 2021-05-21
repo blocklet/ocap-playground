@@ -39,7 +39,8 @@ module.exports = {
 
     const vc = JSON.parse(vcArray[0]);
 
-    if (vc.type !== type && vc.type.indexOf(type) === -1) {
+    const expectedTypes = Array.isArray(type) ? type : [type];
+    if (expectedTypes.every(x => vc.type !== x && vc.type.indexOf(x) === -1)) {
       throw Error('不是要求的VC类型');
     }
 
