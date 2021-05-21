@@ -1,3 +1,7 @@
+## 0.8.9 (May 21, 2021)
+
+- fix: multiple expected vc type
+
 ## 0.8.8 (May 21, 2021)
 
 - chore: add more delegated test case for acquire asset
