@@ -14,8 +14,13 @@ const { formatFactoryState, factories, inputs } = require('../../libs/factory');
 const app = SDK.Wallet.fromJSON(wallet);
 
 const txCreators = {
-  AcquireAssetV2Tx: async ({ userDid, userPk }) => {
-    const { state } = await SDK.getFactoryState({ address: factories.blockletPurchase });
+  AcquireAssetV2Tx: async ({ userDid, userPk, input }) => {
+    const inputFactories = {
+      local: factories.endpointTest,
+      foreign: factories.blockletPurchase,
+      both: factories.tokenInputTest,
+    };
+    const { state } = await SDK.getFactoryState({ address: inputFactories[input] });
     if (!state) {
       throw new Error('Asset factory does not exist on chain');
     }
@@ -121,12 +126,12 @@ module.exports = {
       },
     },
     {
-      signature: async ({ userPk, userDid, extraParams: { type, locale } }) => {
+      signature: async ({ userPk, userDid, extraParams: { type, locale, input } }) => {
         if (!txCreators[type]) {
           throw new Error(`${type} is not supported`);
         }
 
-        const claim = await txCreators[type]({ userPk, userDid, locale });
+        const claim = await txCreators[type]({ userPk, userDid, locale, input });
         return claim;
       },
     },

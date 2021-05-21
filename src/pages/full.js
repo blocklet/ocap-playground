@@ -393,11 +393,33 @@ export default function IndexPage() {
           </Typography>
           <div className="section__content">
             <AuthButton
-              button="Acquire Asset"
+              button={`Acquire: ${token.local.symbol} Only`}
               action="delegate"
-              extraParams={{ type: 'AcquireAssetV2Tx' }}
+              extraParams={{ type: 'AcquireAssetV2Tx', input: 'local' }}
+              messages={{
+                title: `Pay ${token.local.symbol} to Purchase`,
+                scan: 'Scan QR code to complete the purchase',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'The purchase was successful, now you can install blocklet on your node',
+              }}
+            />
+            <AuthButton
+              button={`Acquire: ${token.foreign.symbol} Only`}
+              action="delegate"
+              extraParams={{ type: 'AcquireAssetV2Tx', input: 'foreign' }}
               messages={{
                 title: `Pay ${token.foreign.symbol} to Purchase`,
+                scan: 'Scan QR code to complete the purchase',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'The purchase was successful, now you can install blocklet on your node',
+              }}
+            />
+            <AuthButton
+              button={`Acquire: ${token.local.symbol} + ${token.foreign.symbol}`}
+              action="delegate"
+              extraParams={{ type: 'AcquireAssetV2Tx', input: 'both' }}
+              messages={{
+                title: `Pay ${token.local.symbol} and ${token.foreign.symbol} to Purchase`,
                 scan: 'Scan QR code to complete the purchase',
                 confirm: 'Confirm on your ABT Wallet',
                 success: 'The purchase was successful, now you can install blocklet on your node',
