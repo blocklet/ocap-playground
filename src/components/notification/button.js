@@ -30,7 +30,7 @@ export default function NotificationButton({ type, data, actions, children }) {
       })
       .catch(err => {
         setLoading(false);
-        setMessage({ variant: 'error', text: err.message });
+        setMessage({ variant: 'error', text: err.response ? err.response.statusText : err.message });
       });
   };
 

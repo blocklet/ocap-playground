@@ -799,21 +799,21 @@ export default function IndexPage() {
             </Typography>
           </Typography>
           <div className="section__content">
-            <NotificationButton type="text" data={{ message: 'this is a message' }} className="action">
+            <NotificationButton type="text" data={{ title: 'Hello', body: 'Hello world' }} className="action">
               Send text
             </NotificationButton>
-            <NotificationButton type="asset" className="action">
+            <NotificationButton type="asset" data={{ title: 'Asset', body: 'Hello Asset' }} className="action">
               Send asset
             </NotificationButton>
-            <NotificationButton type="vc" className="action">
+            <NotificationButton type="vc" data={{ title: 'VC', body: 'Hello VC' }} className="action">
               Send VC
             </NotificationButton>
-            <NotificationButton type="token" className="action">
+            <NotificationButton type="token" data={{ title: 'Token', body: 'Hello token' }} className="action">
               Send random {token.foreign.symbol}
             </NotificationButton>
             <NotificationButton
               type="text"
-              data={{ message: 'this is a message wth actions' }}
+              data={{ title: 'Hello Action', body: 'this is a message wth actions' }}
               actions={[{ name: 'launch', title: 'Launch ABT Node', link: 'https://arcblock.io' }]}
               className="action">
               Send text with action

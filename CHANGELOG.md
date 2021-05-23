@@ -1,3 +1,7 @@
+## 0.8.10 (May 24, 2021)
+
+- feat: update notification test case
+
 ## 0.8.9 (May 21, 2021)
 
 - fix: multiple expected vc type

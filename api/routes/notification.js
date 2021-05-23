@@ -15,7 +15,7 @@ const hasher = Mcrypto.getHasher(Mcrypto.types.HashType.SHA3);
 module.exports = {
   init(app) {
     app.post('/api/notification', async (req, res) => {
-      const { type, content, actions = [] } = req.body.data;
+      const { type, content: { title, body }, actions = [] } = req.body.data;
       const userDid = req.user && req.user.did;
 
       try {
@@ -30,13 +30,20 @@ module.exports = {
             wallet: SDK.Wallet.fromJSON(wallet),
           });
 
-          await Notification.sendToUser(userDid, type, {
-            address: itx.address,
-            amount: fromTokenToUnit(amount).toString(),
-            symbol: 'PLAY',
-            senderDid: env.appId,
-            chainHost: env.chainHost,
-            chainId: env.chainId,
+          await Notification.sendToUser(userDid, {
+            title,
+            body,
+            attachments: [{
+              type,
+              data: {
+                address: itx.address,
+                amount: fromTokenToUnit(amount).toString(),
+                symbol: itx.symbol,
+                senderDid: env.appId,
+                chainHost: env.chainHost,
+              },
+            }],
+            actions,
           });
 
           res.status(200).end();
@@ -62,9 +69,17 @@ module.exports = {
             },
           });
 
-          await Notification.sendToUser(userDid, type, {
-            credential: vc,
-            tag: vt.email,
+          await Notification.sendToUser(userDid, {
+            title,
+            body,
+            attachments: [{
+              type,
+              data: {
+                credential: vc,
+                tag: vt.email,
+              },
+            }],
+            actions,
           });
 
           res.status(200).end();
@@ -95,10 +110,17 @@ module.exports = {
             wallet: SDK.Wallet.fromJSON(wallet),
           });
 
-          await Notification.sendToUser(userDid, type, {
-            did: asset.address,
-            chainHost: env.chainHost,
-            chainId: env.chainId,
+          await Notification.sendToUser(userDid, {
+            title,
+            body,
+            attachments: [{
+              type,
+              data: {
+                did: asset.address,
+                chainHost: env.chainHost,
+              },
+            }],
+            actions,
           });
 
           res.status(200).end();
@@ -107,12 +129,11 @@ module.exports = {
 
         // text
         if (type === 'text') {
-          const args = [userDid, type, content];
-          if (actions && actions.length) {
-            args.push({ actions });
-          }
-
-          await Notification.sendToUser(...args);
+          await Notification.sendToUser(userDid, {
+            title,
+            body,
+            actions,
+          });
 
           res.status(200).end();
           return;
