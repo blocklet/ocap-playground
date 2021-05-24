@@ -18,7 +18,6 @@ module.exports = {
       let tag = '';
       if (type === 'EmailVerificationCredential') {
         const { user } = await authClient.getUser(userDid);
-        console.log(user);
         tag = user.email;
       }
       return {
