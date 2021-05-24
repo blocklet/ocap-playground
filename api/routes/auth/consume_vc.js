@@ -10,7 +10,9 @@ module.exports = {
   claims: {
     verifiableCredential: async ({ userDid, extraParams: { type } }) => {
       const w = SDK.Wallet.fromJSON(wallet);
-      const trustedIssuers = (env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ')
+      const trustedIssuers = (
+        env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ,zNKmbNePsqPGRNt5rc76eWzCVgYWDGuPMN7s'
+      )
         .split(',')
         .concat(w.toAddress());
       let tag = '';
@@ -54,7 +56,9 @@ module.exports = {
     }
 
     const w = SDK.Wallet.fromJSON(wallet);
-    const trustedIssuers = (env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ')
+    const trustedIssuers = (
+      env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ,zNKmbNePsqPGRNt5rc76eWzCVgYWDGuPMN7s'
+    )
       .split(',')
       .concat(w.toAddress());
 
