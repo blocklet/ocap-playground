@@ -799,7 +799,7 @@ export default function IndexPage() {
             </Typography>
           </Typography>
           <div className="section__content">
-            <NotificationButton type="text" data={{ title: 'Hello', body: 'Hello world' }} className="action">
+            <NotificationButton type="text" className="action">
               Send text
             </NotificationButton>
             <NotificationButton type="asset" data={{ title: 'Asset', body: 'Hello Asset' }} className="action">
