@@ -10,12 +10,15 @@ module.exports = {
   claims: {
     verifiableCredential: async ({ userDid, extraParams: { type } }) => {
       const w = SDK.Wallet.fromJSON(wallet);
-      const trustedIssuers = (env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ')
+      const trustedIssuers = (
+        env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ,zNKmbNePsqPGRNt5rc76eWzCVgYWDGuPMN7s'
+      )
         .split(',')
         .concat(w.toAddress());
       let tag = '';
       if (type === 'EmailVerificationCredential') {
         const { user } = await authClient.getUser(userDid);
+        console.log(user);
         tag = user.email;
       }
       return {
@@ -54,7 +57,9 @@ module.exports = {
     }
 
     const w = SDK.Wallet.fromJSON(wallet);
-    const trustedIssuers = (env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ')
+    const trustedIssuers = (
+      env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ,zNKmbNePsqPGRNt5rc76eWzCVgYWDGuPMN7s'
+    )
       .split(',')
       .concat(w.toAddress());
 
