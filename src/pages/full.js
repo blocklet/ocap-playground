@@ -813,10 +813,9 @@ export default function IndexPage() {
             </NotificationButton>
             <NotificationButton
               type="text"
-              data={{ title: 'Hello Action', body: 'this is a message wth actions' }}
               actions={[{ name: 'launch', title: 'Launch ABT Node', link: 'https://arcblock.io' }]}
               className="action">
-              Send text with action
+              Send with action
             </NotificationButton>
           </div>
         </section>
