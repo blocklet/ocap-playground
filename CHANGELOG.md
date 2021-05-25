@@ -1,3 +1,8 @@
+## 0.8.13 (May 25, 2021)
+
+- fix: ensure secondary failed
+- [skip ci] Update README.md
+
 ## 0.8.12 (May 25, 2021)
 
 - feat: i18n support for sending notifications
