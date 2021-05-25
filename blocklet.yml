@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.8.13
+version: 0.8.14
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -38,7 +38,7 @@ environments:
   - name: TOKEN_ID
     description: Please provide secondary token for the playground
     required: true
-    default: z35nMqk4BA6vBgF4VKZP3jM4k2DuZxL2V9HMn
+    default: z35n3WVTnN7KrR4gXn3szR6oneVefkBBx78Fc
     secure: false
   - name: SERVER_URL
     description: Please provide base url for the playground

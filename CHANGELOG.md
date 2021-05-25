@@ -1,3 +1,7 @@
+## 0.8.14 (May 25, 2021)
+
+- fix: default token address
+
 ## 0.8.13 (May 25, 2021)
 
 - fix: ensure secondary failed
