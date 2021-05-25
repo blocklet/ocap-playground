@@ -1,3 +1,7 @@
+## 0.8.12 (May 25, 2021)
+
+- feat: i18n support for sending notifications
+
 ## 0.8.11 (May 24, 2021)
 
 - fix did kyc vc can not be verify
