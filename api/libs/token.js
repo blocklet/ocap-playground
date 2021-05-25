@@ -7,7 +7,8 @@ const decimal = 18;
 const itx = {
   name: 'Playground Token',
   description: 'Test Token for OCAP Playground',
-  symbol: 'PLAY2',
+  symbol: 'PLAY3',
+  decimal,
   unit: 'p',
   totalSupply: fromTokenToUnit(totalSupply, decimal).toString(),
   data: { type: 'json', value: { purpose: 'test' } },
