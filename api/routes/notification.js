@@ -129,9 +129,24 @@ module.exports = {
 
         // text
         if (type === 'text') {
+          const messages = {
+            en: {
+              title: 'Hello',
+              body: 'Hello World',
+            },
+            zh: {
+              title: '你好',
+              body: '你好，世界',
+            },
+          };
+
+          const { user } = await authClient.getUser(userDid);
+          const locale = user.locale || 'en';
+          const message = messages[locale] || messages.en;
+
           await Notification.sendToUser(userDid, {
-            title,
-            body,
+            title: message.title,
+            body: message.body,
             actions,
           });
 

@@ -53,11 +53,12 @@ export default function NotificationButton({ type, data, actions, children }) {
 
 NotificationButton.propTypes = {
   type: PropTypes.string.isRequired,
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object,
   actions: PropTypes.array,
   children: PropTypes.any.isRequired,
 };
 
 NotificationButton.defaultProps = {
   actions: [],
+  data: {},
 };
