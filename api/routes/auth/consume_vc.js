@@ -34,7 +34,9 @@ module.exports = {
   onAuth: async ({ userDid, claims, challenge, extraParams: { type, optional } }) => {
     const vcClaim = claims.find(x => x.type === 'verifiableCredential');
 
-    if (!vcClaim) {
+    console.log(1111111, vcClaim);
+
+    if (!vcClaim || !vcClaim.presentation) {
       if (optional) {
         return;
       }
