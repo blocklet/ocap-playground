@@ -1,3 +1,7 @@
+## 0.8.15 (June 02, 2021)
+
+- feat: optional to provide VC
+
 ## 0.8.14 (May 25, 2021)
 
 - fix: default token address

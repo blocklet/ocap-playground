@@ -719,7 +719,7 @@ export default function IndexPage() {
               action="consume_vc"
               extraParams={{ type: 'EmailVerificationCredential' }}
               messages={{
-                title: 'provide your vc',
+                title: 'Provide your vc',
                 scan: 'Scan QR code to sign a message',
                 confirm: 'Confirm on your ABT Wallet',
                 success: 'vc have been checked',
@@ -787,6 +787,17 @@ export default function IndexPage() {
                 scan: 'Scan QR code to provide your NodePurchase or Blocklet Purchase NFT',
                 confirm: 'Confirm on your ABT Wallet',
                 success: 'NFT have been verified',
+              }}
+            />
+            <AuthButton
+              button="Optional to provide VC"
+              action="consume_vc"
+              extraParams={{ type: ['NFTBadge'], optional: true }}
+              messages={{
+                title: 'Provide your vc(optional)',
+                scan: 'Scan QR code to sign a message',
+                confirm: 'Confirm on your ABT Wallet',
+                success: 'Success',
               }}
             />
           </div>

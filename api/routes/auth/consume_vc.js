@@ -8,7 +8,7 @@ const { authClient } = require('../../libs/auth');
 module.exports = {
   action: 'consume_vc',
   claims: {
-    verifiableCredential: async ({ userDid, extraParams: { type } }) => {
+    verifiableCredential: async ({ userDid, extraParams: { type, optional } }) => {
       const w = SDK.Wallet.fromJSON(wallet);
       const trustedIssuers = (
         env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ,zNKmbNePsqPGRNt5rc76eWzCVgYWDGuPMN7s'
@@ -20,17 +20,28 @@ module.exports = {
         const { user } = await authClient.getUser(userDid);
         tag = user.email;
       }
+
       return {
         description: 'Please provide your vc which proves your information',
         item: type,
         trustedIssuers,
         tag,
+        optional: !!optional,
       };
     },
   },
 
-  onAuth: async ({ userDid, claims, challenge, extraParams: { type } }) => {
-    const presentation = JSON.parse(claims.find(x => x.type === 'verifiableCredential').presentation);
+  onAuth: async ({ userDid, claims, challenge, extraParams: { type, optional } }) => {
+    const vcClaim = claims.find(x => x.type === 'verifiableCredential');
+
+    if (!vcClaim) {
+      if (!optional) {
+        return;
+      }
+      throw new Error('Cannot get verifiable credential provided by wallet');
+    }
+
+    const presentation = JSON.parse(vcClaim.presentation);
     if (challenge !== presentation.challenge) {
       throw Error('unsafe response');
     }
