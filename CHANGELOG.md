@@ -1,3 +1,7 @@
+## 0.8.16 (June 02, 2021)
+
+- fix: optional to provide VC
+
 ## 0.8.15 (June 02, 2021)
 
 - feat: optional to provide VC

@@ -35,7 +35,7 @@ module.exports = {
     const vcClaim = claims.find(x => x.type === 'verifiableCredential');
 
     if (!vcClaim) {
-      if (!optional) {
+      if (optional) {
         return;
       }
       throw new Error('Cannot get verifiable credential provided by wallet');
