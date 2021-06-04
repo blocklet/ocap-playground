@@ -1,3 +1,8 @@
+## 0.8.18 (June 04, 2021)
+
+- revert launch node case
+- [skip ci] Update README.md
+
 ## 0.8.17 (June 03, 2021)
 
 - fix: optional to provide VC
