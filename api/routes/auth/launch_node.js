@@ -10,10 +10,6 @@ const { getCredentialList } = require('../../libs/nft');
 module.exports = {
   action: 'launch-instance',
   claims: {
-    profile: () => ({
-      description: 'Please provide your profile',
-      fields: ['fullName', 'email', 'phone'],
-    }),
     verifiableCredential: () => ({
       description: 'Please provide your node purchase NFT',
       item: 'NodePurchaseCredential',
