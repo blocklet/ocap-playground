@@ -1,3 +1,8 @@
+## 0.9.0 (June 11, 2021)
+
+- chore: rename ABT Wallet to DID Wallet
+- [skip ci] Update README.md
+
 ## 0.8.18 (June 04, 2021)
 
 - revert launch node case
