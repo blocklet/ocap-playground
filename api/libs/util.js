@@ -171,6 +171,8 @@ const ensureAsset = async (
       name: userDid,
       location: 'China, Beijing',
     }),
+    endpoint: '',
+    endpointScope: 'public',
   };
   const display =
     type === 'badge'
