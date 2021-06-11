@@ -48,7 +48,7 @@ export default function AuthPrincipal() {
           messages={{
             title: "Verify dApp's Authorization",
             scan: 'Scan QR code to get the authorization',
-            confirm: 'Confirm on your ABT Wallet',
+            confirm: 'Confirm on your DID Wallet',
             success: 'Authorization verified',
           }}
         />

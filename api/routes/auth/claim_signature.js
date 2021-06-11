@@ -54,25 +54,25 @@ module.exports = {
 
         // If we request user to sign some sensitive data or large piece of data
         // We should ask wallet to sign the hash of the data
-        // NOTE: this should fail in latest ABT Wallet
+        // NOTE: this should fail in latest DID Wallet
         digest: {
           // A developer should convert the hash of his data to base58 format => digest
           digest: SDK.Util.toBase58(hasher(data, 1)),
         },
 
-        // NOTE: this should fail in latest ABT Wallet
+        // NOTE: this should fail in latest DID Wallet
         evil_digest: {
           digest: SDK.Util.toBase58(hasher(origin, 1)),
           meta: { origin },
         },
 
-        // NOTE: this should fail in latest ABT Wallet
+        // NOTE: this should fail in latest DID Wallet
         evil_text: {
           data: hasher(origin, 1),
           meta: { origin },
         },
 
-        // NOTE: this should fail in latest ABT Wallet
+        // NOTE: this should fail in latest DID Wallet
         evil_html: {
           data: hasher(origin, 1),
           meta: { origin },

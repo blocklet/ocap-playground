@@ -1,6 +1,6 @@
 # Wallet Playground
 
-ABT Wallet Playground Blocklet
+DID Wallet Playground Blocklet
 
 ## Install on my ABT Node
 

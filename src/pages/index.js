@@ -60,7 +60,7 @@ export default function MiniPage() {
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
             Transfer Scenarios{' '}
             <Typography component="small" color="textSecondary">
-              Help to generate different transfer transactions in ABT Wallet
+              Help to generate different transfer transactions in DID Wallet
             </Typography>
           </Typography>
           <div className="section__content">

@@ -28,7 +28,7 @@ export default function TransferTokenIn() {
           messages={{
             title: 'Transfer Required',
             scan: 'Scan QR code to complete Certificate transfer',
-            confirm: 'Confirm on your ABT Wallet',
+            confirm: 'Confirm on your DID Wallet',
             success: 'Certificate transfer sent!',
           }}
           webWalletUrl={webWalletUrl}

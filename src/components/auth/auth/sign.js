@@ -14,7 +14,7 @@ export default function SignatureClaim({ type }) {
       messages={{
         title: `Sign ${capitalize(type)}`,
         scan: `Scan QR code to get the ${type} claim`,
-        confirm: 'Confirm on your ABT Wallet',
+        confirm: 'Confirm on your DID Wallet',
         success: 'Claim processed',
       }}
     />

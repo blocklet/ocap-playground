@@ -2,7 +2,7 @@ name: ocap-playground
 title: Wallet Playground
 description: >-
   A simple playground that shows the potential of OCAP powered blockchain and
-  ABT Wallet V2
+  DID Wallet V2
 files:
   - api/libs/hooks/pre-start.js
   - screenshots

@@ -45,7 +45,7 @@ module.exports = {
 
       return {
         type: 'AcquireAssetV2Tx',
-        display: JSON.stringify(display), // Since the asset is not minted yet, we need to tell ABT Wallet how to display it
+        display: JSON.stringify(display), // Since the asset is not minted yet, we need to tell DID Wallet how to display it
         data: {
           // The tx must from user
           from: userDid,

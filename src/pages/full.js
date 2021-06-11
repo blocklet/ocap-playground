@@ -65,7 +65,7 @@ export default function IndexPage() {
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
             Transfer Scenarios{' '}
             <Typography component="small" color="textSecondary">
-              Help to generate different transfer transactions in ABT Wallet
+              Help to generate different transfer transactions in DID Wallet
             </Typography>
           </Typography>
           <div className="section__content">
@@ -93,7 +93,7 @@ export default function IndexPage() {
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
             Exchange Scenarios (primary token){' '}
             <Typography component="small" color="textSecondary">
-              Help to generate different exchange transactions in ABT Wallet
+              Help to generate different exchange transactions in DID Wallet
             </Typography>
           </Typography>
           <div className="section__content">
@@ -311,7 +311,7 @@ export default function IndexPage() {
               messages={{
                 title: `Pay ${token.foreign.symbol} to Purchase`,
                 scan: 'Scan QR code to complete the purchase',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can launch your node',
               }}
             />
@@ -322,7 +322,7 @@ export default function IndexPage() {
               messages={{
                 title: `Pay ${token.foreign.symbol} to Purchase`,
                 scan: 'Scan QR code to complete the purchase',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can install blocklet on your node',
               }}
             />
@@ -333,8 +333,8 @@ export default function IndexPage() {
               messages={{
                 title: `Pay ${token.foreign.symbol} to Purchase`,
                 scan: 'Scan QR code to complete the purchase',
-                confirm: 'Confirm on your ABT Wallet',
-                success: 'The purchase was successful, now you can play with the nft in ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'The purchase was successful, now you can play with the nft in DID Wallet',
               }}
             />
             <AuthButton
@@ -344,8 +344,8 @@ export default function IndexPage() {
               messages={{
                 title: 'Pay 2 tokens to Purchase',
                 scan: 'Scan QR code to complete the purchase',
-                confirm: 'Confirm on your ABT Wallet',
-                success: 'The purchase was successful, now you can play with the nft in ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'The purchase was successful, now you can play with the nft in DID Wallet',
               }}
             />
             <AuthButton
@@ -355,8 +355,8 @@ export default function IndexPage() {
               messages={{
                 title: 'Consume TokenInputTest NFT to Purchase',
                 scan: 'Scan QR code to complete the purchase',
-                confirm: 'Confirm on your ABT Wallet',
-                success: 'The purchase was successful, now you can play with the nft in ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'The purchase was successful, now you can play with the nft in DID Wallet',
               }}
             />
             <AuthButton
@@ -366,7 +366,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Provide Node Ownership NFT',
                 scan: 'Scan QR code to provide',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Ownership verified',
               }}
             />
@@ -377,7 +377,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Provide Blocklet Purchase NFT',
                 scan: 'Scan QR code to provide',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Purchase verified',
               }}
             />
@@ -399,7 +399,7 @@ export default function IndexPage() {
               messages={{
                 title: `Pay ${token.local.symbol} to Purchase`,
                 scan: 'Scan QR code to complete the purchase',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can install blocklet on your node',
               }}
             />
@@ -410,7 +410,7 @@ export default function IndexPage() {
               messages={{
                 title: `Pay ${token.foreign.symbol} to Purchase`,
                 scan: 'Scan QR code to complete the purchase',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can install blocklet on your node',
               }}
             />
@@ -421,7 +421,7 @@ export default function IndexPage() {
               messages={{
                 title: `Pay ${token.local.symbol} and ${token.foreign.symbol} to Purchase`,
                 scan: 'Scan QR code to complete the purchase',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can install blocklet on your node',
               }}
             />
@@ -432,7 +432,7 @@ export default function IndexPage() {
               messages={{
                 title: `Pay ${token.foreign.symbol}`,
                 scan: 'Scan QR code to complete the transfer',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Payment successful',
               }}
             />
@@ -443,7 +443,7 @@ export default function IndexPage() {
               messages={{
                 title: `Exchange ${token.foreign.symbol} for ${token.local.symbol}`,
                 scan: 'Scan QR code to complete the exchange',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Exchange successful',
               }}
             />
@@ -521,7 +521,7 @@ export default function IndexPage() {
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
             DID Auth Claims{' '}
             <Typography component="small" color="textSecondary">
-              Help to test different DID Auth Claims in ABT Wallet
+              Help to test different DID Auth Claims in DID Wallet
             </Typography>
           </Typography>
           <div className="section__content">
@@ -531,7 +531,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Profile Required',
                 scan: 'Scan QR code to provide profile',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Profile provided',
               }}
             />
@@ -541,7 +541,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Profile Required',
                 scan: 'Scan QR code to provide profile',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Profile provided',
               }}
             />
@@ -551,7 +551,7 @@ export default function IndexPage() {
               messages={{
                 title: 'dApp will throw an error',
                 scan: 'Scan QR code to get the error',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'You will not see this',
               }}
             />
@@ -562,7 +562,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Request Timeout',
                 scan: 'Scan QR code to test the timeout',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'You will not see this',
               }}
             />
@@ -573,7 +573,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Response Timeout',
                 scan: 'Scan QR code to test the timeout',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'You will not see this',
               }}
             />
@@ -583,7 +583,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Create DID',
                 scan: 'Scan QR code to get the did spec',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Application Created',
               }}
             />
@@ -593,7 +593,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Provide DID',
                 scan: 'Scan QR code to prove you own the DID',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'DID holding confirmed',
               }}
             />
@@ -612,7 +612,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Multiple Claims',
                 scan: 'Scan QR code to get multiple claims at once',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Claims processed successfully',
               }}
             />
@@ -622,7 +622,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Multiple Steps',
                 scan: 'Scan QR code to get multiple claims in sequential',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Claims processed successfully',
               }}
             />
@@ -632,7 +632,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Multiple Workflow',
                 scan: 'Scan QR code to start a workflow that redirect to another',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'You should not see this',
               }}
             />
@@ -649,7 +649,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Extra Params',
                 scan: 'Scan to see if your wallet can pass through correct extra params',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Operation Success',
               }}
             />
@@ -669,7 +669,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Try Overwrite',
                 scan: 'Scan QR code to get fake asset chain info',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'You will never see this, if so, wallet has bug',
               }}
             />
@@ -699,7 +699,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Issue you vc from random issuer',
                 scan: 'Scan QR code to sign a message',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'vc have send',
               }}
             />
@@ -710,7 +710,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Issue you vc from random email',
                 scan: 'Scan QR code to sign a message',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'vc have send',
               }}
             />
@@ -721,7 +721,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Provide your vc',
                 scan: 'Scan QR code to sign a message',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'vc have been checked',
               }}
             />
@@ -731,7 +731,7 @@ export default function IndexPage() {
               messages={{
                 title: 'You will get a random badge',
                 scan: 'Scan QR code to sign a message',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'badge have been sent',
               }}
             />
@@ -741,7 +741,7 @@ export default function IndexPage() {
               messages={{
                 title: 'You will get a random badge',
                 scan: 'Scan QR code to sign a message',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'badge have been sent',
               }}
             />
@@ -752,7 +752,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Provide your certificate',
                 scan: 'Scan QR code to sign a message',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Certificate have been verified',
               }}
             />
@@ -763,7 +763,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Provide your ticket',
                 scan: 'Scan QR code to sign a message',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Ticket have been verified',
               }}
             />
@@ -774,7 +774,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Provide your badge',
                 scan: 'Scan QR code to sign a message',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Badge have been verified',
               }}
             />
@@ -785,7 +785,7 @@ export default function IndexPage() {
               messages={{
                 title: 'NFT Required',
                 scan: 'Scan QR code to provide your NodePurchase or Blocklet Purchase NFT',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'NFT have been verified',
               }}
             />
@@ -796,7 +796,7 @@ export default function IndexPage() {
               messages={{
                 title: 'Provide your vc(optional)',
                 scan: 'Scan QR code to sign a message',
-                confirm: 'Confirm on your ABT Wallet',
+                confirm: 'Confirm on your DID Wallet',
                 success: 'Success',
               }}
             />
@@ -833,13 +833,13 @@ export default function IndexPage() {
         {!browser.wallet && (
           <section className="section">
             <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
-              Do not have ABT Wallet?
+              Do not have DID Wallet?
             </Typography>
             <div className="section__content">
               <div style={{ padding: 24, background: '#44cdc6', color: 'rgb(255, 255, 255)' }}>
                 <WalletDownload
                   layout={browser.mobile.any ? 'vertical' : 'horizontal'}
-                  title="Make sure you have your phone handy with the ABT Wallet downloaded."
+                  title="Make sure you have your phone handy with the DID Wallet downloaded."
                 />
               </div>
             </div>
