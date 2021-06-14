@@ -1,3 +1,7 @@
+## 0.9.3 (June 14, 2021)
+
+- fix: add decimal in token in notification
+
 ## 0.9.2 (June 14, 2021)
 
 - fix: log errors
