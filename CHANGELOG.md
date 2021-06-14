@@ -1,3 +1,7 @@
+## 0.9.2 (June 14, 2021)
+
+- fix: log errors
+
 ## 0.9.1 (June 14, 2021)
 
 - chore: bump dependency to latest
