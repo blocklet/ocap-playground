@@ -41,6 +41,7 @@ module.exports = {
                 symbol: itx.symbol,
                 senderDid: env.appId,
                 chainHost: env.chainHost,
+                decimal: itx.decimal,
               },
             }],
             actions,
