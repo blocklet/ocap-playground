@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const env = require('../libs/env');
 const { getTokenInfo, getAccountBalance } = require('../libs/util');
 
@@ -20,6 +21,7 @@ module.exports = {
           balance: {},
         });
       } catch (e) {
+        console.error('get session failed', e);
         return res.json({});
       }
     });
