@@ -1,7 +1,10 @@
+## 0.9.1 (June 14, 2021)
+
+- chore: bump dependency to latest
+
 ## 0.9.0 (June 11, 2021)
 
 - chore: rename ABT Wallet to DID Wallet
-- [skip ci] Update README.md
 
 ## 0.8.18 (June 04, 2021)
 
@@ -26,7 +29,6 @@
 ## 0.8.13 (May 25, 2021)
 
 - fix: ensure secondary failed
-- [skip ci] Update README.md
 
 ## 0.8.12 (May 25, 2021)
 
