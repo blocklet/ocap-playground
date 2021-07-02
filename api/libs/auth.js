@@ -4,9 +4,10 @@ const Mcrypto = require('@ocap/mcrypto');
 const SDK = require('@ocap/sdk');
 const AuthNedbStorage = require('@arcblock/did-auth-storage-nedb');
 const AgentNedbStorage = require('@arcblock/did-agent-storage-nedb');
+const WalletAuthenticator = require('@blocklet/sdk/lib/wallet-authenticator');
 const { NFTFactory } = require('@arcblock/nft');
 const { fromSecretKey, fromJSON, WalletType } = require('@ocap/wallet');
-const { WalletAuthenticator, AgentAuthenticator, WalletHandlers, AgentWalletHandlers } = require('@arcblock/did-auth');
+const { AgentAuthenticator, WalletHandlers, AgentWalletHandlers } = require('@arcblock/did-auth');
 const AuthService = require('@blocklet/sdk/service/auth');
 const env = require('./env');
 
@@ -23,29 +24,9 @@ if (env.chainHost) {
 
 const wallet = fromSecretKey(process.env.BLOCKLET_APP_SK, type).toJSON();
 
-const icon = 'https://releases.arcblockio.cn/dapps/labs.png';
-const walletAuth = new WalletAuthenticator({
-  wallet,
-  appInfo: ({ baseUrl }) => ({
-    name: env.appName,
-    description: env.appDescription,
-    icon: env.appIcon || icon,
-    link: baseUrl,
-  }),
-  chainInfo: () => ({
-    host: env.chainHost,
-    id: env.chainId,
-  }),
-});
+const walletAuth = new WalletAuthenticator();
 
 const walletAuthWithNoChainInfo = new WalletAuthenticator({
-  wallet,
-  appInfo: ({ baseUrl }) => ({
-    name: env.appName,
-    description: env.appDescription,
-    icon: env.appIcon || icon,
-    link: baseUrl,
-  }),
   chainInfo: { host: 'none', id: 'none', restrictedDeclare: false },
 });
 
@@ -54,7 +35,7 @@ const agentAuth = new AgentAuthenticator({
   appInfo: ({ baseUrl }) => ({
     name: 'Agent Service',
     description: 'This is a demo agent service that can do did-auth on be-half-of another application',
-    icon: env.appIcon || icon,
+    icon: env.appIcon,
     link: baseUrl,
   }),
   chainInfo: {
@@ -104,7 +85,7 @@ const factory = new NFTFactory({
   issuer: {
     name: 'ArcBlock',
     url: 'https://www.arcblock.io',
-    logo: icon,
+    logo: 'https://releases.arcblockio.cn/dapps/labs.png',
   },
 });
 
