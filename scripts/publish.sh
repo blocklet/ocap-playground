@@ -3,6 +3,9 @@ set -e
 VERSION=$(cat version | awk '{$1=$1;print}')
 echo "publish version ${VERSION}"
 
+yarn why @ocap/proto
+yarn why @ocap/client
+
 echo "publishing to dev registry..."
 blocklet config registry ${STAGING_REGISTRY}
 blocklet publish --developer-sk ${ABTNODE_DEV_STAGING_SK}
