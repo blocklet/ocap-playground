@@ -16,7 +16,7 @@ install:
 
 dep:
 	@echo "Install dependencies required for this repo..."
-	@yarn
+	@yarn install --cache-folder /tmp/blocklet/ocap-playground
 
 pre-build: install dep
 	@echo "Running scripts before the build..."
