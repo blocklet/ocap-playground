@@ -1,3 +1,7 @@
+## 0.9.6 (July 03, 2021)
+
+- fix: ocap proto issue
+
 ## 0.9.5 (July 03, 2021)
 
 
