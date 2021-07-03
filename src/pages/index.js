@@ -7,6 +7,7 @@ import { PlaygroundAction } from '@arcblock/did-playground';
 
 import { UserContext } from '../context/user';
 import Layout from '../components/layout';
+import AuthButton from '../components/auth/general';
 
 import getWebWalletUrl from '../libs/util';
 
@@ -79,6 +80,17 @@ export default function MiniPage() {
               amount={0.5}
               title={`Send 0.5 ${token.local.symbol}`}
               webWalletUrl={webWalletUrl}
+            />
+            <AuthButton
+              button="Reward 10 TBA"
+              action="reward"
+              extraParams={{ amount: '10' }}
+              messages={{
+                title: 'Reward with DID Wallet',
+                scan: 'Scan QR code to complete the purchase',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'The purchase was successful, now you can launch your node',
+              }}
             />
           </div>
         </section>

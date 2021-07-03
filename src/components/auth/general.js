@@ -30,7 +30,6 @@ export default function GeneralAuthButton({ button, action, messages, timeout, e
           responsive
           action={action}
           checkFn={api.get}
-          socketUrl={api.socketUrl}
           onClose={() => setOpen(false)}
           checkTimeout={timeout}
           extraParams={extraParams}

@@ -73,6 +73,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/cla
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_multiple_workflow')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/error')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/timeout')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/reward')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer_asset_out')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer_asset_in')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer_token_asset_in')));
