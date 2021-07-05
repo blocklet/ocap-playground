@@ -440,6 +440,28 @@ export default function IndexPage() {
 
         <section className="section">
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
+            PrepareTx Scenarios{' '}
+            <Typography component="small" color="textSecondary">
+              Wallet can leverage multiple input capabilities of the chain
+            </Typography>
+          </Typography>
+          <div className="section__content">
+            <AuthButton
+              button={`Transfer: ${token.local.symbol} + ${token.foreign.symbol}`}
+              action="prepare"
+              extraParams={{ type: 'TransferV3Tx', input: 'both' }}
+              messages={{
+                title: `Pay ${token.local.symbol} and ${token.foreign.symbol} to Purchase`,
+                scan: 'Scan QR code to complete the transaction',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'The purchase was successful',
+              }}
+            />
+          </div>
+        </section>
+
+        <section className="section">
+          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
             Custom Success Message Scenarios{' '}
             <Typography component="small" color="textSecondary">
               Custom Success Message
