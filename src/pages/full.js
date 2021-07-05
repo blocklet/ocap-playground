@@ -13,7 +13,6 @@ import Layout from '../components/layout';
 
 import AuthButton from '../components/auth/general';
 import SignButton from '../components/auth/auth/sign';
-import AgentButton from '../components/auth/auth/agent';
 import TransferAssetOut from '../components/auth/transfer_asset_out';
 import TransferAssetIn from '../components/auth/transfer_asset_in';
 import TransferTokenAssetIn from '../components/auth/transfer_token_asset_in';
@@ -349,17 +348,6 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Buy Asset Input Test NFT"
-              action="acquire_asset"
-              extraParams={{ factory: 'assetInputTest' }}
-              messages={{
-                title: 'Consume TokenInputTest NFT to Purchase',
-                scan: 'Scan QR code to complete the purchase',
-                confirm: 'Confirm on your DID Wallet',
-                success: 'The purchase was successful, now you can play with the nft in DID Wallet',
-              }}
-            />
-            <AuthButton
               button="Verify Node Ownership"
               action="verify-nft"
               extraParams={{ type: 'node' }}
@@ -600,12 +588,7 @@ export default function IndexPage() {
             <SignButton {...session} type="transaction" />
             <SignButton {...session} type="text" />
             <SignButton {...session} type="html" />
-            {/* <SignButton {...session} type="digest" /> */}
-            {/* <SignButton {...session} type="evil_digest" /> */}
-            {/* <SignButton {...session} type="evil_text" /> */}
-            {/* <SignButton {...session} type="evil_html" /> */}
             <SignButton {...session} type="skip_hash" />
-            <AgentButton {...session} />
             <AuthButton
               button="Multiple Claims"
               action="claim_multiple"
@@ -651,26 +634,6 @@ export default function IndexPage() {
                 scan: 'Scan to see if your wallet can pass through correct extra params',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Operation Success',
-              }}
-            />
-          </div>
-        </section>
-        <section className="section" style={{ display: 'none' }}>
-          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
-            Security{' '}
-            <Typography component="small" color="textSecondary">
-              Try Overwrite Asset Chain
-            </Typography>
-          </Typography>
-          <div className="section__content">
-            <AuthButton
-              button="Try Overwrite Asset Chain"
-              action="claim_overwrite"
-              messages={{
-                title: 'Try Overwrite',
-                scan: 'Scan QR code to get fake asset chain info',
-                confirm: 'Confirm on your DID Wallet',
-                success: 'You will never see this, if so, wallet has bug',
               }}
             />
           </div>
@@ -790,7 +753,7 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Optional to provide VC"
+              button="Request VC: Optional"
               action="consume_vc"
               extraParams={{ type: ['NFTBadge'], optional: true }}
               messages={{
