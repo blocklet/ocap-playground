@@ -1,3 +1,7 @@
+## 0.9.8 (July 05, 2021)
+
+- chore: cleanup useless test case
+
 ## 0.9.7 (July 03, 2021)
 
 
