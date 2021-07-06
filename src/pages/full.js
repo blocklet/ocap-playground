@@ -785,6 +785,16 @@ export default function IndexPage() {
                 success: 'Success',
               }}
             />
+            <AuthButton
+              button="Claim Fake Passport"
+              action="fake_passport"
+              messages={{
+                title: 'Claim Fake Passport',
+                scan: 'Scan QR code to sign a message',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Passport sent',
+              }}
+            />
           </div>
         </section>
         <section className="section">
