@@ -1,3 +1,8 @@
+## 0.9.9 (July 06, 2021)
+
+- feat: support nft passport test case
+- feat: support prepareTx test case
+
 ## 0.9.8 (July 05, 2021)
 
 - chore: cleanup useless test case
