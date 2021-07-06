@@ -30,22 +30,23 @@ const txCreators = {
       issuer: { wallet: app, name: 'ocap-playground' }, // NOTE: using moniker must be enforced to make mint work
     });
 
-    logger.info('preMint', preMint);
-
     return {
       type: 'AcquireAssetV3Tx',
-      description: 'Acquire asset from application using delegation',
-      data: {
-        // The tx must from user
+      description: 'Acquire asset from application using multiple inputs',
+      partialTx: {
         from: userDid,
         pk: userPk,
         itx: {
           factory: inputFactories[input],
           address: preMint.address,
-          assets: [],
+          inputs: [],
+          owner: userDid,
           variables: Object.entries(preMint.variables).map(([key, value]) => ({ name: key, value })),
           issuer: preMint.issuer,
         },
+      },
+      requirement: {
+        tokens: [{ address: '', value: state.input.value }].concat(state.input.tokens).filter(x => !!x.value),
       },
     };
   },
@@ -104,7 +105,6 @@ module.exports = {
     }
 
     const tx = SDK.decodeTx(claim.finalTx);
-    logger.info('acquire.auth.tx', tx);
 
     if (type === 'AcquireAssetV3Tx') {
       const hash = await SDK.sendAcquireAssetV3Tx({ tx, wallet: fromAddress(userDid) });
