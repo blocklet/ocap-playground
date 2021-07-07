@@ -1,3 +1,7 @@
+## 0.9.10 (July 07, 2021)
+
+- fix: prepareTx claim
+
 ## 0.9.9 (July 06, 2021)
 
 - feat: support nft passport test case
