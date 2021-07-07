@@ -460,7 +460,7 @@ export default function IndexPage() {
             <AuthButton
               button={`AcquireV3: ${token.local.symbol} + ${token.foreign.symbol}`}
               action="prepare"
-              extraParams={{ type: 'AcquireAssetV3', input: 'both' }}
+              extraParams={{ type: 'AcquireAssetV3Tx', input: 'both' }}
               messages={{
                 title: `Pay ${token.local.symbol} and ${token.foreign.symbol} to Purchase`,
                 scan: 'Scan QR code to complete the transaction',
