@@ -458,6 +458,29 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button="TransferV3: Multi Output"
+              action="prepare"
+              extraParams={{ type: 'TransferV3TxOutput', input: 'both' }}
+              messages={{
+                title: `Pay ${token.local.symbol} and ${token.foreign.symbol} to Purchase`,
+                scan: 'Scan QR code to complete the transaction',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'The purchase was successful',
+              }}
+            />
+            <AuthButton
+              button="TransferV3: Need Asset"
+              action="prepare"
+              extraParams={{ type: 'TransferV3TxAsset', input: 'both' }}
+              messages={{
+                title: `Pay ${token.local.symbol} and ${token.foreign.symbol} to Purchase`,
+                scan: 'Scan QR code to complete the transaction',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'The purchase was successful',
+              }}
+            />
+
+            <AuthButton
               button={`AcquireV3: ${token.local.symbol} + ${token.foreign.symbol}`}
               action="prepare"
               extraParams={{ type: 'AcquireAssetV3Tx', input: 'both' }}

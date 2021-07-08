@@ -11,6 +11,8 @@ const { formatFactoryState, factories, inputs } = require('../../libs/factory');
 
 const app = SDK.Wallet.fromJSON(wallet);
 
+const secondAddress = 'zNKqftHB7ibZkHrz6Gu37xJXHLKqH5TJYEgd';
+
 const txCreators = {
   AcquireAssetV3Tx: async ({ userDid, userPk, input }) => {
     const inputFactories = {
@@ -54,11 +56,13 @@ const txCreators = {
   // To complete this transaction, please claim tokens on faucet.abtnetwork.io
   TransferV3Tx: async () => {
     const token = await getTokenInfo();
-    const amount = (Math.random() * 50 + 1).toFixed(6);
-    const value = fromTokenToUnit(amount, token.foreign.decimal).toString();
+    const amountPrimary = 11.1;
+    const amountForeign = 22.2;
+    const valuePrimary = fromTokenToUnit(amountPrimary, token.local.decimal).toString();
+    const valueForeign = fromTokenToUnit(amountForeign, token.foreign.decimal).toString();
     const tokens = [
-      { address: '', value },
-      { address: env.tokenId, value },
+      { address: '', value: valuePrimary },
+      { address: env.tokenId, value: valueForeign },
     ];
 
     return {
@@ -71,6 +75,90 @@ const txCreators = {
               // 转给 app
               owner: wallet.address,
               tokens,
+            },
+          ],
+        },
+      },
+      requirement: {
+        tokens,
+      },
+      description: 'Complete this transaction using multiple tx inputs feature',
+    };
+  },
+
+  TransferV3TxAsset: async () => {
+    const token = await getTokenInfo();
+    const amountPrimary = 11.1;
+    const amountForeign = 22.2;
+    const valuePrimary = fromTokenToUnit(amountPrimary, token.local.decimal).toString();
+    const valueForeign = fromTokenToUnit(amountForeign, token.foreign.decimal).toString();
+    const tokens = [
+      { address: '', value: valuePrimary },
+      { address: env.tokenId, value: valueForeign },
+    ];
+
+    return {
+      type: 'TransferV3Tx',
+      partialTx: {
+        itx: {
+          inputs: [],
+          outputs: [
+            {
+              // 转给 app
+              owner: wallet.address,
+              tokens,
+            },
+          ],
+        },
+      },
+      requirement: {
+        tokens,
+        assets: {
+          parent: [wallet.address],
+          amount: 2,
+        },
+      },
+      description: 'Complete this transaction using multiple tx inputs feature',
+    };
+  },
+
+  TransferV3TxOutput: async () => {
+    const token = await getTokenInfo();
+    const valuePrimary = fromTokenToUnit(11.1, token.local.decimal).toString();
+    const valueForeign = fromTokenToUnit(22.2, token.foreign.decimal).toString();
+    const valueOnePrimary = fromTokenToUnit(1.04, token.local.decimal).toString();
+    const valueOneForeign = fromTokenToUnit(20.1, token.foreign.decimal).toString();
+    const valueTwoPrimary = fromTokenToUnit(10.06, token.local.decimal).toString();
+    const valueTwoForeign = fromTokenToUnit(2.1, token.foreign.decimal).toString();
+
+    const tokens = [
+      { address: '', value: valuePrimary },
+      { address: env.tokenId, value: valueForeign },
+    ];
+    const outputOne = [
+      { address: '', value: valueOnePrimary },
+      { address: env.tokenId, value: valueOneForeign },
+    ];
+    const outputTwo = [
+      { address: '', value: valueTwoPrimary },
+      { address: env.tokenId, value: valueTwoForeign },
+    ];
+
+    return {
+      type: 'TransferV3Tx',
+      partialTx: {
+        itx: {
+          inputs: [],
+          outputs: [
+            {
+              // 转给 app
+              owner: wallet.address,
+              tokens: outputOne,
+            },
+            {
+              // 转给 Faucet
+              owner: secondAddress,
+              tokens: outputTwo,
             },
           ],
         },
@@ -111,7 +199,7 @@ module.exports = {
       return { hash, tx: claim.finalTx };
     }
 
-    if (type === 'TransferV3Tx') {
+    if (type.startsWith('TransferV3Tx')) {
       const hash = await SDK.sendTransferV3Tx({ tx, wallet: fromAddress(userDid) });
       return { hash, tx: claim.finalTx };
     }
