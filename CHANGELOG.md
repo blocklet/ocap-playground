@@ -1,3 +1,7 @@
+## 0.9.11 (July 08, 2021)
+
+- add more action for transferV3
+
 ## 0.9.10 (July 07, 2021)
 
 - fix: prepareTx claim
