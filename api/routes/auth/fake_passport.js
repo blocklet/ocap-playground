@@ -41,6 +41,7 @@ module.exports = {
       },
       subject: {
         id: userDid,
+        passport,
         display: {
           type: 'svg',
           passport,
