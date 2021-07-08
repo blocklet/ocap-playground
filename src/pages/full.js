@@ -852,10 +852,28 @@ export default function IndexPage() {
               Send random {token.foreign.symbol}
             </NotificationButton>
             <NotificationButton
+              type="token"
+              data={{ title: 'Primary Token', body: 'Hello TBA' }}
+              actions={[{ name: 'primary', title: 'Launch', link: 'https://arcblock.io' }]}
+              className="action">
+              Send random {token.local.symbol}
+            </NotificationButton>
+            <NotificationButton
               type="text"
               actions={[{ name: 'launch', title: 'Launch ABT Node', link: 'https://arcblock.io' }]}
               className="action">
               Send with action
+            </NotificationButton>
+            <NotificationButton
+              type="text"
+              actions={[
+                { name: 'launch', title: 'Launch', link: 'https://arcblock.io' },
+                { name: 'Set', title: 'ABT', link: 'https://arcblock.io' },
+                { name: 'Do What', title: 'Node', link: 'https://arcblock.io' },
+                { name: 'More', title: 'More Action', link: 'https://arcblock.io' },
+              ]}
+              className="action">
+              Send with 4 action
             </NotificationButton>
           </div>
         </section>
