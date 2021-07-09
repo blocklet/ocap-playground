@@ -15,7 +15,11 @@ const hasher = Mcrypto.getHasher(Mcrypto.types.HashType.SHA3);
 module.exports = {
   init(app) {
     app.post('/api/notification', async (req, res) => {
-      const { type, content: { title, body }, actions = [] } = req.body.data;
+      const {
+        type,
+        content: { title, body },
+        actions = [],
+      } = req.body.data;
       const userDid = req.user && req.user.did;
 
       try {
@@ -23,29 +27,58 @@ module.exports = {
         if (type === 'token') {
           // send secondary token
           const amount = Math.random().toFixed(6);
-          await SDK.transfer({
-            to: userDid,
-            token: 0,
-            tokens: [{ address: env.tokenId, value: amount }],
-            wallet: SDK.Wallet.fromJSON(wallet),
-          });
+          if (actions[0].name === 'primary') {
+            await SDK.transfer({
+              to: userDid,
+              token: amount,
+              wallet: SDK.Wallet.fromJSON(wallet),
+            });
 
-          await Notification.sendToUser(userDid, {
-            title,
-            body,
-            attachments: [{
-              type,
-              data: {
-                address: itx.address,
-                amount: fromTokenToUnit(amount).toString(),
-                symbol: itx.symbol,
-                senderDid: env.appId,
-                chainHost: env.chainHost,
-                decimal: itx.decimal,
-              },
-            }],
-            actions,
-          });
+            await Notification.sendToUser(userDid, {
+              title,
+              body,
+              attachments: [
+                {
+                  type,
+                  data: {
+                    address: '',
+                    amount: fromTokenToUnit(amount).toString(),
+                    symbol: 'TBA',
+                    senderDid: env.appId,
+                    chainHost: env.chainHost,
+                    decimal: 18,
+                  },
+                },
+              ],
+              actions,
+            });
+          } else {
+            await SDK.transfer({
+              to: userDid,
+              token: 0,
+              tokens: [{ address: env.tokenId, value: amount }],
+              wallet: SDK.Wallet.fromJSON(wallet),
+            });
+
+            await Notification.sendToUser(userDid, {
+              title,
+              body,
+              attachments: [
+                {
+                  type,
+                  data: {
+                    address: itx.address,
+                    amount: fromTokenToUnit(amount).toString(),
+                    symbol: itx.symbol,
+                    senderDid: env.appId,
+                    chainHost: env.chainHost,
+                    decimal: itx.decimal,
+                  },
+                },
+              ],
+              actions,
+            });
+          }
 
           res.status(200).end();
           return;
@@ -73,13 +106,15 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title,
             body,
-            attachments: [{
-              type,
-              data: {
-                credential: vc,
-                tag: vt.email,
+            attachments: [
+              {
+                type,
+                data: {
+                  credential: vc,
+                  tag: vt.email,
+                },
               },
-            }],
+            ],
             actions,
           });
 
@@ -114,13 +149,15 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title,
             body,
-            attachments: [{
-              type,
-              data: {
-                did: asset.address,
-                chainHost: env.chainHost,
+            attachments: [
+              {
+                type,
+                data: {
+                  did: asset.address,
+                  chainHost: env.chainHost,
+                },
               },
-            }],
+            ],
             actions,
           });
 

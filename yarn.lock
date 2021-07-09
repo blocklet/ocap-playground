@@ -293,6 +293,17 @@
     debug "^4.3.1"
     lodash "^4.17.20"
 
+"@arcblock/did@^1.11.7":
+  version "1.11.7"
+  resolved "https://registry.nlark.com/@arcblock/did/download/@arcblock/did-1.11.7.tgz#f3fc7cd711a7a4cb34e235d62a1da63b1c5daf39"
+  integrity sha1-8/x81xGnpMs04jXWKh2mOxxdrzk=
+  dependencies:
+    "@ocap/mcrypto" "1.11.7"
+    "@ocap/util" "1.11.7"
+    bn.js "^5.1.3"
+    debug "^4.3.1"
+    lodash "^4.17.20"
+
 "@arcblock/event-client@^1.0.23":
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/@arcblock/event-client/-/event-client-1.6.2.tgz#baa970ac32cb0f56ed23e4a76a1a65aec38e0719"
