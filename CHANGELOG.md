@@ -1,3 +1,7 @@
+## 0.9.13 (July 14, 2021)
+
+- fix send second token notificaiton
+
 ## 0.9.12 (July 09, 2021)
 
 
