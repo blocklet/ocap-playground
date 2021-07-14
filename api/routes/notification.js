@@ -27,32 +27,8 @@ module.exports = {
         if (type === 'token') {
           // send secondary token
           const amount = Math.random().toFixed(6);
-          if (actions[0].name === 'primary') {
-            await SDK.transfer({
-              to: userDid,
-              token: amount,
-              wallet: SDK.Wallet.fromJSON(wallet),
-            });
-
-            await Notification.sendToUser(userDid, {
-              title,
-              body,
-              attachments: [
-                {
-                  type,
-                  data: {
-                    address: '',
-                    amount: fromTokenToUnit(amount).toString(),
-                    symbol: 'TBA',
-                    senderDid: env.appId,
-                    chainHost: env.chainHost,
-                    decimal: 18,
-                  },
-                },
-              ],
-              actions,
-            });
-          } else {
+          console.log(`actions:${actions}`)
+          if (actions.length === 0) {
             await SDK.transfer({
               to: userDid,
               token: 0,
@@ -78,8 +54,32 @@ module.exports = {
               ],
               actions,
             });
-          }
+          } else if (actions[0].name === 'primary') {
+            await SDK.transfer({
+              to: userDid,
+              token: amount,
+              wallet: SDK.Wallet.fromJSON(wallet),
+            });
 
+            await Notification.sendToUser(userDid, {
+              title,
+              body,
+              attachments: [
+                {
+                  type,
+                  data: {
+                    address: '',
+                    amount: fromTokenToUnit(amount).toString(),
+                    symbol: 'TBA',
+                    senderDid: env.appId,
+                    chainHost: env.chainHost,
+                    decimal: 18,
+                  },
+                },
+              ],
+              actions,
+            });
+          }
           res.status(200).end();
           return;
         }
