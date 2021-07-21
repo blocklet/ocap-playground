@@ -27,7 +27,6 @@ module.exports = {
         if (type === 'token') {
           // send secondary token
           const amount = Math.random().toFixed(6);
-          console.log(`actions:${actions}`)
           if (actions.length === 0) {
             await SDK.transfer({
               to: userDid,
