@@ -179,6 +179,14 @@ const exchangeAsset = async claim => {
 
   tx.signaturesList[0].signature = claim.sig;
 
+  if (claim.from) {
+    tx.signaturesList[0].signer = claim.from;
+  }
+
+  if (claim.delegator) {
+    tx.signaturesList[0].delegator = claim.delegator;
+  }
+
   const hash = await SDK.exchange({
     tx,
     wallet: SDK.Wallet.fromJSON(wallet),
