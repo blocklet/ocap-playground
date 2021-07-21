@@ -16,7 +16,7 @@ install:
 
 dep:
 	@echo "Install dependencies required for this repo..."
-	@yarn install --cache-folder /tmp/blocklet/ocap-playground
+	@yarn install
 
 pre-build: install dep
 	@echo "Running scripts before the build..."
@@ -43,11 +43,11 @@ setenv:
 	@echo "Setup .env file..."
 	@echo "SKIP_PREFLIGHT_CHECK=true" > .env
 
-precommit: setenv dep lint test coverage
+precommit: setenv lint test coverage
 
 github-init:
 	@sudo npm install -g yarn @abtnode/cli @babel/cli
-	@make precommit
+	@make dep
 
 clean:
 	@echo "Cleaning the build..."
