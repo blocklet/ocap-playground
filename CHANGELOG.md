@@ -1,3 +1,7 @@
+## 0.9.15 (七月 21, 2021)
+
+- fix: eslint error
+
 ## 0.9.14 (七月 21, 2021)
 
 - fix: check delegate params for exchange scenario
