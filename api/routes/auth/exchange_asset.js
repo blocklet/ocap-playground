@@ -85,9 +85,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   } else {
     const assets = await getTransferrableAssets(userDid);
     senderPayload = assets
-      .filter(
-        item => (transferVCTypeToAssetType(JSON.parse(item.data.value).type) === NFTType[pt])
-      )
+      .filter(item => transferVCTypeToAssetType(JSON.parse(item.data.value).type) === NFTType[pt])
       .map(item => item.address)
       .slice(0, pa);
 
@@ -179,6 +177,14 @@ const exchangeAsset = async claim => {
   const tx = SDK.decodeTx(claim.origin);
 
   tx.signaturesList[0].signature = claim.sig;
+
+  if (claim.from) {
+    tx.signaturesList[0].signer = claim.from;
+  }
+
+  if (claim.delegator) {
+    tx.signaturesList[0].delegator = claim.delegator;
+  }
 
   const hash = await SDK.exchange({
     tx,

@@ -1,10 +1,12 @@
+## 0.9.14 (七月 21, 2021)
+
+- fix: check delegate params for exchange scenario
+
 ## 0.9.13 (July 14, 2021)
 
 - fix send second token notificaiton
 
 ## 0.9.12 (July 09, 2021)
-
-
 
 ## 0.9.11 (July 08, 2021)
 
@@ -25,15 +27,11 @@
 
 ## 0.9.7 (July 03, 2021)
 
-
-
 ## 0.9.6 (July 03, 2021)
 
 - fix: ocap proto issue
 
 ## 0.9.5 (July 03, 2021)
-
-
 
 ## 0.9.4 (June 14, 2021)
 
