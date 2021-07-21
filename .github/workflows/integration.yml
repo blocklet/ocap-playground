@@ -1,0 +1,24 @@
+name: Integration
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+
+    runs-on: ubuntu-latest
+
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+
+    steps:
+
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Init
+      run: make github-init
+
+    - name: Lint
+      run: make precommit
