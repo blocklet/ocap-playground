@@ -4,6 +4,8 @@ const ForgeWallet = require('@ocap/wallet');
 const Mcrypto = require('@ocap/mcrypto');
 const { fromTokenToUnit } = require('@ocap/util');
 const { create } = require('@arcblock/vc');
+const createPassportSvg = require('../libs/nft/passport');
+const badgeArray = require('../libs/svg');
 
 const { wallet, authClient, factory: assetFactory } = require('../libs/auth');
 const env = require('../libs/env');
@@ -101,6 +103,27 @@ module.exports = {
               method: 'SHA3',
             },
           });
+          const passport = { name: 'arcblocker', title: 'ArcBlocker' };
+          const pp = create({
+            type: ['PlaygroundFakePassport', 'NFTPassport', 'VerifiableCredential'],
+            issuer: {
+              wallet: w,
+              name: 'Wallet Playground',
+            },
+            subject: {
+              id: userDid,
+              passport,
+              display: {
+                type: 'svg',
+                passport,
+                content: createPassportSvg({
+                  issuer: 'Wallet Playground',
+                  issuerDid: w.toAddress(),
+                  title: passport.title,
+                }),
+              },
+            },
+          });
 
           await Notification.sendToUser(userDid, {
             title,
@@ -111,6 +134,13 @@ module.exports = {
                 data: {
                   credential: vc,
                   tag: vt.email,
+                },
+              },
+              {
+                type,
+                data: {
+                  credential: pp,
+                  tag: passport.title,
                 },
               },
             ],
@@ -139,9 +169,23 @@ module.exports = {
             endTime: new Date(Date.now() + 2 * 60 * 60 * 1000),
           });
 
+          const asset2 = await ensureAsset(assetFactory, {
+            userPk: user.pk,
+            userDid,
+            type: 'badge',
+            name: 'Badge',
+            description: 'Badge ',
+            svg: badgeArray[Math.floor(Math.random() * badgeArray.length)],
+            location: 'China',
+            backgroundUrl: '',
+            logoUrl: 'https://releases.arcblockio.cn/arcblock-logo.png',
+            startTime: new Date(),
+            endTime: new Date(Date.now() + 2 * 60 * 60 * 1000),
+          });
+
           await SDK.transfer({
             to: userDid,
-            assets: [asset.address],
+            assets: [asset.address, asset2.address],
             wallet: SDK.Wallet.fromJSON(wallet),
           });
 
@@ -153,6 +197,13 @@ module.exports = {
                 type,
                 data: {
                   did: asset.address,
+                  chainHost: env.chainHost,
+                },
+              },
+              {
+                type,
+                data: {
+                  did: asset2.address,
                   chainHost: env.chainHost,
                 },
               },
