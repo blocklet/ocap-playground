@@ -68,6 +68,14 @@ module.exports = {
     const tx = SDK.decodeTx(claim.origin);
     tx.signature = claim.sig;
 
+    if (claim.from) {
+      tx.from = claim.from;
+    }
+
+    if (claim.delegator) {
+      tx.delegator = claim.delegator;
+    }
+
     logger.info('acquire.auth.tx', tx);
     const hash = await SDK.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) });
     logger.info('hash:', hash);

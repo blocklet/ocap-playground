@@ -13,26 +13,22 @@ module.exports = {
   action: 'claim_signature',
   claims: {
     signature: async ({ userDid, userPk, extraParams: { type } }) => {
-      const encoded = await SDK.encodeTransferTx(
-        {
-          tx: {
-            itx: {
-              to: wallet.address,
-              value: await SDK.fromTokenToUnit(1),
-            },
+      const encoded = await SDK.encodeTransferTx({
+        tx: {
+          itx: {
+            to: wallet.address,
+            value: await SDK.fromTokenToUnit(1),
           },
-          wallet: SDK.Wallet.fromPublicKey(userPk),
         },
-      );
+        wallet: SDK.Wallet.fromPublicKey(userPk),
+      });
       const origin = SDK.Util.toBase58(encoded.buffer);
       console.log({ encoded, origin });
 
       const params = {
         transaction: {
-          type: 'DeclareTx',
-          data: {
-            itx: { moniker: 'wangshijun' },
-          },
+          type: 'fg:t:transaction',
+          data: origin,
         },
 
         text: {
@@ -117,13 +113,11 @@ module.exports = {
 
     if (claim.meta && claim.meta.origin) {
       const tx = SDK.decodeTx(claim.meta.origin);
-      const hash = await SDK.sendTransferV2Tx(
-        {
-          tx,
-          wallet: user,
-          signature: claim.sig,
-        },
-      );
+      const hash = await SDK.sendTransferV2Tx({
+        tx,
+        wallet: user,
+        signature: claim.sig,
+      });
 
       logger.info('signature.evil.onAuth', { claims, userDid, hash });
       return { hash, tx: claim.meta.origin };

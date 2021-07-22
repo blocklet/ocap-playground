@@ -1,3 +1,8 @@
+## 0.9.16 (July 22, 2021)
+
+- fix issues: #53,#51,#50,#44,#43,#42,#39
+- fix: add lint for merge requests (#56)
+
 ## 0.9.15 (七月 21, 2021)
 
 - fix: eslint error
