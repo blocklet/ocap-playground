@@ -7,6 +7,7 @@ const { create } = require('@arcblock/vc');
 const { wallet } = require('../../libs/auth');
 const { getRandomMessage } = require('../../libs/util');
 const createPassportSvg = require('../../libs/nft/passport');
+const { User } = require('../../models');
 
 module.exports = {
   action: 'fake_passport',
@@ -18,7 +19,7 @@ module.exports = {
     }),
   },
 
-  onAuth: async ({ userDid, userPk, claims }) => {
+  onAuth: async ({ userDid, userPk, claims, sessionDid }) => {
     const type = toTypeInfo(userDid);
     const user = SDK.Wallet.fromPublicKey(userPk, type);
     const claim = claims.find(x => x.type === 'signature');
@@ -53,7 +54,9 @@ module.exports = {
         },
       },
     });
-
+    const sessionUser = await User.ensureOne({ did: sessionDid });
+    sessionUser.extraVC = vc.id;
+    await User.update(sessionUser);
     return {
       disposition: 'attachment',
       type: 'VerifiableCredential',
