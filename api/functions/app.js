@@ -94,7 +94,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/nft
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/nft_private_status')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/prepare')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/fake_passport')));
-
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_target_vc')));
 agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_profile'))); // we can reuse something here
 
 require('../routes/session').init(router);

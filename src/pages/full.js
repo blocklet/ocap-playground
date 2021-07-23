@@ -692,6 +692,17 @@ export default function IndexPage() {
                 success: 'Passport sent',
               }}
             />
+            <AuthButton
+              button="Claim Target VC"
+              action="claim_target_vc"
+              extraParams={{ type: 'NFTCertificate' }}
+              messages={{
+                title: 'Provide your Fake Passport',
+                scan: 'Scan QR code to sign a message',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Passport have been verified',
+              }}
+            />
           </div>
         </section>
         <section className="section">
