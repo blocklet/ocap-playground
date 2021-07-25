@@ -1,3 +1,7 @@
+## 0.9.18 (July 26, 2021)
+
+- fix: nft factory mint hook is missing
+
 ## 0.9.17 (July 23, 2021)
 
 
