@@ -48,6 +48,13 @@ const nodePurchaseFactory = createFactoryItx(
     tokens: [{ address: token.address, value: toBNStr(5) }],
     variables: [],
     output: nodePurchaseOutput,
+    hooks: [
+      {
+        type: 'contract',
+        name: 'mint',
+        hook: `transferToken('${token.address}', '${wallet.address}', '${toBNStr(5)}');`,
+      },
+    ],
     data: {
       type: 'json',
       value: {
@@ -102,6 +109,13 @@ const endpointTestFactory = createFactoryItx(
         },
       },
     },
+    hooks: [
+      {
+        type: 'contract',
+        name: 'mint',
+        hook: `transfer('${wallet.address}', '${toBNStr(5)}');`,
+      },
+    ],
     data: {
       type: 'json',
       value: {},
@@ -147,6 +161,15 @@ const tokenInputTestFactory = createFactoryItx(
         },
       },
     },
+    hooks: [
+      {
+        type: 'contract',
+        name: 'mint',
+        hook: `transfer('${wallet.address}', '${toBNStr(1.99)}');transferToken('${token.address}', '${
+          wallet.address
+        }', '${toBNStr(2.99)}');`,
+      },
+    ],
     data: {
       type: 'json',
       value: {},
