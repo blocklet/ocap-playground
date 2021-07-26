@@ -48,6 +48,7 @@ precommit: setenv lint test coverage
 github-init:
 	@sudo npm install -g yarn @abtnode/cli @babel/cli
 	@make dep
+	@make setenv
 
 clean:
 	@echo "Cleaning the build..."
