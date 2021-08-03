@@ -55,47 +55,47 @@ app.use((req, res, next) => {
 const router = express.Router();
 
 // Currency
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/receive_token')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/send_token')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/receive-token')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/send-token')));
 
 // No ChainInfo
 walletHandlersWithNoChainInfo.attach(
-  Object.assign({ app: router }, require('../routes/auth/claim_profile_no_chain_info'))
+  Object.assign({ app: router }, require('../routes/auth/claim-profile-no-chain-info'))
 );
 
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_profile')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_signature')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_create_did')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_target')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_overwrite')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_multiple')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_multiple_step')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_multiple_workflow')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-profile')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-signature')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-create-did')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-target')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-overwrite')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-multiple')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-multiple-step')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-multiple-workflow')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/error')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/timeout')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer_asset_out')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer_asset_in')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer_token_asset_in')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer_token_asset_out')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/acquire_asset')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/exchange_asset')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/swap_asset')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/swap_token')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/fake_issuer_vc')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/fake_email_vc')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/consume_vc')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/issue_badge')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/issue_badge_asset')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/extra_params')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer-asset-out')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer-asset-in')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer-token-asset-in')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/transfer-token-asset-out')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/acquire-asset')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/exchange-asset')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/swap-asset')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/swap-token')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/fake-issuer-vc')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/fake-email-vc')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/consume-vc')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/issue-badge')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/issue-badge-asset')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/extra-params')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/delegate')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/launch_node')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/verify_nft')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/nft_private_action')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/nft_private_status')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/launch-node')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/verify-nft')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/nft-private-action')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/nft-private-status')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/prepare')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/fake_passport')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_target_vc')));
-agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim_profile'))); // we can reuse something here
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/fake-passport')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-target-vc')));
+agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-profile'))); // we can reuse something here
 
 require('../routes/session').init(router);
 require('../routes/nft').init(router);

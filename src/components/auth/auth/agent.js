@@ -27,7 +27,7 @@ export default function AuthPrincipal() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Button
         color={error ? 'danger' : 'secondary'}
         variant="contained"
@@ -53,7 +53,7 @@ export default function AuthPrincipal() {
           }}
         />
       )}
-    </React.Fragment>
+    </>
   );
 }
 

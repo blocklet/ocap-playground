@@ -29,13 +29,11 @@ module.exports = {
       const tx = SDK.decodeTx(claim.origin);
       const user = fromAddress(userDid);
 
-      const hash = await SDK.sendTransferV2Tx(
-        {
-          tx,
-          wallet: user,
-          signature: claim.sig,
-        },
-      );
+      const hash = await SDK.sendTransferV2Tx({
+        tx,
+        wallet: user,
+        signature: claim.sig,
+      });
 
       logger.info('transfer_asset_out.onAuth', hash);
       return { hash, tx: claim.origin };

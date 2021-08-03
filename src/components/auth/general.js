@@ -21,7 +21,7 @@ export default function GeneralAuthButton({ button, action, messages, timeout, e
   const webWalletUrl = getWebWalletUrl();
 
   return (
-    <React.Fragment>
+    <>
       <Button color="secondary" variant="contained" size="large" className="action" onClick={() => setOpen(true)}>
         {button}
       </Button>
@@ -40,7 +40,7 @@ export default function GeneralAuthButton({ button, action, messages, timeout, e
         />
       )}
       {isComplete && <Alert onClose={onClose} message={messages.success} />}
-    </React.Fragment>
+    </>
   );
 }
 

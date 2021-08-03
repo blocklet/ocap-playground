@@ -1,5 +1,3 @@
-/* eslint-disable arrow-parens */
-/* eslint-disable prefer-destructuring */
 import React from 'react';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -20,7 +18,7 @@ import getWebWalletUrl from './libs/util';
 
 const GlobalStyle = createGlobalStyle`
   a {
-    color: ${(props) => props.theme.colors.green};
+    color: ${props => props.theme.colors.green};
     text-decoration: none;
   }
   a:hover,
@@ -49,7 +47,7 @@ export const App = () => (
           if (session.user) {
             return (
               <UserProvider>
-                <React.Fragment>
+                <>
                   <CssBaseline />
                   <GlobalStyle />
                   <div className="wrapper">
@@ -60,7 +58,7 @@ export const App = () => (
                       <Redirect to="/" />
                     </Switch>
                   </div>
-                </React.Fragment>
+                </>
               </UserProvider>
             );
           }

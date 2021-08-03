@@ -34,9 +34,7 @@ module.exports = {
     }
 
     const w = ForgeWallet.fromJSON(wallet);
-    const randomEmail = `${ForgeWallet.fromRandom()
-      .toAddress()
-      .substring(0, 10)}@arcblock.io`;
+    const randomEmail = `${ForgeWallet.fromRandom().toAddress().substring(0, 10)}@arcblock.io`;
     const emailDigest = hasher(randomEmail, 1);
     const vc = create({
       type: 'EmailVerificationCredential',
