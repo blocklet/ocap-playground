@@ -1,3 +1,7 @@
+## 0.9.19 (八月 03, 2021)
+
+- chore: use @arcblock/eslint-config
+
 ## 0.9.18 (July 26, 2021)
 
 - fix: nft factory mint hook is missing
