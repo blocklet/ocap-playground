@@ -13,10 +13,10 @@ import Layout from '../components/layout';
 
 import AuthButton from '../components/auth/general';
 import SignButton from '../components/auth/auth/sign';
-import TransferAssetOut from '../components/auth/transfer_asset_out';
-import TransferAssetIn from '../components/auth/transfer_asset_in';
-import TransferTokenAssetIn from '../components/auth/transfer_token_asset_in';
-import TransferTokenAssetOut from '../components/auth/transfer_token_asset_out';
+import TransferAssetOut from '../components/auth/transfer-asset-out';
+import TransferAssetIn from '../components/auth/transfer-asset-in';
+import TransferTokenAssetIn from '../components/auth/transfer-token-asset-in';
+import TransferTokenAssetOut from '../components/auth/transfer-token-asset-out';
 import NotificationButton from '../components/notification/button';
 import getWebWalletUrl from '../libs/util';
 

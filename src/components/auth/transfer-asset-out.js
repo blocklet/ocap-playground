@@ -13,7 +13,7 @@ export default function TransferTokenOut() {
   const webWalletUrl = getWebWalletUrl();
 
   return (
-    <React.Fragment>
+    <>
       <Button color="secondary" variant="contained" size="large" className="action" onClick={() => setOpen(true)}>
         Send 1 Asset to Application
       </Button>
@@ -34,6 +34,6 @@ export default function TransferTokenOut() {
           webWalletUrl={webWalletUrl}
         />
       )}
-    </React.Fragment>
+    </>
   );
 }

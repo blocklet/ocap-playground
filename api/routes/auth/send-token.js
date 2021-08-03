@@ -52,13 +52,11 @@ module.exports = {
       const tx = SDK.decodeTx(claim.origin);
       const user = fromAddress(userDid);
 
-      const hash = await SDK.sendTransferV2Tx(
-        {
-          tx,
-          wallet: user,
-          signature: claim.sig,
-        },
-      );
+      const hash = await SDK.sendTransferV2Tx({
+        tx,
+        wallet: user,
+        signature: claim.sig,
+      });
 
       logger.info('send_token.onAuth', { claims, userDid, hash });
       return { hash, tx: claim.origin };

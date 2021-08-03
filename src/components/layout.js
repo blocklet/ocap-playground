@@ -22,7 +22,7 @@ export default function Layout({ title, children, contentOnly }) {
   if (window.blocklet && window.blocklet.prefix) {
     prefix = window.blocklet.prefix;
   } else if (window.env && window.env.apiPrefix) {
-    prefix = (window.env.apiPrefix.indexOf('.netlify/')) > -1 ? '/' : window.env.apiPrefix;
+    prefix = window.env.apiPrefix.indexOf('.netlify/') > -1 ? '/' : window.env.apiPrefix;
   }
 
   let apiPrefix = prefix.replace(/^\/+/, '').replace(/\/+$/, '');
