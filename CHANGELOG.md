@@ -1,3 +1,7 @@
+## 0.9.20 (八月 04, 2021)
+
+- chore: rebuild yarn.lock
+
 ## 0.9.19 (八月 03, 2021)
 
 - chore: use @arcblock/eslint-config
@@ -7,8 +11,6 @@
 - fix: nft factory mint hook is missing
 
 ## 0.9.17 (July 23, 2021)
-
-
 
 ## 0.9.16 (July 22, 2021)
 
