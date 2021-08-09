@@ -51,7 +51,14 @@ module.exports = {
       const claim = claims.find(x => x.type === 'signature');
       const tx = SDK.decodeTx(claim.origin);
       const user = fromAddress(userDid);
-
+     
+      if (claim.from) {
+        tx.from = claim.from;
+      }
+      if (claim.delegator) {
+        tx.delegator = claim.delegator;
+      }
+  
       const hash = await SDK.sendTransferV2Tx({
         tx,
         wallet: user,
