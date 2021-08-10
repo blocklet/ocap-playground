@@ -4,6 +4,7 @@ const { NFTType } = require('@arcblock/nft/lib/enum');
 const { toTypeInfo } = require('@arcblock/did');
 const upperFirst = require('lodash/upperFirst');
 
+const env = require('../../libs/env');
 const { wallet, factory: assetFactory } = require('../../libs/auth');
 const { ensureAsset, getTransferrableAssets, transferVCTypeToAssetType } = require('../../libs/util');
 
@@ -32,7 +33,7 @@ const getAssets = async ({ amount = 1, type, userPk, userDid, name, desc, start,
   return assets;
 };
 
-const getTransactionAssetType = type => (type === 'token' ? 'value' : 'assets');
+const getTransactionAssetType = type => (type === 'token' ? 'tokens' : 'assets');
 
 const getTransferSig = async ({
   userPk,
@@ -81,7 +82,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   let receiverPayload = null;
 
   if (pt === 'token') {
-    senderPayload = await SDK.fromTokenToUnit(pa);
+    senderPayload = [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(pa)).toString() }];
   } else {
     const assets = await getTransferrableAssets(userDid);
     senderPayload = assets
@@ -95,7 +96,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   }
 
   if (rt === 'token') {
-    receiverPayload = await SDK.fromTokenToUnit(ra);
+    receiverPayload = [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(ra)).toString() }];
   } else {
     const assets = await getAssets({
       amount: ra,
