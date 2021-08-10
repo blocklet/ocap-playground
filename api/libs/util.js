@@ -47,11 +47,16 @@ const getTokenInfo = async () => {
   return result;
 };
 
+const findTokenBalance = (tokens, tokenId) => {
+  const token = tokens.find(x => x.address === tokenId);
+  return token ? token.balance : '0';
+};
+
 const getAccountBalance = async userDid => {
   const { tokens } = await SDK.getAccountTokens({ address: userDid });
   return {
-    local: tokens.find(x => x.address === env.localTokenId).balance,
-    foreign: tokens.find(x => x.address === env.foreignTokenId).balance,
+    local: findTokenBalance(tokens, env.localTokenId),
+    foreign: findTokenBalance(tokens, env.foreignTokenId),
   };
 };
 
