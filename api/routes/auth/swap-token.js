@@ -23,14 +23,14 @@ module.exports = {
 
       // User buy 1 TBA with 5 Play
       if (action === 'buy') {
-        itx.sender.value = await SDK.fromTokenToUnit(amount);
-        itx.receiver.tokens = [{ address: env.tokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() }];
+        itx.sender.tokens = [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(amount)).toString() }];
+        itx.receiver.tokens = [{ address: env.foreignTokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() }];
       }
 
       if (action === 'sell') {
         // User sell 1 TBA for 5 Play
-        itx.sender.tokens = [{ address: env.tokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() }];
-        itx.receiver.value = await SDK.fromTokenToUnit(amount);
+        itx.sender.tokens = [{ address: env.foreignTokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() }];
+        itx.receiver.tokens = [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(amount)).toString() }];
       }
 
       const tx = await SDK.signExchangeV2Tx({

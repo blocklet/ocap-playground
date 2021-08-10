@@ -48,7 +48,9 @@ const txCreators = {
         },
       },
       requirement: {
-        tokens: [{ address: '', value: state.input.value }].concat(state.input.tokens).filter(x => !!x.value),
+        tokens: [{ address: env.localTokenId, value: state.input.value }]
+          .concat(state.input.tokens)
+          .filter(x => !!x.value),
       },
     };
   },
@@ -61,8 +63,8 @@ const txCreators = {
     const valuePrimary = fromTokenToUnit(amountPrimary, token.local.decimal).toString();
     const valueForeign = fromTokenToUnit(amountForeign, token.foreign.decimal).toString();
     const tokens = [
-      { address: '', value: valuePrimary },
-      { address: env.tokenId, value: valueForeign },
+      { address: env.localTokenId, value: valuePrimary },
+      { address: env.foreignTokenId, value: valueForeign },
     ];
 
     return {
@@ -93,8 +95,8 @@ const txCreators = {
     const valuePrimary = fromTokenToUnit(amountPrimary, token.local.decimal).toString();
     const valueForeign = fromTokenToUnit(amountForeign, token.foreign.decimal).toString();
     const tokens = [
-      { address: '', value: valuePrimary },
-      { address: env.tokenId, value: valueForeign },
+      { address: env.localTokenId, value: valuePrimary },
+      { address: env.foreignTokenId, value: valueForeign },
     ];
 
     return {
@@ -132,16 +134,16 @@ const txCreators = {
     const valueTwoForeign = fromTokenToUnit(2.1, token.foreign.decimal).toString();
 
     const tokens = [
-      { address: '', value: valuePrimary },
-      { address: env.tokenId, value: valueForeign },
+      { address: env.localTokenId, value: valuePrimary },
+      { address: env.foreignTokenId, value: valueForeign },
     ];
     const outputOne = [
-      { address: '', value: valueOnePrimary },
-      { address: env.tokenId, value: valueOneForeign },
+      { address: env.localTokenId, value: valueOnePrimary },
+      { address: env.foreignTokenId, value: valueOneForeign },
     ];
     const outputTwo = [
-      { address: '', value: valueTwoPrimary },
-      { address: env.tokenId, value: valueTwoForeign },
+      { address: env.localTokenId, value: valueTwoPrimary },
+      { address: env.foreignTokenId, value: valueTwoForeign },
     ];
 
     return {

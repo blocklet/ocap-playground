@@ -43,8 +43,6 @@ const nodePurchaseFactory = createFactoryItx(
     description: 'Purchase ABT Node t2.small instance for 1 month',
     moniker: 'NodePurchaseNFT',
     limit: 0,
-    value: '0',
-    assets: [],
     tokens: [{ address: token.address, value: toBNStr(5) }],
     variables: [],
     output: nodePurchaseOutput,
@@ -73,9 +71,7 @@ const endpointTestFactory = createFactoryItx(
     description: 'This is a factory to mint assets that have various test case for nft endpoints',
     moniker: 'EndpointTestNFT',
     limit: 0,
-    value: toBNStr(5),
-    assets: [],
-    tokens: [],
+    tokens: [{ address: env.localTokenId, value: toBNStr(5) }],
     variables: [],
     output: {
       type: 'vc',
@@ -113,7 +109,7 @@ const endpointTestFactory = createFactoryItx(
       {
         type: 'contract',
         name: 'mint',
-        hook: `transfer('${wallet.address}', '${toBNStr(5)}');`,
+        hook: `transferToken('${env.localTokenId}', '${wallet.address}', '${toBNStr(5)}');`,
       },
     ],
     data: {
@@ -130,9 +126,10 @@ const tokenInputTestFactory = createFactoryItx(
     description: 'This is a factory to mint assets that use 2 tokens as input',
     moniker: 'TokenInputTestNFT',
     limit: 0,
-    value: toBNStr(1.99),
-    assets: [],
-    tokens: [{ address: token.address, value: toBNStr(2.99) }],
+    tokens: [
+      { address: env.localTokenId, value: toBNStr(1.99) },
+      { address: token.address, value: toBNStr(2.99) },
+    ],
     variables: [],
     output: {
       type: 'vc',
@@ -165,9 +162,9 @@ const tokenInputTestFactory = createFactoryItx(
       {
         type: 'contract',
         name: 'mint',
-        hook: `transfer('${wallet.address}', '${toBNStr(1.99)}');transferToken('${token.address}', '${
-          wallet.address
-        }', '${toBNStr(2.99)}');`,
+        hook: `transferToken('${env.localTokenId}', '${wallet.address}', '${toBNStr(1.99)}');transferToken('${
+          token.address
+        }', '${wallet.address}', '${toBNStr(2.99)}');`,
       },
     ],
     data: {
@@ -184,9 +181,7 @@ const assetInputTestFactory = createFactoryItx(
     description: 'This is a factory to mint assets that use assets as input',
     moniker: 'AssetInputTestNFT',
     limit: 0,
-    value: 0,
     assets: [tokenInputTestFactory.address],
-    tokens: [],
     variables: [],
     output: {
       type: 'vc',
@@ -229,9 +224,7 @@ const nodeOwnerFactory = createFactoryItx(
     description: 'Get your node up and running within minutes',
     moniker: 'NodeOwnerNFT',
     limit: 0,
-    value: '0',
     assets: [nodePurchaseFactory.address], // only purchase nft can be used to mint from this
-    tokens: [],
     variables: [
       {
         name: 'nodeId',
@@ -259,8 +252,6 @@ const blockletPurchaseFactory = createFactoryItx(
     description: 'Purchase our demo blocklet',
     moniker: 'BlockletPurchaseNFT',
     limit: 0,
-    value: '0',
-    assets: [],
     tokens: [{ address: token.address, value: toBNStr(2) }],
     variables: [],
     hooks: [

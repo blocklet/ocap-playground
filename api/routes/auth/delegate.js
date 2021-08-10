@@ -64,7 +64,7 @@ const txCreators = {
           value: fromTokenToUnit(0, token.foreign.decimal),
           tokens: [
             {
-              address: env.tokenId,
+              address: env.foreignTokenId,
               value: fromTokenToUnit(amount, token.foreign.decimal).toString(),
             },
           ],
@@ -86,7 +86,7 @@ const txCreators = {
 
     // User buy 1 TBA with 5 Play
     itx.sender.value = await SDK.fromTokenToUnit(amount);
-    itx.receiver.tokens = [{ address: env.tokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() }];
+    itx.receiver.tokens = [{ address: env.foreignTokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() }];
 
     const tx = await SDK.signExchangeV2Tx({
       tx: { itx },

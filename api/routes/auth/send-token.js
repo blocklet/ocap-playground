@@ -26,20 +26,17 @@ module.exports = {
         zh: `请支付 ${amount} ${token[chain].symbol}`,
       };
 
-      const tokens = [
-        {
-          address: env.tokenId,
-          value: fromTokenToUnit(chain === 'local' ? 0 : amount, token[chain].decimal).toString(),
-        },
-      ];
-
       return {
         type: 'TransferV2Tx',
         data: {
           itx: {
             to: wallet.address,
-            value: fromTokenToUnit(chain === 'local' ? amount : 0, token[chain].decimal),
-            tokens: chain === 'local' ? [] : tokens,
+            tokens: [
+              {
+                address: chain === 'local' ? env.localTokenId : env.foreignTokenId,
+                value: fromTokenToUnit(amount, token[chain].decimal).toString(),
+              },
+            ],
           },
         },
         description: description[locale] || description.en,

@@ -19,7 +19,7 @@ const getFactoryProps = ({
   name,
   moniker,
   description,
-  value,
+  value = '0',
   assets = [],
   tokens = [],
   hooks = [],

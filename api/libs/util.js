@@ -34,63 +34,24 @@ const getTransferrableAssets = async (userDid, assetCount) => {
 };
 
 const getTokenInfo = async () => {
-  const [{ getForgeState: data }, { state: data2 }] = await Promise.all([
-    SDK.doRawQuery(
-      `{
-      getForgeState {
-        code
-        state {
-          token {
-            decimal
-            symbol
-          }
-        }
-      }
-    }`
-    ),
-    SDK.getTokenState({ address: env.tokenId }),
+  const [{ state: local }, { state: foreign }] = await Promise.all([
+    SDK.getTokenState({ address: env.localTokenId }),
+    SDK.getTokenState({ address: env.foreignTokenId }),
   ]);
 
   const result = {
-    local: data.state.token,
-    foreign: { symbol: data2.symbol, decimal: data.state.token.decimal },
+    local: { symbol: local.symbol, decimal: local.decimal },
+    foreign: { symbol: foreign.symbol, decimal: foreign.decimal },
   };
 
   return result;
 };
 
 const getAccountBalance = async userDid => {
-  const [{ getAccountState: data }] = await Promise.all([
-    SDK.doRawQuery(
-      `{
-      getAccountState(address: "${userDid}") {
-        code
-        state {
-          balance
-          tokens {
-            key
-            value
-          }
-        }
-      }
-    }`
-    ),
-  ]);
-
-  let local = 0;
-  let foreign = 0;
-  if (data.state) {
-    local = data.state.balance;
-
-    const token = data.state.tokens.find(x => x.key === env.tokenId);
-    if (token) {
-      foreign = token.value;
-    }
-  }
-
+  const { tokens } = await SDK.getAccountTokens({ address: userDid });
   return {
-    local,
-    foreign,
+    local: tokens.find(x => x.address === env.localTokenId).balance,
+    foreign: tokens.find(x => x.address === env.foreignTokenId).balance,
   };
 };
 

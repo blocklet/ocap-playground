@@ -33,7 +33,7 @@ module.exports = {
             await SDK.transfer({
               to: userDid,
               token: 0,
-              tokens: [{ address: env.tokenId, value: amount }],
+              tokens: [{ address: env.foreignTokenId, value: amount }],
               wallet: SDK.Wallet.fromJSON(wallet),
             });
 
@@ -69,7 +69,7 @@ module.exports = {
                 {
                   type,
                   data: {
-                    address: '',
+                    address: env.localTokenId,
                     amount: fromTokenToUnit(amount).toString(),
                     symbol: 'TBA',
                     senderDid: env.appId,

@@ -59,8 +59,7 @@ module.exports = {
       const app = SDK.Wallet.fromJSON(wallet);
       const hash = await SDK.transfer({
         to: userDid,
-        token: chain === 'local' ? amount : 0,
-        tokens: chain === 'local' ? [] : [{ address: env.tokenId, value: amount }],
+        tokens: [{ address: chain === 'local' ? env.localTokenId : env.foreignTokenId, value: amount }],
         wallet: app,
       });
       logger.info('receive_token.onAuth', hash, amount);

@@ -82,7 +82,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   let receiverPayload = null;
 
   if (pt === 'token') {
-    senderPayload = [{ address: env.tokenId, value: (await SDK.fromTokenToUnit(pa)).toString() }];
+    senderPayload = [{ address: env.foreignTokenId, value: (await SDK.fromTokenToUnit(pa)).toString() }];
   } else {
     const assets = await getTransferrableAssets(userDid);
     senderPayload = assets
@@ -96,7 +96,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   }
 
   if (rt === 'token') {
-    receiverPayload = [{ address: env.tokenId, value: (await SDK.fromTokenToUnit(ra)).toString() }];
+    receiverPayload = [{ address: env.foreignTokenId, value: (await SDK.fromTokenToUnit(ra)).toString() }];
   } else {
     const assets = await getAssets({
       amount: ra,

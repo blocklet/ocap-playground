@@ -33,10 +33,15 @@ environments:
   - name: CHAIN_HOST
     description: Please provide endpoint of local chain
     required: true
-    default: ''
+    default: 'https://beta.abtnetwork.io/api/?consistentTokens=true'
     secure: false
-  - name: TOKEN_ID
-    description: Please provide secondary token for the playground
+  - name: LOCAL_TOKEN_ID
+    description: Please provide local token for the playground
+    required: true
+    default: z35n6UoHSi9MED4uaQy6ozFgKPaZj2UKrurBG
+    secure: false
+  - name: FOREIGN_TOKEN_ID
+    description: Please provide foreign token for the playground
     required: true
     default: z35n3WVTnN7KrR4gXn3szR6oneVefkBBx78Fc
     secure: false

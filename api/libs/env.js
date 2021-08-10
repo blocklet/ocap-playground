@@ -1,7 +1,8 @@
 module.exports = {
   chainId: 'playground',
   chainHost: process.env.CHAIN_HOST || '',
-  tokenId: process.env.TOKEN_ID || '',
+  localTokenId: process.env.LOCAL_TOKEN_ID || '',
+  foreignTokenId: process.env.FOREIGN_TOKEN_ID || '',
   serverUrl: process.env.SERVER_URL || '',
   appId: process.env.BLOCKLET_APP_ID || '',
   appName: process.env.REACT_APP_APP_NAME || process.env.APP_NAME || 'OCAP Playground',
