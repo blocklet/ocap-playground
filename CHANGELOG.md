@@ -1,3 +1,7 @@
+## 0.10.0 (August 10, 2021)
+
+- chore: use consistent tokens
+
 ## 0.9.21 (August 09, 2021)
 
 - send token delegate
