@@ -1,3 +1,7 @@
+## 0.10.2 (August 10, 2021)
+
+
+
 ## 0.10.1 (August 10, 2021)
 
 - fix: possible error when composing token balance
