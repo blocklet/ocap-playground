@@ -11,7 +11,7 @@ module.exports = {
       const [asset] = await getTransferrableAssets(userDid);
 
       return {
-        type: 'TransferTx',
+        type: 'TransferV2Tx',
         data: {
           itx: {
             to: wallet.address,

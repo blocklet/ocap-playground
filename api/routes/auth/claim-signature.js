@@ -3,6 +3,7 @@ const SDK = require('@ocap/sdk');
 const Mcrypto = require('@ocap/mcrypto');
 const { toTypeInfo } = require('@arcblock/did');
 
+const env = require('../../libs/env');
 const { wallet } = require('../../libs/auth');
 const { getRandomMessage } = require('../../libs/util');
 
@@ -13,11 +14,16 @@ module.exports = {
   action: 'claim_signature',
   claims: {
     signature: async ({ userDid, userPk, extraParams: { type } }) => {
-      const encoded = await SDK.encodeTransferTx({
+      const encoded = await SDK.encodeTransferV2Tx({
         tx: {
           itx: {
             to: wallet.address,
-            value: await SDK.fromTokenToUnit(1),
+            tokens: [
+              {
+                address: env.localTokenId,
+                value: (await SDK.fromTokenToUnit(1)).toString(),
+              },
+            ],
           },
         },
         wallet: SDK.Wallet.fromPublicKey(userPk),

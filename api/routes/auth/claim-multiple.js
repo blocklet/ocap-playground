@@ -1,6 +1,7 @@
 const SDK = require('@ocap/sdk');
 const { getRandomMessage } = require('../../libs/util');
 
+const env = require('../../libs/env');
 const { wallet } = require('../../libs/auth');
 
 module.exports = {
@@ -8,12 +9,17 @@ module.exports = {
   claims: {
     signTx: [
       'signature',
-      () => ({
-        type: 'TransferTx',
+      async () => ({
+        type: 'TransferV2Tx',
         data: {
           itx: {
             to: wallet.address,
-            value: SDK.Util.fromTokenToUnit(1),
+            tokens: [
+              {
+                address: env.localTokenId,
+                value: (await SDK.fromTokenToUnit(1)).toString(),
+              },
+            ],
           },
         },
         description: 'Please sign the transaction, you will send 1 token',

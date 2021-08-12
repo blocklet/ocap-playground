@@ -138,7 +138,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   logger.info('exchange.claims.signed', tx);
 
   return {
-    type: 'ExchangeTx',
+    type: 'ExchangeV2Tx',
     data: tx,
     description: 'Exchange between assets and primary tokens',
   };

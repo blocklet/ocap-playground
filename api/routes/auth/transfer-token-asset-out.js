@@ -24,7 +24,7 @@ module.exports = {
       logger.info('transfer to:', wallet.address);
       logger.info('asset:', asset.address);
       return {
-        type: 'TransferTx',
+        type: 'TransferV2Tx',
         data: {
           itx: {
             to: wallet.address,
