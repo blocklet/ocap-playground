@@ -1,3 +1,7 @@
+## 0.10.3 (August 12, 2021)
+
+- fix: test case that fail consistent tokens
+
 ## 0.10.2 (August 10, 2021)
 
 
