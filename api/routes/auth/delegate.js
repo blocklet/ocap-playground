@@ -61,13 +61,7 @@ const txCreators = {
       data: {
         itx: {
           to: wallet.address,
-          value: fromTokenToUnit(0, token.foreign.decimal),
-          tokens: [
-            {
-              address: env.foreignTokenId,
-              value: fromTokenToUnit(amount, token.foreign.decimal).toString(),
-            },
-          ],
+          tokens: [{ address: env.foreignTokenId, value: fromTokenToUnit(amount, token.foreign.decimal).toString() }],
         },
       },
       description: 'Transfer some token to application using delegation',
@@ -75,6 +69,7 @@ const txCreators = {
   },
 
   ExchangeV2Tx: async ({ userPk, userDid }) => {
+    const token = await getTokenInfo();
     const itx = {
       to: userDid,
       sender: {},
@@ -85,8 +80,10 @@ const txCreators = {
     const rate = 5;
 
     // User buy 1 TBA with 5 Play
-    itx.sender.value = await SDK.fromTokenToUnit(amount);
-    itx.receiver.tokens = [{ address: env.foreignTokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() }];
+    itx.sender.tokens = [{ address: env.localTokenId, value: fromTokenToUnit(amount, token.local.decimal).toString() }];
+    itx.receiver.tokens = [
+      { address: env.foreignTokenId, value: fromTokenToUnit(amount * rate, token.foreign.decimal).toString() },
+    ];
 
     const tx = await SDK.signExchangeV2Tx({
       tx: { itx },

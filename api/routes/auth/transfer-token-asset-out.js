@@ -2,6 +2,7 @@
 const SDK = require('@ocap/sdk');
 const { fromAddress } = require('@ocap/wallet');
 
+const env = require('../../libs/env');
 const { wallet } = require('../../libs/auth');
 
 module.exports = {
@@ -28,7 +29,7 @@ module.exports = {
           itx: {
             to: wallet.address,
             assets: [asset.address],
-            value: SDK.Util.fromTokenToUnit(1),
+            tokens: [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(1)).toString() }],
           },
         },
         description: `请发给我证书 ${asset.address} 和 1 ${state.token.symbol}`,

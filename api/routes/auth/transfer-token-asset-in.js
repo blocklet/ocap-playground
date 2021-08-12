@@ -2,29 +2,9 @@
 const SDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
 
+const env = require('../../libs/env');
 const { wallet, factory: assetFactory } = require('../../libs/auth');
 const { getRandomMessage, ensureAsset } = require('../../libs/util');
-
-// const ensureAsset = async (userPk, userDid) => {
-//   const [asset] = await factory.createCertificate({
-//     backgroundUrl: '',
-//     data: {
-//       name: '普通话一级甲等证书',
-//       description: '普通话一级甲等证书',
-//       reason: '普通话标准',
-//       logoUrl: 'https://releases.arcblockio.cn/arcblock-logo.png',
-//       issueTime: Date.now() + 7 * 24 * 60 * 60 * 1000,
-//       expireTime: -1,
-//       recipient: new NFTRecipient({
-//         wallet: SDK.Wallet.fromPublicKey(userPk),
-//         name: userDid,
-//         location: '北京市',
-//       }),
-//     },
-//   });
-
-//   return asset;
-// };
 
 module.exports = {
   action: 'transfer_token_asset_in',
@@ -64,7 +44,7 @@ module.exports = {
       const appWallet = SDK.Wallet.fromJSON(wallet);
       const hash = await SDK.transfer({
         to: userDid,
-        token: 1,
+        tokens: [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(1)).toString() }],
         assets: [asset.address],
         wallet: appWallet,
       });
