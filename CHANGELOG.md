@@ -1,3 +1,7 @@
+## 0.10.5 (August 12, 2021)
+
+- fix: cross token delegation error
+
 ## 0.10.4 (August 12, 2021)
 
 
