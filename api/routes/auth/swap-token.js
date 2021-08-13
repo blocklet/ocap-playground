@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const SDK = require('@ocap/sdk');
 
+const { fromAddress } = require('@ocap/wallet');
 const env = require('../../libs/env');
 const { wallet } = require('../../libs/auth');
 
@@ -24,12 +25,16 @@ module.exports = {
       // User buy 1 TBA with 5 Play
       if (action === 'buy') {
         itx.sender.tokens = [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(amount)).toString() }];
-        itx.receiver.tokens = [{ address: env.foreignTokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() }];
+        itx.receiver.tokens = [
+          { address: env.foreignTokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() },
+        ];
       }
 
       if (action === 'sell') {
         // User sell 1 TBA for 5 Play
-        itx.sender.tokens = [{ address: env.foreignTokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() }];
+        itx.sender.tokens = [
+          { address: env.foreignTokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() },
+        ];
         itx.receiver.tokens = [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(amount)).toString() }];
       }
 
@@ -51,18 +56,23 @@ module.exports = {
     },
   },
 
-  onAuth: async ({ claims }) => {
+  onAuth: async ({ userDid, claims }) => {
     try {
       const claim = claims.find(x => x.type === 'signature');
       logger.info('swap_token.auth.claim', claim);
 
       const tx = SDK.decodeTx(claim.origin);
-
+      if (claim.from) {
+        tx.signaturesList[0].signer = claim.from;
+      }
+      if (claim.delegator) {
+        tx.signaturesList[0].delegator = claim.delegator;
+      }
       tx.signaturesList[0].signature = claim.sig;
 
-      const hash = await SDK.exchange({
+      const hash = await SDK.sendExchangeV2Tx({
         tx,
-        wallet: SDK.Wallet.fromJSON(wallet),
+        wallet: fromAddress(userDid),
       });
 
       logger.info('swap_token tx hash:', hash);
