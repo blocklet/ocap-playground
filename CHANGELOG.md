@@ -1,3 +1,7 @@
+## 0.10.5 (August 17, 2021)
+
+- init add wallet-connect
+
 ## 0.10.5 (August 12, 2021)
 
 - fix: cross token delegation error
