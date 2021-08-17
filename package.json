@@ -58,6 +58,8 @@
     "@ocap/tx-util": "^1.11.17",
     "@ocap/util": "^1.11.17",
     "@ocap/wallet": "^1.11.17",
+    "@walletconnect/client": "^1.6.1",
+    "@walletconnect/qrcode-modal": "^1.6.1",
     "axios": "^0.21.1",
     "batch-promises": "^0.0.3",
     "body-parser": "^1.19.0",

@@ -12,6 +12,7 @@ import { UserProvider } from './context/user';
 import HomePage from './pages/full';
 import ProfilePage from './pages/profile';
 import MiniPage from './pages/index';
+import WalletConnectPage from './pages/wc';
 
 import theme from './libs/theme';
 import getWebWalletUrl from './libs/util';
@@ -55,6 +56,7 @@ export const App = () => (
                       <Route exact path="/" component={MiniPage} />
                       <Route exact path="/full" component={HomePage} />
                       <Route exact path="/profile" component={ProfilePage} />
+                      <Route exact path="/wallet-connect" component={WalletConnectPage} />
                       <Redirect to="/" />
                     </Switch>
                   </div>
