@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import useToggle from 'react-use/lib/useToggle';
 
-import Auth from '@arcblock/did-react/lib/Auth';
+import DidConnect from '@arcblock/did-connect/lib/Connect';
 import Button from '@arcblock/ux/lib/Button';
 
 import api from '../../../libs/api';
@@ -37,7 +37,7 @@ export default function AuthPrincipal() {
         {error || "Verify dApp's Authorization to Agent"}
       </Button>
       {authorizeId && isOpen && (
-        <Auth
+        <DidConnect
           responsive
           action="profile"
           prefix={`/api/agent/${authorizeId}`}

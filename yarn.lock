@@ -175,26 +175,6 @@
     react-use "^17.2.4"
     styled-components "^5.0.1"
 
-"@arcblock/did-react@^1.14.37":
-  version "1.14.37"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-react/-/did-react-1.14.37.tgz#a2adc2ce918f292e2557df0bb0cf79fcdbe3cacd"
-  integrity sha512-YYDsbjw/sFBfM9ToA8V/jzBfbZAuvMEnzFSm71hydYfvQulJTc+nHtcpe0D8SoLho+iCHpxiebGAVURCB9oPMg==
-  dependencies:
-    "@arcblock/event-client" "^1.0.23"
-    "@arcblock/react-hooks" "^1.14.37"
-    "@arcblock/ux" "^1.14.37"
-    "@fontsource/ubuntu-mono" "^4.4.5"
-    "@material-ui/core" "^4.10.1"
-    axios "^0.21.1"
-    core-js "^3.6.4"
-    dsbridge "3.1.4"
-    js-cookie "^2.2.1"
-    mdi-material-ui "^6.22.1"
-    qrcode.react "^1.0.0"
-    react-jdenticon "^0.0.9"
-    react-use "^17.2.4"
-    styled-components "^5.0.0"
-
 "@arcblock/did-util@1.12.9", "@arcblock/did-util@^1.11.18", "@arcblock/did-util@^1.12.9":
   version "1.12.9"
   resolved "https://registry.yarnpkg.com/@arcblock/did-util/-/did-util-1.12.9.tgz#32ada07460a971e60172e131a2934d3215daa20a"

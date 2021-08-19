@@ -39,7 +39,6 @@
     "@arcblock/did-auth-storage-nedb": "^1.6.3",
     "@arcblock/did-connect": "^1.14.37",
     "@arcblock/did-playground": "^1.14.37",
-    "@arcblock/did-react": "^1.14.37",
     "@arcblock/did-util": "^1.12.9",
     "@arcblock/event-client": "^1.6.3",
     "@arcblock/event-server": "^1.6.3",

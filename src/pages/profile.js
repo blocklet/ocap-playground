@@ -9,7 +9,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@arcblock/did-react/lib/Avatar';
+import Avatar from '@arcblock/did-connect/lib/Avatar';
 import Button from '@arcblock/ux/lib/Button';
 import useBrowser from '@arcblock/react-hooks/lib/useBrowser';
 
