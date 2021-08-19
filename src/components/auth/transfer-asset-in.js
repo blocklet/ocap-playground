@@ -3,7 +3,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import useToggle from 'react-use/lib/useToggle';
 
-import Auth from '@arcblock/did-react/lib/Auth';
+import DidConnect from '@arcblock/did-connect/lib/Connect';
 import Button from '@arcblock/ux/lib/Button';
 
 import api from '../../libs/api';
@@ -18,7 +18,7 @@ export default function TransferTokenIn() {
         Send 1 Certificate to Wallet
       </Button>
       {isOpen && (
-        <Auth
+        <DidConnect
           responsive
           action="transfer_asset_in"
           checkFn={api.get}

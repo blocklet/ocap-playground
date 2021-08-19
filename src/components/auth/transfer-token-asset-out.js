@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import useToggle from 'react-use/lib/useToggle';
 
-import Auth from '@arcblock/did-react/lib/Auth';
+import DidConnect from '@arcblock/did-connect/lib/Connect';
 import Button from '@arcblock/ux/lib/Button';
 
 import api from '../../libs/api';
@@ -19,7 +19,7 @@ export default function TransferTokenAssetOut({ token }) {
         Send 1 {token.local.symbol} + 1 Asset to Application
       </Button>
       {isOpen && (
-        <Auth
+        <DidConnect
           responsive
           action="transfer_token_asset_out"
           checkFn={api.get}

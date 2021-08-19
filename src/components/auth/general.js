@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Auth from '@arcblock/did-react/lib/Auth';
+import DidConnect from '@arcblock/did-connect/lib/Connect';
 import Button from '@arcblock/ux/lib/Button';
 
 import Alert from '../alert';
@@ -26,7 +26,7 @@ export default function GeneralAuthButton({ button, action, messages, timeout, e
         {button}
       </Button>
       {isOpen && !isComplete && (
-        <Auth
+        <DidConnect
           responsive
           action={action}
           checkFn={api.get}
