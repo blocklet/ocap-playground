@@ -1,3 +1,7 @@
+## 0.10.6 (August 19, 2021)
+
+- chore: replace did-react with new did-connect lib
+
 ## 0.10.5 (August 12, 2021)
 
 - fix: cross token delegation error
