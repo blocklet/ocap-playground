@@ -237,7 +237,7 @@ export default function IndexPage() {
               action="launch-service"
               extraParams={{ type: 'node_blocklet' }}
               messages={{
-                title: 'Provide Node Purchase NFT Blocklet Purchase NFT',
+                title: 'Provide Node and Blocklet Purchase NFT',
                 scan: 'Scan QR code to provide',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Purchase verified',

@@ -15,8 +15,7 @@ module.exports = {
         return {
           description: 'Please provide your node purchase NFT',
           item: ['NodePurchaseCredential', 'NodeOwnershipCredential'],
-          // trustedIssuers: [{ did: wallet.address, endpoint }],
-          trustedIssuers: [wallet.address],
+          trustedIssuers: [{ did: wallet.address, endpoint }],
         };
       },
     ],
@@ -28,8 +27,7 @@ module.exports = {
         return {
           description: 'Please provide your blocklet purchase NFT',
           item: 'BlockletPurchaseCredential',
-          // trustedIssuers: [{ did: wallet.address, endpoint }],
-          trustedIssuers: [wallet.address],
+          trustedIssuers: [{ did: wallet.address, endpoint }],
         };
       },
     ],
