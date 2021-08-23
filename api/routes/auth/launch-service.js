@@ -14,7 +14,7 @@ module.exports = {
         const endpoint = joinUrl(env.serverUrl, '/api/did/acquire_asset/token?factory=nodePurchase');
         return {
           description: 'Please provide your node purchase NFT',
-          item: ['NodePurchaseCredential', 'NodeOwnershipCredential'],
+          item: ['NodePurchaseCredential', 'NodeOwnershipCredential', 'ABTNodePassport'],
           trustedIssuers: [{ did: wallet.address, endpoint }],
         };
       },
@@ -44,15 +44,14 @@ module.exports = {
       return x;
     });
 
-    const nodePurchaseCredential = credentials.find(x => {
-      const vc = JSON.parse(x.presentation.verifiableCredential[0]);
-      return vc.type.includes('NodePurchaseCredential');
-    });
-
     const blockletPurchaseCredential = claims.find(x => {
       const vc = JSON.parse(x.presentation.verifiableCredential[0]);
       return vc.type.includes('BlockletPurchaseCredential');
     });
+
+    if (!blockletPurchaseCredential) {
+      throw new Error('Blocklet purchase credential is required');
+    }
 
     if (challenge !== blockletPurchaseCredential.presentation.challenge) {
       throw Error('Blocklet Purchase Verifiable credential presentation does not have correct challenge');
@@ -64,6 +63,25 @@ module.exports = {
       challenge,
     });
 
+    const credential = credentials.find(x => {
+      const vc = JSON.parse(x.presentation.verifiableCredential[0]);
+      return (
+        vc.type.includes('NodePurchaseCredential') ||
+        vc.type.includes('NodeOwnershipCredential') ||
+        vc.type.includes('ABTNodePassport')
+      );
+    });
+
+    if (!credential) {
+      throw new Error('One of NodePurchaseCredential, NodeOwnershipCredential, ABTNodePassport is required');
+    }
+
+    const nodePurchaseCredential = credentials.find(x => {
+      const vc = JSON.parse(x.presentation.verifiableCredential[0]);
+      return vc.type.includes('NodePurchaseCredential');
+    });
+
+    // 这里只对 NodePurchaseNFT 做处理, 忽略 NodeOwnershipCredential ABTNodePassport
     if (nodePurchaseCredential) {
       if (challenge !== nodePurchaseCredential.presentation.challenge) {
         throw Error('Node Purchase Verifiable credential presentation does not have correct challenge');
