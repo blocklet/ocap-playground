@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 NOW="$(date +'%B %d, %Y')"
 # RED="\033[1;31m"
 # GREEN="\033[0;32m"
