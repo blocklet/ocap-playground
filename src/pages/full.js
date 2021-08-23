@@ -232,6 +232,17 @@ export default function IndexPage() {
                 success: 'Purchase verified',
               }}
             />
+            <AuthButton
+              button="Launch ABT Node + Blocklet"
+              action="launch-service"
+              extraParams={{ type: 'node_blocklet' }}
+              messages={{
+                title: 'Provide Node and Blocklet Purchase NFT',
+                scan: 'Scan QR code to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Purchase verified',
+              }}
+            />
           </div>
         </section>
 

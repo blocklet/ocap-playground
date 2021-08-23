@@ -1,3 +1,7 @@
+## 0.10.7 (August 19, 2021)
+
+- add launch abtnode with blocklet service case
+
 ## 0.10.6 (August 19, 2021)
 
 - chore: replace did-react with new did-connect lib

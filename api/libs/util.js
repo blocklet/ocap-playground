@@ -11,6 +11,12 @@ const path = require('path');
 const pako = require('pako');
 const { toBase64 } = require('@ocap/util');
 
+const { fromJSON } = require('@ocap/wallet');
+const { preMintFromFactory } = require('@ocap/asset');
+
+const { formatFactoryState, factories, inputs } = require('./factory');
+const { getCredentialList } = require('./nft');
+
 const env = require('./env');
 const { wallet } = require('./auth');
 const badgeArray = require('./svg');
@@ -189,6 +195,55 @@ const transferVCTypeToAssetType = str => {
   return NFTType.other;
 };
 
+const consumeNodePurchaseNFT = async ({ assetId, vc, userDid, locale }) => {
+  const app = fromJSON(wallet);
+
+  const { state } = await SDK.getFactoryState({ address: factories.nodeOwner });
+  if (!state) {
+    throw new Error('Asset factory does not exist on chain');
+  }
+
+  const preMint = preMintFromFactory({
+    factory: formatFactoryState(state),
+    inputs: { ...inputs.nodeOwner, purchaseId: vc.id, purchaseIssueId: vc.issuer.id },
+    owner: userDid,
+    issuer: { wallet: app, name: 'ocap-playground' },
+  });
+
+  logger.info('preMint', preMint);
+
+  const itx = {
+    factory: factories.nodeOwner,
+    address: preMint.address,
+    assets: [assetId],
+    variables: Object.entries(preMint.variables).map(([key, value]) => ({ name: key, value })),
+    issuer: preMint.issuer,
+    owner: userDid,
+  };
+
+  const hash = await SDK.sendMintAssetTx({ tx: { itx }, wallet: app });
+  logger.info('minted', hash);
+
+  try {
+    const { state: asset } = await SDK.getAssetState({ address: preMint.address }, { ignoreFields: ['context'] });
+    if (asset && asset.data && asset.data.typeUrl === 'vc') {
+      const minted = JSON.parse(asset.data.value);
+      logger.error('launch.auth.vc', minted);
+      return {
+        disposition: 'attachment',
+        type: 'VerifiableCredential',
+        data: minted,
+        assetId: preMint.address,
+        ...getCredentialList(asset, vc, locale),
+      };
+    }
+  } catch (err) {
+    logger.error('launch.auth.asset.error', err);
+  }
+
+  return { hash };
+};
+
 module.exports = {
   getTransferrableAssets,
   getTokenInfo,
@@ -198,4 +253,5 @@ module.exports = {
   fetchAndGzipSvg,
   getRandomMessage,
   ensureAsset,
+  consumeNodePurchaseNFT,
 };

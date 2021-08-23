@@ -28,7 +28,6 @@ module.exports = {
       throw new Error(`Unknown type ${type}`);
     },
   },
-
   onAuth: async ({ claims, challenge, extraParams: { type } }) => {
     const presentation = JSON.parse(claims.find(x => x.type === 'verifiableCredential').presentation);
     if (challenge !== presentation.challenge) {
