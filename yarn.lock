@@ -124,15 +124,15 @@
     lodash.get "^4.4.2"
     semver "^7.3.4"
 
-"@arcblock/did-connect@^1.14.41":
-  version "1.14.41"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-1.14.41.tgz#f459a428ca591a8de229d430c0fbd75cf89e5e28"
-  integrity sha512-GyFirOnf8U21KFskVcHg2JtOSjmub/q4sTbTVcEhbmxnOrjJjK+v/+XIF9iI+fPEnt4PaQnCUTGy7h/B9OXdyg==
+"@arcblock/did-connect@^1.14.42":
+  version "1.14.42"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-1.14.42.tgz#7bb43066265d96012211bd63342bff68560e44dd"
+  integrity sha512-daDkElBc18XpxUG5hEa86+y3fHRjOkqMpATPo00qRtuEIkTcjzqpeaJHS0Mq8h56eOqtG/BRjF6ukf8Aif0/aQ==
   dependencies:
     "@arcblock/event-client" "^1.0.23"
-    "@arcblock/icons" "^1.14.41"
-    "@arcblock/react-hooks" "^1.14.41"
-    "@arcblock/ux" "^1.14.41"
+    "@arcblock/icons" "^1.14.42"
+    "@arcblock/react-hooks" "^1.14.42"
+    "@arcblock/ux" "^1.14.42"
     "@fontsource/rubik" "^4.5.0"
     "@fontsource/ubuntu-mono" "^4.4.5"
     "@material-ui/core" "^4.10.1"
@@ -160,14 +160,14 @@
     debug "^4.3.1"
     lodash "^4.17.20"
 
-"@arcblock/did-playground@^1.14.41":
-  version "1.14.41"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-1.14.41.tgz#adb07aa58ac590831f7f249d7903584b1cea2d50"
-  integrity sha512-YyHnU0+XO57YaQ0gJo5GkNleioydA5ASgK/zBz27ZXx4rEfo3r/jEErZfWM4OoP0lcLob/94gSB1JpoFO/62IQ==
+"@arcblock/did-playground@^1.14.42":
+  version "1.14.42"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-1.14.42.tgz#cf40e019ec76c044001bc2b64e57b4950771975d"
+  integrity sha512-2nAtGChOfB/HFbKk/yr9bOsdv+teUaSrN9qOEYfI1OFLkIiLo8Q6Rp95h8Ivbt613EqBTHWDH+sLGBpCbVrXZg==
   dependencies:
-    "@arcblock/did-connect" "^1.14.41"
-    "@arcblock/react-hooks" "^1.14.41"
-    "@arcblock/ux" "^1.14.41"
+    "@arcblock/did-connect" "^1.14.42"
+    "@arcblock/react-hooks" "^1.14.42"
+    "@arcblock/ux" "^1.14.42"
     "@material-ui/core" "^4.11.0"
     axios "^0.21.1"
     core-js "^3.6.4"
@@ -223,10 +223,10 @@
     uuid "^3.3.3"
     ws "^7.2.0"
 
-"@arcblock/icons@^1.14.41":
-  version "1.14.41"
-  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-1.14.41.tgz#9bf9bbb77dfdc1a5e971475316d91eb649d277da"
-  integrity sha512-rrNN3dL61i69j2oUm+rwcXDZ6H2e+Wa/XSAq9LdTdcmRVIPxehoo6K14JLYVFpp5VIVidPEwiVh3g1lwNE9itg==
+"@arcblock/icons@^1.14.42":
+  version "1.14.42"
+  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-1.14.42.tgz#e034542a06295564e7c259b0ab61ef7e2462e2df"
+  integrity sha512-j7q9xpL9EffseH0c7h2YQiMAqrOzQSnqn8k7mHl4YcRIroNo+X0zO+IzzwG5BidhTqeDjLvEOa2w/d/ZbLtWVg==
 
 "@arcblock/nft-template@^1.12.9":
   version "1.12.9"
@@ -252,10 +252,10 @@
     pako "^1.0.11"
     url-join "^4.0.1"
 
-"@arcblock/react-hooks@^1.14.41":
-  version "1.14.41"
-  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-1.14.41.tgz#7ad418d431f03731968bf83953993cec53ab4316"
-  integrity sha512-5VStevaP0T3rhLbsaQ3rr7l4R3uDGVm86iu266MSUg73eEPi8+dnS7bBAhAiEcM0aLoP5K2c9Qq9+0zEITQalQ==
+"@arcblock/react-hooks@^1.14.42":
+  version "1.14.42"
+  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-1.14.42.tgz#ab7bd3b681468ee84984af14ca06565dfd75e7e7"
+  integrity sha512-r4J2sdDv88FZ/BPtEVlldJdHTtDYD2wfYuhOnz6+PccUES4AzTFTS7iumTQx53aaeREGIzMD27jTo6XzjZenvw==
   dependencies:
     core-js "^3.6.4"
     event-target-shim "^5.0.1"
@@ -272,13 +272,13 @@
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
-"@arcblock/ux@^1.14.41":
-  version "1.14.41"
-  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-1.14.41.tgz#b93d9ea5067cd8ae40643a9d0d2fdfddcd957a71"
-  integrity sha512-xPswv1fjcQiN1IS88juwiCiLcsaVkVCSkMp3N/VxUXCuZcOU6rAA34PV9+37XqywPQvNIyjoWmdrafImhPpeIg==
+"@arcblock/ux@^1.14.42":
+  version "1.14.42"
+  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-1.14.42.tgz#92eeb5359c7638822839e05b7953aed6f13d678d"
+  integrity sha512-0Ksblpy2VjJErFoBQBwc7iFxdwBB29xt7l18vQZaYpr9ipsQAMmbXlXZqrke+0oVvYlnsiglqdgSA6p4QDFfEQ==
   dependencies:
-    "@arcblock/icons" "^1.14.41"
-    "@arcblock/react-hooks" "^1.14.41"
+    "@arcblock/icons" "^1.14.42"
+    "@arcblock/react-hooks" "^1.14.42"
     "@babel/plugin-syntax-dynamic-import" "^7.8.3"
     "@material-ui/core" "^4.10.1"
     "@material-ui/icons" "4.5.1"
