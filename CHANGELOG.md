@@ -1,3 +1,7 @@
+## 0.10.8 (August 23, 2021)
+
+- chore: upgrade did-connect to latest
+
 ## 0.10.7 (August 19, 2021)
 
 - add launch abtnode with blocklet service case
