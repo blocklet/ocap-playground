@@ -22,7 +22,7 @@ module.exports = {
     acquireBlockletVc: [
       'verifiableCredential',
       () => {
-        const endpoint = joinUrl(env.serverUrl, '/api/did/acquire_asset/timeout?factory=blockletPurchase');
+        const endpoint = joinUrl(env.serverUrl, '/api/did/acquire_asset/token?factory=blockletPurchase');
 
         return {
           description: 'Please provide your blocklet purchase NFT',
