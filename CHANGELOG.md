@@ -1,3 +1,6 @@
+## 0.10.9 (August 26, 2021)\n
+- fix: blocklet nft endpoint bug in launch service
+
 ## 0.10.8 (August 23, 2021)
 
 - chore: upgrade did-connect to latest
