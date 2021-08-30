@@ -233,7 +233,7 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Launch or Purchase Multiple NFTs"
+              button="Shopping Chart"
               action="launch-service"
               extraParams={{ type: 'node_blocklet' }}
               messages={{
