@@ -233,7 +233,7 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Launch ABT Node + Blocklet"
+              button="Shopping Chart"
               action="launch-service"
               extraParams={{ type: 'node_blocklet' }}
               messages={{
