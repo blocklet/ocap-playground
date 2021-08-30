@@ -1,3 +1,6 @@
+## 0.10.10 (August 30, 2021)\n
+- chore typo: Launch or Purchase Multiple NFTs
+
 ## 0.10.9 (August 26, 2021)\n
 - fix: blocklet nft endpoint bug in launch service
 
