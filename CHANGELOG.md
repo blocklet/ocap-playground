@@ -1,7 +1,7 @@
 ## 0.10.10 (August 30, 2021)
 
 - fix newline in CHANGELOG
-- chore typo: Launch or Purchase Multiple NFTs
+- chore typo: Shopping Chart
 
 ## 0.10.9 (August 26, 2021)
 
