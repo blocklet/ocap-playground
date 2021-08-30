@@ -1,4 +1,10 @@
-## 0.10.9 (August 26, 2021)\n
+## 0.10.10 (August 30, 2021)
+
+- fix newline in CHANGELOG
+- chore typo: Launch or Purchase Multiple NFTs
+
+## 0.10.9 (August 26, 2021)
+
 - fix: blocklet nft endpoint bug in launch service
 
 ## 0.10.8 (August 23, 2021)
