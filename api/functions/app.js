@@ -96,6 +96,8 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/pre
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/fake-passport')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-target-vc')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/launch-service')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/stake')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/revoke-stake')));
 
 agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-profile'))); // we can reuse something here
 
