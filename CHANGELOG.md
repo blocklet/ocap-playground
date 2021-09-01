@@ -1,3 +1,7 @@
+## 0.12.0 (September 01, 2021)
+
+- fix: revoke-stake on-auth
+
 ## 0.11.0 (August 31, 2021)
 
 - feat: add test case for staking and revoke-staking
