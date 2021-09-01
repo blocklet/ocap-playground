@@ -46,14 +46,17 @@ module.exports = {
 
   onAuth: async ({ userDid, claims }) => {
     const claim = claims.find(x => x.type === 'signature');
-    logger.info('prepare.auth.claim', claim);
-    if (!claim.finalTx) {
-      throw new Error('claim.finalTx must be set to continue');
-    }
+    logger.info('revoke-stake.auth.claim', claim);
 
-    const tx = SDK.decodeTx(claim.finalTx);
+    const tx = SDK.decodeTx(claim.origin);
+    const user = fromAddress(userDid);
 
-    const hash = await SDK.sendRevokeStakeTx({ tx, wallet: fromAddress(userDid) });
-    return { hash, tx: claim.finalTx };
+    const hash = await SDK.sendRevokeStakeTx({
+      tx,
+      wallet: user,
+      signature: claim.sig,
+    });
+
+    return { hash, tx };
   },
 };
