@@ -1,3 +1,7 @@
+## 0.13.0 (September 01, 2021)
+
+- fix: should not set tx.inputs when send stake prepareTx
+
 ## 0.12.0 (September 01, 2021)
 
 - fix: revoke-stake on-auth
