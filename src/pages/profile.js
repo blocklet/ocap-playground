@@ -21,7 +21,7 @@ export default function ProfilePage() {
   const history = useHistory();
   const { session } = useContext(UserContext);
 
-  const { user, token } = session;
+  const { user, stake, token } = session;
 
   const onLogout = () => {
     session.logout();
@@ -86,7 +86,7 @@ export default function ProfilePage() {
               Staking
             </Typography>
             <pre>
-              <code>{JSON.stringify(user.stake || 'NAN', null, 2)}</code>
+              <code>{JSON.stringify(stake || 'NAN', null, 2)}</code>
             </pre>
           </Grid>
         </Grid>
