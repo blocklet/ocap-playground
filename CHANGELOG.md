@@ -1,3 +1,8 @@
+## 0.11.0 (August 31, 2021)
+
+- feat: add test case for staking and revoke-staking
+- chore: bump deps to latest
+
 ## 0.10.10 (August 30, 2021)
 
 - fix newline in CHANGELOG

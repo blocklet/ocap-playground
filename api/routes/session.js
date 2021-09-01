@@ -1,5 +1,8 @@
 /* eslint-disable no-console */
+const SDK = require('@ocap/sdk');
+const { toStakeAddress } = require('@arcblock/did-util');
 const env = require('../libs/env');
+const { authClient, wallet } = require('../libs/auth');
 const { getTokenInfo, getAccountBalance } = require('../libs/util');
 
 module.exports = {
@@ -8,17 +11,24 @@ module.exports = {
       try {
         const token = await getTokenInfo();
         if (req.user) {
-          const balance = await getAccountBalance(req.user.did);
+          const stakeAddress = toStakeAddress(req.user.did, wallet.address);
+          const [balance, { user }, { state }] = await Promise.all([
+            getAccountBalance(req.user.did),
+            authClient.getUser(req.user.did),
+            SDK.getStakeState({ address: stakeAddress }),
+          ]);
           return res.json({
-            user: req.user,
+            user,
             token,
             balance,
+            stake: state,
           });
         }
         return res.json({
-          user: req.user,
+          user: null,
           token,
           balance: {},
+          stake: null,
         });
       } catch (e) {
         console.error('get session failed', e);

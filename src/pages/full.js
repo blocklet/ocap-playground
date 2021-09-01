@@ -762,6 +762,39 @@ export default function IndexPage() {
             </NotificationButton>
           </div>
         </section>
+        <section className="section">
+          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
+            Staking Scenarios{' '}
+            <Typography component="small" color="textSecondary">
+              Staking Tokens or Assets
+            </Typography>
+          </Typography>
+          <div className="section__content">
+            <AuthButton
+              button={`Stake Token: ${token.local.symbol}`}
+              action="stake"
+              extraParams={{ type: 'StakeLocalToken' }}
+              messages={{
+                title: `Stake ${token.local.symbol}`,
+                scan: 'Scan QR code to complete the staking',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Token is Locked',
+              }}
+            />
+            <AuthButton
+              button={`Revoke Stake: ${token.local.symbol}`}
+              action="revoke-stake"
+              extraParams={{ type: 'RevokeLocalToken' }}
+              messages={{
+                title: 'Revoke Stake',
+                scan: 'Scan QR code to complete the transaction',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Token is released',
+              }}
+            />
+          </div>
+        </section>
+
         {!browser.wallet && (
           <section className="section">
             <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>

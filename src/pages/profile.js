@@ -34,7 +34,7 @@ export default function ProfilePage() {
       <Main>
         <Grid container spacing={6}>
           <Grid item xs={12} md={3} className="avatar">
-            <Avatar size={240} did={user.did} />
+            {user.avatar ? <img src={user.avatar} alt="user-avatar" /> : <Avatar size={240} did={user.did} />}
             <Button color="secondary" className="button" variant="contained" href="/orders">
               My Orders
             </Button>
@@ -44,7 +44,7 @@ export default function ProfilePage() {
               </Button>
             )}
           </Grid>
-          <Grid item xs={12} md={9} className="meta">
+          <Grid item xs={12} md={6} className="meta">
             <Typography component="h3" variant="h4">
               My Profile
             </Typography>
@@ -53,13 +53,19 @@ export default function ProfilePage() {
                 <ListItemText primary={user.did} secondary="DID" />
               </ListItem>
               <ListItem className="meta-item">
-                <ListItemText primary={user.name || '-'} secondary="Name" />
+                <ListItemText primary={user.fullName || '-'} secondary="Name" />
               </ListItem>
               <ListItem className="meta-item">
                 <ListItemText primary={user.email || '-'} secondary="Email" />
               </ListItem>
               <ListItem className="meta-item">
                 <ListItemText primary={user.mobile || '-'} secondary="Phone" />
+              </ListItem>
+              <ListItem className="meta-item">
+                <ListItemText primary={user.firstLoginAt || '-'} secondary="First Login" />
+              </ListItem>
+              <ListItem className="meta-item">
+                <ListItemText primary={user.lastLoginAt || '-'} secondary="Last Login" />
               </ListItem>
               <ListItem className="meta-item">
                 <ListItemText
@@ -74,6 +80,14 @@ export default function ProfilePage() {
                 />
               </ListItem>
             </List>
+          </Grid>
+          <Grid item xs={12} md={3} className="meta">
+            <Typography component="h3" variant="h4">
+              Staking
+            </Typography>
+            <pre>
+              <code>{JSON.stringify(user.stake || 'NAN', null, 2)}</code>
+            </pre>
           </Grid>
         </Grid>
       </Main>
@@ -99,6 +113,11 @@ const Main = styled.main`
 
     svg {
       margin-bottom: 40px;
+    }
+
+    img {
+      margin-bottom: 40px;
+      border-radius: 50%;
     }
   }
 
