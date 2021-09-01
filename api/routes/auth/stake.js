@@ -22,12 +22,7 @@ const txCreators = {
         itx: {
           address: toStakeAddress(userDid, wallet.address),
           receiver: wallet.address,
-          inputs: [
-            {
-              owner: userDid,
-              tokens,
-            },
-          ],
+          inputs: [],
         },
         signatures: [],
       },
