@@ -1,3 +1,7 @@
+## 0.15.0 (September 03, 2021)
+
+- experiment: send deepLink to wallet through socket on did-connect session start
+
 ## 0.14.0 (September 01, 2021)
 
 
