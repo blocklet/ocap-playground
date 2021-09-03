@@ -32,6 +32,56 @@ const txCreators = {
       description: `Stake ${amount} token`,
     };
   },
+  StakeForeignToken: async ({ userDid, userPk }) => {
+    const token = await getTokenInfo();
+    const amount = 12.3;
+    const tokens = [{ address: env.foreignTokenId, value: fromTokenToUnit(amount, token.foreign.decimal).toString() }];
+
+    return {
+      type: 'StakeTx',
+      partialTx: {
+        from: userDid,
+        pk: userPk,
+        itx: {
+          address: toStakeAddress(userDid, wallet.address),
+          receiver: wallet.address,
+          inputs: [],
+        },
+        signatures: [],
+      },
+      requirement: {
+        tokens,
+      },
+      description: `Stake ${amount} token`,
+    };
+  },
+  StakeNFT: async ({ userDid, userPk }) => {
+    return {
+      type: 'StakeTx',
+      partialTx: {
+        from: userDid,
+        pk: userPk,
+        itx: {
+          address: toStakeAddress(userDid, wallet.address),
+          receiver: wallet.address,
+          inputs: [],
+        },
+        signatures: [],
+      },
+      requirement: {
+        assets: {
+          parent: [
+            'z3CtJ9VMsXEYKNiUCJmXXG6d5baVbKoNV26Pm',
+            'z3Ct5EzXRzJYyY1z2bEfpSAA3zWbfYtk4cWP1',
+            'z3Ct7M59EvbbkXwkpiqdxoGE58C1BQCLKvQZ3',
+            'z3Ct9pnuFXyhFn6EKNgj4scxbACTCDSEEfB48',
+          ],
+          amount: 1,
+        },
+      },
+      description: 'Stake NFT',
+    };
+  },
 };
 
 module.exports = {

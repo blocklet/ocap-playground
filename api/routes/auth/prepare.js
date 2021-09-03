@@ -116,7 +116,12 @@ const txCreators = {
       requirement: {
         tokens,
         assets: {
-          parent: [wallet.address],
+          parent: [
+            'z3CtJ9VMsXEYKNiUCJmXXG6d5baVbKoNV26Pm',
+            'z3Ct5EzXRzJYyY1z2bEfpSAA3zWbfYtk4cWP1',
+            'z3Ct7M59EvbbkXwkpiqdxoGE58C1BQCLKvQZ3',
+            'z3Ct9pnuFXyhFn6EKNgj4scxbACTCDSEEfB48',
+          ],
           amount: 2,
         },
       },

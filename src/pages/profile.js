@@ -22,6 +22,7 @@ export default function ProfilePage() {
   const { session } = useContext(UserContext);
 
   const { user, stake, token } = session;
+  const { assets, tokens } = stake;
 
   const onLogout = () => {
     session.logout();
@@ -85,9 +86,23 @@ export default function ProfilePage() {
             <Typography component="h3" variant="h4">
               Staking
             </Typography>
-            <pre>
-              <code>{JSON.stringify(stake || 'NAN', null, 2)}</code>
-            </pre>
+
+            <List>
+              {tokens.map(tk => {
+                return (
+                  <ListItem className="meta-item">
+                    <ListItemText primary={`${fromUnitToToken(tk.value, tk.decimal)}`} secondary={tk.symbol} />
+                  </ListItem>
+                );
+              })}
+              {assets.map(nft => {
+                return (
+                  <ListItem className="meta-item">
+                    <ListItemText primary={nft} secondary="NFT" />
+                  </ListItem>
+                );
+              })}
+            </List>
           </Grid>
         </Grid>
       </Main>
