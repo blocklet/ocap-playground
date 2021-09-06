@@ -32,6 +32,7 @@ module.exports = {
         startTime: new Date(),
         endTime: new Date(Date.now() + 2 * 60 * 60 * 1000),
       });
+
       logger.info('transfer_asset_token_in.onAuth', { claims, userDid });
       const type = toTypeInfo(userDid);
       const user = SDK.Wallet.fromPublicKey(userPk, type);
@@ -44,11 +45,10 @@ module.exports = {
       const appWallet = SDK.Wallet.fromJSON(wallet);
       const hash = await SDK.transfer({
         to: userDid,
-        tokens: [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(1)).toString() }],
+        tokens: [{ address: env.localTokenId, value: '1' }],
         assets: [asset.address],
         wallet: appWallet,
       });
-
       logger.info('transfer_asset_token_in.onAuth.hash', hash);
       return { hash, tx: claim.origin };
     } catch (err) {
