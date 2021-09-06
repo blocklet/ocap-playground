@@ -45,7 +45,7 @@ const getFactoryProps = ({
       parent: '{{ctx.factory}}',
       moniker,
       readonly: true,
-      transferrable: false,
+      transferrable: true,
       data: output,
     },
     data,

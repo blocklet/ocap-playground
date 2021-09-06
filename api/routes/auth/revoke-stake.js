@@ -32,6 +32,54 @@ const txCreators = {
       description: 'Revoke staked token',
     };
   },
+  RevokeForeignToken: async ({ userDid, userPk }) => {
+    const token = await getTokenInfo();
+    const amount = 5.275;
+    const tokens = [{ address: env.foreignTokenId, value: fromTokenToUnit(amount, token.foreign.decimal).toString() }];
+
+    return {
+      type: 'RevokeStakeTx',
+      data: {
+        from: userDid,
+        pk: userPk,
+        itx: {
+          address: toStakeAddress(userDid, wallet.address),
+          outputs: [
+            {
+              owner: userDid,
+              tokens,
+            },
+          ],
+        },
+      },
+      description: 'Revoke staked token',
+    };
+  },
+  RevokeNFT: async ({ userDid, userPk }) => {
+    const stakeAddress = toStakeAddress(userDid, wallet.address);
+    const { state } = await SDK.getStakeState({ address: stakeAddress });
+    const asset = state.assets[0];
+    if (!asset) {
+      throw new Error('No NFT to revoke');
+    }
+    return {
+      type: 'RevokeStakeTx',
+      data: {
+        from: userDid,
+        pk: userPk,
+        itx: {
+          address: stakeAddress,
+          outputs: [
+            {
+              owner: userDid,
+              assets: [asset],
+            },
+          ],
+        },
+      },
+      description: 'Revoke staked token',
+    };
+  },
 };
 
 module.exports = {

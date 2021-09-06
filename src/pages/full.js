@@ -792,6 +792,50 @@ export default function IndexPage() {
                 success: 'Token is released',
               }}
             />
+            <AuthButton
+              button={`Stake Token: ${token.foreign.symbol}`}
+              action="stake"
+              extraParams={{ type: 'StakeForeignToken' }}
+              messages={{
+                title: `Stake ${token.foreign.symbol}`,
+                scan: 'Scan QR code to complete the staking',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Token is Locked',
+              }}
+            />
+            <AuthButton
+              button={`Revoke Stake: ${token.foreign.symbol}`}
+              action="revoke-stake"
+              extraParams={{ type: 'RevokeForeignToken' }}
+              messages={{
+                title: 'Revoke Stake',
+                scan: 'Scan QR code to complete the transaction',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Token is released',
+              }}
+            />
+            <AuthButton
+              button="Stake NFT"
+              action="stake"
+              extraParams={{ type: 'StakeNFT' }}
+              messages={{
+                title: 'Stake NFT',
+                scan: 'Scan QR code to complete the transaction',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'NFT is staked',
+              }}
+            />
+            <AuthButton
+              button="Revoke Stake NFT"
+              action="revoke-stake"
+              extraParams={{ type: 'RevokeNFT' }}
+              messages={{
+                title: 'Revoke Stake NFT',
+                scan: 'Scan QR code to complete the transaction',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'NFT is released',
+              }}
+            />
           </div>
         </section>
 
