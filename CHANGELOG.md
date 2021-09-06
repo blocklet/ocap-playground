@@ -1,3 +1,7 @@
+## 0.16.2 (September 06, 2021)
+
+- fix profile crash without stakes
+
 ## 0.16.1 (September 06, 2021)
 
 - more stake
