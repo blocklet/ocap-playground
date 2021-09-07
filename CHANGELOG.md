@@ -1,3 +1,7 @@
+## 0.16.3 (September 07, 2021)
+
+- change stake NFT parents
+
 ## 0.16.2 (September 06, 2021)
 
 - fix profile crash without stakes
