@@ -117,10 +117,10 @@ const txCreators = {
         tokens,
         assets: {
           parent: [
-            'z3CtJ9VMsXEYKNiUCJmXXG6d5baVbKoNV26Pm',
-            'z3Ct5EzXRzJYyY1z2bEfpSAA3zWbfYtk4cWP1',
-            'z3Ct7M59EvbbkXwkpiqdxoGE58C1BQCLKvQZ3',
-            'z3Ct9pnuFXyhFn6EKNgj4scxbACTCDSEEfB48',
+            'z3CtMVWsnBAMmU941LGo5eRokLxfAcNZ3p2p1',
+            'z3Ct6eubBZzbK1pETFkVn9DBkE6f9MbBwTPNe',
+            'z3CtM4ZCQHrFaD7pToh5eeAnGDZtaX9uHURpn',
+            'z3CtFBjdmcBSQYmmVoWDbMh43PmsxJUKtEhKB',
           ],
           amount: 2,
         },
