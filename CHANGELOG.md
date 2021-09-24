@@ -1,3 +1,7 @@
+## 0.17.0 (September 24, 2021)
+
+- chore: bump chain deps to latest
+
 ## 0.16.3 (September 07, 2021)
 
 - change stake NFT parents
