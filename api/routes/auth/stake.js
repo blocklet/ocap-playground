@@ -22,6 +22,7 @@ const txCreators = {
         itx: {
           address: toStakeAddress(userDid, wallet.address),
           receiver: wallet.address,
+          message: 'ocap playground test: local',
           inputs: [],
         },
         signatures: [],
@@ -45,6 +46,7 @@ const txCreators = {
         itx: {
           address: toStakeAddress(userDid, wallet.address),
           receiver: wallet.address,
+          message: 'ocap playground test: foreign',
           inputs: [],
         },
         signatures: [],
@@ -64,6 +66,7 @@ const txCreators = {
         itx: {
           address: toStakeAddress(userDid, wallet.address),
           receiver: wallet.address,
+          message: 'ocap playground test: nft',
           inputs: [],
         },
         signatures: [],
