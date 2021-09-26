@@ -88,33 +88,43 @@ const txCreators = {
     };
   },
 
-  TransferV3TxAsset: async () => {
-    const token = await getTokenInfo();
-    const amountPrimary = 11.1;
-    const amountForeign = 22.2;
-    const valuePrimary = fromTokenToUnit(amountPrimary, token.local.decimal).toString();
-    const valueForeign = fromTokenToUnit(amountForeign, token.foreign.decimal).toString();
-    const tokens = [
-      { address: env.localTokenId, value: valuePrimary },
-      { address: env.foreignTokenId, value: valueForeign },
-    ];
+  AcquireAssetV3TxAsset: async ({ userDid, userPk, input }) => {
+    const inputFactories = {
+      local: factories.endpointTest,
+      foreign: factories.blockletPurchase,
+      both: factories.tokenInputTest,
+    };
+    const { state } = await SDK.getFactoryState({ address: inputFactories[input] });
+    if (!state) {
+      throw new Error('Asset factory does not exist on chain');
+    }
+
+    const preMint = preMintFromFactory({
+      factory: formatFactoryState(state),
+      inputs: inputs.blockletPurchase,
+      owner: userDid,
+      issuer: { wallet: app, name: 'ocap-playground' }, // NOTE: using moniker must be enforced to make mint work
+    });
 
     return {
-      type: 'TransferV3Tx',
+      type: 'AcquireAssetV3Tx',
+      description: 'Acquire asset from application using multiple inputs',
       partialTx: {
+        from: userDid,
+        pk: userPk,
         itx: {
+          factory: inputFactories[input],
+          address: preMint.address,
           inputs: [],
-          outputs: [
-            {
-              // 转给 app
-              owner: wallet.address,
-              tokens,
-            },
-          ],
+          owner: userDid,
+          variables: Object.entries(preMint.variables).map(([key, value]) => ({ name: key, value })),
+          issuer: preMint.issuer,
         },
       },
       requirement: {
-        tokens,
+        tokens: [{ address: env.localTokenId, value: state.input.value }]
+          .concat(state.input.tokens)
+          .filter(x => !!x.value),
         assets: {
           parent: [
             'z3CtMVWsnBAMmU941LGo5eRokLxfAcNZ3p2p1',
@@ -125,7 +135,6 @@ const txCreators = {
           amount: 2,
         },
       },
-      description: 'Complete this transaction using multiple tx inputs feature',
     };
   },
 
@@ -201,7 +210,7 @@ module.exports = {
 
     const tx = SDK.decodeTx(claim.finalTx);
 
-    if (type === 'AcquireAssetV3Tx') {
+    if (type.startsWith('AcquireAssetV3Tx')) {
       const hash = await SDK.sendAcquireAssetV3Tx({ tx, wallet: fromAddress(userDid) });
       return { hash, tx: claim.finalTx };
     }
