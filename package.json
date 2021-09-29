@@ -111,7 +111,7 @@
     "build:client": "react-scripts build && rm -f build/static/**/*.map",
     "bundle": "npm run clean && npm run bundle:client && npm run bundle:server",
     "bundle:client": "PUBLIC_URL=\"/.blocklet/proxy/z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM\" REACT_APP_API_PREFIX=\"\" REACT_APP_APP_NAME=\"OCAP Playground\" npm run build:client",
-    "bundle:server": "bn bundle --zip --create-release",
+    "bundle:server": "blocklet bundle --zip --create-release",
     "prepublishOnly": "npm run bundle",
     "release": "npm run clean && npm run bundle",
     "deploy": "npm run release && blocklet deploy .blocklet/bundle --skip-hooks",
