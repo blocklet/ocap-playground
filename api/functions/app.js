@@ -10,7 +10,6 @@ const bodyParser = require('body-parser');
 const fallback = require('express-history-api-fallback');
 const compression = require('compression');
 const displayRoutes = require('express-routemap');
-const Notification = require('@blocklet/sdk/service/notification');
 
 const { walletHandlers, walletHandlersWithNoChainInfo, agentHandlers } = require('../libs/auth');
 
