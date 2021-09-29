@@ -5,9 +5,10 @@ const SDK = require('@ocap/sdk');
 const AuthNedbStorage = require('@arcblock/did-auth-storage-nedb');
 const AgentNedbStorage = require('@arcblock/did-agent-storage-nedb');
 const WalletAuthenticator = require('@blocklet/sdk/lib/wallet-authenticator');
+const WalletHandlers = require('@blocklet/sdk/lib/wallet-handler');
 const { NFTFactory } = require('@arcblock/nft');
 const { fromSecretKey, fromJSON, WalletType } = require('@ocap/wallet');
-const { AgentAuthenticator, WalletHandlers, AgentWalletHandlers } = require('@arcblock/did-auth');
+const { AgentAuthenticator, AgentWalletHandlers } = require('@arcblock/did-auth');
 const AuthService = require('@blocklet/sdk/service/auth');
 const env = require('./env');
 

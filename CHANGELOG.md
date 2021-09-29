@@ -1,3 +1,7 @@
+## 0.17.2 (September 29, 2021)
+
+- feat: support did-connect 2.0
+
 ## 0.17.1 (September 26, 2021)
 
 
