@@ -5,14 +5,14 @@ VERSION=$(strip $(shell cat version))
 
 build: init
 	@echo "Building the software..."
-	@npm run bundle
+	@yarn bundle
 
 init: install dep
 	@echo "Initializing the repo..."
 
 install:
 	@echo "Install software required for this repo..."
-	@npm install -g yarn @abtnode/cli @babel/cli
+	@yarn global add @abtnode/cli @babel/cli
 
 dep:
 	@echo "Install dependencies required for this repo..."
@@ -37,7 +37,7 @@ coverage:
 
 lint:
 	@echo "Linting the software..."
-	@npm run lint
+	@yarn lint
 
 setenv:
 	@echo "Setup .env file..."
@@ -46,7 +46,7 @@ setenv:
 precommit: setenv lint test coverage
 
 github-init:
-	@sudo npm install -g yarn @abtnode/cli @babel/cli
+	@sudo yarn global add @abtnode/cli @babel/cli
 	@make dep
 	@make setenv
 
@@ -55,7 +55,7 @@ clean:
 
 run:
 	@echo "Running the software..."
-	@npm run start
+	@yarn start
 
 include .makefiles/*.mk
 

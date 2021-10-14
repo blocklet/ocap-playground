@@ -1,10 +1,12 @@
+## 0.17.3 (十月 14, 2021)
+
+- chore: use action-workflow
+
 ## 0.17.2 (September 29, 2021)
 
 - feat: support did-connect 2.0
 
 ## 0.17.1 (September 26, 2021)
-
-
 
 ## 0.17.0 (September 24, 2021)
 
@@ -27,8 +29,6 @@
 - experiment: send deepLink to wallet through socket on did-connect session start
 
 ## 0.14.0 (September 01, 2021)
-
-
 
 ## 0.13.0 (September 01, 2021)
 
@@ -70,15 +70,11 @@
 
 ## 0.10.4 (August 12, 2021)
 
-
-
 ## 0.10.3 (August 12, 2021)
 
 - fix: test case that fail consistent tokens
 
 ## 0.10.2 (August 10, 2021)
-
-
 
 ## 0.10.1 (August 10, 2021)
 
