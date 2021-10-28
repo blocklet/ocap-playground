@@ -1,3 +1,7 @@
+## 0.17.4 (October 28, 2021)
+
+- chore: update did-connect to latest
+
 ## 0.17.3 (十月 14, 2021)
 
 - chore: use action-workflow
