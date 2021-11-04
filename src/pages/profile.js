@@ -24,6 +24,8 @@ export default function ProfilePage() {
   const { user, stake, token } = session;
   const tokens = stake && stake.tokens ? stake.tokens : null;
   const assets = stake && stake.assets ? stake.assets : null;
+  const revokedAssets = stake && stake.revokedAssets ? stake.revokedAssets : null;
+  const revokedTokens = stake && stake.revokedTokens ? stake.revokedTokens : null;
 
   const onLogout = () => {
     session.logout();
@@ -46,7 +48,7 @@ export default function ProfilePage() {
               </Button>
             )}
           </Grid>
-          <Grid item xs={12} md={6} className="meta">
+          <Grid item xs={12} md={5} className="meta">
             <Typography component="h3" variant="h4">
               My Profile
             </Typography>
@@ -83,11 +85,10 @@ export default function ProfilePage() {
               </ListItem>
             </List>
           </Grid>
-          <Grid item xs={12} md={3} className="meta">
-            <Typography component="h3" variant="h4">
-              Staking
+          <Grid item xs={12} md={4} className="meta">
+            <Typography component="h3" variant="h5">
+              Staking <small className="tip">Revocable</small>
             </Typography>
-
             <List>
               {tokens &&
                 tokens.map(tk => {
@@ -99,6 +100,27 @@ export default function ProfilePage() {
                 })}
               {assets &&
                 assets.map(nft => {
+                  return (
+                    <ListItem className="meta-item">
+                      <ListItemText primary={nft} secondary="NFT" />
+                    </ListItem>
+                  );
+                })}
+            </List>
+            <Typography component="h3" variant="h5">
+              Revoked <small className="tip">Pending for Claim</small>
+            </Typography>
+            <List>
+              {revokedTokens &&
+                revokedTokens.map(tk => {
+                  return (
+                    <ListItem className="meta-item">
+                      <ListItemText primary={`${fromUnitToToken(tk.value, tk.decimal)}`} secondary={tk.symbol} />
+                    </ListItem>
+                  );
+                })}
+              {revokedAssets &&
+                revokedAssets.map(nft => {
                   return (
                     <ListItem className="meta-item">
                       <ListItemText primary={nft} secondary="NFT" />
@@ -149,5 +171,9 @@ const Main = styled.main`
 
   .meta-item {
     padding-left: 0;
+  }
+
+  .tip {
+    font-size: 1rem;
   }
 `;
