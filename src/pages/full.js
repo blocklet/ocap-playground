@@ -12,6 +12,7 @@ import Button from '@arcblock/ux/lib/Button';
 import Layout from '../components/layout';
 
 import AuthButton from '../components/auth/general';
+import ClaimButton from '../components/auth/claim-stake';
 import SignButton from '../components/auth/auth/sign';
 import TransferAssetOut from '../components/auth/transfer-asset-out';
 import TransferAssetIn from '../components/auth/transfer-asset-in';
@@ -834,6 +835,17 @@ export default function IndexPage() {
                 scan: 'Scan QR code to complete the transaction',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'NFT is released',
+              }}
+            />
+            <ClaimButton
+              button="Claim Revoked Stake"
+              action="claim-stake"
+              extraParams={{}}
+              messages={{
+                title: 'Claim Revoked Stake',
+                scan: 'Scan QR code to complete the claim',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Claim Success',
               }}
             />
           </div>

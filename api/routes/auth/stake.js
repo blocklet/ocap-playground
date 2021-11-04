@@ -22,6 +22,7 @@ const txCreators = {
         itx: {
           address: toStakeAddress(userDid, wallet.address),
           receiver: wallet.address,
+          revokeWaitingPeriod: 30,
           message: 'ocap playground test: local',
           inputs: [],
         },
@@ -46,6 +47,7 @@ const txCreators = {
         itx: {
           address: toStakeAddress(userDid, wallet.address),
           receiver: wallet.address,
+          revokeWaitingPeriod: 30,
           message: 'ocap playground test: foreign',
           inputs: [],
         },
@@ -66,6 +68,7 @@ const txCreators = {
         itx: {
           address: toStakeAddress(userDid, wallet.address),
           receiver: wallet.address,
+          revokeWaitingPeriod: 30,
           message: 'ocap playground test: nft',
           inputs: [],
         },

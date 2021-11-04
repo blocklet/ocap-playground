@@ -11,7 +11,7 @@ module.exports = {
     // eslint-disable-next-line consistent-return
     app.get('/api/authorizations', async (req, res) => {
       if (!req.user) {
-        res.jsonp({ error: 'Please login to create your application and authorization' });
+        return res.jsonp({ error: 'Please login to create your application and authorization' });
       }
 
       const ownerDid = req.user.did;

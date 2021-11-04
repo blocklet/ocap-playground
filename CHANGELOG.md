@@ -1,3 +1,7 @@
+## 0.18.0 (November 04, 2021)
+
+- feat: support revoke-claim stake workflow
+
 ## 0.17.4 (October 28, 2021)
 
 - chore: bump deps to latest

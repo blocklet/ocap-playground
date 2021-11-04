@@ -46,6 +46,7 @@ app.use((req, res, next) => {
   if (req.headers['x-user-did']) {
     req.user = {
       did: req.headers['x-user-did'],
+      role: req.headers['x-user-role'],
     };
   }
 
@@ -98,6 +99,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/cla
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/launch-service')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/stake')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/revoke-stake')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-stake')));
 
 agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-profile'))); // we can reuse something here
 
@@ -105,6 +107,7 @@ require('../routes/session').init(router);
 require('../routes/nft').init(router);
 require('../routes/authorizations').init(router);
 require('../routes/notification').init(router);
+require('../routes/stake').init(router);
 
 if (isDev) {
   app.use(router);
