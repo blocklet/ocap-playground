@@ -156,6 +156,8 @@ const Main = styled.main`
     img {
       margin-bottom: 40px;
       border-radius: 50%;
+      height: 240px;
+      width: 240px;
     }
   }
 
