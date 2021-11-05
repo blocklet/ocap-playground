@@ -74,13 +74,11 @@ export default function ProfilePage() {
               <ListItem className="meta-item">
                 <ListItemText
                   primary={`${fromUnitToToken(session.balance.local, token.local.decimal)} ${token.local.symbol}`}
-                  secondary="Local Balance"
                 />
               </ListItem>
               <ListItem className="meta-item">
                 <ListItemText
                   primary={`${fromUnitToToken(session.balance.foreign, token.foreign.decimal)} ${token.foreign.symbol}`}
-                  secondary="Foreign Balance"
                 />
               </ListItem>
             </List>
