@@ -194,7 +194,7 @@ export default function IndexPage() {
               action="acquire_asset"
               extraParams={{ factory: 'endpointTest' }}
               messages={{
-                title: `Pay ${token.foreign.symbol} to Purchase`,
+                title: `Pay ${token.local.symbol} to Purchase`,
                 scan: 'Connect your DID Wallet to complete the purchase',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can play with the nft in DID Wallet',
