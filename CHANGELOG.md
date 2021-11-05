@@ -1,3 +1,7 @@
+## 0.19.0 (November 05, 2021)
+
+- chore: bunch of bugfix
+
 ## 0.18.0 (November 04, 2021)
 
 - feat: support revoke-claim stake workflow
