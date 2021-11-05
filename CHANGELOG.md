@@ -1,3 +1,7 @@
+## 0.19.1 (November 05, 2021)
+
+- chore: update deps
+
 ## 0.19.0 (November 05, 2021)
 
 - chore: bunch of bugfix
