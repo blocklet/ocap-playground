@@ -173,7 +173,7 @@ export default function IndexPage() {
               extraParams={{ factory: 'nodePurchase' }}
               messages={{
                 title: `Pay ${token.foreign.symbol} to Purchase`,
-                scan: 'Scan QR code to complete the purchase',
+                scan: 'Connect your DID Wallet to complete the purchase',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can launch your node',
               }}
@@ -184,7 +184,7 @@ export default function IndexPage() {
               extraParams={{ factory: 'blockletPurchase' }}
               messages={{
                 title: `Pay ${token.foreign.symbol} to Purchase`,
-                scan: 'Scan QR code to complete the purchase',
+                scan: 'Connect your DID Wallet to complete the purchase',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can install blocklet on your node',
               }}
@@ -195,7 +195,7 @@ export default function IndexPage() {
               extraParams={{ factory: 'endpointTest' }}
               messages={{
                 title: `Pay ${token.foreign.symbol} to Purchase`,
-                scan: 'Scan QR code to complete the purchase',
+                scan: 'Connect your DID Wallet to complete the purchase',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can play with the nft in DID Wallet',
               }}
@@ -206,7 +206,7 @@ export default function IndexPage() {
               extraParams={{ factory: 'tokenInputTest' }}
               messages={{
                 title: 'Pay 2 tokens to Purchase',
-                scan: 'Scan QR code to complete the purchase',
+                scan: 'Connect your DID Wallet to complete the purchase',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can play with the nft in DID Wallet',
               }}
@@ -217,7 +217,7 @@ export default function IndexPage() {
               extraParams={{ type: 'node' }}
               messages={{
                 title: 'Provide Node Ownership NFT',
-                scan: 'Scan QR code to provide',
+                scan: 'Connect your DID Wallet to provide',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Ownership verified',
               }}
@@ -228,7 +228,7 @@ export default function IndexPage() {
               extraParams={{ type: 'blocklet' }}
               messages={{
                 title: 'Provide Blocklet Purchase NFT',
-                scan: 'Scan QR code to provide',
+                scan: 'Connect your DID Wallet to provide',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Purchase verified',
               }}
@@ -239,7 +239,7 @@ export default function IndexPage() {
               extraParams={{ type: 'node_blocklet' }}
               messages={{
                 title: 'Provide Node and Blocklet Purchase NFT',
-                scan: 'Scan QR code to provide',
+                scan: 'Connect your DID Wallet to provide',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Purchase verified',
               }}
@@ -261,7 +261,7 @@ export default function IndexPage() {
               extraParams={{ type: 'AcquireAssetV2Tx', input: 'local' }}
               messages={{
                 title: `Pay ${token.local.symbol} to Purchase`,
-                scan: 'Scan QR code to complete the purchase',
+                scan: 'Connect your DID Wallet to complete the purchase',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can install blocklet on your node',
               }}
@@ -272,7 +272,7 @@ export default function IndexPage() {
               extraParams={{ type: 'AcquireAssetV2Tx', input: 'foreign' }}
               messages={{
                 title: `Pay ${token.foreign.symbol} to Purchase`,
-                scan: 'Scan QR code to complete the purchase',
+                scan: 'Connect your DID Wallet to complete the purchase',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can install blocklet on your node',
               }}
@@ -283,7 +283,7 @@ export default function IndexPage() {
               extraParams={{ type: 'AcquireAssetV2Tx', input: 'both' }}
               messages={{
                 title: `Pay ${token.local.symbol} and ${token.foreign.symbol} to Purchase`,
-                scan: 'Scan QR code to complete the purchase',
+                scan: 'Connect your DID Wallet to complete the purchase',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can install blocklet on your node',
               }}
@@ -294,7 +294,7 @@ export default function IndexPage() {
               extraParams={{ type: 'TransferV2Tx' }}
               messages={{
                 title: `Pay ${token.foreign.symbol}`,
-                scan: 'Scan QR code to complete the transfer',
+                scan: 'Connect your DID Wallet to complete the transfer',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Payment successful',
               }}
@@ -305,7 +305,7 @@ export default function IndexPage() {
               extraParams={{ type: 'ExchangeV2Tx' }}
               messages={{
                 title: `Exchange ${token.foreign.symbol} for ${token.local.symbol}`,
-                scan: 'Scan QR code to complete the exchange',
+                scan: 'Connect your DID Wallet to complete the exchange',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Exchange successful',
               }}
@@ -327,7 +327,7 @@ export default function IndexPage() {
               extraParams={{ type: 'TransferV3Tx', input: 'both' }}
               messages={{
                 title: `Pay ${token.local.symbol} and ${token.foreign.symbol} to Purchase`,
-                scan: 'Scan QR code to complete the transaction',
+                scan: 'Connect your DID Wallet to complete the transaction',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful',
               }}
@@ -338,7 +338,7 @@ export default function IndexPage() {
               extraParams={{ type: 'TransferV3TxOutput', input: 'both' }}
               messages={{
                 title: `Pay ${token.local.symbol} and ${token.foreign.symbol} to Purchase`,
-                scan: 'Scan QR code to complete the transaction',
+                scan: 'Connect your DID Wallet to complete the transaction',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful',
               }}
@@ -349,7 +349,7 @@ export default function IndexPage() {
               extraParams={{ type: 'AcquireAssetV3TxAsset', input: 'both' }}
               messages={{
                 title: `Pay ${token.local.symbol} and ${token.foreign.symbol} to Purchase`,
-                scan: 'Scan QR code to complete the transaction',
+                scan: 'Connect your DID Wallet to complete the transaction',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful',
               }}
@@ -361,7 +361,7 @@ export default function IndexPage() {
               extraParams={{ type: 'AcquireAssetV3Tx', input: 'both' }}
               messages={{
                 title: `Pay ${token.local.symbol} and ${token.foreign.symbol} to Purchase`,
-                scan: 'Scan QR code to complete the transaction',
+                scan: 'Connect your DID Wallet to complete the transaction',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful',
               }}
@@ -449,7 +449,7 @@ export default function IndexPage() {
               action="profile"
               messages={{
                 title: 'Profile Required',
-                scan: 'Scan QR code to provide profile',
+                scan: 'Connect your DID Wallet to provide profile',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Profile provided',
               }}
@@ -459,7 +459,7 @@ export default function IndexPage() {
               action="profile_no_chain_info"
               messages={{
                 title: 'Profile Required',
-                scan: 'Scan QR code to provide profile',
+                scan: 'Connect your DID Wallet to provide profile',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Profile provided',
               }}
@@ -469,7 +469,7 @@ export default function IndexPage() {
               action="error"
               messages={{
                 title: 'dApp will throw an error',
-                scan: 'Scan QR code to get the error',
+                scan: 'Connect your DID Wallet to get the error',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'You will not see this',
               }}
@@ -480,7 +480,7 @@ export default function IndexPage() {
               extraParams={{ stage: 'request' }}
               messages={{
                 title: 'Request Timeout',
-                scan: 'Scan QR code to test the timeout',
+                scan: 'Connect your DID Wallet to test the timeout',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'You will not see this',
               }}
@@ -491,7 +491,7 @@ export default function IndexPage() {
               extraParams={{ stage: 'response' }}
               messages={{
                 title: 'Response Timeout',
-                scan: 'Scan QR code to test the timeout',
+                scan: 'Connect your DID Wallet to test the timeout',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'You will not see this',
               }}
@@ -501,7 +501,7 @@ export default function IndexPage() {
               action="claim_create_did"
               messages={{
                 title: 'Create DID',
-                scan: 'Scan QR code to get the did spec',
+                scan: 'Connect your DID Wallet to get the did spec',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Application Created',
               }}
@@ -511,7 +511,7 @@ export default function IndexPage() {
               action="claim_target"
               messages={{
                 title: 'Provide DID',
-                scan: 'Scan QR code to prove you own the DID',
+                scan: 'Connect your DID Wallet to prove you own the DID',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'DID holding confirmed',
               }}
@@ -525,7 +525,7 @@ export default function IndexPage() {
               action="claim_multiple"
               messages={{
                 title: 'Multiple Claims',
-                scan: 'Scan QR code to get multiple claims at once',
+                scan: 'Connect your DID Wallet to get multiple claims at once',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Claims processed successfully',
               }}
@@ -535,7 +535,7 @@ export default function IndexPage() {
               action="claim_multiple_step"
               messages={{
                 title: 'Multiple Steps',
-                scan: 'Scan QR code to get multiple claims in sequential',
+                scan: 'Connect your DID Wallet to get multiple claims in sequential',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Claims processed successfully',
               }}
@@ -545,7 +545,7 @@ export default function IndexPage() {
               action="claim_multiple_workflow"
               messages={{
                 title: 'Multiple Workflow',
-                scan: 'Scan QR code to start a workflow that redirect to another',
+                scan: 'Connect your DID Wallet to start a workflow that redirect to another',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Step One processed successfully',
               }}
@@ -592,7 +592,7 @@ export default function IndexPage() {
               extraParams={{ type: 'text' }}
               messages={{
                 title: 'Issue you vc from random issuer',
-                scan: 'Scan QR code to sign a message',
+                scan: 'Connect your DID Wallet to sign a message',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'vc have send',
               }}
@@ -603,7 +603,7 @@ export default function IndexPage() {
               extraParams={{ type: 'text' }}
               messages={{
                 title: 'Issue you vc from random email',
-                scan: 'Scan QR code to sign a message',
+                scan: 'Connect your DID Wallet to sign a message',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'vc have send',
               }}
@@ -614,7 +614,7 @@ export default function IndexPage() {
               extraParams={{ type: 'EmailVerificationCredential' }}
               messages={{
                 title: 'Provide your vc',
-                scan: 'Scan QR code to sign a message',
+                scan: 'Connect your DID Wallet to sign a message',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'vc have been checked',
               }}
@@ -624,7 +624,7 @@ export default function IndexPage() {
               action="issue_badge"
               messages={{
                 title: 'You will get a random badge',
-                scan: 'Scan QR code to sign a message',
+                scan: 'Connect your DID Wallet to sign a message',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'badge have been sent',
               }}
@@ -634,7 +634,7 @@ export default function IndexPage() {
               action="issue_badge_asset"
               messages={{
                 title: 'You will get a random badge',
-                scan: 'Scan QR code to sign a message',
+                scan: 'Connect your DID Wallet to sign a message',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'badge have been sent',
               }}
@@ -645,7 +645,7 @@ export default function IndexPage() {
               extraParams={{ type: 'NFTCertificate' }}
               messages={{
                 title: 'Provide your certificate',
-                scan: 'Scan QR code to sign a message',
+                scan: 'Connect your DID Wallet to sign a message',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Certificate have been verified',
               }}
@@ -656,7 +656,7 @@ export default function IndexPage() {
               extraParams={{ type: 'NFTTicket' }}
               messages={{
                 title: 'Provide your ticket',
-                scan: 'Scan QR code to sign a message',
+                scan: 'Connect your DID Wallet to sign a message',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Ticket have been verified',
               }}
@@ -667,7 +667,7 @@ export default function IndexPage() {
               extraParams={{ type: 'NFTBadge' }}
               messages={{
                 title: 'Provide your badge',
-                scan: 'Scan QR code to sign a message',
+                scan: 'Connect your DID Wallet to sign a message',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Badge have been verified',
               }}
@@ -678,7 +678,7 @@ export default function IndexPage() {
               extraParams={{ type: ['NodePurchaseCredential', 'BlockletPurchaseCredential'] }}
               messages={{
                 title: 'NFT Required',
-                scan: 'Scan QR code to provide your NodePurchase or Blocklet Purchase NFT',
+                scan: 'Connect your DID Wallet to provide your NodePurchase or Blocklet Purchase NFT',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'NFT have been verified',
               }}
@@ -689,7 +689,7 @@ export default function IndexPage() {
               extraParams={{ type: ['NFTBadge'], optional: true }}
               messages={{
                 title: 'Provide your vc(optional)',
-                scan: 'Scan QR code to sign a message',
+                scan: 'Connect your DID Wallet to sign a message',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Success',
               }}
@@ -699,7 +699,7 @@ export default function IndexPage() {
               action="fake_passport"
               messages={{
                 title: 'Claim Fake Passport',
-                scan: 'Scan QR code to sign a message',
+                scan: 'Connect your DID Wallet to sign a message',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Passport sent',
               }}
@@ -710,7 +710,7 @@ export default function IndexPage() {
               extraParams={{ type: 'NFTCertificate' }}
               messages={{
                 title: 'Provide your Fake Passport',
-                scan: 'Scan QR code to sign a message',
+                scan: 'Connect your DID Wallet to sign a message',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Passport have been verified',
               }}
@@ -777,7 +777,7 @@ export default function IndexPage() {
               extraParams={{ type: 'StakeLocalToken' }}
               messages={{
                 title: `Stake ${token.local.symbol}`,
-                scan: 'Scan QR code to complete the staking',
+                scan: 'Connect your DID Wallet to complete the staking',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Token is Locked',
               }}
@@ -788,7 +788,7 @@ export default function IndexPage() {
               extraParams={{ type: 'RevokeLocalToken' }}
               messages={{
                 title: 'Revoke Stake',
-                scan: 'Scan QR code to complete the transaction',
+                scan: 'Connect your DID Wallet to complete the transaction',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Token is released',
               }}
@@ -799,7 +799,7 @@ export default function IndexPage() {
               extraParams={{ type: 'StakeForeignToken' }}
               messages={{
                 title: `Stake ${token.foreign.symbol}`,
-                scan: 'Scan QR code to complete the staking',
+                scan: 'Connect your DID Wallet to complete the staking',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Token is Locked',
               }}
@@ -810,7 +810,7 @@ export default function IndexPage() {
               extraParams={{ type: 'RevokeForeignToken' }}
               messages={{
                 title: 'Revoke Stake',
-                scan: 'Scan QR code to complete the transaction',
+                scan: 'Connect your DID Wallet to complete the transaction',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Token is released',
               }}
@@ -821,7 +821,7 @@ export default function IndexPage() {
               extraParams={{ type: 'StakeNFT' }}
               messages={{
                 title: 'Stake NFT',
-                scan: 'Scan QR code to complete the transaction',
+                scan: 'Connect your DID Wallet to complete the transaction',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'NFT is staked',
               }}
@@ -832,7 +832,7 @@ export default function IndexPage() {
               extraParams={{ type: 'RevokeNFT' }}
               messages={{
                 title: 'Revoke Stake NFT',
-                scan: 'Scan QR code to complete the transaction',
+                scan: 'Connect your DID Wallet to complete the transaction',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'NFT is released',
               }}
@@ -843,7 +843,7 @@ export default function IndexPage() {
               extraParams={{}}
               messages={{
                 title: 'Claim Revoked Stake',
-                scan: 'Scan QR code to complete the claim',
+                scan: 'Connect your DID Wallet to complete the claim',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Claim Success',
               }}
