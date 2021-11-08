@@ -17,23 +17,22 @@ export default function TransferTokenIn() {
       <Button color="secondary" variant="contained" size="large" className="action" onClick={() => setOpen(true)}>
         Send 1 Certificate to Wallet
       </Button>
-      {isOpen && (
-        <DidConnect
-          responsive
-          action="transfer_asset_in"
-          checkFn={api.get}
-          socketUrl={api.socketUrl}
-          onClose={() => setOpen()}
-          onSuccess={() => window.location.reload()}
-          messages={{
-            title: 'Transfer Required',
-            scan: 'Scan QR code to complete Certificate transfer',
-            confirm: 'Confirm on your DID Wallet',
-            success: 'Certificate transfer sent!',
-          }}
-          webWalletUrl={webWalletUrl}
-        />
-      )}
+      <DidConnect
+        popup
+        open={isOpen}
+        action="transfer_asset_in"
+        checkFn={api.get}
+        socketUrl={api.socketUrl}
+        onClose={() => setOpen()}
+        onSuccess={() => window.location.reload()}
+        messages={{
+          title: 'Transfer Required',
+          scan: 'Scan QR code to complete Certificate transfer',
+          confirm: 'Confirm on your DID Wallet',
+          success: 'Certificate transfer sent!',
+        }}
+        webWalletUrl={webWalletUrl}
+      />
     </>
   );
 }

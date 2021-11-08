@@ -25,20 +25,19 @@ export default function GeneralAuthButton({ button, action, messages, timeout, e
       <Button color="secondary" variant="contained" size="large" className="action" onClick={() => setOpen(true)}>
         {button}
       </Button>
-      {isOpen && !isComplete && (
-        <DidConnect
-          responsive
-          action={action}
-          checkFn={api.get}
-          socketUrl={api.socketUrl}
-          onClose={() => setOpen(false)}
-          checkTimeout={timeout}
-          extraParams={extraParams}
-          onSuccess={() => setComplete(true)}
-          messages={messages}
-          webWalletUrl={webWalletUrl}
-        />
-      )}
+      <DidConnect
+        popup
+        open={isOpen && !isComplete}
+        action={action}
+        checkFn={api.get}
+        socketUrl={api.socketUrl}
+        onClose={() => setOpen(false)}
+        checkTimeout={timeout}
+        extraParams={extraParams}
+        onSuccess={() => setComplete(true)}
+        messages={messages}
+        webWalletUrl={webWalletUrl}
+      />
       {isComplete && <Alert onClose={onClose} message={messages.success} />}
     </>
   );
