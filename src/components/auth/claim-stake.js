@@ -83,20 +83,19 @@ export default function ClaimButton({ button, action, messages, timeout, extraPa
           </FormControl>
         </Confirm>
       )}
-      {isOpen && !isComplete && selected && (
-        <DidConnect
-          responsive
-          action={action}
-          checkFn={api.get}
-          socketUrl={api.socketUrl}
-          onClose={() => setOpen(false)}
-          checkTimeout={timeout}
-          extraParams={{ hash: selected, ...extraParams }}
-          onSuccess={() => setComplete(true)}
-          messages={messages}
-          webWalletUrl={webWalletUrl}
-        />
-      )}
+      <DidConnect
+        popup
+        open={isOpen && !isComplete && selected}
+        action={action}
+        checkFn={api.get}
+        socketUrl={api.socketUrl}
+        onClose={() => setOpen(false)}
+        checkTimeout={timeout}
+        extraParams={{ hash: selected, ...extraParams }}
+        onSuccess={() => setComplete(true)}
+        messages={messages}
+        webWalletUrl={webWalletUrl}
+      />
       {isComplete && <Alert onClose={onClose} message={messages.success} />}
     </>
   );

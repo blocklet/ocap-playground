@@ -1,3 +1,9 @@
+## 0.19.2 (November 08, 2021)
+
+- chore: use did-connect correctly  
+  use did-connect correctly to prevent WebWalletSWKeeper 
+  from being destroyed with the destruction of did-connect
+
 ## 0.19.1 (November 05, 2021)
 
 - chore: update deps

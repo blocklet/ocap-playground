@@ -17,23 +17,22 @@ export default function TransferTokenOut() {
       <Button color="secondary" variant="contained" size="large" className="action" onClick={() => setOpen(true)}>
         Send 1 Asset to Application
       </Button>
-      {isOpen && (
-        <DidConnect
-          responsive
-          action="transfer_asset_out"
-          checkFn={api.get}
-          socketUrl={api.socketUrl}
-          onClose={() => setOpen()}
-          onSuccess={() => window.location.reload()}
-          messages={{
-            title: 'Transfer Required',
-            scan: 'Scan QR code to complete asset transfer',
-            confirm: 'Confirm on your DID Wallet',
-            success: 'Asset transfer sent!',
-          }}
-          webWalletUrl={webWalletUrl}
-        />
-      )}
+      <DidConnect
+        popup
+        open={isOpen}
+        action="transfer_asset_out"
+        checkFn={api.get}
+        socketUrl={api.socketUrl}
+        onClose={() => setOpen()}
+        onSuccess={() => window.location.reload()}
+        messages={{
+          title: 'Transfer Required',
+          scan: 'Scan QR code to complete asset transfer',
+          confirm: 'Confirm on your DID Wallet',
+          success: 'Asset transfer sent!',
+        }}
+        webWalletUrl={webWalletUrl}
+      />
     </>
   );
 }

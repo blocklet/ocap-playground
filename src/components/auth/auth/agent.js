@@ -36,23 +36,22 @@ export default function AuthPrincipal() {
         onClick={fetchAuthorization}>
         {error || "Verify dApp's Authorization to Agent"}
       </Button>
-      {authorizeId && isOpen && (
-        <DidConnect
-          responsive
-          action="profile"
-          prefix={`/api/agent/${authorizeId}`}
-          checkFn={api.get}
-          onClose={() => setOpen()}
-          onSuccess={() => setOpen(false)}
-          webWalletUrl={webWalletUrl}
-          messages={{
-            title: "Verify dApp's Authorization",
-            scan: 'Scan QR code to get the authorization',
-            confirm: 'Confirm on your DID Wallet',
-            success: 'Authorization verified',
-          }}
-        />
-      )}
+      <DidConnect
+        popup
+        open={authorizeId && isOpen}
+        action="profile"
+        prefix={`/api/agent/${authorizeId}`}
+        checkFn={api.get}
+        onClose={() => setOpen()}
+        onSuccess={() => setOpen(false)}
+        webWalletUrl={webWalletUrl}
+        messages={{
+          title: "Verify dApp's Authorization",
+          scan: 'Scan QR code to get the authorization',
+          confirm: 'Confirm on your DID Wallet',
+          success: 'Authorization verified',
+        }}
+      />
     </>
   );
 }
