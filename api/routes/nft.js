@@ -44,16 +44,24 @@ module.exports = {
       const { vc, asset } = req;
       const { owner, parent, issuer } = asset;
 
-      const [{ state: ownerState }, { state: issuerState }, { state: factoryState }] = await Promise.all([
-        SDK.getAccountState({ address: owner }, options),
+      // owner is not always is account, so skip check accountState
+      const [{ state: issuerState }, { state: factoryState }] = await Promise.all([
+        // SDK.getAccountState({ address: owner }, options),
         SDK.getAccountState({ address: issuer }, options),
         SDK.getFactoryState({ address: parent }, options),
       ]);
 
+      if (!issuerState) {
+        return res.status(404).send('Invalid request: issuer not found');
+      }
+      if (!factoryState) {
+        return res.status(404).send('Invalid request: factory not found');
+      }
+
       res.type('svg');
       res.send(
         create(vc, {
-          owner: ownerState.address,
+          owner,
           issuer: issuerState.moniker,
           description: factoryState.description,
           date: vc.issuanceDate,

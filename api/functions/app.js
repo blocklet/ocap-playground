@@ -1,12 +1,10 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable no-console */
+require('express-async-errors');
 const path = require('path');
 const http = require('http');
 const cors = require('cors');
 const morgan = require('morgan');
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 const fallback = require('express-history-api-fallback');
 const compression = require('compression');
 const displayRoutes = require('express-routemap');
@@ -22,8 +20,8 @@ const server = http.createServer(app);
 
 app.set('trust proxy', true);
 app.use(cookieParser());
-app.use(bodyParser.json({ limit: '1 mb' }));
-app.use(bodyParser.urlencoded({ extended: true, limit: '1 mb' }));
+app.use(express.json({ limit: '1 mb' }));
+app.use(express.urlencoded({ extended: true, limit: '1 mb' }));
 app.use(cors());
 
 app.use(
