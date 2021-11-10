@@ -1,7 +1,12 @@
+## 0.19.3 (十一月 10, 2021)
+
+- chore: add express-async-errors
+- fix: nft display error when owner is a stake address
+
 ## 0.19.2 (November 08, 2021)
 
 - chore: use did-connect correctly  
-  use did-connect correctly to prevent WebWalletSWKeeper 
+  use did-connect correctly to prevent WebWalletSWKeeper
   from being destroyed with the destruction of did-connect
 
 ## 0.19.1 (November 05, 2021)
