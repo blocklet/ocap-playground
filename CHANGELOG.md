@@ -1,3 +1,7 @@
+## 0.19.4 (November 15, 2021)
+
+- fix: should not allow claim revoked stake before 20211103
+
 ## 0.19.3 (十一月 10, 2021)
 
 - chore: add express-async-errors
@@ -5,7 +9,7 @@
 
 ## 0.19.2 (November 08, 2021)
 
-- chore: use did-connect correctly  
+- chore: use did-connect correctly
   use did-connect correctly to prevent WebWalletSWKeeper
   from being destroyed with the destruction of did-connect
 
