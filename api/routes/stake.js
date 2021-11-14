@@ -17,14 +17,16 @@ module.exports = {
         });
 
         const results = await Promise.all(
-          transactions.map(async x => {
-            const { state } = await SDK.getEvidenceState({ hash: x.hash });
-            if (state) {
-              return false;
-            }
+          transactions
+            .filter(x => x.time > '2021-11-03T00:00:00.000Z')
+            .map(async x => {
+              const { state } = await SDK.getEvidenceState({ hash: x.hash });
+              if (state) {
+                return false;
+              }
 
-            return x;
-          })
+              return x;
+            })
         );
 
         return res.jsonp(results.filter(Boolean));
