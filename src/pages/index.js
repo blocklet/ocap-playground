@@ -33,7 +33,6 @@ export default function MiniPage() {
             <PlaygroundAction
               action="login"
               className="action"
-              buttonRounded
               buttonVariant="contained"
               buttonText="Please Login"
               successMessage="Hello (%user.name%)"

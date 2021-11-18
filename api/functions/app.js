@@ -95,6 +95,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/pre
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/fake-passport')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-target-vc')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/launch-service')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/restart-instance')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/stake')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/revoke-stake')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-stake')));
