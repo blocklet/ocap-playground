@@ -193,7 +193,6 @@ const getCredentialList = (asset, vc, locale) => {
             type: 'api',
             name: 'launch-node',
             scope: 'private',
-            supervised: 'true',
             label: translations.launch[locale],
           },
         ],
