@@ -100,6 +100,10 @@ const getCredentialList = (asset, vc, locale) => {
       zh: '查看 Blocklet',
       en: 'View Blocklet',
     },
+    restartInstance: {
+      zh: '重启(非静默授权)',
+      en: 'Restart(非静默授权)',
+    },
   };
 
   const status = {
@@ -189,6 +193,7 @@ const getCredentialList = (asset, vc, locale) => {
             type: 'api',
             name: 'launch-node',
             scope: 'private',
+            supervised: 'true',
             label: translations.launch[locale],
           },
         ],
@@ -199,6 +204,14 @@ const getCredentialList = (asset, vc, locale) => {
         name: 'manage-node',
         scope: 'public',
         label: translations.manage[locale],
+      },
+      {
+        id: `${env.serverUrl}/api/did/restart-instance/token`,
+        type: 'api',
+        name: 'restart-instance',
+        scope: 'private',
+        supervised: 'true',
+        label: translations.restartInstance[locale],
       },
     ],
     BlockletPurchaseCredential: [
