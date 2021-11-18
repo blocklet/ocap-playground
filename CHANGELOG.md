@@ -1,3 +1,7 @@
+## 0.19.6 (November 18, 2021)
+
+- change launch instance to non-supervised case
+
 ## 0.19.5 (November 18, 2021)
 
 - add endpoint supervised action case
