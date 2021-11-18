@@ -1,3 +1,7 @@
+## 0.19.5 (November 18, 2021)
+
+- add endpoint supervised action case
+
 ## 0.19.4 (November 15, 2021)
 
 - fix: should not allow claim revoked stake before 20211103
