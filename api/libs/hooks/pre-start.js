@@ -2,7 +2,7 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-console */
 require('dotenv').config();
-require('@abtnode/util/lib/error-handler');
+require('@blocklet/sdk/lib/error-handler');
 
 const SDK = require('@ocap/sdk');
 const { verifyAccountAsync } = require('@ocap/tx-util');

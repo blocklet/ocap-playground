@@ -31,7 +31,6 @@
     "email": "shijun@arcblock.io"
   },
   "dependencies": {
-    "@abtnode/util": "^1.5.14",
     "@abtnode/ws": "^1.5.2",
     "@arcblock/did": "^1.13.60",
     "@arcblock/did-agent-storage-nedb": "^1.6.3",
