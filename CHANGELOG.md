@@ -1,3 +1,7 @@
+## 0.19.7 (November 19, 2021)
+
+- chore: update deps to latest
+
 ## 0.19.6 (November 18, 2021)
 
 - change launch instance to non-supervised case
