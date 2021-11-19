@@ -1,3 +1,7 @@
+## 0.20.0 (November 19, 2021)
+
+- fix: pre-start script error
+
 ## 0.19.7 (November 19, 2021)
 
 - chore: update deps to latest
