@@ -93,15 +93,15 @@
     lodash "^4.17.21"
     semver "^7.3.4"
 
-"@arcblock/did-connect@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-1.15.7.tgz#28f8607dc5e22c30b7bc50ec8a1ce8338bdff966"
-  integrity sha512-Roekv4IOLx1NK5qgDDGq/Cr2yqeFZu1N3YM4ASh2zzkE9KuRFIDZVH6jEad8IXTU//JI04Z/TAb/tYWhtRmLRA==
+"@arcblock/did-connect@^1.15.8":
+  version "1.15.8"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-1.15.8.tgz#87637256ef025d7cf357456a5b2f40c62bba4542"
+  integrity sha512-v26rTi6l1lp0dY8j5PrmzmgfIqFOrzvjytWy1Y2yCsDSbVvQbLXZaSa+gf3wWHUIpF31j3MgRkwWl8ubeojuRA==
   dependencies:
     "@arcblock/event-client" "^1.0.23"
-    "@arcblock/icons" "^1.15.7"
-    "@arcblock/react-hooks" "^1.15.7"
-    "@arcblock/ux" "^1.15.7"
+    "@arcblock/icons" "^1.15.8"
+    "@arcblock/react-hooks" "^1.15.8"
+    "@arcblock/ux" "^1.15.8"
     "@fontsource/rubik" "^4.5.0"
     "@fontsource/ubuntu-mono" "^4.4.5"
     "@material-ui/core" "^4.12.3"
@@ -130,14 +130,14 @@
     debug "^4.3.2"
     lodash "^4.17.21"
 
-"@arcblock/did-playground@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-1.15.7.tgz#49c7d4687d7a715efaf995df55cc9b59b1152636"
-  integrity sha512-HJQRpxnTKN+HGdApie27DHPASwqrbCNwFegP2yW8L3eHuaV2898h71SN+/gJeEekKHbhnotEy8YEt+tHvmAEpg==
+"@arcblock/did-playground@^1.15.8":
+  version "1.15.8"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-1.15.8.tgz#938010ea6d96713de7510745c94e0e2cb03f099d"
+  integrity sha512-Hg1wiHeRD59cg9MKSNuc9VGED77sgmS61KRmdqi0jtHTtoN+kPAgc+QdDMLe3OCflcRNu5UP9bgAcjzCmtTzJg==
   dependencies:
-    "@arcblock/did-connect" "^1.15.7"
-    "@arcblock/react-hooks" "^1.15.7"
-    "@arcblock/ux" "^1.15.7"
+    "@arcblock/did-connect" "^1.15.8"
+    "@arcblock/react-hooks" "^1.15.8"
+    "@arcblock/ux" "^1.15.8"
     "@material-ui/core" "^4.12.3"
     axios "^0.21.1"
     core-js "^3.6.4"
@@ -204,10 +204,10 @@
     uuid "^3.3.3"
     ws "^7.2.0"
 
-"@arcblock/icons@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-1.15.7.tgz#41aaa3b6853400aff8d056a4e8428d037d8fef00"
-  integrity sha512-5bOqnTMdococ0HDLZCKe5adtzvety/OBFcOpoYVqKuhkhupDHsU3yZtJEeCYmrg9wcScHLVoGcICOxn+gzrCnA==
+"@arcblock/icons@^1.15.8":
+  version "1.15.8"
+  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-1.15.8.tgz#5a5e2b7a34a09bca4e2a273598668f12e2533781"
+  integrity sha512-wFAE1eiiWywh+36w616xYTgy411F+VkWYwUIzS0cAzQC7BEQkKGWp6kBcQiw2mlpcXRpcHdu6nJTKfad6pVCrw==
 
 "@arcblock/jwt@1.13.60", "@arcblock/jwt@^1.13.60":
   version "1.13.60"
@@ -245,10 +245,10 @@
     pako "^1.0.11"
     url-join "^4.0.1"
 
-"@arcblock/react-hooks@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-1.15.7.tgz#abd0cfab7bb7ccba545b8837a223291eb0f7388e"
-  integrity sha512-+wiJSo/GsEHdjTku7KT+yUhOavGnLsIzSenNKWbshPrAFCb7HV92Rh52/2803GMLNCYBnSzXFDr0ueFtlGFKIQ==
+"@arcblock/react-hooks@^1.15.8":
+  version "1.15.8"
+  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-1.15.8.tgz#8d122a282c6b836b5df3c83d3b4c2f3860044be8"
+  integrity sha512-kkdSg7uDXQYQKNQp3dg9EMrKppYoRaQhflsFnaO/RKb1vyNtz/iDBCFwJ2bA9VV9MumyrYY+N0d6k6JrA9mWow==
   dependencies:
     core-js "^3.6.4"
     event-target-shim "^5.0.1"
@@ -265,13 +265,13 @@
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
-"@arcblock/ux@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-1.15.7.tgz#7cc95e6c0c38fe2fdba159ec2a1ec2a4cc66e32b"
-  integrity sha512-L+aT86U/FCVusVztAcX2SfRAkWFczOUAZce+AuL66/SDPdD9/5mx7WE3m7pYSEhQFvp1BfxglQH0PeqIwYE3pA==
+"@arcblock/ux@^1.15.8":
+  version "1.15.8"
+  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-1.15.8.tgz#8a0837987507c425d9b9dbdcde518f0acbcdaccf"
+  integrity sha512-AftypmIbCQIUolLMaHs9SoVW6KaD9Zj8jZt6b4Z+SsBBeKXud3ueeHzCS2LnmNtM/v3/upeceHYmZm+dThSVAg==
   dependencies:
-    "@arcblock/icons" "^1.15.7"
-    "@arcblock/react-hooks" "^1.15.7"
+    "@arcblock/icons" "^1.15.8"
+    "@arcblock/react-hooks" "^1.15.8"
     "@babel/plugin-syntax-dynamic-import" "^7.8.3"
     "@material-ui/core" "^4.12.3"
     "@material-ui/icons" "4.11.2"
@@ -290,6 +290,7 @@
     js-cookie "^2.2.0"
     lodash "^4.17.21"
     mdi-material-ui "^6.22.1"
+    react-cookie-consent "^6.4.1"
     react-helmet "^5.2.1"
     react-intersection-observer "^8.31.1"
     react-load-script "^0.0.6"
@@ -11425,6 +11426,14 @@ react-app-polyfill@^2.0.0:
     raf "^3.4.1"
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
+
+react-cookie-consent@^6.4.1:
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/react-cookie-consent/-/react-cookie-consent-6.4.1.tgz#256916725d87d8227e1f71d6aa4a18d451dc0d40"
+  integrity sha512-dAgC2uSrUN0eXoNhEKDCHH/dL3RUs/84SPO8hRvJVz7HtPGmF+t/mQwd4V4qsGAvVqhbn0hzMdftEuiJS3iueQ==
+  dependencies:
+    js-cookie "^2.2.1"
+    prop-types "^15.7.2"
 
 react-dev-utils@^11.0.1:
   version "11.0.4"
