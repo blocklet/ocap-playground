@@ -1,3 +1,7 @@
+## 0.20.1 (November 24, 2021)
+
+- upgrade arcblock related dependencies
+
 ## 0.20.0 (November 19, 2021)
 
 - fix: pre-start script error
