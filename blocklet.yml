@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.20.2
+version: 0.20.3
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -53,7 +53,7 @@ environments:
 scripts:
   preStart: node api/libs/hooks/pre-start.js
   dev: npm run start
-specVersion: 1.1.1
+specVersion: 1.2.0
 interfaces:
   - type: web
     name: publicUrl
@@ -78,9 +78,8 @@ requirements:
   cpu: '*'
 did: z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM
 children: []
-charging:
-  price: 0
-  tokens: []
-  shares: []
+payment:
+  price: []
+  share: []
 capabilities:
   clusterMode: false
