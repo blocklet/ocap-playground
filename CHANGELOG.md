@@ -1,3 +1,7 @@
+## 0.20.4 (December 10, 2021)
+
+- chore: bump deps to latest
+
 ## 0.20.3 (十二月 07, 2021)
 
 - chore: upgrade blocklet.yml
