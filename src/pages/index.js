@@ -4,11 +4,10 @@ import styled from 'styled-components';
 
 import Typography from '@material-ui/core/Typography';
 import { PlaygroundAction } from '@arcblock/did-playground';
+import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
 
 import { UserContext } from '../context/user';
 import Layout from '../components/layout';
-
-import getWebWalletUrl from '../libs/util';
 
 // 临时 demo 的页面
 export default function MiniPage() {

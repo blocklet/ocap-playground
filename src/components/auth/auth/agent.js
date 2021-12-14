@@ -6,13 +6,11 @@ import DidConnect from '@arcblock/did-connect/lib/Connect';
 import Button from '@arcblock/ux/lib/Button';
 
 import api from '../../../libs/api';
-import getWebWalletUrl from '../../../libs/util';
 
 export default function AuthPrincipal() {
   const [isOpen, setOpen] = useToggle(false);
   const [error, setError] = useState('');
   const [authorizeId, setAuthorizeId] = useState(null);
-  const webWalletUrl = getWebWalletUrl();
 
   const fetchAuthorization = async () => {
     const { data } = await api.get('/api/authorizations');
@@ -44,7 +42,6 @@ export default function AuthPrincipal() {
         checkFn={api.get}
         onClose={() => setOpen()}
         onSuccess={() => setOpen(false)}
-        webWalletUrl={webWalletUrl}
         messages={{
           title: "Verify dApp's Authorization",
           scan: 'Scan QR code to get the authorization',

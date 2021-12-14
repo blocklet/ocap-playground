@@ -12,7 +12,6 @@ import Select from '@material-ui/core/Select';
 
 import Alert from '../alert';
 import api from '../../libs/api';
-import getWebWalletUrl from '../../libs/util';
 
 export default function ClaimButton({ button, action, messages, timeout, extraParams }) {
   const [claimable, setClaimable] = useState([]);
@@ -50,8 +49,6 @@ export default function ClaimButton({ button, action, messages, timeout, extraPa
   const onConfirmSelect = () => setOpen(!!selected);
 
   const onClaimableChange = e => setSelected(e.target.value);
-
-  const webWalletUrl = getWebWalletUrl();
 
   return (
     <>
@@ -94,7 +91,6 @@ export default function ClaimButton({ button, action, messages, timeout, extraPa
         extraParams={{ hash: selected, ...extraParams }}
         onSuccess={() => setComplete(true)}
         messages={messages}
-        webWalletUrl={webWalletUrl}
       />
       {isComplete && <Alert onClose={onClose} message={messages.success} />}
     </>

@@ -45,12 +45,6 @@ const ensureTokenCreated = async () => {
   return state;
 };
 
-const ensureAccountFunded = async () => {
-  const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
-  const balance = await SDK.fromUnitToToken(state.balance);
-  console.info(`application account balance on chain ${chainId} is ${balance}`);
-};
-
 const ensureTokenFunded = async () => {
   const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
   const t = state.tokens.find(x => x.key === tokenId);
@@ -74,7 +68,6 @@ const ensureFactoryCreated = async itx => {
   try {
     await ensureAccountDeclared();
     await verifyAccountAsync({ chainId: env.chainId, chainHost: env.chainHost, address: wallet.address });
-    await ensureAccountFunded();
     await ensureTokenCreated();
     await ensureTokenFunded();
     await ensureFactoryCreated(factory.nodePurchaseFactory);

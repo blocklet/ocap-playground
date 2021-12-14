@@ -7,11 +7,9 @@ import DidConnect from '@arcblock/did-connect/lib/Connect';
 import Button from '@arcblock/ux/lib/Button';
 
 import api from '../../libs/api';
-import getWebWalletUrl from '../../libs/util';
 
 export default function TransferTokenAssetIn({ token }) {
   const [isOpen, setOpen] = useToggle(false);
-  const webWalletUrl = getWebWalletUrl();
 
   return (
     <>
@@ -32,7 +30,6 @@ export default function TransferTokenAssetIn({ token }) {
           confirm: 'Confirm on your DID Wallet',
           success: 'Transfer sent!',
         }}
-        webWalletUrl={webWalletUrl}
       />
     </>
   );
