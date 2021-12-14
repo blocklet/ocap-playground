@@ -19,14 +19,12 @@ import TransferAssetIn from '../components/auth/transfer-asset-in';
 import TransferTokenAssetIn from '../components/auth/transfer-token-asset-in';
 import TransferTokenAssetOut from '../components/auth/transfer-token-asset-out';
 import NotificationButton from '../components/notification/button';
-import getWebWalletUrl from '../libs/util';
 
 import { UserContext } from '../context/user';
 
 export default function IndexPage() {
   const browser = useBrowser();
   const { session } = useContext(UserContext);
-  const webWalletUrl = getWebWalletUrl();
 
   const { token } = session;
 
@@ -50,14 +48,12 @@ export default function IndexPage() {
               buttonVariant="contained"
               amount="random"
               title={`Get Random ${token.foreign.symbol}`}
-              webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               action="receive_local_token"
               className="action"
               amount="random"
               title={`Get Random ${token.local.symbol}`}
-              webWalletUrl={webWalletUrl}
             />
           </div>
         </section>
@@ -74,14 +70,12 @@ export default function IndexPage() {
               className="action"
               amount={1}
               title={`Send 1 ${token.local.symbol} to me`}
-              webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               action="send_local_token"
               className="action"
               amount={1}
               title={`Send 1 ${token.local.symbol} to application`}
-              webWalletUrl={webWalletUrl}
             />
             <TransferAssetOut {...session} />
             <TransferAssetIn {...session} />
@@ -104,7 +98,6 @@ export default function IndexPage() {
               payAmount={1}
               receiveAmount={1}
               name="Certificate (%token.local.symbol%)"
-              webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
@@ -114,7 +107,6 @@ export default function IndexPage() {
               receiveAmount={1}
               name="Badge (%token.local.symbol%)"
               svg="./public/static/images/badge.svg"
-              webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
@@ -123,7 +115,6 @@ export default function IndexPage() {
               payAmount={1}
               receiveAmount={1}
               name="Ticket (%token.local.symbol%)"
-              webWalletUrl={webWalletUrl}
             />
           </div>
         </section>
@@ -144,7 +135,6 @@ export default function IndexPage() {
               buttonText={`Buy 1 ${token.local.symbol} with 5 ${token.foreign.symbol}`}
               exchangeRate={5}
               amount={1}
-              webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               action="exchange_to_local_token_v2"
@@ -154,7 +144,6 @@ export default function IndexPage() {
               buttonText={`Sell 1 ${token.local.symbol} for 5 ${token.foreign.symbol}`}
               exchangeRate={5}
               amount={1}
-              webWalletUrl={webWalletUrl}
             />
           </div>
         </section>
@@ -384,7 +373,6 @@ export default function IndexPage() {
               type="text"
               name="Local Ticket (%token.local.symbol%)"
               successMessage="(%user.name%) Operation Success"
-              webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               autoClose={false}
@@ -392,8 +380,7 @@ export default function IndexPage() {
               title="Children React Component"
               action="claim_signature"
               type="text"
-              name="Local Ticket (%token.local.symbol%)"
-              webWalletUrl={webWalletUrl}>
+              name="Local Ticket (%token.local.symbol%)">
               <PlaygroundAction
                 className="action"
                 title="Simple Message"
@@ -401,7 +388,6 @@ export default function IndexPage() {
                 type="text"
                 name="Local Ticket (%token.local.symbol%)"
                 successMessage="Operation Success"
-                webWalletUrl={webWalletUrl}
               />
             </PlaygroundAction>
             <PlaygroundAction
@@ -412,7 +398,6 @@ export default function IndexPage() {
               name="Local Ticket (%token.local.symbol%)"
               successTarget="_self"
               successUrl="https://www.arcblock.io"
-              webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
@@ -422,7 +407,6 @@ export default function IndexPage() {
               name="Local Ticket (%token.local.symbol%)"
               successTarget="_blank"
               successUrl="https://www.arcblock.io"
-              webWalletUrl={webWalletUrl}
             />
             <PlaygroundAction
               className="action"
@@ -432,7 +416,6 @@ export default function IndexPage() {
               name="Local Ticket (%token.local.symbol%)"
               successTarget="frame"
               successUrl="https://www.arcblock.io"
-              webWalletUrl={webWalletUrl}
             />
           </div>
         </section>
