@@ -1,3 +1,7 @@
+## 0.20.5 (December 14, 2021)
+
+- chore: better getWebWalletUrl logic (#98)
+
 ## 0.20.4 (December 10, 2021)
 
 - chore: bump deps to latest
