@@ -7,7 +7,7 @@ A simple dapp that shows the full potential of what you can do when build with f
 
 ## How to get started
 
-### 1. install `Wallet Playground` blocklet from ABT Node marketplace
+### 1. install `Wallet Playground` blocklet from Blocklet Store
 
 ### 2. config the required environments
 

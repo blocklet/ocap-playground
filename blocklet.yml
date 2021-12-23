@@ -28,7 +28,10 @@ logo: logo.png
 community: 'https://community.arcblockio.cn'
 documentation: ''
 homepage: ''
-screenshots: []
+screenshots:
+  - 0-home.png
+  - 1-profile.png
+  - 2-everything.png
 environments:
   - name: CHAIN_HOST
     description: Please provide endpoint of local chain
