@@ -2,10 +2,6 @@
 
 DID Wallet Playground Blocklet
 
-## Install on my Blocklet Server
-
-[![Install on my Blocklet Server](https://raw.githubusercontent.com/blocklet/development-guide/main/assets/launch_on_blocklet_server.svg)](https://install.arcblock.io/?action=blocklet-install&meta_url=https%3A%2F%2Fgithub.com%2Fblocklet%2Focap-playground%2Freleases%2Fdownload%2Fv0.9.0%2Fblocklet.json)
-
 ## Run and debug in the cloud with Gitpod
 
 Click the "Open in Gitpod" button, Gitpod will start Blocklet Server and the blocklet.
