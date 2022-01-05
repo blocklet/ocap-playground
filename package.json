@@ -58,7 +58,7 @@
     "@ocap/tx-util": "^1.13.79",
     "@ocap/util": "^1.13.79",
     "@ocap/wallet": "^1.13.79",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "batch-promises": "^0.0.3",
     "chalk": "^2.4.2",
     "compression": "^1.7.4",
