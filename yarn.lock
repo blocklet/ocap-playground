@@ -93,15 +93,15 @@
     lodash "^4.17.21"
     semver "^7.3.4"
 
-"@arcblock/did-connect@^1.16.1":
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-1.16.1.tgz#42fc90dc2e404cd83dd3058665ffeb0e6624a241"
-  integrity sha512-w7KG5BBr/82gBE47I3cJhShkQcDXa9npQ/eAxYtCXZwfLp4VfR/2carwtfFgsByI/9rN7Pj1F1IvO7oNhunhjw==
+"@arcblock/did-connect@^1.16.3":
+  version "1.16.3"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-1.16.3.tgz#b313f50efbf266f98f2de4b20d408a668b50c367"
+  integrity sha512-RCMbAxOA+WtnwKSqG+GHDwobPJUEcXdA4Iw5wo4pn8Yp1QYJUYHFrTeH3spwY13CsAzubGIfjCsEKff4nrezRQ==
   dependencies:
     "@arcblock/event-client" "^1.0.23"
-    "@arcblock/icons" "^1.16.1"
-    "@arcblock/react-hooks" "^1.16.1"
-    "@arcblock/ux" "^1.16.1"
+    "@arcblock/icons" "^1.16.3"
+    "@arcblock/react-hooks" "^1.16.3"
+    "@arcblock/ux" "^1.16.3"
     "@fontsource/rubik" "^4.5.0"
     "@fontsource/ubuntu-mono" "^4.4.5"
     "@material-ui/core" "^4.12.3"
@@ -130,14 +130,14 @@
     debug "^4.3.2"
     lodash "^4.17.21"
 
-"@arcblock/did-playground@^1.16.1":
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-1.16.1.tgz#a3a4413713285cd922783de1655c2c5675967ffd"
-  integrity sha512-Ova5vojUz2m9I7u7A+EHTYT9mwrumg7FXBy6x/+DGEhRP7H3esEDfNvalWrdFwWlxu/ROALAkOPFMsTkiAv5Ww==
+"@arcblock/did-playground@^1.16.3":
+  version "1.16.3"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-1.16.3.tgz#2b4fd2aa212e87b59cd6e9537a5e664fb24416a5"
+  integrity sha512-4KpxDMTGZdu1GFYIsZZnhrTpX81FMrb6xiCkanamMDssQQSOsoJpBGEwzhKWJkAWu2eGuDy+pdpI50zb1c9qEA==
   dependencies:
-    "@arcblock/did-connect" "^1.16.1"
-    "@arcblock/react-hooks" "^1.16.1"
-    "@arcblock/ux" "^1.16.1"
+    "@arcblock/did-connect" "^1.16.3"
+    "@arcblock/react-hooks" "^1.16.3"
+    "@arcblock/ux" "^1.16.3"
     "@material-ui/core" "^4.12.3"
     axios "^0.21.1"
     core-js "^3.6.4"
@@ -204,10 +204,10 @@
     uuid "^3.3.3"
     ws "^7.2.0"
 
-"@arcblock/icons@^1.16.1":
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-1.16.1.tgz#7ef1b8ebb363cfa3303fdb49a378c33220733ac1"
-  integrity sha512-9yV0dAVMaexTTsqN3nTM08S3g/JsYfzgtRdAUr06DTUQMvQ4jZbdVkagDFerl4g2jvgzHmPTY7NaZsveHTeR9w==
+"@arcblock/icons@^1.16.3":
+  version "1.16.3"
+  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-1.16.3.tgz#d54bc180d9dec9c32d53e9961de2dcecabe106ca"
+  integrity sha512-XLV/QkIuNEeBchqGE9Neb6ifNkRkRgFnHTu+wXpNjSbBTm4YZtiAVmHsVojXU+sx51RYx2OTLsv2S9Ktgytnfw==
 
 "@arcblock/jwt@1.13.79":
   version "1.13.79"
@@ -257,10 +257,10 @@
     pako "^1.0.11"
     url-join "^4.0.1"
 
-"@arcblock/react-hooks@^1.16.1":
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-1.16.1.tgz#69c09d443ca8ae90afa041b53df24755fcb2e24a"
-  integrity sha512-D0hlkoS0qNl/6c9MIB1zIFsxchvRuol4mFS8MZrMyMNlOVF988G8Cx0Huou/UWZkn2HGEPb5QCIx2chf2UJufQ==
+"@arcblock/react-hooks@^1.16.3":
+  version "1.16.3"
+  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-1.16.3.tgz#18b952fbc55c9989003f6f656c14e0fb03b76c5c"
+  integrity sha512-pi/bpx5wpAOjtv3cVp8QQDKluMgoZqjn58xJqQW297StjMxqGj3RG3VxayRXK3TH3WrRpUFdXAS1jUarWK5nlA==
   dependencies:
     core-js "^3.6.4"
     event-target-shim "^5.0.1"
@@ -277,13 +277,13 @@
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
-"@arcblock/ux@^1.16.1":
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-1.16.1.tgz#bf81fc4c112d0611b8d4ff26accee18659ea07cd"
-  integrity sha512-SSa2WwiL1sx7AjjfbbOVmZkquA/UUuGqD4frSWn4JDsB55LfRS87305FkkCOsZLK0z9rFRSVDlXsqwbPut+W2w==
+"@arcblock/ux@^1.16.3":
+  version "1.16.3"
+  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-1.16.3.tgz#0e282f318ccb1dc0fa87dedc3f87e6692b4e5fb9"
+  integrity sha512-gMC2+ju3l46s3trIEmcdBbGnC3vutfuLJAml92SVsRGRENzn+1A97cTj//10AKLexe2yW4GBK3zr5WvJLko+hQ==
   dependencies:
-    "@arcblock/icons" "^1.16.1"
-    "@arcblock/react-hooks" "^1.16.1"
+    "@arcblock/icons" "^1.16.3"
+    "@arcblock/react-hooks" "^1.16.3"
     "@babel/plugin-syntax-dynamic-import" "^7.8.3"
     "@material-ui/core" "^4.12.3"
     "@material-ui/icons" "4.11.2"
