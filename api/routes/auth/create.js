@@ -110,7 +110,7 @@ module.exports = {
     const claim = claims.find(x => x.type === 'signature');
 
     const tx = SDK.decodeTx(claim.origin);
-    logger.info('acquire.auth.tx', tx);
+    logger.info('create.auth.tx', tx);
 
     tx.signature = claim.sig;
     if (claim.delegator && claim.from) {
