@@ -1,3 +1,7 @@
+## 0.20.8 (一月 13, 2022)
+
+- chore: update package
+
 ## 0.20.7 (一月 11, 2022)
 
 - chore: update package
