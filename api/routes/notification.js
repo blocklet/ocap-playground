@@ -242,6 +242,37 @@ module.exports = {
           return;
         }
 
+        // feed
+        if (type === 'feed') {
+          const feedTitles = [
+            'Playground 又又又有新功能上新啦，还不快来体验',
+            '更多新奇好玩的功能就在这里...',
+            '这里有关于 DID Connect 的一切，快来体验吧...',
+            '不知道什么是 DID Connect？那就点进来试试吧...',
+            '新增 Feed 流功能，赶快进来看看吧...',
+            '叮咚，叮咚，新年上新，进来看看吧...',
+          ];
+          const feedCovers = [
+            'https://www.arcblock.io/blog/static/e764f965cad5b051eea9616da31e87ce/11382/cover.jpg',
+            'https://www.arcblock.io/blog/static/0cad6ff5c9f6da9ba3e6bda5754e80d4/b17e2/cover.png',
+            'https://www.arcblock.io/blog/static/1a80aecdfe20302d590426a0264f4001/1eba9/cover.jpg',
+            'https://www.arcblock.io/blog/static/601502c3b49551c102668fbd85828478/11382/cover.jpg',
+            'https://www.arcblock.io/blog/static/edc8c8c6590ed34ab81dcae62962813f/832a6/cover.jpg',
+            'https://www.arcblock.io/blog/static/3de65fca3c03276c9700f067af17e621/11382/cover.jpg',
+          ];
+          const randomIndex = Math.floor(Math.random() * feedTitles.length);
+          await Notification.sendToUser(userDid, {
+            type: 'feed',
+            feedType: 'graphic',
+            data: {
+              title: feedTitles[randomIndex],
+              cover: feedCovers[randomIndex],
+            },
+          });
+          res.status(200).end();
+          return;
+        }
+
         throw new Error(`unknown type: ${type}`);
       } catch (error) {
         logger.error(error);

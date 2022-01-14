@@ -77,7 +77,15 @@ requirements:
   os: '*'
   cpu: '*'
 did: z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM
-children: []
+children:
+  - name: promotion-tool
+    resolved: 'https://dev.store.blocklet.dev/api/blocklets/z8iZk7PZ3guu3biYGUJRYpAwRnMZkvQ1ENA1z/blocklet.json'
+    mountPoints:
+      - root:
+          interfaceName: publicUrl
+          prefix: /promotion-tool
+        child:
+          interfaceName: publicUrl
 payment:
   price: []
   share: []
