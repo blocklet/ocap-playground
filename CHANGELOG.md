@@ -1,3 +1,9 @@
+## 0.21.1 (January 14, 2022)
+
+- add promotion blocklet
+- add data tracker feed test case
+- add graphic feed test case
+
 ## 0.21.0 (January 14, 2022)
 
 - feat: add create-x test case
