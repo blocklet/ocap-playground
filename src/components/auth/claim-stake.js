@@ -63,9 +63,9 @@ export default function ClaimButton({ button, action, messages, timeout, extraPa
       </Button>
       {isClaimableOpen && (
         <Confirm open title="Select" onConfirm={onConfirmSelect} onCancel={onClose}>
-          <FormControl fullWidth>
-            <InputLabel>Select Stake to Claim</InputLabel>
-            {claimable.length > 0 ? (
+          {claimable.length > 0 ? (
+            <FormControl fullWidth>
+              <InputLabel>Select Stake to Claim</InputLabel>
               <Select value={selected} onChange={onClaimableChange}>
                 {claimable.map(x => (
                   <MenuItem key={x.hash} value={x.hash}>
@@ -74,10 +74,10 @@ export default function ClaimButton({ button, action, messages, timeout, extraPa
                   </MenuItem>
                 ))}
               </Select>
-            ) : (
-              <p>No pending stakes for claim, you must revoke stake first</p>
-            )}
-          </FormControl>
+            </FormControl>
+          ) : (
+            <p>No pending stakes for claim, you must revoke stake first</p>
+          )}
         </Confirm>
       )}
       <DidConnect

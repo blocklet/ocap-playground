@@ -834,6 +834,50 @@ export default function IndexPage() {
           </div>
         </section>
 
+        <section className="section">
+          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
+            Creating X{' '}
+            <Typography component="small" color="textSecondary">
+              tokens/assets/factories
+            </Typography>
+          </Typography>
+          <div className="section__content">
+            <AuthButton
+              button="Create Test Token"
+              action="create"
+              extraParams={{ type: 'token' }}
+              messages={{
+                title: 'Create Test Token',
+                scan: 'Connect your DID Wallet to create a test token with 10000 totalSupply',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Token created',
+              }}
+            />
+            <AuthButton
+              button="Create Test Factory"
+              action="create"
+              extraParams={{ type: 'factory' }}
+              messages={{
+                title: 'Create Test Factory',
+                scan: 'Connect your DID Wallet to create a test factory',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Factory created',
+              }}
+            />
+            <AuthButton
+              button="Create Test Asset"
+              action="create"
+              extraParams={{ type: 'asset' }}
+              messages={{
+                title: 'Create Test Asset',
+                scan: 'Connect your DID Wallet to create a test asset',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Asset created',
+              }}
+            />
+          </div>
+        </section>
+
         {!browser.wallet && (
           <section className="section">
             <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
