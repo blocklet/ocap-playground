@@ -1,3 +1,7 @@
+## 0.21.2 (January 14, 2022)
+
+- chore: update package
+
 ## 0.21.1 (January 14, 2022)
 
 - add promotion blocklet
