@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.21.0
+version: 0.21.1
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -79,7 +79,8 @@ requirements:
 did: z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM
 children:
   - name: promotion-tool
-    resolved: 'https://dev.store.blocklet.dev/api/blocklets/z8iZk7PZ3guu3biYGUJRYpAwRnMZkvQ1ENA1z/blocklet.json'
+    resolved: >-
+      https://dev.store.blocklet.dev/api/blocklets/z8iZk7PZ3guu3biYGUJRYpAwRnMZkvQ1ENA1z/blocklet.json
     mountPoints:
       - root:
           interfaceName: publicUrl
