@@ -243,7 +243,7 @@ module.exports = {
         }
 
         // feed
-        if (type === 'feed') {
+        if (type === 'feed-graphic') {
           const feedTitles = [
             'Playground 又又又有新功能上新啦，还不快来体验',
             '更多新奇好玩的功能就在这里...',
@@ -267,6 +267,39 @@ module.exports = {
             data: {
               title: feedTitles[randomIndex],
               cover: feedCovers[randomIndex],
+            },
+          });
+          res.status(200).end();
+          return;
+        }
+
+        // feed-data-tracker
+        if (type === 'feed-data-tracker') {
+          const feedTitles = ['$1111', '$2222', '$3333', '$4444', '$5555'];
+          const feedContent = ['+10%', '+20%', '+30%', '+40%', '+50%'];
+          const randomIndexETH = Math.floor(Math.random() * feedTitles.length);
+          const randomIndexABT = Math.floor(Math.random() * feedTitles.length);
+          await Notification.sendToUser(userDid, {
+            type: 'feed',
+            feedType: 'data-tracker',
+            data: {
+              type: 'table',
+              items: [
+                {
+                  icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png',
+                  title: 'ETH',
+                  subtitle: feedTitles[randomIndexETH],
+                  content: feedContent[randomIndexETH],
+                  content_color: '#09f4A7',
+                },
+                {
+                  icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/2545.png',
+                  title: 'ABT',
+                  subtitle: feedTitles[randomIndexABT],
+                  content: feedContent[randomIndexABT],
+                  content_color: '#09f4A7',
+                },
+              ],
             },
           });
           res.status(200).end();
