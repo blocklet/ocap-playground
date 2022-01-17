@@ -1,3 +1,7 @@
+## 0.21.3 (January 17, 2022)
+
+- docs: update docs and screenshots
+
 ## 0.21.2 (January 14, 2022)
 
 - chore: update package
