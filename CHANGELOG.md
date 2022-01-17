@@ -1,3 +1,7 @@
+## 0.21.4 (January 17, 2022)
+
+- chore(deps): bump chain and blocklet server sdk to latest
+
 ## 0.21.3 (January 17, 2022)
 
 - docs: update docs and screenshots
