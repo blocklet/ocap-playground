@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.21.2
+version: 0.21.3
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -28,7 +28,10 @@ logo: logo.png
 community: 'https://community.arcblockio.cn'
 documentation: ''
 homepage: ''
-screenshots: []
+screenshots:
+  - 0-home.png
+  - 1-profile.png
+  - 2-everything.png
 environments:
   - name: CHAIN_HOST
     description: Please provide endpoint of local chain

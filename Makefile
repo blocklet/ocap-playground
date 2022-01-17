@@ -12,7 +12,7 @@ init: install dep
 
 install:
 	@echo "Install software required for this repo..."
-	@yarn global add @abtnode/cli @babel/cli
+	@yarn global add @blocklet/cli @babel/cli
 
 dep:
 	@echo "Install dependencies required for this repo..."
@@ -46,7 +46,7 @@ setenv:
 precommit: setenv lint test coverage
 
 github-init:
-	@sudo yarn global add @abtnode/cli @babel/cli
+	@sudo yarn global add @blocklet/cli @babel/cli
 	@make dep
 	@make setenv
 

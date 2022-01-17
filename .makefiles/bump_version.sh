@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NOW="$(date +'%B %d, %Y')"
+NOW="$(LC_ALL=en_US.utf8 date +'%B %d, %Y')"
 # RED="\033[1;31m"
 # GREEN="\033[0;32m"
 # YELLOW="\033[1;33m"
