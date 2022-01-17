@@ -265,6 +265,7 @@ module.exports = {
             type: 'feed',
             feedType: 'graphic',
             data: {
+              cardTitle: 'Playground Promotion',
               title: feedTitles[randomIndex],
               cover: feedCovers[randomIndex],
             },
@@ -275,29 +276,34 @@ module.exports = {
 
         // feed-data-tracker
         if (type === 'feed-data-tracker') {
-          const feedTitles = ['$1111', '$2222', '$3333', '$4444', '$5555'];
-          const feedContent = ['+10%', '+20%', '+30%', '+40%', '+50%'];
-          const randomIndexETH = Math.floor(Math.random() * feedTitles.length);
-          const randomIndexABT = Math.floor(Math.random() * feedTitles.length);
+          const feedContent = ['$1111', '$2222', '$3333', '$4444', '$5555'];
+          const feedSubContent = ['+10%', '+20%', '+30%', '+40%', '+50%'];
+          const randomIndexETH = Math.floor(Math.random() * feedSubContent.length);
+          const randomIndexABT = Math.floor(Math.random() * feedSubContent.length);
           await Notification.sendToUser(userDid, {
             type: 'feed',
             feedType: 'data-tracker',
             data: {
+              cardTitle: 'Playground Token Price Tracker',
               type: 'table',
               items: [
                 {
                   icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png',
                   title: 'ETH',
-                  subtitle: feedTitles[randomIndexETH],
+                  subtitle: '',
                   content: feedContent[randomIndexETH],
-                  content_color: '#09f4A7',
+                  content_color: '#222222',
+                  sub_content: feedSubContent[randomIndexETH],
+                  sub_content_color: '#09f4A7',
                 },
                 {
                   icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/2545.png',
                   title: 'ABT',
-                  subtitle: feedTitles[randomIndexABT],
+                  subtitle: 'ArcBlock Token',
                   content: feedContent[randomIndexABT],
-                  content_color: '#09f4A7',
+                  content_color: '#222222',
+                  sub_content: feedSubContent[randomIndexABT],
+                  sub_content_color: '#09f4A7',
                 },
               ],
             },
