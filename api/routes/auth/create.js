@@ -27,6 +27,7 @@ module.exports = {
           symbol: randomStr('TT'),
           decimal,
           unit: 't',
+          initialSupply: fromTokenToUnit(totalSupply, decimal).toString(),
           totalSupply: fromTokenToUnit(totalSupply, decimal).toString(),
           data: { type: 'json', value: { purpose: 'test' } },
         };
@@ -104,7 +105,7 @@ module.exports = {
   },
 
   // eslint-disable-next-line consistent-return
-  onAuth: async ({ userDid, userPk, claims }) => {
+  onAuth: async ({ userDid, userPk, claims, extraParams: { type: typeUrl } }) => {
     const type = toTypeInfo(userDid);
     const wallet = SDK.Wallet.fromPublicKey(userPk, type);
     const claim = claims.find(x => x.type === 'signature');
@@ -118,21 +119,21 @@ module.exports = {
       tx.from = claim.from;
     }
 
-    const typeUrl = tx?.itx?.typeUrl;
-
-    if (typeUrl === 'fg:t:create_token') {
+    if (typeUrl === 'token') {
       const hash = await SDK.sendCreateTokenTx({ tx, wallet });
       return { hash };
     }
 
-    if (typeUrl === 'fg:t:create_factory') {
+    if (typeUrl === 'factory') {
       const hash = await SDK.sendCreateAssetTx({ tx, wallet });
       return { hash };
     }
 
-    if (typeUrl === 'fg:t:create_asset') {
+    if (typeUrl === 'asset') {
       const hash = await SDK.sendCreateFactoryTx({ tx, wallet });
       return { hash };
     }
+
+    throw new Error('unsupported current typeUrl');
   },
 };
