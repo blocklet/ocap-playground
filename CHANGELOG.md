@@ -1,3 +1,7 @@
+## 0.21.6 (January 18, 2022)
+
+- fix: create x claim
+
 ## 0.21.5 (January 17, 2022)
 - update feed data
 
