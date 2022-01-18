@@ -118,17 +118,19 @@ module.exports = {
       tx.from = claim.from;
     }
 
-    if (type === 'token') {
+    const typeUrl = tx?.itx?.typeUrl;
+
+    if (typeUrl === 'fg:t:create_token') {
       const hash = await SDK.sendCreateTokenTx({ tx, wallet });
       return { hash };
     }
 
-    if (type === 'asset') {
+    if (typeUrl === 'fg:t:create_factory') {
       const hash = await SDK.sendCreateAssetTx({ tx, wallet });
       return { hash };
     }
 
-    if (type === 'factory') {
+    if (typeUrl === 'fg:t:create_asset') {
       const hash = await SDK.sendCreateFactoryTx({ tx, wallet });
       return { hash };
     }
