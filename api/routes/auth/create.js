@@ -124,12 +124,12 @@ module.exports = {
       return { hash };
     }
 
-    if (typeUrl === 'factory') {
+    if (typeUrl === 'asset') {
       const hash = await SDK.sendCreateAssetTx({ tx, wallet });
       return { hash };
     }
 
-    if (typeUrl === 'asset') {
+    if (typeUrl === 'factory') {
       const hash = await SDK.sendCreateFactoryTx({ tx, wallet });
       return { hash };
     }
