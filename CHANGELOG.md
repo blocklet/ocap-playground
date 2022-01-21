@@ -1,3 +1,8 @@
+## 0.22.0 (January 21, 2022)
+
+- chore: deprecate SERVER_URL variable
+- chore: bump chain deps to latest
+
 ## 0.21.6 (January 18, 2022)
 
 - fix: create x claim
