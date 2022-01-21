@@ -36,7 +36,7 @@ environments:
   - name: CHAIN_HOST
     description: Please provide endpoint of local chain
     required: true
-    default: 'https://beta.abtnetwork.io/api/?consistentTokens=true'
+    default: 'https://beta.abtnetwork.io/api/'
     secure: false
   - name: LOCAL_TOKEN_ID
     description: Please provide local token for the playground
@@ -47,11 +47,6 @@ environments:
     description: Please provide foreign token for the playground
     required: true
     default: z35n3WVTnN7KrR4gXn3szR6oneVefkBBx78Fc
-    secure: false
-  - name: SERVER_URL
-    description: Please provide base url for the playground
-    required: true
-    default: ''
     secure: false
 scripts:
   preStart: node api/libs/hooks/pre-start.js
