@@ -11,9 +11,9 @@ const {
 const { wallet } = require('../auth');
 const env = require('../env');
 
-const nodePurchaseOutput = getNodePurchaseTemplate(env.serverUrl);
-const nodeOwnerOutput = getNodeOwnerTemplate(env.serverUrl);
-const blockletPurchaseOutput = getBlockletPurchaseTemplate(env.serverUrl);
+const nodePurchaseOutput = getNodePurchaseTemplate(env.appUrl);
+const nodeOwnerOutput = getNodeOwnerTemplate(env.appUrl);
+const blockletPurchaseOutput = getBlockletPurchaseTemplate(env.appUrl);
 
 const getFactoryProps = ({
   name,
@@ -189,7 +189,7 @@ const getCredentialList = (asset, vc, locale) => {
       ? []
       : [
           {
-            id: `${env.serverUrl}/api/did/launch-instance/token`,
+            id: `${env.appUrl}/api/did/launch-instance/token`,
             type: 'api',
             name: 'launch-node',
             scope: 'private',
@@ -198,14 +198,14 @@ const getCredentialList = (asset, vc, locale) => {
         ],
     NodeOwnershipCredential: [
       {
-        id: `${env.serverUrl}/instance/dashboard`,
+        id: `${env.appUrl}/instance/dashboard`,
         type: 'navigate',
         name: 'manage-node',
         scope: 'public',
         label: translations.manage[locale],
       },
       {
-        id: `${env.serverUrl}/api/did/restart-instance/token`,
+        id: `${env.appUrl}/api/did/restart-instance/token`,
         type: 'api',
         name: 'restart-instance',
         scope: 'private',
@@ -215,7 +215,7 @@ const getCredentialList = (asset, vc, locale) => {
     ],
     BlockletPurchaseCredential: [
       {
-        id: `${env.serverUrl}/blocklet/detail`,
+        id: `${env.appUrl}/blocklet/detail`,
         type: 'navigate',
         name: 'view-blocklet',
         scope: 'public',
@@ -224,21 +224,21 @@ const getCredentialList = (asset, vc, locale) => {
     ],
     EndpointTestCredential: [
       {
-        id: `${env.serverUrl}/api/nft/public-action`,
+        id: `${env.appUrl}/api/nft/public-action`,
         type: 'api',
         scope: 'public',
         name: 'call-public-api',
         label: 'Call Public API',
       },
       {
-        id: `${env.serverUrl}/api/did/nft-private-action/token`,
+        id: `${env.appUrl}/api/did/nft-private-action/token`,
         type: 'api',
         scope: 'private',
         name: 'call-private-api',
         label: 'Call Private API',
       },
       {
-        id: `${env.serverUrl}`,
+        id: `${env.appUrl}`,
         type: 'navigate',
         scope: 'public',
         name: 'open-dapp',

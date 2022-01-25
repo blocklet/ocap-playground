@@ -89,11 +89,11 @@ const endpointTestFactory = createFactoryItx(
           id: '{{ctx.owner}}',
           display: {
             type: 'url',
-            content: joinUrl(env.serverUrl, '/api/nft/display'), // accept asset-did in query param
+            content: joinUrl(env.appUrl, '/api/nft/display'), // accept asset-did in query param
           },
         },
         credentialStatus: {
-          id: joinUrl(env.serverUrl, '/api/did/nft-private-status/token'),
+          id: joinUrl(env.appUrl, '/api/did/nft-private-status/token'),
           type: 'NFTStatusList2021',
           scope: 'private',
         },
@@ -147,7 +147,7 @@ const tokenInputTestFactory = createFactoryItx(
           id: '{{ctx.owner}}',
           display: {
             type: 'url',
-            content: joinUrl(env.serverUrl, '/api/nft/display'), // accept asset-did in query param
+            content: joinUrl(env.appUrl, '/api/nft/display'), // accept asset-did in query param
           },
         },
         proof: {
@@ -199,7 +199,7 @@ const assetInputTestFactory = createFactoryItx(
           id: '{{ctx.owner}}',
           display: {
             type: 'url',
-            content: joinUrl(env.serverUrl, '/api/nft/display'), // accept asset-did in query param
+            content: joinUrl(env.appUrl, '/api/nft/display'), // accept asset-did in query param
           },
         },
         proof: {

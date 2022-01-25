@@ -12,7 +12,7 @@ module.exports = {
 
   onAuth: async ({ extraParams: { locale } }) => {
     const { data } = await axios.get(
-      `${env.serverUrl}/api/did/receive_token/token?locale=${locale}&chain=local&amount=random`
+      `${env.appUrl}/api/did/receive_token/token?locale=${locale}&chain=local&amount=random`
     );
     return { nextWorkflow: data.url };
   },

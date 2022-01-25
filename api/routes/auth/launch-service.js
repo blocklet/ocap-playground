@@ -11,7 +11,7 @@ module.exports = {
     acquireAbtnodeVc: [
       'verifiableCredential',
       () => {
-        const endpoint = joinUrl(env.serverUrl, '/api/did/acquire_asset/token?factory=nodePurchase');
+        const endpoint = joinUrl(env.appUrl, '/api/did/acquire_asset/token?factory=nodePurchase');
         return {
           description: 'Please provide your node purchase NFT',
           item: ['NodePurchaseCredential', 'NodeOwnershipCredential', 'ABTNodePassport'],
@@ -22,7 +22,7 @@ module.exports = {
     acquireBlockletVc: [
       'verifiableCredential',
       () => {
-        const endpoint = joinUrl(env.serverUrl, '/api/did/acquire_asset/token?factory=blockletPurchase');
+        const endpoint = joinUrl(env.appUrl, '/api/did/acquire_asset/token?factory=blockletPurchase');
 
         return {
           description: 'Please provide your blocklet purchase NFT',
