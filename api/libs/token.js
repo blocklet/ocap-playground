@@ -15,6 +15,6 @@ const itx = {
   data: { type: 'json', value: { purpose: 'test' } },
 };
 
-itx.address = toTokenAddress(itx);
+itx.address = process.env.FOREIGN_TOKEN_ID || toTokenAddress(itx);
 
 module.exports = itx;
