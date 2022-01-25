@@ -100,6 +100,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/sta
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/revoke-stake')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-stake')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/create')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-asset')));
 
 agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-profile'))); // we can reuse something here
 

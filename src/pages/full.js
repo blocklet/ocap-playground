@@ -561,6 +561,16 @@ export default function IndexPage() {
                 success: 'Operation Success',
               }}
             />
+            <AuthButton
+              button="Asset Claim"
+              action="claim_asset"
+              messages={{
+                title: 'Require Asset',
+                scan: 'Connect your DID Wallet to provide asset from NFTTestFactory',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Success',
+              }}
+            />
           </div>
         </section>
         <section className="section">
