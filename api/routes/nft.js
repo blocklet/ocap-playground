@@ -100,20 +100,6 @@ module.exports = {
 
     app.get('/api/nft/svg', cache({ ttl: 24 * 60 * 60 }), ensureAsset, async (req, res) => {
       const { asset } = req;
-      const { parent, issuer } = asset;
-
-      // owner is not always is account, so skip check accountState
-      const [{ state: issuerState }, { state: factoryState }] = await Promise.all([
-        client.getAccountState({ address: issuer }, options),
-        client.getFactoryState({ address: parent }, options),
-      ]);
-
-      if (!issuerState) {
-        return res.status(404).send('Invalid request: issuer not found');
-      }
-      if (!factoryState) {
-        return res.status(404).send('Invalid request: factory not found');
-      }
 
       const hex = toHex(fromBase58(asset.address));
       const a = hex.slice(-12, -6);

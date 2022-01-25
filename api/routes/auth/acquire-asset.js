@@ -30,15 +30,18 @@ module.exports = {
       logger.info('preMint', { factory, preMint });
 
       const vc = preMint.asset.data.value;
-      const display = {
-        type: 'svg',
-        content: create(vc, {
-          owner: userDid,
-          issuer: 'ocap-playground',
-          description: state.description,
-          date: vc.issuanceDate,
-        }),
-      };
+      const display =
+        factory === 'nftTest'
+          ? null
+          : {
+              type: 'svg',
+              content: create(vc, {
+                owner: userDid,
+                issuer: 'ocap-playground',
+                description: state.description,
+                date: vc.issuanceDate,
+              }),
+            };
 
       return {
         type: 'AcquireAssetV2Tx',

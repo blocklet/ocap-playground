@@ -74,6 +74,7 @@ const ensureFactoryCreated = async itx => {
     await ensureFactoryCreated(factory.endpointTestFactory);
     await ensureFactoryCreated(factory.tokenInputTestFactory);
     await ensureFactoryCreated(factory.assetInputTestFactory);
+    await ensureFactoryCreated(factory.nftTestFactory);
     process.exit(0);
   } catch (err) {
     console.error('ocap-playground pre-start error', err.message);

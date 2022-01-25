@@ -201,6 +201,17 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button="Buy NFT without VC"
+              action="acquire_asset"
+              extraParams={{ factory: 'nftTest' }}
+              messages={{
+                title: 'Purchase NFT without VC',
+                scan: 'Connect your DID Wallet to complete the purchase',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'The purchase was successful, now you can check the nft in DID Wallet',
+              }}
+            />
+            <AuthButton
               button="Verify Node Ownership"
               action="verify-nft"
               extraParams={{ type: 'node' }}

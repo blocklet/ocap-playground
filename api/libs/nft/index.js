@@ -27,6 +27,9 @@ const getFactoryProps = ({
   limit = 0,
   output,
   variables,
+  endpoint,
+  display,
+  tags = [],
 } = {}) => {
   const props = {
     name,
@@ -47,6 +50,9 @@ const getFactoryProps = ({
       readonly: true,
       transferrable: true,
       data: output,
+      endpoint,
+      display,
+      tags,
     },
     data,
     hooks: Array.isArray(hooks) ? hooks : [],
