@@ -218,7 +218,7 @@ const consumeNodePurchaseNFT = async ({ assetId, vc, userDid, locale }) => {
     owner: userDid,
   };
 
-  const hash = await client.sendMintAssetTx({ tx: { itx }, wallet: app });
+  const hash = await client.sendMintAssetTx({ tx: { itx }, wallet });
   logger.info('minted', hash);
 
   try {
