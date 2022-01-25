@@ -1,5 +1,4 @@
 /* eslint-disable object-curly-newline */
-const SDK = require('@ocap/sdk');
 const Mcrypto = require('@ocap/mcrypto');
 const { createZippedSvgDisplay, createCertSvg, createTicketSvg } = require('@arcblock/nft-template');
 const { NFTRecipient, NFTIssuer } = require('@arcblock/nft');
@@ -11,18 +10,18 @@ const path = require('path');
 const pako = require('pako');
 const { toBase64 } = require('@ocap/util');
 
-const { fromJSON } = require('@ocap/wallet');
+const { fromPublicKey } = require('@ocap/wallet');
 const { preMintFromFactory } = require('@ocap/asset');
 
 const { formatFactoryState, factories, inputs } = require('./factory');
 const { getCredentialList } = require('./nft');
 
 const env = require('./env');
-const { wallet } = require('./auth');
+const { wallet, client } = require('./auth');
 const badgeArray = require('./svg');
 
 const getTransferrableAssets = async (userDid, assetCount) => {
-  const { assets } = await SDK.listAssets({ ownerAddress: userDid, paging: { size: 200 } });
+  const { assets } = await client.listAssets({ ownerAddress: userDid, paging: { size: 200 } });
   if (!assets || assets.length === 0) {
     throw new Error('You do not have any asset, use other test to earn one');
   }
@@ -41,8 +40,8 @@ const getTransferrableAssets = async (userDid, assetCount) => {
 
 const getTokenInfo = async () => {
   const [{ state: local }, { state: foreign }] = await Promise.all([
-    SDK.getTokenState({ address: env.localTokenId }),
-    SDK.getTokenState({ address: env.foreignTokenId }),
+    client.getTokenState({ address: env.localTokenId }),
+    client.getTokenState({ address: env.foreignTokenId }),
   ]);
 
   const result = {
@@ -59,7 +58,7 @@ const findTokenBalance = (tokens, tokenId) => {
 };
 
 const getAccountBalance = async userDid => {
-  const { tokens } = await SDK.getAccountTokens({ address: userDid });
+  const { tokens } = await client.getAccountTokens({ address: userDid });
   return {
     local: findTokenBalance(tokens, env.localTokenId),
     foreign: findTokenBalance(tokens, env.foreignTokenId),
@@ -135,11 +134,11 @@ const ensureAsset = async (
     expireTime: Date.now() + 365 * 3600,
     host: new NFTIssuer({
       // Only for tickets?
-      wallet: SDK.Wallet.fromJSON(wallet),
+      wallet,
       name: 'Wallet Playground',
     }),
     recipient: new NFTRecipient({
-      wallet: SDK.Wallet.fromPublicKey(userPk),
+      wallet: fromPublicKey(userPk),
       name: userDid,
       location: 'China, Beijing',
     }),
@@ -196,9 +195,7 @@ const transferVCTypeToAssetType = str => {
 };
 
 const consumeNodePurchaseNFT = async ({ assetId, vc, userDid, locale }) => {
-  const app = fromJSON(wallet);
-
-  const { state } = await SDK.getFactoryState({ address: factories.nodeOwner });
+  const { state } = await client.getFactoryState({ address: factories.nodeOwner });
   if (!state) {
     throw new Error('Asset factory does not exist on chain');
   }
@@ -207,7 +204,7 @@ const consumeNodePurchaseNFT = async ({ assetId, vc, userDid, locale }) => {
     factory: formatFactoryState(state),
     inputs: { ...inputs.nodeOwner, purchaseId: vc.id, purchaseIssueId: vc.issuer.id },
     owner: userDid,
-    issuer: { wallet: app, name: 'ocap-playground' },
+    issuer: { wallet, name: 'ocap-playground' },
   });
 
   logger.info('preMint', preMint);
@@ -221,11 +218,11 @@ const consumeNodePurchaseNFT = async ({ assetId, vc, userDid, locale }) => {
     owner: userDid,
   };
 
-  const hash = await SDK.sendMintAssetTx({ tx: { itx }, wallet: app });
+  const hash = await client.sendMintAssetTx({ tx: { itx }, wallet });
   logger.info('minted', hash);
 
   try {
-    const { state: asset } = await SDK.getAssetState({ address: preMint.address }, { ignoreFields: ['context'] });
+    const { state: asset } = await client.getAssetState({ address: preMint.address }, { ignoreFields: ['context'] });
     if (asset && asset.data && asset.data.typeUrl === 'vc') {
       const minted = JSON.parse(asset.data.value);
       logger.error('launch.auth.vc', minted);

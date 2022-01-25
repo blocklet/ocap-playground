@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 const { toStakeAddress } = require('@arcblock/did-util');
 const env = require('../libs/env');
-const { authClient, wallet } = require('../libs/auth');
+const { authClient, wallet, client } = require('../libs/auth');
 const { getTokenInfo, getAccountBalance } = require('../libs/util');
 
 module.exports = {
@@ -15,7 +14,7 @@ module.exports = {
           const [balance, { user }, { state }] = await Promise.all([
             getAccountBalance(req.user.did),
             authClient.getUser(req.user.did),
-            SDK.getStakeState({ address: stakeAddress }),
+            client.getStakeState({ address: stakeAddress }),
           ]);
           return res.json({
             user,

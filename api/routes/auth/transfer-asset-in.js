@@ -1,30 +1,9 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
+const { fromPublicKey } = require('@ocap/wallet');
 const { toTypeInfo } = require('@arcblock/did');
 
-const { wallet, factory: assetFactory } = require('../../libs/auth');
+const { wallet, client, factory: assetFactory } = require('../../libs/auth');
 const { getRandomMessage, ensureAsset } = require('../../libs/util');
-
-// const ensureAsset = async (userPk, userDid) => {
-//   const [asset] = await factory.createCertificate({
-//     backgroundUrl: '',
-//     data: {
-//       name: '普通话二级甲等证书',
-//       description: '普通话二级甲等证书',
-//       reason: '普通话标准',
-//       logoUrl: 'https://releases.arcblockio.cn/arcblock-logo.png',
-//       issueTime: Date.now() + 7 * 24 * 60 * 60 * 1000,
-//       expireTime: -1,
-//       recipient: new NFTRecipient({
-//         wallet: SDK.Wallet.fromPublicKey(userPk),
-//         name: userDid,
-//         location: '北京市',
-//       }),
-//     },
-//   });
-
-//   return asset;
-// };
 
 module.exports = {
   action: 'transfer_asset_in',
@@ -58,22 +37,21 @@ module.exports = {
 
       logger.info('transfer_asset_in.onAuth', { claims, userDid });
       const type = toTypeInfo(userDid);
-      const user = SDK.Wallet.fromPublicKey(userPk, type);
+      const user = fromPublicKey(userPk, type);
       const claim = claims.find(x => x.type === 'signature');
 
       if (user.verify(claim.origin, claim.sig) === false) {
         throw new Error('签名错误');
       }
 
-      const appWallet = SDK.Wallet.fromJSON(wallet);
-      const hash = await SDK.sendTransferV2Tx({
+      const hash = await client.sendTransferV2Tx({
         tx: {
           itx: {
             to: userDid,
             assets: [asset.address],
           },
         },
-        wallet: appWallet,
+        wallet,
       });
 
       logger.info('transfer_asset_in.onAuth', hash);

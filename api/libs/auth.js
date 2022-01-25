@@ -1,15 +1,15 @@
 /* eslint-disable no-console */
 const path = require('path');
 const Mcrypto = require('@ocap/mcrypto');
-const SDK = require('@ocap/sdk');
+const Client = require('@ocap/client');
 const AuthNedbStorage = require('@arcblock/did-auth-storage-nedb');
 const AgentNedbStorage = require('@arcblock/did-agent-storage-nedb');
 const WalletAuthenticator = require('@blocklet/sdk/lib/wallet-authenticator');
 const WalletHandlers = require('@blocklet/sdk/lib/wallet-handler');
-const { NFTFactory } = require('@arcblock/nft');
-const { fromSecretKey, fromJSON, WalletType } = require('@ocap/wallet');
-const { AgentAuthenticator, AgentWalletHandlers } = require('@arcblock/did-auth');
 const AuthService = require('@blocklet/sdk/service/auth');
+const { NFTFactory } = require('@arcblock/nft');
+const { fromSecretKey, WalletType } = require('@ocap/wallet');
+const { AgentAuthenticator, AgentWalletHandlers } = require('@arcblock/did-auth');
 const env = require('./env');
 
 const type = WalletType({
@@ -18,12 +18,8 @@ const type = WalletType({
   hash: Mcrypto.types.HashType.SHA3,
 });
 
-if (env.chainHost) {
-  SDK.connect(env.chainHost, { chainId: env.chainId, name: env.chainId, default: true });
-  console.log('Connected to chainHost', env.chainHost);
-}
-
-const wallet = fromSecretKey(process.env.BLOCKLET_APP_SK, type).toJSON();
+const wallet = fromSecretKey(process.env.BLOCKLET_APP_SK, type);
+const client = new Client(env.chainHost);
 
 const walletAuth = new WalletAuthenticator();
 
@@ -82,7 +78,7 @@ const agentHandlers = new AgentWalletHandlers({
 const factory = new NFTFactory({
   chainId: env.chainId,
   chainHost: env.chainHost,
-  wallet: fromJSON(wallet),
+  wallet,
   issuer: {
     name: 'ArcBlock',
     url: 'https://www.arcblock.io',
@@ -99,6 +95,7 @@ module.exports = {
   agentHandlers,
 
   wallet,
+  client,
   factory,
 
   authClient: new AuthService(),

@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
-const ForgeWallet = require('@ocap/wallet');
+const { fromPublicKey } = require('@ocap/wallet');
 const { create } = require('@arcblock/vc');
 const { toTypeInfo } = require('@arcblock/did');
 
@@ -29,19 +28,18 @@ module.exports = {
 
   onAuth: async ({ userDid, userPk, claims }) => {
     const type = toTypeInfo(userDid);
-    const user = SDK.Wallet.fromPublicKey(userPk, type);
+    const user = fromPublicKey(userPk, type);
     const claim = claims.find(x => x.type === 'signature');
     if (user.verify(claim.origin, claim.sig) === false) {
       throw new Error('签名错误');
     }
 
     const svg = badgeArray[claim.meta.index];
-    const w = ForgeWallet.fromJSON(wallet);
 
     const vc = create({
       type: ['NFTBadge', 'VerifiableCredential'],
       issuer: {
-        wallet: w,
+        wallet,
         name: 'ArcBlock.Badge',
       },
       subject: {

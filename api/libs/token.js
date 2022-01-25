@@ -10,6 +10,7 @@ const itx = {
   symbol: 'PLAY3',
   decimal,
   unit: 'p',
+  initialSupply: fromTokenToUnit(totalSupply, decimal).toString(),
   totalSupply: fromTokenToUnit(totalSupply, decimal).toString(),
   data: { type: 'json', value: { purpose: 'test' } },
 };

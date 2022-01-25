@@ -1,6 +1,6 @@
-const SDK = require('@ocap/sdk');
 const { verifyPresentation } = require('@arcblock/vc');
 const { types, getHasher } = require('@ocap/mcrypto');
+const { toBase64 } = require('@ocap/util');
 const env = require('../../libs/env');
 const { wallet } = require('../../libs/auth');
 const { authClient } = require('../../libs/auth');
@@ -9,12 +9,11 @@ module.exports = {
   action: 'consume_vc',
   claims: {
     verifiableCredential: async ({ userDid, extraParams: { type, optional } }) => {
-      const w = SDK.Wallet.fromJSON(wallet);
       const trustedIssuers = (
         env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ,zNKmbNePsqPGRNt5rc76eWzCVgYWDGuPMN7s'
       )
         .split(',')
-        .concat(w.toAddress());
+        .concat(wallet.address);
       let tag = '';
       if (type === 'EmailVerificationCredential') {
         const { user } = await authClient.getUser(userDid);
@@ -60,18 +59,17 @@ module.exports = {
     if (type === 'EmailVerificationCredential') {
       const { user } = await authClient.getUser(userDid);
       const hasher = getHasher(types.HashType.SHA3);
-      const digest = SDK.Util.toBase64(hasher(user.email, 1));
+      const digest = toBase64(hasher(user.email, 1));
       if (vc.credentialSubject.emailDigest !== digest) {
         throw Error('VC 与您的邮箱不匹配');
       }
     }
 
-    const w = SDK.Wallet.fromJSON(wallet);
     const trustedIssuers = (
       env.trustedIssuers || 'zNKrLtPXN5ur9qMkwKWMYNzGi4D6XjWqTEjQ,zNKmbNePsqPGRNt5rc76eWzCVgYWDGuPMN7s'
     )
       .split(',')
-      .concat(w.toAddress());
+      .concat(wallet.address);
 
     verifyPresentation({ presentation, trustedIssuers, challenge });
   },

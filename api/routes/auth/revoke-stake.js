@@ -1,11 +1,10 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 const { fromAddress } = require('@ocap/wallet');
 const { toStakeAddress } = require('@arcblock/did-util');
 const { fromTokenToUnit } = require('@ocap/util');
 
 const env = require('../../libs/env');
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 const { getTokenInfo } = require('../../libs/util');
 
 const txCreators = {
@@ -57,7 +56,7 @@ const txCreators = {
   },
   RevokeNFT: async ({ userDid, userPk }) => {
     const stakeAddress = toStakeAddress(userDid, wallet.address);
-    const { state } = await SDK.getStakeState({ address: stakeAddress });
+    const { state } = await client.getStakeState({ address: stakeAddress });
     const asset = state.assets[0];
     if (!asset) {
       throw new Error('No NFT to revoke');
@@ -96,10 +95,10 @@ module.exports = {
     const claim = claims.find(x => x.type === 'signature');
     logger.info('revoke-stake.auth.claim', claim);
 
-    const tx = SDK.decodeTx(claim.origin);
+    const tx = client.decodeTx(claim.origin);
     const user = fromAddress(userDid);
 
-    const hash = await SDK.sendRevokeStakeTx({
+    const hash = await client.sendRevokeStakeTx({
       tx,
       wallet: user,
       signature: claim.sig,

@@ -201,6 +201,17 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button="Buy NFT without VC"
+              action="acquire_asset"
+              extraParams={{ factory: 'nftTest' }}
+              messages={{
+                title: 'Purchase NFT without VC',
+                scan: 'Connect your DID Wallet to complete the purchase',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'The purchase was successful, now you can check the nft in DID Wallet',
+              }}
+            />
+            <AuthButton
               button="Verify Node Ownership"
               action="verify-nft"
               extraParams={{ type: 'node' }}
@@ -550,6 +561,16 @@ export default function IndexPage() {
                 success: 'Operation Success',
               }}
             />
+            <AuthButton
+              button="Asset Claim"
+              action="claim_asset"
+              messages={{
+                title: 'Require Asset',
+                scan: 'Connect your DID Wallet to provide asset from NFTTestFactory',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Success',
+              }}
+            />
           </div>
         </section>
         <section className="section">
@@ -879,6 +900,39 @@ export default function IndexPage() {
                 scan: 'Connect your DID Wallet to create a test asset',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Asset created',
+              }}
+            />
+            <AuthButton
+              button="Create NFT: SVG"
+              action="create"
+              extraParams={{ type: 'nft', nftDisplay: 'svg' }}
+              messages={{
+                title: 'Create NFT with SVG Display',
+                scan: 'Connect your DID Wallet to create a test asset',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'NFT created',
+              }}
+            />
+            <AuthButton
+              button="Create NFT: URL"
+              action="create"
+              extraParams={{ type: 'nft', nftDisplay: 'url' }}
+              messages={{
+                title: 'Create NFT with URL display',
+                scan: 'Connect your DID Wallet to create a test asset',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'NFT created',
+              }}
+            />
+            <AuthButton
+              button="Create NFT: Data"
+              action="create"
+              extraParams={{ type: 'nft', nftDisplay: 'uri' }}
+              messages={{
+                title: 'Create NFT with Data Display',
+                scan: 'Connect your DID Wallet to create a test asset',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'NFT created',
               }}
             />
           </div>

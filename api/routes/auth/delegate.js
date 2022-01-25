@@ -1,17 +1,14 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 const { fromAddress } = require('@ocap/wallet');
 const { toTypeInfo } = require('@arcblock/did');
 const { types } = require('@ocap/mcrypto');
-const { fromTokenToUnit } = require('@ocap/util');
+const { fromTokenToUnit, fromBase58 } = require('@ocap/util');
 const { preMintFromFactory } = require('@ocap/asset');
 
 const env = require('../../libs/env');
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 const { getAccountStateOptions, getTokenInfo } = require('../../libs/util');
 const { formatFactoryState, factories, inputs } = require('../../libs/factory');
-
-const app = SDK.Wallet.fromJSON(wallet);
 
 const txCreators = {
   AcquireAssetV2Tx: async ({ userDid, userPk, input }) => {
@@ -20,7 +17,7 @@ const txCreators = {
       foreign: factories.blockletPurchase,
       both: factories.tokenInputTest,
     };
-    const { state } = await SDK.getFactoryState({ address: inputFactories[input] });
+    const { state } = await client.getFactoryState({ address: inputFactories[input] });
     if (!state) {
       throw new Error('Asset factory does not exist on chain');
     }
@@ -29,7 +26,7 @@ const txCreators = {
       factory: formatFactoryState(state),
       inputs: inputs.blockletPurchase,
       owner: userDid,
-      issuer: { wallet: app, name: 'ocap-playground' }, // NOTE: using moniker must be enforced to make mint work
+      issuer: { wallet, name: 'ocap-playground' }, // NOTE: using moniker must be enforced to make mint work
     });
 
     logger.info('preMint', preMint);
@@ -85,13 +82,13 @@ const txCreators = {
       { address: env.foreignTokenId, value: fromTokenToUnit(amount * rate, token.foreign.decimal).toString() },
     ];
 
-    const tx = await SDK.signExchangeV2Tx({
+    const tx = await client.signExchangeV2Tx({
       tx: { itx },
-      wallet: SDK.Wallet.fromJSON(wallet),
+      wallet,
     });
 
     tx.signaturesList.push({
-      pk: SDK.Util.fromBase58(userPk),
+      pk: fromBase58(userPk),
       signer: userDid,
     });
 
@@ -148,7 +145,7 @@ module.exports = {
     }
 
     // 2. we need to ensure that the did is declared onchain
-    const { state } = await SDK.getAccountState({ address: userDid }, getAccountStateOptions);
+    const { state } = await client.getAccountState({ address: userDid }, getAccountStateOptions);
     if (!state) {
       throw new Error('The created DID is not created on chain as required');
     }
@@ -163,14 +160,14 @@ module.exports = {
       throw new Error('claim.from must be set to send this tx');
     }
 
-    const tx = SDK.decodeTx(claim.origin);
+    const tx = client.decodeTx(claim.origin);
     logger.info('acquire.auth.tx', tx);
 
     if (type === 'AcquireAssetV2Tx') {
       tx.signature = claim.sig;
       tx.delegator = claim.delegator;
       tx.from = claim.from;
-      const hash = await SDK.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) });
+      const hash = await client.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) });
       return { hash, tx: claim.origin };
     }
 
@@ -178,7 +175,7 @@ module.exports = {
       tx.signature = claim.sig;
       tx.delegator = claim.delegator;
       tx.from = claim.from;
-      const hash = await SDK.sendTransferV2Tx({ tx, wallet: fromAddress(userDid) });
+      const hash = await client.sendTransferV2Tx({ tx, wallet: fromAddress(userDid) });
       return { hash, tx: claim.origin };
     }
 
@@ -186,7 +183,7 @@ module.exports = {
       tx.signaturesList[0].signature = claim.sig;
       tx.signaturesList[0].signer = claim.from;
       tx.signaturesList[0].delegator = claim.delegator;
-      const hash = await SDK.sendExchangeV2Tx({ tx, wallet: fromAddress(userDid) });
+      const hash = await client.sendExchangeV2Tx({ tx, wallet: fromAddress(userDid) });
       return { hash, tx: claim.origin };
     }
 

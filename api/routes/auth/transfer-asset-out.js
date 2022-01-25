@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 const { fromAddress } = require('@ocap/wallet');
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 const { getTransferrableAssets } = require('../../libs/util');
 
 module.exports = {
@@ -26,10 +25,10 @@ module.exports = {
     try {
       logger.info('transfer_asset_out.onAuth', { claims, userDid });
       const claim = claims.find(x => x.type === 'signature');
-      const tx = SDK.decodeTx(claim.origin);
+      const tx = client.decodeTx(claim.origin);
       const user = fromAddress(userDid);
 
-      const hash = await SDK.sendTransferV2Tx({
+      const hash = await client.sendTransferV2Tx({
         tx,
         wallet: user,
         signature: claim.sig,

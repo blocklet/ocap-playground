@@ -1,9 +1,8 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 const { fromTokenToUnit } = require('@ocap/util');
 const { fromAddress } = require('@ocap/wallet');
 
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 const { getTokenInfo } = require('../../libs/util');
 const env = require('../../libs/env');
 
@@ -46,7 +45,7 @@ module.exports = {
   onAuth: async ({ claims, userDid, extraParams: { locale } }) => {
     try {
       const claim = claims.find(x => x.type === 'signature');
-      const tx = SDK.decodeTx(claim.origin);
+      const tx = client.decodeTx(claim.origin);
       const user = fromAddress(userDid);
       if (claim.from) {
         tx.from = claim.from;
@@ -54,7 +53,7 @@ module.exports = {
       if (claim.delegator) {
         tx.delegator = claim.delegator;
       }
-      const hash = await SDK.sendTransferV2Tx({
+      const hash = await client.sendTransferV2Tx({
         tx,
         wallet: user,
         signature: claim.sig,

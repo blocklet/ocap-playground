@@ -1,4 +1,4 @@
-const SDK = require('@ocap/sdk');
+const { fromTokenToUnit } = require('@ocap/util');
 const { getRandomMessage } = require('../../libs/util');
 
 const env = require('../../libs/env');
@@ -17,7 +17,7 @@ module.exports = {
             tokens: [
               {
                 address: env.localTokenId,
-                value: (await SDK.fromTokenToUnit(1)).toString(),
+                value: fromTokenToUnit(1, 18).toString(),
               },
             ],
           },
@@ -52,8 +52,5 @@ module.exports = {
 
   onAuth: async ({ userDid, userPk, claims, step }) => {
     logger.info('claim.multiStep.onAuth', { step, userPk, userDid, claims });
-    // const type = toTypeInfo(userDid);
-    // const user = SDK.Wallet.fromPublicKey(userPk, type);
-    // const claim = claims.find(x => x.type === 'signature');
   },
 };

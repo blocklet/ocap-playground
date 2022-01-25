@@ -217,6 +217,50 @@ const assetInputTestFactory = createFactoryItx(
   })
 );
 
+const nftTestFactory = createFactoryItx(
+  'NFTTestFactoryForPlayground',
+  getFactoryProps({
+    name: 'NFTTestFactory',
+    description: 'This is a factory to mint assets that is just an NFT',
+    moniker: 'NFTTestNFT',
+    limit: 0,
+    tokens: [{ address: env.localTokenId, value: toBNStr(5) }],
+    variables: [],
+    output: {
+      type: 'json',
+      value: {
+        owner: '{{ctx.owner}}',
+        issuer: {
+          id: '{{ctx.issuer.id}}',
+          pk: '{{ctx.issuer.pk}}',
+          name: '{{ctx.issuer.name}}',
+        },
+      },
+    },
+    display: {
+      type: 'url',
+      content: joinUrl(env.appUrl, '/api/nft/svg'),
+    },
+    endpoint: {
+      id: joinUrl(env.appUrl, '/api/did/nft-private-status/token'),
+      type: 'NFTStatusList2021',
+      scope: 'private',
+    },
+    tags: ['TestNFT'],
+    hooks: [
+      {
+        type: 'contract',
+        name: 'mint',
+        hook: `transferToken('${env.localTokenId}', '${wallet.address}', '${toBNStr(5)}');`,
+      },
+    ],
+    data: {
+      type: 'json',
+      value: {},
+    },
+  })
+);
+
 const nodeOwnerFactory = createFactoryItx(
   'NodeOwnerFactoryForPlayground',
   getFactoryProps({
@@ -281,6 +325,7 @@ const factories = {
   endpointTest: endpointTestFactory.address,
   tokenInputTest: tokenInputTestFactory.address,
   assetInputTest: assetInputTestFactory.address,
+  nftTest: nftTestFactory.address,
 };
 
 const inputs = {
@@ -302,6 +347,7 @@ module.exports = {
   endpointTestFactory,
   tokenInputTestFactory,
   assetInputTestFactory,
+  nftTestFactory,
   formatFactoryState,
   factories,
   inputs,

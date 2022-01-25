@@ -1,11 +1,10 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 const { fromAddress } = require('@ocap/wallet');
 const { toStakeAddress } = require('@arcblock/did-util');
 const { fromTokenToUnit } = require('@ocap/util');
 
 const env = require('../../libs/env');
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 const { getTokenInfo } = require('../../libs/util');
 
 const txCreators = {
@@ -107,9 +106,9 @@ module.exports = {
       throw new Error('claim.finalTx must be set to continue');
     }
 
-    const tx = SDK.decodeTx(claim.finalTx);
+    const tx = client.decodeTx(claim.finalTx);
 
-    const hash = await SDK.sendStakeTx({ tx, wallet: fromAddress(userDid) });
+    const hash = await client.sendStakeTx({ tx, wallet: fromAddress(userDid) });
     return { hash, tx: claim.finalTx };
   },
 };

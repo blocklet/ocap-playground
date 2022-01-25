@@ -1,13 +1,12 @@
 const Notification = require('@blocklet/sdk/service/notification');
-const SDK = require('@ocap/sdk');
-const ForgeWallet = require('@ocap/wallet');
 const Mcrypto = require('@ocap/mcrypto');
-const { fromTokenToUnit } = require('@ocap/util');
+const { fromTokenToUnit, toBase64 } = require('@ocap/util');
+const { fromRandom } = require('@ocap/wallet');
 const { create } = require('@arcblock/vc');
 const createPassportSvg = require('../libs/nft/passport');
 const badgeArray = require('../libs/svg');
 
-const { wallet, authClient, factory: assetFactory } = require('../libs/auth');
+const { wallet, client, authClient, factory: assetFactory } = require('../libs/auth');
 const env = require('../libs/env');
 const { ensureAsset } = require('../libs/util');
 const itx = require('../libs/token');
@@ -30,11 +29,11 @@ module.exports = {
           // send secondary token
           const amount = Math.random().toFixed(6);
           if (actions.length === 0) {
-            await SDK.transfer({
+            await client.transfer({
               to: userDid,
               token: 0,
               tokens: [{ address: env.foreignTokenId, value: amount }],
-              wallet: SDK.Wallet.fromJSON(wallet),
+              wallet,
             });
 
             await Notification.sendToUser(userDid, {
@@ -56,10 +55,10 @@ module.exports = {
               actions,
             });
           } else if (actions[0].name === 'primary') {
-            await SDK.transfer({
+            await client.transfer({
               to: userDid,
               token: amount,
-              wallet: SDK.Wallet.fromJSON(wallet),
+              wallet,
             });
 
             await Notification.sendToUser(userDid, {
@@ -89,7 +88,7 @@ module.exports = {
         if (type === 'vc') {
           const { user: vt } = await authClient.getUser(userDid);
 
-          const w = ForgeWallet.fromRandom();
+          const w = fromRandom();
           const emailDigest = hasher(vt.email, 1);
           const vc = create({
             type: 'EmailVerificationCredential',
@@ -99,7 +98,7 @@ module.exports = {
             },
             subject: {
               id: userDid,
-              emailDigest: SDK.Util.toBase64(emailDigest),
+              emailDigest: toBase64(emailDigest),
               method: 'SHA3',
             },
           });
@@ -118,7 +117,7 @@ module.exports = {
                 passport,
                 content: createPassportSvg({
                   issuer: 'Wallet Playground',
-                  issuerDid: w.toAddress(),
+                  issuerDid: w.address,
                   title: passport.title,
                 }),
               },
@@ -183,10 +182,10 @@ module.exports = {
             endTime: new Date(Date.now() + 2 * 60 * 60 * 1000),
           });
 
-          await SDK.transfer({
+          await client.transfer({
             to: userDid,
             assets: [asset.address, asset2.address],
-            wallet: SDK.Wallet.fromJSON(wallet),
+            wallet,
           });
 
           await Notification.sendToUser(userDid, {

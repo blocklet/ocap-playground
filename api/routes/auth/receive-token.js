@@ -1,7 +1,7 @@
-const SDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
+const { fromPublicKey } = require('@ocap/wallet');
 
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 const { getTokenInfo, getRandomMessage } = require('../../libs/util');
 const env = require('../../libs/env');
 
@@ -49,18 +49,17 @@ module.exports = {
 
     try {
       const type = toTypeInfo(userDid);
-      const user = SDK.Wallet.fromPublicKey(userPk, type);
+      const user = fromPublicKey(userPk, type);
       const claim = claims.find(x => x.type === 'signature');
 
       if (user.verify(claim.origin, claim.sig) === false) {
         throw new Error('要求的消息签名不正确');
       }
 
-      const app = SDK.Wallet.fromJSON(wallet);
-      const hash = await SDK.transfer({
+      const hash = await client.transfer({
         to: userDid,
         tokens: [{ address: chain === 'local' ? env.localTokenId : env.foreignTokenId, value: amount }],
-        wallet: app,
+        wallet,
       });
       logger.info('receive_token.onAuth', hash, amount);
       return { hash };

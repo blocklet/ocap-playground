@@ -1,15 +1,14 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 const { fromAddress } = require('@ocap/wallet');
 
 const env = require('../../libs/env');
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 
 module.exports = {
   action: 'transfer_token_asset_out',
   claims: {
     signature: async ({ userDid }) => {
-      const { assets } = await SDK.listAssets({ ownerAddress: userDid });
+      const { assets } = await client.listAssets({ ownerAddress: userDid });
 
       if (!assets) {
         throw new Error('You do not have any asset, use other test to earn one');
@@ -20,7 +19,7 @@ module.exports = {
         throw new Error('You do not have any asset that can be transferred to me');
       }
 
-      const { state } = await SDK.getForgeState();
+      const { state } = await client.getForgeState();
       logger.info('transfer to:', wallet.address);
       logger.info('asset:', asset.address);
       return {
@@ -29,7 +28,7 @@ module.exports = {
           itx: {
             to: wallet.address,
             assets: [asset.address],
-            tokens: [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(1)).toString() }],
+            tokens: [{ address: env.localTokenId, value: (await client.fromTokenToUnit(1)).toString() }],
           },
         },
         description: `请发给我证书 ${asset.address} 和 1 ${state.token.symbol}`,
@@ -40,10 +39,10 @@ module.exports = {
     try {
       logger.info('transfer_asset_token_out.onAuth', { claims, userDid });
       const claim = claims.find(({ type }) => type === 'signature');
-      const tx = SDK.decodeTx(claim.origin);
+      const tx = client.decodeTx(claim.origin);
       const user = fromAddress(userDid);
 
-      const hash = await SDK.sendTransferV2Tx({
+      const hash = await client.sendTransferV2Tx({
         tx,
         wallet: user,
         signature: claim.sig,

@@ -2,20 +2,15 @@
 require('dotenv').config();
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-const SDK = require('@ocap/sdk');
-const { wallet } = require('../api/libs/auth');
+const { wallet, client } = require('../api/libs/auth');
 const env = require('../api/libs/env');
 
-const app = SDK.Wallet.fromJSON(wallet);
-
 (async () => {
-  console.log(app.toAddress());
-  console.log(SDK.Util.toBase64(app.publicKey));
-  console.log(SDK.Util.toBase64(app.secretKey));
+  console.log(wallet.address);
   try {
-    const hash = await SDK.declare({
+    const hash = await client.declare({
       moniker: 'abt_wallet_playground',
-      wallet: app,
+      wallet,
     });
 
     console.log(`Application declared on chain ${env.chainId}`, hash);

@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
+const { fromPublicKey } = require('@ocap/wallet');
 const { toTypeInfo } = require('@arcblock/did');
 
-const { wallet, factory: assetFactory } = require('../../libs/auth');
+const { wallet, client, factory: assetFactory } = require('../../libs/auth');
 const { getRandomMessage, ensureAsset } = require('../../libs/util');
 
 const badgeArray = require('../../libs/svg');
@@ -43,22 +43,21 @@ module.exports = {
     try {
       logger.info('transfer_asset_in.onAuth', { claims, userDid });
       const type = toTypeInfo(userDid);
-      const user = SDK.Wallet.fromPublicKey(userPk, type);
+      const user = fromPublicKey(userPk, type);
       const claim = claims.find(x => x.type === 'signature');
 
       if (user.verify(claim.origin, claim.sig) === false) {
         throw new Error('签名错误');
       }
 
-      const appWallet = SDK.Wallet.fromJSON(wallet);
-      const hash = await SDK.sendTransferV2Tx({
+      const hash = await client.sendTransferV2Tx({
         tx: {
           itx: {
             to: userDid,
             assets: [claim.meta.asset],
           },
         },
-        wallet: appWallet,
+        wallet,
       });
 
       logger.info('transfer_asset_in.onAuth', hash);

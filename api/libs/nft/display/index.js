@@ -6,6 +6,7 @@ const getNftName = ({ type }) => {
     EndpointTestCredential: 'Endpoint Test NFT',
     TokenInputTestCredential: 'Token Input Test NFT',
     AssetInputTestCredential: 'Asset Input Test NFT',
+    NFTTest: 'Test NFT without VC',
   };
 
   const key = Object.keys(names).find(x => type.includes(x));
