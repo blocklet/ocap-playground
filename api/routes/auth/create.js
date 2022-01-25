@@ -6,6 +6,7 @@ const { toTokenAddress, toAssetAddress, toFactoryAddress } = require('@arcblock/
 
 const env = require('../../libs/env');
 const { client } = require('../../libs/auth');
+const { randomSVG } = require('../../libs/nft/svg');
 
 const randomStr = str => `${str}${Math.floor(Math.random() * 10000)}`;
 
@@ -13,7 +14,7 @@ module.exports = {
   action: 'create',
   claims: {
     signature: async ({ userDid, userPk, extraParams: { type } }) => {
-      if (['token', 'asset', 'factory'].includes(type) === false) {
+      if (['token', 'asset', 'nft', 'factory'].includes(type) === false) {
         throw new Error('Invalid creating type, only token, asset and factory are supported');
       }
 
@@ -46,6 +47,26 @@ module.exports = {
               purpose: 'test',
               user: userDid,
             },
+          },
+        };
+        itx.address = toAssetAddress(itx);
+        encoded = await client.encodeCreateAssetTx({ tx: { from: userDid, pk: userPk, itx }, wallet });
+      } else if (type === 'nft') {
+        const itx = {
+          moniker: randomStr('nft-asset-'),
+          readonly: false,
+          transferrable: true,
+          data: {
+            type: 'json',
+            value: {
+              source: 'wallet-playground',
+              purpose: 'test',
+              user: userDid,
+            },
+          },
+          display: {
+            type: 'svg',
+            content: randomSVG(),
           },
         };
         itx.address = toAssetAddress(itx);
@@ -125,7 +146,7 @@ module.exports = {
       return { hash };
     }
 
-    if (typeUrl === 'asset') {
+    if (typeUrl === 'asset' || typeUrl === 'nft') {
       const hash = await client.sendCreateAssetTx({ tx, wallet });
       return { hash };
     }

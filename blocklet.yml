@@ -36,7 +36,8 @@ environments:
   - name: CHAIN_HOST
     description: Please provide endpoint of local chain
     required: true
-    default: 'https://beta.abtnetwork.io/api/'
+    default: 'https://ocap-fs-chain-manager-u7t-192-168-123-236.ip.abtnet.io/api/'
+    # default: 'https://beta.abtnetwork.io/api/'
     secure: false
   - name: LOCAL_TOKEN_ID
     description: Please provide local token for the playground

@@ -881,6 +881,17 @@ export default function IndexPage() {
                 success: 'Asset created',
               }}
             />
+            <AuthButton
+              button="Create Test NFT"
+              action="create"
+              extraParams={{ type: 'nft' }}
+              messages={{
+                title: 'Create Test NFT',
+                scan: 'Connect your DID Wallet to create a test asset',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'NFT created',
+              }}
+            />
           </div>
         </section>
 

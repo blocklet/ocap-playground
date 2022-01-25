@@ -28,7 +28,7 @@ const walletAuthWithNoChainInfo = new WalletAuthenticator({
 });
 
 const agentAuth = new AgentAuthenticator({
-  wallet: wallet.toJSON(),
+  wallet,
   appInfo: ({ baseUrl }) => ({
     name: 'Agent Service',
     description: 'This is a demo agent service that can do did-auth on be-half-of another application',
@@ -78,7 +78,7 @@ const agentHandlers = new AgentWalletHandlers({
 const factory = new NFTFactory({
   chainId: env.chainId,
   chainHost: env.chainHost,
-  wallet: wallet.toJSON(),
+  wallet,
   issuer: {
     name: 'ArcBlock',
     url: 'https://www.arcblock.io',
