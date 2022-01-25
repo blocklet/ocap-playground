@@ -1,3 +1,7 @@
+## 0.23.1 (January 25, 2022)
+
+- fix: pre-start script error
+
 ## 0.23.0 (January 25, 2022)
 
 - feat: support create asset as nft
