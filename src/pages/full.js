@@ -882,11 +882,33 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Create Test NFT"
+              button="Create NFT: SVG"
               action="create"
-              extraParams={{ type: 'nft' }}
+              extraParams={{ type: 'nft', nftDisplay: 'svg' }}
               messages={{
-                title: 'Create Test NFT',
+                title: 'Create NFT with SVG Display',
+                scan: 'Connect your DID Wallet to create a test asset',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'NFT created',
+              }}
+            />
+            <AuthButton
+              button="Create NFT: URL"
+              action="create"
+              extraParams={{ type: 'nft', nftDisplay: 'url' }}
+              messages={{
+                title: 'Create NFT with URL display',
+                scan: 'Connect your DID Wallet to create a test asset',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'NFT created',
+              }}
+            />
+            <AuthButton
+              button="Create NFT: Data"
+              action="create"
+              extraParams={{ type: 'nft', nftDisplay: 'uri' }}
+              messages={{
+                title: 'Create NFT with Data Display',
                 scan: 'Connect your DID Wallet to create a test asset',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'NFT created',

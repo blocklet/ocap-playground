@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+const joinUrl = require('url-join');
 const { toBase58, fromTokenToUnit } = require('@ocap/util');
 const { fromPublicKey } = require('@ocap/wallet');
 const { toTypeInfo } = require('@arcblock/did');
@@ -13,13 +14,12 @@ const randomStr = str => `${str}${Math.floor(Math.random() * 10000)}`;
 module.exports = {
   action: 'create',
   claims: {
-    signature: async ({ userDid, userPk, extraParams: { type } }) => {
+    signature: async ({ userDid, userPk, extraParams: { type, nftDisplay } }) => {
       if (['token', 'asset', 'nft', 'factory'].includes(type) === false) {
         throw new Error('Invalid creating type, only token, asset, nft and factory are supported');
       }
 
       let encoded = null;
-      let display = null;
       const wallet = fromPublicKey(userPk);
       if (type === 'token') {
         const totalSupply = 10000;
@@ -53,6 +53,22 @@ module.exports = {
         itx.address = toAssetAddress(itx);
         encoded = await client.encodeCreateAssetTx({ tx: { from: userDid, pk: userPk, itx }, wallet });
       } else if (type === 'nft') {
+        let display = {
+          type: 'svg',
+          content: randomSVG(),
+        };
+        if (nftDisplay === 'url') {
+          display = {
+            type: 'url',
+            content: joinUrl(env.appUrl, '/api/nft/svg'),
+          };
+        } else if (nftDisplay === 'uri') {
+          display = {
+            type: 'url',
+            content: `data:image/svg+xml;base64,${Buffer.from(display.content).toString('base64')}`,
+          };
+        }
+
         const itx = {
           moniker: randomStr('nft-asset-'),
           readonly: false,
@@ -65,12 +81,8 @@ module.exports = {
               user: userDid,
             },
           },
-          display: {
-            type: 'svg',
-            content: randomSVG(),
-          },
+          display,
         };
-        display = JSON.stringify(itx.display);
         itx.address = toAssetAddress(itx);
         encoded = await client.encodeCreateAssetTx({ tx: { from: userDid, pk: userPk, itx }, wallet });
       } else if (type === 'factory') {
@@ -124,7 +136,6 @@ module.exports = {
         description: `Please sign the transaction to create ${type}`,
         type: 'fg:t:transaction',
         data: toBase58(encoded.buffer),
-        display,
       };
     },
   },
