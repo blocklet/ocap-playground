@@ -1,3 +1,9 @@
+## 0.23.0 (January 25, 2022)
+
+- feat: support create asset as nft
+- feat: support acquire nft without vc inside
+- feat: support asset claim
+
 ## 0.22.0 (January 21, 2022)
 
 - chore: deprecate SERVER_URL variable
