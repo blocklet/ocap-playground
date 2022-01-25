@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
-const { fromJSON } = require('@ocap/wallet');
+const { fromPublicKey } = require('@ocap/wallet');
 const { toTypeInfo } = require('@arcblock/did');
 const { create } = require('@arcblock/vc');
 
@@ -21,7 +20,7 @@ module.exports = {
 
   onAuth: async ({ userDid, userPk, claims, sessionDid }) => {
     const type = toTypeInfo(userDid);
-    const user = SDK.Wallet.fromPublicKey(userPk, type);
+    const user = fromPublicKey(userPk, type);
     const claim = claims.find(x => x.type === 'signature');
 
     logger.info('claim.fakePassport.onAuth', { userPk, userDid, claim });
@@ -32,12 +31,11 @@ module.exports = {
       }
     }
 
-    const app = fromJSON(wallet);
     const passport = { name: 'arcblocker', title: 'ArcBlocker' };
     const vc = create({
       type: ['PlaygroundFakePassport', 'NFTPassport', 'VerifiableCredential'],
       issuer: {
-        wallet: app,
+        wallet,
         name: 'Wallet Playground',
       },
       subject: {
@@ -48,7 +46,7 @@ module.exports = {
           passport,
           content: createPassportSvg({
             issuer: 'Wallet Playground',
-            issuerDid: app.toAddress(),
+            issuerDid: wallet.address,
             title: passport.title,
           }),
         },

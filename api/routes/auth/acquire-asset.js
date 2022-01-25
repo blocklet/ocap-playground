@@ -1,14 +1,11 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 const { decodeAny } = require('@ocap/message');
 const { fromAddress } = require('@ocap/wallet');
 const { preMintFromFactory } = require('@ocap/asset');
 
 const { formatFactoryState, factories, inputs } = require('../../libs/factory');
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 const { create } = require('../../libs/nft/display');
-
-const app = SDK.Wallet.fromJSON(wallet);
 
 module.exports = {
   action: 'acquire_asset',
@@ -18,7 +15,7 @@ module.exports = {
         throw new Error('Asset factory is not in whitelist');
       }
 
-      const { state } = await SDK.getFactoryState({ address: factories[factory] });
+      const { state } = await client.getFactoryState({ address: factories[factory] });
       if (!state) {
         throw new Error('Asset factory does not exist on chain');
       }
@@ -27,7 +24,7 @@ module.exports = {
         factory: formatFactoryState(state),
         inputs: inputs[factory],
         owner: userDid,
-        issuer: { wallet: app, name: 'ocap-playground' }, // NOTE: using moniker must be enforced to make mint work
+        issuer: { wallet, name: 'ocap-playground' }, // NOTE: using moniker must be enforced to make mint work
       });
 
       logger.info('preMint', { factory, preMint });
@@ -65,7 +62,7 @@ module.exports = {
     const claim = claims.find(x => x.type === 'signature');
     logger.info('acquire.auth.claim', claim);
 
-    const tx = SDK.decodeTx(claim.origin);
+    const tx = client.decodeTx(claim.origin);
     tx.signature = claim.sig;
 
     if (claim.from) {
@@ -77,13 +74,13 @@ module.exports = {
     }
 
     logger.info('acquire.auth.tx', tx);
-    const hash = await SDK.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) });
+    const hash = await client.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) });
     logger.info('hash:', hash);
 
     // return the nft(vc) if exists
     try {
       const { address } = decodeAny(tx.itx).value;
-      const { state } = await SDK.getAssetState({ address }, { ignoreFields: ['context'] });
+      const { state } = await client.getAssetState({ address }, { ignoreFields: ['context'] });
       if (state && state.data && state.data.typeUrl === 'vc') {
         const vc = JSON.parse(state.data.value);
         logger.info('acquire.auth.vc', vc);

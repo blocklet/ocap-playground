@@ -4,26 +4,24 @@
 require('dotenv').config();
 require('@blocklet/sdk/lib/error-handler');
 
-const SDK = require('@ocap/sdk');
 const { verifyAccountAsync } = require('@ocap/tx-util');
 
-const { wallet } = require('../auth');
+const { wallet, client } = require('../auth');
 const { getAccountStateOptions } = require('../util');
 const token = require('../token');
 const factory = require('../factory');
 const env = require('../env');
 
 const { chainId, tokenId } = env;
-const app = SDK.Wallet.fromJSON(wallet);
 
 const ensureAccountDeclared = async () => {
-  const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
+  const { state } = await client.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
   if (!state) {
     console.error('Application account not declared on chain');
 
-    const hash = await SDK.declare({
+    const hash = await client.declare({
       moniker: 'ocap-playground',
-      wallet: app,
+      wallet,
     });
 
     console.log(`Application declared on chain ${chainId}`, hash);
@@ -34,9 +32,9 @@ const ensureAccountDeclared = async () => {
 };
 
 const ensureTokenCreated = async () => {
-  const { state } = await SDK.getTokenState({ address: token.address }, { ...getAccountStateOptions });
+  const { state } = await client.getTokenState({ address: token.address }, { ...getAccountStateOptions });
   if (!state) {
-    const hash = await SDK.sendCreateTokenTx({ tx: { itx: token }, wallet: app });
+    const hash = await client.sendCreateTokenTx({ tx: { itx: token }, wallet });
     console.log(`token created on chain ${chainId}`, hash);
   } else {
     console.log(`token exist on chain ${chainId}`, tokenId);
@@ -46,16 +44,16 @@ const ensureTokenCreated = async () => {
 };
 
 const ensureTokenFunded = async () => {
-  const { state } = await SDK.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
+  const { state } = await client.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
   const t = state.tokens.find(x => x.key === tokenId);
-  const balance = await SDK.fromUnitToToken(t ? t.value : '0');
+  const balance = await client.fromUnitToToken(t ? t.value : '0');
   console.info(`application account token balance on chain ${chainId} is ${balance}`);
 };
 
 const ensureFactoryCreated = async itx => {
-  const { state } = await SDK.getFactoryState({ address: itx.address }, { ...getAccountStateOptions });
+  const { state } = await client.getFactoryState({ address: itx.address }, { ...getAccountStateOptions });
   if (!state) {
-    const hash = await SDK.sendCreateFactoryTx({ tx: { itx }, wallet: app });
+    const hash = await client.sendCreateFactoryTx({ tx: { itx }, wallet });
     console.log(`factory created on chain ${itx.address}`, hash);
   } else {
     console.log(`factory exist on chain ${itx.address}`);

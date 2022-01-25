@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
-const ForgeWallet = require('@ocap/wallet');
+const { fromRandom, fromPublicKey } = require('@ocap/wallet');
+const { toBase64 } = require('@ocap/util');
 const Mcrypto = require('@ocap/mcrypto');
 const { toTypeInfo } = require('@arcblock/did');
 const { create } = require('@arcblock/vc');
@@ -22,7 +22,7 @@ module.exports = {
 
   onAuth: async ({ userDid, userPk, claims }) => {
     const type = toTypeInfo(userDid);
-    const user = SDK.Wallet.fromPublicKey(userPk, type);
+    const user = fromPublicKey(userPk, type);
     const claim = claims.find(x => x.type === 'signature');
 
     logger.info('claim.signature.onAuth', { userPk, userDid, claim });
@@ -33,18 +33,17 @@ module.exports = {
       }
     }
 
-    const w = ForgeWallet.fromJSON(wallet);
-    const randomEmail = `${ForgeWallet.fromRandom().toAddress().substring(0, 10)}@arcblock.io`;
+    const randomEmail = `${fromRandom().address.substring(0, 10)}@arcblock.io`;
     const emailDigest = hasher(randomEmail, 1);
     const vc = create({
       type: 'EmailVerificationCredential',
       issuer: {
-        wallet: w,
+        wallet,
         name: 'ArcBlock.KYC.Email',
       },
       subject: {
         id: userDid,
-        emailDigest: SDK.Util.toBase64(emailDigest),
+        emailDigest: toBase64(emailDigest),
         method: 'SHA3',
       },
     });

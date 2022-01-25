@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 const Mcrypto = require('@ocap/mcrypto');
 const { toTypeInfo } = require('@arcblock/did');
+const { toBase58 } = require('@ocap/util');
+const { fromPublicKey } = require('@ocap/wallet');
 
 const env = require('../../libs/env');
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 const { getRandomMessage } = require('../../libs/util');
 
 const data = 'abcdefghijklmnopqrstuvwxyz'.repeat(32);
@@ -14,21 +15,21 @@ module.exports = {
   action: 'claim_signature',
   claims: {
     signature: async ({ userDid, userPk, extraParams: { type } }) => {
-      const encoded = await SDK.encodeTransferV2Tx({
+      const encoded = await client.encodeTransferV2Tx({
         tx: {
           itx: {
             to: wallet.address,
             tokens: [
               {
                 address: env.localTokenId,
-                value: (await SDK.fromTokenToUnit(1)).toString(),
+                value: (await client.fromTokenToUnit(1)).toString(),
               },
             ],
           },
         },
-        wallet: SDK.Wallet.fromPublicKey(userPk),
+        wallet: fromPublicKey(userPk),
       });
-      const origin = SDK.Util.toBase58(encoded.buffer);
+      const origin = toBase58(encoded.buffer);
       console.log({ encoded, origin });
 
       const params = {
@@ -59,12 +60,12 @@ module.exports = {
         // NOTE: this should fail in latest DID Wallet
         digest: {
           // A developer should convert the hash of his data to base58 format => digest
-          digest: SDK.Util.toBase58(hasher(data, 1)),
+          digest: toBase58(hasher(data, 1)),
         },
 
         // NOTE: this should fail in latest DID Wallet
         evil_digest: {
-          digest: SDK.Util.toBase58(hasher(origin, 1)),
+          digest: toBase58(hasher(origin, 1)),
           meta: { origin },
         },
 
@@ -99,7 +100,7 @@ module.exports = {
   // eslint-disable-next-line consistent-return
   onAuth: async ({ userDid, userPk, claims }) => {
     const type = toTypeInfo(userDid);
-    const user = SDK.Wallet.fromPublicKey(userPk, type);
+    const user = fromPublicKey(userPk, type);
     const claim = claims.find(x => x.type === 'signature');
 
     logger.info('claim.signature.onAuth', { userPk, userDid, claim });
@@ -118,8 +119,8 @@ module.exports = {
     }
 
     if (claim.meta && claim.meta.origin) {
-      const tx = SDK.decodeTx(claim.meta.origin);
-      const hash = await SDK.sendTransferV2Tx({
+      const tx = client.decodeTx(claim.meta.origin);
+      const hash = await client.sendTransferV2Tx({
         tx,
         wallet: user,
         signature: claim.sig,

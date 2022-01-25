@@ -1,16 +1,16 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
+const { fromPublicKey } = require('@ocap/wallet');
 
 const env = require('../../libs/env');
-const { wallet, factory: assetFactory } = require('../../libs/auth');
+const { wallet, client, factory: assetFactory } = require('../../libs/auth');
 const { getRandomMessage, ensureAsset } = require('../../libs/util');
 
 module.exports = {
   action: 'transfer_token_asset_in',
   claims: {
     signature: async () => {
-      const { state } = await SDK.getForgeState();
+      const { state } = await client.getForgeState();
 
       return {
         description: `签名该文本，你将获得 1 个测试用的 ${state.token.symbol}  和一个证书`,
@@ -35,19 +35,18 @@ module.exports = {
 
       logger.info('transfer_asset_token_in.onAuth', { claims, userDid });
       const type = toTypeInfo(userDid);
-      const user = SDK.Wallet.fromPublicKey(userPk, type);
+      const user = fromPublicKey(userPk, type);
       const claim = claims.find(x => x.type === 'signature');
 
       if (user.verify(claim.origin, claim.sig) === false) {
         throw new Error('签名错误');
       }
 
-      const appWallet = SDK.Wallet.fromJSON(wallet);
-      const hash = await SDK.transfer({
+      const hash = await client.transfer({
         to: userDid,
         tokens: [{ address: env.localTokenId, value: '1' }],
         assets: [asset.address],
-        wallet: appWallet,
+        wallet,
       });
       logger.info('transfer_asset_token_in.onAuth.hash', hash);
       return { hash, tx: claim.origin };

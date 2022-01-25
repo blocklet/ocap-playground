@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
 require('dotenv').config();
 
-const SDK = require('@ocap/sdk');
-const { WalletType } = require('@ocap/wallet');
+const { WalletType, fromSecretKey } = require('@ocap/wallet');
 const { types } = require('@ocap/mcrypto');
 
 const { ensureModeratorSecretKey } = require('./util');
@@ -18,11 +17,11 @@ const type = WalletType({
 
 (async () => {
   const sk = ensureModeratorSecretKey();
-  const moderator = SDK.Wallet.fromSecretKey(sk, type);
+  const moderator = fromSecretKey(sk, type);
   // console.log('moderator', moderator.toJSON());
 
   // Transfer to application
-  const hash = await SDK.transfer({
+  const hash = await auth.client.transfer({
     to: env.appId,
     token: 10000,
     wallet: moderator,

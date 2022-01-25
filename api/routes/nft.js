@@ -1,11 +1,11 @@
 /* eslint-disable indent */
 /* eslint-disable consistent-return */
-const SDK = require('@ocap/sdk');
 const cache = require('express-cache-headers');
 const { isValid } = require('@arcblock/did');
 
 const { create } = require('../libs/nft/display');
 const { getCredentialList } = require('../libs/nft');
+const { client } = require('../libs/auth');
 
 const options = { ignoreFields: ['state.context'] };
 
@@ -21,7 +21,7 @@ module.exports = {
         return res.status(404).send('Invalid request: invalid nft asset id');
       }
 
-      const { state: asset } = await SDK.getAssetState({ address: assetId }, options);
+      const { state: asset } = await client.getAssetState({ address: assetId }, options);
       if (!asset) {
         return res.status(404).send('Invalid request: nft asset not found');
       }
@@ -46,9 +46,8 @@ module.exports = {
 
       // owner is not always is account, so skip check accountState
       const [{ state: issuerState }, { state: factoryState }] = await Promise.all([
-        // SDK.getAccountState({ address: owner }, options),
-        SDK.getAccountState({ address: issuer }, options),
-        SDK.getFactoryState({ address: parent }, options),
+        client.getAccountState({ address: issuer }, options),
+        client.getFactoryState({ address: parent }, options),
       ]);
 
       if (!issuerState) {

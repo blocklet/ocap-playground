@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 
+const { fromBase58 } = require('@ocap/util');
 const { fromAddress } = require('@ocap/wallet');
 const env = require('../../libs/env');
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 
 module.exports = {
   action: 'swap_token_v2',
@@ -24,27 +24,27 @@ module.exports = {
 
       // User buy 1 TBA with 5 Play
       if (action === 'buy') {
-        itx.sender.tokens = [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(amount)).toString() }];
+        itx.sender.tokens = [{ address: env.localTokenId, value: (await client.fromTokenToUnit(amount)).toString() }];
         itx.receiver.tokens = [
-          { address: env.foreignTokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() },
+          { address: env.foreignTokenId, value: (await client.fromTokenToUnit(amount * rate)).toString() },
         ];
       }
 
       if (action === 'sell') {
         // User sell 1 TBA for 5 Play
         itx.sender.tokens = [
-          { address: env.foreignTokenId, value: (await SDK.fromTokenToUnit(amount * rate)).toString() },
+          { address: env.foreignTokenId, value: (await client.fromTokenToUnit(amount * rate)).toString() },
         ];
-        itx.receiver.tokens = [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(amount)).toString() }];
+        itx.receiver.tokens = [{ address: env.localTokenId, value: (await client.fromTokenToUnit(amount)).toString() }];
       }
 
-      const tx = await SDK.signExchangeV2Tx({
+      const tx = await client.signExchangeV2Tx({
         tx: { itx },
-        wallet: SDK.Wallet.fromJSON(wallet),
+        wallet,
       });
 
       tx.signaturesList.push({
-        pk: SDK.Util.fromBase58(userPk),
+        pk: fromBase58(userPk),
         signer: userDid,
       });
 
@@ -61,7 +61,7 @@ module.exports = {
       const claim = claims.find(x => x.type === 'signature');
       logger.info('swap_token.auth.claim', claim);
 
-      const tx = SDK.decodeTx(claim.origin);
+      const tx = client.decodeTx(claim.origin);
       if (claim.from) {
         tx.signaturesList[0].signer = claim.from;
       }
@@ -70,7 +70,7 @@ module.exports = {
       }
       tx.signaturesList[0].signature = claim.sig;
 
-      const hash = await SDK.sendExchangeV2Tx({
+      const hash = await client.sendExchangeV2Tx({
         tx,
         wallet: fromAddress(userDid),
       });

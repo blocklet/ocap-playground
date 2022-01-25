@@ -1,7 +1,6 @@
-const SDK = require('@ocap/sdk');
 const { verifyPresentation } = require('@arcblock/vc');
 
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 const { getCredentialList } = require('../../libs/nft');
 
 module.exports = {
@@ -28,7 +27,7 @@ module.exports = {
       : [presentation.verifiableCredential];
     const vc = JSON.parse(vcArray[0]);
 
-    const { state: asset } = await SDK.getAssetState({ address: assetId }, { ignoreFields: ['context'] });
+    const { state: asset } = await client.getAssetState({ address: assetId }, { ignoreFields: ['context'] });
     if (asset && asset.data && asset.data.typeUrl === 'vc') {
       return getCredentialList(asset, vc, locale);
     }

@@ -1,4 +1,4 @@
-const SDK = require('@ocap/sdk');
+const { client } = require('../libs/auth');
 
 module.exports = {
   init(app) {
@@ -9,7 +9,7 @@ module.exports = {
 
       try {
         const userDid = req.user.did;
-        const { transactions } = await SDK.listTransactions({
+        const { transactions } = await client.listTransactions({
           accountFilter: { accounts: [userDid] },
           typeFilter: { types: 'revoke_stake' },
           validityFilter: { validity: 'VALID' },
@@ -20,7 +20,7 @@ module.exports = {
           transactions
             .filter(x => x.time > '2021-11-03T00:00:00.000Z')
             .map(async x => {
-              const { state } = await SDK.getEvidenceState({ hash: x.hash });
+              const { state } = await client.getEvidenceState({ hash: x.hash });
               if (state) {
                 return false;
               }

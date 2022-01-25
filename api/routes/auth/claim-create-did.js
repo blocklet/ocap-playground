@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 const { toTypeInfo } = require('@arcblock/did');
 const { types } = require('@ocap/mcrypto');
+const { fromPublicKey } = require('@ocap/wallet');
 
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 const { getAccountStateOptions, getRandomMessage } = require('../../libs/util');
 const { User } = require('../../models');
 
@@ -56,7 +56,7 @@ module.exports = {
     }
 
     // 2. we need to ensure that the did is declared onchain
-    const { state } = await SDK.getAccountState({ address: userDid }, getAccountStateOptions);
+    const { state } = await client.getAccountState({ address: userDid }, getAccountStateOptions);
     if (!state) {
       throw new Error('The created DID is not created on chain as required');
     }
@@ -66,7 +66,7 @@ module.exports = {
     // }
 
     // 3. we need to ensure that the did has the same signature
-    const w = SDK.Wallet.fromPublicKey(userPk, type);
+    const w = fromPublicKey(userPk, type);
     if (w.verify(claim.origin, claim.sig) === false) {
       throw new Error('签名错误');
     }

@@ -1,15 +1,12 @@
 /* eslint-disable no-console */
-const SDK = require('@ocap/sdk');
 const { fromAddress } = require('@ocap/wallet');
 const { fromTokenToUnit } = require('@ocap/util');
 const { preMintFromFactory } = require('@ocap/asset');
 
 const env = require('../../libs/env');
-const { wallet } = require('../../libs/auth');
+const { wallet, client } = require('../../libs/auth');
 const { getTokenInfo } = require('../../libs/util');
 const { formatFactoryState, factories, inputs } = require('../../libs/factory');
-
-const app = SDK.Wallet.fromJSON(wallet);
 
 const secondAddress = 'zNKqftHB7ibZkHrz6Gu37xJXHLKqH5TJYEgd';
 
@@ -20,7 +17,7 @@ const txCreators = {
       foreign: factories.blockletPurchase,
       both: factories.tokenInputTest,
     };
-    const { state } = await SDK.getFactoryState({ address: inputFactories[input] });
+    const { state } = await client.getFactoryState({ address: inputFactories[input] });
     if (!state) {
       throw new Error('Asset factory does not exist on chain');
     }
@@ -29,7 +26,7 @@ const txCreators = {
       factory: formatFactoryState(state),
       inputs: inputs.blockletPurchase,
       owner: userDid,
-      issuer: { wallet: app, name: 'ocap-playground' }, // NOTE: using moniker must be enforced to make mint work
+      issuer: { wallet, name: 'ocap-playground' }, // NOTE: using moniker must be enforced to make mint work
     });
 
     return {
@@ -94,7 +91,7 @@ const txCreators = {
       foreign: factories.blockletPurchase,
       both: factories.tokenInputTest,
     };
-    const { state } = await SDK.getFactoryState({ address: inputFactories[input] });
+    const { state } = await client.getFactoryState({ address: inputFactories[input] });
     if (!state) {
       throw new Error('Asset factory does not exist on chain');
     }
@@ -103,7 +100,7 @@ const txCreators = {
       factory: formatFactoryState(state),
       inputs: inputs.blockletPurchase,
       owner: userDid,
-      issuer: { wallet: app, name: 'ocap-playground' }, // NOTE: using moniker must be enforced to make mint work
+      issuer: { wallet, name: 'ocap-playground' }, // NOTE: using moniker must be enforced to make mint work
     });
 
     return {
@@ -208,15 +205,15 @@ module.exports = {
       throw new Error('claim.finalTx must be set to continue');
     }
 
-    const tx = SDK.decodeTx(claim.finalTx);
+    const tx = client.decodeTx(claim.finalTx);
 
     if (type.startsWith('AcquireAssetV3Tx')) {
-      const hash = await SDK.sendAcquireAssetV3Tx({ tx, wallet: fromAddress(userDid) });
+      const hash = await client.sendAcquireAssetV3Tx({ tx, wallet: fromAddress(userDid) });
       return { hash, tx: claim.finalTx };
     }
 
     if (type.startsWith('TransferV3Tx')) {
-      const hash = await SDK.sendTransferV3Tx({ tx, wallet: fromAddress(userDid) });
+      const hash = await client.sendTransferV3Tx({ tx, wallet: fromAddress(userDid) });
       return { hash, tx: claim.finalTx };
     }
 

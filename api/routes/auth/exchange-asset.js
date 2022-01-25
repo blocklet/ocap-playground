@@ -1,11 +1,12 @@
 /* eslint-disable object-curly-newline */
-const SDK = require('@ocap/sdk');
 const { NFTType } = require('@arcblock/nft/lib/enum');
 const { toTypeInfo } = require('@arcblock/did');
+const { fromPublicKey } = require('@ocap/wallet');
+const { fromBase58 } = require('@ocap/util');
 const upperFirst = require('lodash/upperFirst');
 
 const env = require('../../libs/env');
-const { wallet, factory: assetFactory } = require('../../libs/auth');
+const { wallet, client, factory: assetFactory } = require('../../libs/auth');
 const { ensureAsset, getTransferrableAssets, transferVCTypeToAssetType } = require('../../libs/util');
 
 const getAssets = async ({ amount = 1, type, userPk, userDid, name, desc, start, end, bg, logo, loc, svg }) => {
@@ -82,7 +83,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   let receiverPayload = null;
 
   if (pt === 'token') {
-    senderPayload = [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(pa)).toString() }];
+    senderPayload = [{ address: env.localTokenId, value: (await client.fromTokenToUnit(pa)).toString() }];
   } else {
     const assets = await getTransferrableAssets(userDid);
     senderPayload = assets
@@ -96,7 +97,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
   }
 
   if (rt === 'token') {
-    receiverPayload = [{ address: env.localTokenId, value: (await SDK.fromTokenToUnit(ra)).toString() }];
+    receiverPayload = [{ address: env.localTokenId, value: (await client.fromTokenToUnit(ra)).toString() }];
   } else {
     const assets = await getAssets({
       amount: ra,
@@ -115,7 +116,7 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
     receiverPayload = assets.map(asset => asset.address);
   }
 
-  const tx = await SDK.signExchangeV2Tx({
+  const tx = await client.signExchangeV2Tx({
     tx: {
       itx: {
         to: userDid,
@@ -127,11 +128,11 @@ const getExchangeSig = async ({ userPk, userDid, pa, pt, ra, rt, name, desc, sta
         },
       },
     },
-    wallet: SDK.Wallet.fromJSON(wallet),
+    wallet,
   });
 
   tx.signaturesList.push({
-    pk: SDK.Util.fromBase58(userPk),
+    pk: fromBase58(userPk),
     signer: userDid,
   });
 
@@ -148,22 +149,21 @@ const transferAsset = async ({ claim, userDid, userPk }) => {
   try {
     logger.info('exchange_asset.onAuth', { claim, userDid });
     const type = toTypeInfo(userDid);
-    const user = SDK.Wallet.fromPublicKey(userPk, type);
+    const user = fromPublicKey(userPk, type);
 
     if (user.verify(claim.origin, claim.sig) === false) {
       throw new Error('签名错误');
     }
 
-    const appWallet = SDK.Wallet.fromJSON(wallet);
-    const asset = JSON.parse(SDK.Util.fromBase58(claim.origin));
-    const hash = await SDK.sendTransferV2Tx({
+    const asset = JSON.parse(fromBase58(claim.origin));
+    const hash = await client.sendTransferV2Tx({
       tx: {
         itx: {
           to: userDid,
           assets: [asset],
         },
       },
-      wallet: appWallet,
+      wallet,
     });
 
     logger.info('exchange_asset.onAuth', hash);
@@ -175,7 +175,7 @@ const transferAsset = async ({ claim, userDid, userPk }) => {
 };
 
 const exchangeAsset = async claim => {
-  const tx = SDK.decodeTx(claim.origin);
+  const tx = client.decodeTx(claim.origin);
 
   tx.signaturesList[0].signature = claim.sig;
 
@@ -187,9 +187,9 @@ const exchangeAsset = async claim => {
     tx.signaturesList[0].delegator = claim.delegator;
   }
 
-  const hash = await SDK.exchange({
+  const hash = await client.exchange({
     tx,
-    wallet: SDK.Wallet.fromJSON(wallet),
+    wallet,
   });
 
   logger.info('exchange tx hash:', hash);
