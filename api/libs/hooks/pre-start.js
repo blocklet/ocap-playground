@@ -35,9 +35,9 @@ const ensureTokenCreated = async () => {
   const { state } = await client.getTokenState({ address: token.address }, { ...getAccountStateOptions });
   if (!state) {
     const hash = await client.sendCreateTokenTx({ tx: { itx: token }, wallet });
-    console.log(`token created on chain ${chainId}`, hash);
+    console.log(`token created on chain ${token.address}`, hash);
   } else {
-    console.log(`token exist on chain ${chainId}`, tokenId);
+    console.log(`token exist on chain ${token.address}`);
   }
 
   return state;

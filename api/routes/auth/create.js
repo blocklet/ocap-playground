@@ -15,10 +15,11 @@ module.exports = {
   claims: {
     signature: async ({ userDid, userPk, extraParams: { type } }) => {
       if (['token', 'asset', 'nft', 'factory'].includes(type) === false) {
-        throw new Error('Invalid creating type, only token, asset and factory are supported');
+        throw new Error('Invalid creating type, only token, asset, nft and factory are supported');
       }
 
       let encoded = null;
+      let display = null;
       const wallet = fromPublicKey(userPk);
       if (type === 'token') {
         const totalSupply = 10000;
@@ -69,6 +70,7 @@ module.exports = {
             content: randomSVG(),
           },
         };
+        display = JSON.stringify(itx.display);
         itx.address = toAssetAddress(itx);
         encoded = await client.encodeCreateAssetTx({ tx: { from: userDid, pk: userPk, itx }, wallet });
       } else if (type === 'factory') {
@@ -122,6 +124,7 @@ module.exports = {
         description: `Please sign the transaction to create ${type}`,
         type: 'fg:t:transaction',
         data: toBase58(encoded.buffer),
+        display,
       };
     },
   },
