@@ -15,8 +15,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Set yarn cache
-        uses: c-hive/gha-yarn-cache@v2
+      # - name: Set yarn cache
+      #   uses: c-hive/gha-yarn-cache@v2
 
       - name: Init
         run: make github-init

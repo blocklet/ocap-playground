@@ -1,5 +1,10 @@
+## 0.23.3 (January 26, 2022)
+
+- chore: disable yarn cache in ci
+
 ## 0.23.2 (January 26, 2022)
 
+- chore: bump chain deps to latest
 
 ## 0.23.1 (January 25, 2022)
 
@@ -21,6 +26,7 @@
 - fix: create x claim
 
 ## 0.21.5 (January 17, 2022)
+
 - update feed data
 
 ## 0.21.4 (January 17, 2022)
