@@ -1,3 +1,7 @@
+## 0.23.4 (January 26, 2022)
+
+- fix: asset claim verify
+
 ## 0.23.3 (January 26, 2022)
 
 - chore: disable yarn cache in ci
