@@ -1,3 +1,7 @@
+## 0.23.5 (January 26, 2022)
+
+- fix: add tag for wallet categorize
+
 ## 0.23.4 (January 26, 2022)
 
 - fix: asset claim verify
