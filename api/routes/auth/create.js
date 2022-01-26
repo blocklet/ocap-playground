@@ -53,20 +53,14 @@ module.exports = {
         itx.address = toAssetAddress(itx);
         encoded = await client.encodeCreateAssetTx({ tx: { from: userDid, pk: userPk, itx }, wallet });
       } else if (type === 'nft') {
-        let display = {
-          type: 'svg',
+        const display = {
+          type: nftDisplay,
           content: randomSVG(),
         };
         if (nftDisplay === 'url') {
-          display = {
-            type: 'url',
-            content: joinUrl(env.appUrl, '/api/nft/svg'),
-          };
+          display.content = joinUrl(env.appUrl, '/api/nft/svg');
         } else if (nftDisplay === 'uri') {
-          display = {
-            type: 'url',
-            content: `data:image/svg+xml;base64,${Buffer.from(display.content).toString('base64')}`,
-          };
+          display.content = `data:image/svg+xml;base64,${Buffer.from(display.content).toString('base64')}`;
         }
 
         const itx = {
