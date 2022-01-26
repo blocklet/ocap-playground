@@ -1,3 +1,6 @@
+## 0.23.2 (January 26, 2022)
+
+
 ## 0.23.1 (January 25, 2022)
 
 - fix: pre-start script error
