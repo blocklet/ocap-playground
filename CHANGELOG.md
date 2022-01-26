@@ -1,3 +1,7 @@
+## 0.23.6 (January 26, 2022)
+
+- fix: create-nft-data case
+
 ## 0.23.5 (January 26, 2022)
 
 - fix: add tag for wallet categorize
