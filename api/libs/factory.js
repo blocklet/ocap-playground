@@ -246,7 +246,7 @@ const nftTestFactory = createFactoryItx(
       type: 'NFTStatusList2021',
       scope: 'private',
     },
-    tags: ['TestNFT'],
+    tags: ['NFTBadge', 'TestNFT'],
     hooks: [
       {
         type: 'contract',
