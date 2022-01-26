@@ -31,7 +31,7 @@ module.exports = {
 
     const type = toTypeInfo(ownerState.address);
     const owner = fromPublicKey(ownerState.pk, type);
-    if (owner.verify(challenge, claim.proof)) {
+    if (owner.verify(challenge, claim.proof) === false) {
       throw new Error('Asset owner proof is not valid');
     }
   },
