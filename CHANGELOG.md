@@ -1,3 +1,8 @@
+## 0.23.9 (January 27, 2022)
+
+- fix: bump deps to latest
+- fix: duplicate asset on mint
+
 ## 0.23.8 (January 27, 2022)
 
 - fix: svg display null issue
