@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const joinUrl = require('url-join');
 const { fromTokenToUnit } = require('@ocap/util');
 const { toFactoryAddress } = require('@arcblock/did-util');
@@ -225,11 +227,12 @@ const nftTestFactory = createFactoryItx(
     moniker: 'NFTTestNFT',
     limit: 0,
     tokens: [{ address: env.localTokenId, value: toBNStr(5) }],
-    variables: [],
+    variables: [{ name: 'counter', required: true }],
     output: {
       type: 'json',
       value: {
         owner: '{{ctx.owner}}',
+        counter: '{{input.counter}}',
         issuer: {
           id: '{{ctx.issuer.id}}',
           pk: '{{ctx.issuer.pk}}',
@@ -338,6 +341,21 @@ const inputs = {
     nodeProvider: 'AWS',
   },
   blockletPurchase: {},
+  nftTest: () => {
+    let counter;
+    const file = path.join(env.dataDir, 'counter.txt');
+    if (fs.existsSync(file)) {
+      counter = +fs.readFileSync(file).toString();
+    }
+
+    if (!counter) {
+      counter = 1;
+    }
+
+    const next = 1 + counter;
+    fs.writeFileSync(file, next.toString());
+    return { counter: counter.toString() };
+  },
 };
 
 module.exports = {

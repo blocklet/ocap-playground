@@ -1,24 +1,17 @@
 /* eslint-disable no-console */
 const path = require('path');
-const Mcrypto = require('@ocap/mcrypto');
 const Client = require('@ocap/client');
 const AuthNedbStorage = require('@arcblock/did-auth-storage-nedb');
 const AgentNedbStorage = require('@arcblock/did-agent-storage-nedb');
 const WalletAuthenticator = require('@blocklet/sdk/lib/wallet-authenticator');
 const WalletHandlers = require('@blocklet/sdk/lib/wallet-handler');
+const getWallet = require('@blocklet/sdk/lib/wallet');
 const AuthService = require('@blocklet/sdk/service/auth');
 const { NFTFactory } = require('@arcblock/nft');
-const { fromSecretKey, WalletType } = require('@ocap/wallet');
 const { AgentAuthenticator, AgentWalletHandlers } = require('@arcblock/did-auth');
 const env = require('./env');
 
-const type = WalletType({
-  role: Mcrypto.types.RoleType.ROLE_APPLICATION,
-  pk: Mcrypto.types.KeyType.ED25519,
-  hash: Mcrypto.types.HashType.SHA3,
-});
-
-const wallet = fromSecretKey(process.env.BLOCKLET_APP_SK, type);
+const wallet = getWallet();
 const client = new Client(env.chainHost);
 
 const walletAuth = new WalletAuthenticator();
