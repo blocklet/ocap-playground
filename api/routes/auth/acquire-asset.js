@@ -33,7 +33,7 @@ module.exports = {
       const display =
         factory === 'nftTest'
           ? ''
-          : {
+          : JSON.stringify({
               type: 'svg',
               content: create(vc, {
                 owner: userDid,
@@ -41,11 +41,11 @@ module.exports = {
                 description: state.description,
                 date: vc.issuanceDate,
               }),
-            };
+            });
 
       return {
         type: 'AcquireAssetV2Tx',
-        display: JSON.stringify(display), // Since the asset is not minted yet, we need to tell DID Wallet how to display it
+        display, // Since the asset is not minted yet, we need to tell DID Wallet how to display it
         data: {
           // The tx must from user
           from: userDid,
