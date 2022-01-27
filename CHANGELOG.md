@@ -1,3 +1,7 @@
+## 0.23.7 (January 27, 2022)
+
+- fix: svg display null issue
+
 ## 0.23.6 (January 26, 2022)
 
 - fix: create-nft-data case
