@@ -32,7 +32,7 @@ module.exports = {
       const vc = preMint.asset.data.value;
       const display =
         factory === 'nftTest'
-          ? null
+          ? ''
           : {
               type: 'svg',
               content: create(vc, {
