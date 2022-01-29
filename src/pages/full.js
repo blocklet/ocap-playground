@@ -765,8 +765,11 @@ export default function IndexPage() {
               className="action">
               Send with 4 action
             </NotificationButton>
-            <NotificationButton type="feed-graphic" actions={[]} className="action">
-              Send Graphic Feed To Me
+            <NotificationButton type="feed-graphic-single" actions={[]} className="action">
+              Send Graphic Single Feed To Me
+            </NotificationButton>
+            <NotificationButton type="feed-graphic-multi" actions={[]} className="action">
+              Send Graphic Multi Feed To Me
             </NotificationButton>
             <NotificationButton type="feed-data-tracker" actions={[]} className="action">
               Send Data Tracker Feed To Me
