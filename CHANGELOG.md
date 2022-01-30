@@ -1,3 +1,6 @@
+## 0.23.10 (January 29, 2022)
+- update graphic feed data type
+
 ## 0.23.9 (January 27, 2022)
 
 - fix: bump deps to latest
