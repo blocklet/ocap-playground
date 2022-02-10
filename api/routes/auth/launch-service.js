@@ -26,7 +26,7 @@ module.exports = {
 
         return {
           description: 'Please provide your blocklet purchase NFT',
-          item: 'BlockletPurchaseCredential',
+          item: ['BlockletPurchaseCredential'],
           trustedIssuers: [{ did: wallet.address, endpoint }],
         };
       },

@@ -8,7 +8,7 @@ module.exports = {
   claims: {
     verifiableCredential: () => ({
       description: 'Please provide your node purchase NFT',
-      item: 'NodePurchaseCredential',
+      item: ['NodePurchaseCredential'],
       trustedIssuers: [wallet.address],
       tag: '',
     }),

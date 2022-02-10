@@ -76,6 +76,7 @@ module.exports = {
             },
           },
           display,
+          tags: ['NFTCreatedByMe'],
         };
         itx.address = toAssetAddress(itx);
         encoded = await client.encodeCreateAssetTx({ tx: { from: userDid, pk: userPk, itx }, wallet });

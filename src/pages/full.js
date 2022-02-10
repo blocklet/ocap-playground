@@ -234,6 +234,17 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button="Verify Node or Blocklet"
+              action="verify-nft"
+              extraParams={{ type: 'either' }}
+              messages={{
+                title: 'Provide Blocklet or Node VC',
+                scan: 'Connect your DID Wallet to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'VC verified',
+              }}
+            />
+            <AuthButton
               button="Shopping Chart"
               action="launch-service"
               extraParams={{ type: 'node_blocklet' }}
@@ -562,8 +573,20 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Asset Claim"
+              button="Asset Claim: Legacy"
               action="claim_asset"
+              extraParams={{ type: 'legacy' }}
+              messages={{
+                title: 'Require Asset',
+                scan: 'Connect your DID Wallet to provide asset from NFTTestFactory',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Success',
+              }}
+            />
+            <AuthButton
+              button="Asset: Minted or Created"
+              action="claim_asset"
+              extraParams={{ type: 'either' }}
               messages={{
                 title: 'Require Asset',
                 scan: 'Connect your DID Wallet to provide asset from NFTTestFactory',

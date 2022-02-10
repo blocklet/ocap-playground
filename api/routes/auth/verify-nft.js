@@ -11,7 +11,7 @@ module.exports = {
       if (type === 'node') {
         return {
           description: 'Please provide your node ownership NFT',
-          item: 'NodeOwnershipCredential',
+          item: ['NodeOwnershipCredential'],
           trustedIssuers: [wallet.address],
           tag: inputs.nodeOwner.nodeId,
         };
@@ -19,9 +19,27 @@ module.exports = {
       if (type === 'blocklet') {
         return {
           description: 'Please provide your blocklet purchase NFT',
-          item: 'BlockletPurchaseCredential',
+          item: ['BlockletPurchaseCredential'],
           trustedIssuers: [wallet.address],
           tag: blockletDid,
+        };
+      }
+
+      if (type === 'either') {
+        return {
+          description: 'Please provide your blocklet or node NFT',
+          filters: [
+            {
+              type: ['BlockletPurchaseCredential'],
+              trustedIssuers: [wallet.address],
+              tag: blockletDid,
+            },
+            {
+              type: ['NodeOwnershipCredential'],
+              trustedIssuers: [wallet.address],
+              tag: inputs.nodeOwner.nodeId,
+            },
+          ],
         };
       }
 

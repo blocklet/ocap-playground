@@ -22,7 +22,7 @@ module.exports = {
 
       return {
         description: 'Please provide your vc which proves your information',
-        item: type,
+        item: [type],
         trustedIssuers,
         tag,
         optional: !!optional,
