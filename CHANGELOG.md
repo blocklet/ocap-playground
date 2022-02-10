@@ -1,4 +1,9 @@
+## 0.24.0 (February 10, 2022)
+
+- feat: support new asset/vc filters
+
 ## 0.23.10 (January 29, 2022)
+
 - update graphic feed data type
 
 ## 0.23.9 (January 27, 2022)
