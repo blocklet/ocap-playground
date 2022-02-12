@@ -255,6 +255,17 @@ export default function IndexPage() {
                 success: 'Purchase verified',
               }}
             />
+            <AuthButton
+              button="Verify Passport"
+              action="verify-passport"
+              extraParams={{ type: 'either' }}
+              messages={{
+                title: 'Provide Passport',
+                scan: 'Connect your DID Wallet to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Passport verified',
+              }}
+            />
           </div>
         </section>
 

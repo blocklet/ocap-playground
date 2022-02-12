@@ -1,3 +1,7 @@
+## 0.24.1 (February 12, 2022)
+
+- add verify blocklet server passport case
+
 ## 0.24.0 (February 10, 2022)
 
 - feat: support new asset/vc filters
