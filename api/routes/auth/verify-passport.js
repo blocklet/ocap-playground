@@ -10,7 +10,7 @@ module.exports = {
       const trustedIssuers = [wallet.address];
 
       return {
-        description: 'Please provide your blocklet or node NFT',
+        description: 'Please provide your passport',
         item,
         trustedIssuers,
         filters: [
