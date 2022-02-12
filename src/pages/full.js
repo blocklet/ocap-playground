@@ -256,11 +256,11 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Verify Node Passport"
+              button="Verify Passport"
               action="verify-passport"
               extraParams={{ type: 'either' }}
               messages={{
-                title: 'Provide Node Passport',
+                title: 'Provide Passport',
                 scan: 'Connect your DID Wallet to provide',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Passport verified',
