@@ -1,3 +1,7 @@
+## 0.24.2 (February 14, 2022)
+
+- fix(case): enforce endpoint test case for nft
+
 ## 0.24.1 (February 12, 2022)
 
 - add verify blocklet server passport case
