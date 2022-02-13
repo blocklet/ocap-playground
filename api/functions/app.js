@@ -88,8 +88,10 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/iss
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/extra-params')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/delegate')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/launch-node')));
-walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/verify-nft')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/verify-vc')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/verify-passport')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/vc-private-action')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/vc-private-status')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/nft-private-action')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/nft-private-status')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/prepare')));

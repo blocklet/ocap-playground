@@ -237,7 +237,7 @@ const getCredentialList = (asset, vc, locale) => {
         label: 'Call Public API',
       },
       {
-        id: `${env.appUrl}/api/did/nft-private-action/token`,
+        id: `${env.appUrl}/api/did/vc-private-action/token`,
         type: 'api',
         scope: 'private',
         name: 'call-private-api',
@@ -266,6 +266,36 @@ const getCredentialList = (asset, vc, locale) => {
       //   label: 'Login before Open',
       // },
     ],
+    TestNFT: [
+      {
+        id: `${env.appUrl}/api/nft/public-action`,
+        type: 'api',
+        scope: 'public',
+        name: 'call-public-api',
+        label: 'Call Public API',
+      },
+      {
+        id: `${env.appUrl}/api/did/nft-private-action/token`,
+        type: 'api',
+        scope: 'private',
+        name: 'call-private-api',
+        label: 'Call Private API',
+      },
+      {
+        id: `${env.appUrl}`,
+        type: 'navigate',
+        scope: 'public',
+        name: 'open-dapp',
+        label: 'Open DApp',
+      },
+      {
+        id: 'https://github.com/arcblock',
+        type: 'navigate',
+        scope: 'public',
+        name: 'open-github',
+        label: 'Open Github',
+      },
+    ],
   };
 
   const supportedTypes = [
@@ -273,9 +303,16 @@ const getCredentialList = (asset, vc, locale) => {
     'NodeOwnershipCredential',
     'BlockletPurchaseCredential',
     'EndpointTestCredential',
+    'EndpointTestNFT',
   ];
-  const types = Array.isArray(vc.type) ? vc.type : [vc.type];
-  const type = types.find(t => supportedTypes.includes(t));
+  let type = null;
+
+  if (vc) {
+    const types = Array.isArray(vc.type) ? vc.type : [vc.type];
+    type = types.find(t => supportedTypes.includes(t));
+  } else {
+    type = asset.tags.find(t => supportedTypes.includes(t));
+  }
 
   let statusList = [];
   let actionList = [];
@@ -296,7 +333,7 @@ const getCredentialList = (asset, vc, locale) => {
   }
 
   return {
-    id: vc.id,
+    id: vc ? vc.id : asset.address,
     description: `Status and Actions of ${type}`,
     statusList,
     actionList,

@@ -67,11 +67,11 @@ const nodePurchaseFactory = createFactoryItx(
 );
 
 const endpointTestFactory = createFactoryItx(
-  'EndpointTestFactoryForPlayground',
+  'EndpointTestVCFactoryForPlayground',
   getFactoryProps({
-    name: 'EndpointTestFactory',
-    description: 'This is a factory to mint assets that have various test case for nft endpoints',
-    moniker: 'EndpointTestNFT',
+    name: 'EndpointTestVCFactory',
+    description: 'This is a factory to mint assets that have various test case for vc endpoints',
+    moniker: 'EndpointTestVC',
     limit: 0,
     tokens: [{ address: env.localTokenId, value: toBNStr(5) }],
     variables: [],
@@ -95,7 +95,7 @@ const endpointTestFactory = createFactoryItx(
           },
         },
         credentialStatus: {
-          id: joinUrl(env.appUrl, '/api/did/nft-private-status/token'),
+          id: joinUrl(env.appUrl, '/api/did/vc-private-status/token'),
           type: 'NFTStatusList2021',
           scope: 'private',
         },
@@ -246,7 +246,6 @@ const nftTestFactory = createFactoryItx(
     },
     endpoint: {
       id: joinUrl(env.appUrl, '/api/did/nft-private-status/token'),
-      type: 'NFTStatusList2021',
       scope: 'private',
     },
     tags: ['NFTBadge', 'TestNFT'],

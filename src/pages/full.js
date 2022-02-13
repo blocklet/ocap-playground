@@ -179,14 +179,14 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Buy Endpoint Test NFT"
+              button="Buy Endpoint Test VC"
               action="acquire_asset"
               extraParams={{ factory: 'endpointTest' }}
               messages={{
                 title: `Pay ${token.local.symbol} to Purchase`,
                 scan: 'Connect your DID Wallet to complete the purchase',
                 confirm: 'Confirm on your DID Wallet',
-                success: 'The purchase was successful, now you can play with the nft in DID Wallet',
+                success: 'The purchase was successful, now you can play with the vc in DID Wallet',
               }}
             />
             <AuthButton
@@ -197,7 +197,7 @@ export default function IndexPage() {
                 title: 'Pay 2 tokens to Purchase',
                 scan: 'Connect your DID Wallet to complete the purchase',
                 confirm: 'Confirm on your DID Wallet',
-                success: 'The purchase was successful, now you can play with the nft in DID Wallet',
+                success: 'The purchase was successful, now you can play with the vc in DID Wallet',
               }}
             />
             <AuthButton
@@ -212,8 +212,8 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Verify Node Ownership"
-              action="verify-nft"
+              button="Verify Node Ownership VC"
+              action="verify-vc"
               extraParams={{ type: 'node' }}
               messages={{
                 title: 'Provide Node Ownership NFT',
@@ -223,8 +223,8 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Verify Blocklet Purchase"
-              action="verify-nft"
+              button="Verify Blocklet Purchase VC"
+              action="verify-vc"
               extraParams={{ type: 'blocklet' }}
               messages={{
                 title: 'Provide Blocklet Purchase NFT',
@@ -234,8 +234,8 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Verify Node or Blocklet"
-              action="verify-nft"
+              button="Verify Node or Blocklet VC"
+              action="verify-vc"
               extraParams={{ type: 'either' }}
               messages={{
                 title: 'Provide Blocklet or Node VC',
@@ -256,7 +256,7 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Verify Passport"
+              button="Verify Passport VC"
               action="verify-passport"
               extraParams={{ type: 'either' }}
               messages={{

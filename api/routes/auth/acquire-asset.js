@@ -81,8 +81,8 @@ module.exports = {
     logger.info('hash:', hash);
 
     // return the nft(vc) if exists
+    const { address } = decodeAny(tx.itx).value;
     try {
-      const { address } = decodeAny(tx.itx).value;
       const { state } = await client.getAssetState({ address }, { ignoreFields: ['context'] });
       if (state && state.data && state.data.typeUrl === 'vc') {
         const vc = JSON.parse(state.data.value);
@@ -100,6 +100,6 @@ module.exports = {
       logger.error('acquire.auth.asset.error', err);
     }
 
-    return { hash, tx: claim.origin };
+    return { hash, tx: claim.origin, asset: address };
   },
 };
