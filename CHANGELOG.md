@@ -1,3 +1,7 @@
+## 0.24.6 (February 14, 2022)
+
+- fix: verify-either-vc throws in onAuth
+
 ## 0.24.5 (February 14, 2022)
 
 - fix: vc/asset endpoint broken
