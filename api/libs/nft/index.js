@@ -302,7 +302,7 @@ const getCredentialList = (asset, vc, locale) => {
     'NodeOwnershipCredential',
     'BlockletPurchaseCredential',
     'EndpointTestCredential',
-    'EndpointTestNFT',
+    'TestNFT',
   ];
   let type = null;
 
