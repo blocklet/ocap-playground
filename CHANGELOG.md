@@ -1,3 +1,7 @@
+## 0.24.7 (February 14, 2022)
+
+- chore(deps): bump chain and common deps to latest
+
 ## 0.24.6 (February 14, 2022)
 
 - fix: verify-either-vc throws in onAuth
