@@ -1,5 +1,4 @@
 /* eslint-disable indent */
-const { fromJSON } = require('@ocap/wallet');
 const { createCredentialList } = require('@arcblock/vc');
 const { isValidFactory, formatFactoryState } = require('@ocap/asset');
 const {
@@ -316,7 +315,7 @@ const getCredentialList = (asset, vc, locale) => {
 
   let statusList = [];
   let actionList = [];
-  const issuer = { wallet: fromJSON(wallet), name: 'ocap-playground' };
+  const issuer = { wallet, name: 'ocap-playground' };
 
   if (status[type]) {
     statusList = createCredentialList({
