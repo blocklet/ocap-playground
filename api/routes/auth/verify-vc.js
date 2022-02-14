@@ -69,9 +69,19 @@ module.exports = {
 
     if (type === 'blocklet') {
       if (get(vc, 'credentialSubject.purchased.blocklet.id') !== blockletDid) {
-        throw new Error('Invalid node ownership credential');
+        throw new Error('Invalid blocklet purchase credential');
       }
       return;
+    }
+
+    if (type === 'either') {
+      if (get(vc, 'credentialSubject.isOwnerOf.abtnode.id') === inputs.nodeOwner.nodeId) {
+        return;
+      }
+      if (get(vc, 'credentialSubject.purchased.blocklet.id') === blockletDid) {
+        return;
+      }
+      throw new Error('Invalid node ownership or blocklet purchase credential');
     }
 
     throw new Error(`Unknown type ${type}`);
