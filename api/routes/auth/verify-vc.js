@@ -5,7 +5,7 @@ const { inputs, blockletDid } = require('../../libs/factory');
 const { wallet } = require('../../libs/auth');
 
 module.exports = {
-  action: 'verify-nft',
+  action: 'verify-vc',
   claims: {
     verifiableCredential: ({ extraParams: { type } }) => {
       if (type === 'node') {
