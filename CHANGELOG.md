@@ -1,3 +1,7 @@
+## 0.24.5 (February 14, 2022)
+
+- fix: vc/asset endpoint broken
+
 ## 0.24.4 (February 14, 2022)
 
 - fix: vc/asset endpoint broken
