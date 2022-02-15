@@ -51,7 +51,7 @@ module.exports = {
   onAuth: async ({ challenge, claims }) => {
     const claim = claims.find(x => x.type === 'asset');
     logger.info('claim.claim-asset.onAuth', claim);
-    const assetState = await verifyAssetClaim({ claim, challenge, trustedIssuers: [wallet.address] });
+    const assetState = await verifyAssetClaim({ claim, challenge });
     return { successMessage: `You provided asset with tag: ${assetState.tags.join(',')}` };
   },
 };
