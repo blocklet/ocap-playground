@@ -3,6 +3,7 @@ const { toTypeInfo, isFromPublicKey } = require('@arcblock/did');
 const { fromPublicKey } = require('@ocap/wallet');
 const { getRandomBytes } = require('@ocap/mcrypto');
 const { preMintFromFactory } = require('@ocap/asset');
+const { fromBase58 } = require('@ocap/util');
 const { createZippedSvgDisplay, createCertSvg, createTicketSvg } = require('@arcblock/nft-template');
 const { NFTRecipient, NFTIssuer } = require('@arcblock/nft');
 const { NFTType } = require('@arcblock/nft/lib/enum');
@@ -250,12 +251,12 @@ const verifyAssetClaim = async ({ claim, challenge, trustedIssuers = [], trusted
   }
 
   const { asset: address, ownerProof, ownerPk, ownerDid } = claim;
-  if (isFromPublicKey(ownerDid, ownerPk)) {
+  if (isFromPublicKey(ownerDid, fromBase58(ownerPk))) {
     throw new Error('Invalid asset claim: owner did and pk mismatch');
   }
 
   const owner = fromPublicKey(ownerPk, toTypeInfo(ownerDid));
-  if (owner.verify(challenge, ownerProof) === false) {
+  if (owner.verify(challenge, fromBase58(ownerProof)) === false) {
     throw new Error('Invalid asset claim: owner proof invalid');
   }
 
