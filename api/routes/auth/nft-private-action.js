@@ -1,7 +1,6 @@
-const { toTypeInfo } = require('@arcblock/did');
-const { fromPublicKey } = require('@ocap/wallet');
-
-const { client, wallet } = require('../../libs/auth');
+const { factories } = require('../../libs/factory');
+const { wallet } = require('../../libs/auth');
+const { verifyAssetClaim } = require('../../libs/util');
 
 module.exports = {
   action: 'nft-private-action',
@@ -22,21 +21,12 @@ module.exports = {
     const claim = claims.find(x => x.type === 'asset');
     logger.info('claim.nft-private-action.onAuth', { claim });
 
-    const { state: assetState } = await client.getAssetState({ address: claim.asset });
-    if (!assetState) {
-      throw new Error('Asset does not exist on chain');
-    }
-
-    const { state: ownerState } = await client.getAccountState({ address: assetState.owner });
-    if (!ownerState) {
-      throw new Error('Owner does not exist on chain');
-    }
-
-    const type = toTypeInfo(ownerState.address);
-    const owner = fromPublicKey(ownerState.pk, type);
-    if (owner.verify(challenge, claim.proof) === false) {
-      throw new Error('Asset owner proof is not valid');
-    }
+    await verifyAssetClaim({
+      claim,
+      challenge,
+      trustedIssuers: [wallet.address],
+      trustedParents: [factories.nftTest],
+    });
 
     return { successMessage: 'Private action successfully performed, now status/action list will be empty' };
   },

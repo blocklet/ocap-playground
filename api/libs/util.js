@@ -1,5 +1,8 @@
 /* eslint-disable object-curly-newline */
-const Mcrypto = require('@ocap/mcrypto');
+const { toTypeInfo, isFromPublicKey } = require('@arcblock/did');
+const { fromPublicKey } = require('@ocap/wallet');
+const { getRandomBytes } = require('@ocap/mcrypto');
+const { preMintFromFactory } = require('@ocap/asset');
 const { createZippedSvgDisplay, createCertSvg, createTicketSvg } = require('@arcblock/nft-template');
 const { NFTRecipient, NFTIssuer } = require('@arcblock/nft');
 const { NFTType } = require('@arcblock/nft/lib/enum');
@@ -9,9 +12,6 @@ const fs = require('fs');
 const path = require('path');
 const pako = require('pako');
 const { toBase64 } = require('@ocap/util');
-
-const { fromPublicKey } = require('@ocap/wallet');
-const { preMintFromFactory } = require('@ocap/asset');
 
 const { formatFactoryState, factories, inputs } = require('./factory');
 const { getCredentialList } = require('./nft');
@@ -173,7 +173,7 @@ const ensureAsset = async (
 };
 
 const getRandomMessage = (len = 16) => {
-  const hex = Mcrypto.getRandomBytes(len);
+  const hex = getRandomBytes(len);
   return hex.replace(/^0x/, '').toUpperCase();
 };
 
@@ -241,6 +241,41 @@ const consumeNodePurchaseNFT = async ({ assetId, vc, userDid, locale }) => {
   return { hash };
 };
 
+const verifyAssetClaim = async ({ claim, challenge, trustedIssuers = [], trustedParents = [] }) => {
+  const fields = ['asset', 'ownerProof', 'ownerPk', 'ownerDid'];
+  for (const field of fields) {
+    if (!claim[field]) {
+      throw new Error(`Invalid asset claim: ${field} is missing`);
+    }
+  }
+
+  const { asset: address, ownerProof, ownerPk, ownerDid } = claim;
+  if (isFromPublicKey(ownerDid, ownerPk)) {
+    throw new Error('Invalid asset claim: owner did and pk mismatch');
+  }
+
+  const owner = fromPublicKey(ownerPk, toTypeInfo(ownerDid));
+  if (owner.verify(challenge, ownerProof) === false) {
+    throw new Error('Invalid asset claim: owner proof invalid');
+  }
+
+  const { state } = await client.getAssetState({ address }, { ignoreFields: ['context'] });
+  if (!state) {
+    throw new Error('Invalid asset claim: asset not found on chain');
+  }
+  if (state.owner !== ownerDid) {
+    throw new Error('Invalid asset claim: owner does not match with on chain state');
+  }
+  if (trustedIssuers.length && trustedIssuers.includes(state.issuer) === false) {
+    throw new Error('Invalid asset claim: asset issuer not in whitelist');
+  }
+  if (trustedParents.length && trustedParents.includes(state.parent) === false) {
+    throw new Error('Invalid asset claim: asset parent not in whitelist');
+  }
+
+  return state;
+};
+
 module.exports = {
   getTransferrableAssets,
   getTokenInfo,
@@ -251,4 +286,5 @@ module.exports = {
   getRandomMessage,
   ensureAsset,
   consumeNodePurchaseNFT,
+  verifyAssetClaim,
 };
