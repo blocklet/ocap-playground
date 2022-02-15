@@ -56,7 +56,6 @@ module.exports = {
     const sessionUser = await User.ensureOne({ did: sessionDid });
     sessionUser.extraVC = vc.id;
     await User.update(sessionUser);
-    console.log('------', vc);
     return {
       disposition: 'attachment',
       type: 'VerifiableCredential',
