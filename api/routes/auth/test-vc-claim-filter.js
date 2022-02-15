@@ -7,7 +7,7 @@ module.exports = {
   action: 'test_vc_claim_filter',
   claims: {
     verifiableCredential: ({ extraParams: { type } }) => {
-      if (type === 'old') {
+      if (type === 'old-online') {
         return {
           description: 'Please provide your node Blocklet Purchase NFT',
           item: ['BlockletPurchaseCredential'],
@@ -16,25 +16,17 @@ module.exports = {
         };
       }
 
-      if (type === 'new') {
+      if (type === 'old-offline') {
         return {
-          description: 'Please provide your node Blocklet Purchas NFT',
-          filters: [
-            {
-              type: ['BlockletPurchaseCredential'],
-              trustedIssuers: [wallet.address],
-              tag: blockletDid,
-            },
-          ],
-        };
-      }
-
-      if (type === 'mix') {
-        return {
-          description: 'Please provide your node Blocklet Purchas NFT',
-          item: ['BlockletPurchaseCredential'],
+          description: 'Please provide your node Fake Passport',
+          item: ['PlaygroundFakePassport'],
           trustedIssuers: [wallet.address],
-          tag: blockletDid,
+        };
+      }
+
+      if (type === 'new-online') {
+        return {
+          description: 'Please provide your node Blocklet Purchase NFT',
           filters: [
             {
               type: ['BlockletPurchaseCredential'],
@@ -45,7 +37,7 @@ module.exports = {
         };
       }
 
-      if (type === 'off-line') {
+      if (type === 'new-offline') {
         return {
           description: 'Please provide your node Fake Passport',
           filters: [
@@ -57,7 +49,23 @@ module.exports = {
         };
       }
 
-      if (type === 'mix-online-off-line') {
+      if (type === 'mix-online') {
+        return {
+          description: 'Please provide your node Blocklet Purchas NFT',
+          item: ['BlockletPurchaseCredential'],
+          trustedIssuers: [wallet.address],
+          tag: blockletDid,
+          filters: [
+            {
+              type: ['BlockletPurchaseCredential'],
+              trustedIssuers: [wallet.address],
+              tag: blockletDid,
+            },
+          ],
+        };
+      }
+
+      if (type === 'new-online-offline') {
         return {
           description: 'Please provide your Blocklet Purchase Credential and node Fake Passport',
           filters: [

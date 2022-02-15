@@ -983,9 +983,9 @@ export default function IndexPage() {
           </Typography>
           <div className="section__content">
             <AuthButton
-              button="只包含旧语法筛选"
+              button="旧语法: 链上 VC"
               action="test_vc_claim_filter"
-              extraParams={{ type: 'old' }}
+              extraParams={{ type: 'old-online' }}
               messages={{
                 title: 'Provide NFT',
                 scan: 'Connect your DID Wallet to provide',
@@ -994,9 +994,9 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="只包含 filters 筛选"
+              button="旧语法: 离线 VC"
               action="test_vc_claim_filter"
-              extraParams={{ type: 'new' }}
+              extraParams={{ type: 'old-offline' }}
               messages={{
                 title: 'Provide NFT',
                 scan: 'Connect your DID Wallet to provide',
@@ -1005,9 +1005,9 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="混合：旧语法和 filters 同时存在"
+              button="新语法: 链上 VC"
               action="test_vc_claim_filter"
-              extraParams={{ type: 'mix' }}
+              extraParams={{ type: 'new-online' }}
               messages={{
                 title: 'Provide NFT',
                 scan: 'Connect your DID Wallet to provide',
@@ -1016,9 +1016,9 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="只筛选离线 VC"
+              button="新语法: 离线 VC"
               action="test_vc_claim_filter"
-              extraParams={{ type: 'off-line' }}
+              extraParams={{ type: 'new-offline' }}
               messages={{
                 title: 'Provide NFT',
                 scan: 'Connect your DID Wallet to provide',
@@ -1027,9 +1027,20 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="筛选链上 VC 和 离线 VC"
+              button="新语法: 链上 VC 和 离线 VC"
               action="test_vc_claim_filter"
-              extraParams={{ type: 'mix-online-off-line' }}
+              extraParams={{ type: 'new-online-offline' }}
+              messages={{
+                title: 'Provide NFT',
+                scan: 'Connect your DID Wallet to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
+            <AuthButton
+              button="混合语法: 链上 VC"
+              action="test_vc_claim_filter"
+              extraParams={{ type: 'mix-online' }}
               messages={{
                 title: 'Provide NFT',
                 scan: 'Connect your DID Wallet to provide',
