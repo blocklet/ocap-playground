@@ -1,3 +1,7 @@
+## 0.24.8 (February 15, 2022)
+
+- fix: asset claim response change
+
 ## 0.24.7 (February 14, 2022)
 
 - chore(deps): bump chain and common deps to latest
