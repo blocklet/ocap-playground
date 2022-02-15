@@ -1,3 +1,7 @@
+## 0.24.12 (February 15, 2022)
+
+- add vc claim filter compatibility test case
+
 ## 0.24.11 (February 15, 2022)
 
 - fix: asset claim verify logic
