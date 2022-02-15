@@ -41,6 +41,7 @@ module.exports = {
       subject: {
         id: userDid,
         passport,
+        time: Date.now(),
         display: {
           type: 'svg',
           passport,

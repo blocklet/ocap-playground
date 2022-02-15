@@ -974,6 +974,82 @@ export default function IndexPage() {
             />
           </div>
         </section>
+        <section className="section">
+          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
+            VC Claim 筛选兼容测试(filters 字段){' '}
+            <Typography component="small" color="textSecondary">
+              链上 NFT: Blocklet Purchase NFT, 离线 VC: PlaygroundFakePassport
+            </Typography>
+          </Typography>
+          <div className="section__content">
+            <AuthButton
+              button="旧语法: 链上 VC"
+              action="test_vc_claim_filter"
+              extraParams={{ type: 'old-online' }}
+              messages={{
+                title: 'Provide NFT',
+                scan: 'Connect your DID Wallet to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
+            <AuthButton
+              button="旧语法: 离线 VC"
+              action="test_vc_claim_filter"
+              extraParams={{ type: 'old-offline' }}
+              messages={{
+                title: 'Provide NFT',
+                scan: 'Connect your DID Wallet to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
+            <AuthButton
+              button="新语法: 链上 VC"
+              action="test_vc_claim_filter"
+              extraParams={{ type: 'new-online' }}
+              messages={{
+                title: 'Provide NFT',
+                scan: 'Connect your DID Wallet to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
+            <AuthButton
+              button="新语法: 离线 VC"
+              action="test_vc_claim_filter"
+              extraParams={{ type: 'new-offline' }}
+              messages={{
+                title: 'Provide NFT',
+                scan: 'Connect your DID Wallet to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
+            <AuthButton
+              button="新语法: 链上 VC 和 离线 VC"
+              action="test_vc_claim_filter"
+              extraParams={{ type: 'new-online-offline' }}
+              messages={{
+                title: 'Provide NFT',
+                scan: 'Connect your DID Wallet to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
+            <AuthButton
+              button="混合语法: 链上 VC"
+              action="test_vc_claim_filter"
+              extraParams={{ type: 'mix-online' }}
+              messages={{
+                title: 'Provide NFT',
+                scan: 'Connect your DID Wallet to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
+          </div>
+        </section>
 
         {!browser.wallet && (
           <section className="section">
