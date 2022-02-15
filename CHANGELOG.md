@@ -1,3 +1,7 @@
+## 0.24.10 (February 15, 2022)
+
+- fix: asset claim verify logic
+
 ## 0.24.9 (February 15, 2022)
 
 - fix: missing fromBase58 when verify asset claim
