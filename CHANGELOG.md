@@ -1,3 +1,7 @@
+## 0.24.9 (February 15, 2022)
+
+- fix: missing fromBase58 when verify asset claim
+
 ## 0.24.8 (February 15, 2022)
 
 - fix: asset claim response change
