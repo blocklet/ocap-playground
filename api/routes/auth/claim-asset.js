@@ -48,10 +48,10 @@ module.exports = {
     },
   },
 
-  onAuth: async ({ userDid, userPk, challenge, claims }) => {
+  onAuth: async ({ challenge, claims }) => {
     const claim = claims.find(x => x.type === 'asset');
-    logger.info('claim.claim-asset.onAuth', { userPk, userDid, claim });
-
-    await verifyAssetClaim({ claim, challenge, trustedIssuers: [wallet.address], trustedParents: [factories.nftTest] });
+    logger.info('claim.claim-asset.onAuth', claim);
+    const assetState = await verifyAssetClaim({ claim, challenge, trustedIssuers: [wallet.address] });
+    return { successMessage: `You provided asset with tag: ${assetState.tags.join(',')}` };
   },
 };
