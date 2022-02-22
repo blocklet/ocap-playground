@@ -60,6 +60,9 @@ const walletHandlers = new WalletHandlers({
 const walletHandlersWithNoChainInfo = new WalletHandlers({
   authenticator: walletAuthWithNoChainInfo,
   tokenStorage,
+  options: {
+    enforceChallenge: true,
+  }
 });
 
 const agentHandlers = new AgentWalletHandlers({
