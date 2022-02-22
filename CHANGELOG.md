@@ -1,3 +1,7 @@
+## 0.24.13 (February 22, 2022)
+
+- chore(deps): bump chain and common deps to latest
+
 ## 0.24.12 (February 15, 2022)
 
 - add vc claim filter compatibility test case
