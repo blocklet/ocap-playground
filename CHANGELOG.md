@@ -1,3 +1,7 @@
+## 0.24.14 (February 25, 2022)
+
+- chore(deps): bump chain and common deps to latest
+
 ## 0.24.13 (February 22, 2022)
 
 - chore(deps): bump chain and common deps to latest
