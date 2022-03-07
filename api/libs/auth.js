@@ -62,7 +62,7 @@ const walletHandlersWithNoChainInfo = new WalletHandlers({
   tokenStorage,
   options: {
     enforceChallenge: true,
-  }
+  },
 });
 
 const agentHandlers = new AgentWalletHandlers({

@@ -1,4 +1,9 @@
+## 0.24.16 (March 07, 2022)
+
+- chore: update the latest ocap package
+
 ## 0.24.15 (March 05, 2022)
+
 - chore(deps): bump chain and common deps to latest
 
 ## 0.24.14 (February 25, 2022)
