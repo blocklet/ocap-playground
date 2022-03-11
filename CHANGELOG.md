@@ -1,3 +1,7 @@
+## 0.24.17 (March 11, 2022)
+
+- chore: update blocklet.yml
+
 ## 0.24.16 (March 07, 2022)
 
 - chore: update the latest ocap package
