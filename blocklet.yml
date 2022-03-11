@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.24.16
+version: 0.24.17
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -62,6 +62,7 @@ interfaces:
     services:
       - name: '@abtnode/auth-service'
         config:
+          blockUnauthenticated: true
           ignoreUrls:
             - /api/did/**
             - /api/agent/**
