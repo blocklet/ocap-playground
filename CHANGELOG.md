@@ -1,3 +1,7 @@
+## 0.24.18 (March 12, 2022)
+
+- chore: update blocklet.yml
+
 ## 0.24.17 (March 11, 2022)
 
 - chore: update blocklet.yml

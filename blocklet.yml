@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.24.17
+version: 0.24.18
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -60,7 +60,7 @@ interfaces:
     port: BLOCKLET_PORT
     protocol: tcp
     services:
-      - name: '@abtnode/auth-service'
+      - name: auth
         config:
           blockUnauthenticated: true
           ignoreUrls:
