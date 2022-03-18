@@ -1,6 +1,8 @@
-## 0.24.19 (March 18, 2022)
+## 0.25.0 (March 18, 2022)
 
-- support sw
+- chore(deps): bump chain and common deps to latest
+- fix: broken test case
+- fix: some acquire asset test case crash
 
 ## 0.24.18 (March 12, 2022)
 

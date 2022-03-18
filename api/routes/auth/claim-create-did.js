@@ -55,16 +55,6 @@ module.exports = {
       throw new Error('The created DID must use ED25519');
     }
 
-    // 2. we need to ensure that the did is declared onchain
-    const { state } = await client.getAccountState({ address: userDid }, getAccountStateOptions);
-    if (!state) {
-      throw new Error('The created DID is not created on chain as required');
-    }
-    // Disable this check for now
-    // if (state.issuer !== wallet.address) {
-    //   throw new Error('The created DID does not belong to expected issuer');
-    // }
-
     // 3. we need to ensure that the did has the same signature
     const w = fromPublicKey(userPk, type);
     if (w.verify(claim.origin, claim.sig) === false) {
