@@ -1,3 +1,7 @@
+## 0.24.19 (March 18, 2022)
+
+- support sw
+
 ## 0.24.18 (March 12, 2022)
 
 - chore: update blocklet.yml
