@@ -47,7 +47,7 @@ const txCreators = {
       requirement: {
         tokens: [{ address: env.localTokenId, value: state.input.value }]
           .concat(state.input.tokens)
-          .filter(x => !!x.value),
+          .filter(x => +x.value > 0),
       },
     };
   },
@@ -121,7 +121,7 @@ const txCreators = {
       requirement: {
         tokens: [{ address: env.localTokenId, value: state.input.value }]
           .concat(state.input.tokens)
-          .filter(x => !!x.value),
+          .filter(x => +x.value > 0),
         assets: {
           parent: [
             'z3CtMVWsnBAMmU941LGo5eRokLxfAcNZ3p2p1',
