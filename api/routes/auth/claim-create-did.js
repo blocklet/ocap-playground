@@ -3,8 +3,8 @@ const { toTypeInfo } = require('@arcblock/did');
 const { types } = require('@ocap/mcrypto');
 const { fromPublicKey } = require('@ocap/wallet');
 
-const { wallet, client } = require('../../libs/auth');
-const { getAccountStateOptions, getRandomMessage } = require('../../libs/util');
+const { wallet } = require('../../libs/auth');
+const { getRandomMessage } = require('../../libs/util');
 const { User } = require('../../models');
 
 module.exports = {
