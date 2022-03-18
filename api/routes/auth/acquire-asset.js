@@ -22,7 +22,7 @@ module.exports = {
 
       const preMint = preMintFromFactory({
         factory: formatFactoryState(state),
-        inputs: typeof inputs[factory] === 'function' ? inputs[factory]() : inputs[factory],
+        inputs: (typeof inputs[factory] === 'function' ? inputs[factory]() : inputs[factory]) || {},
         owner: userDid,
         issuer: { wallet, name: 'ocap-playground' }, // NOTE: using moniker must be enforced to make mint work
       });
