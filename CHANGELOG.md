@@ -1,3 +1,7 @@
+## 0.25.1 (March 18, 2022)
+
+- support service worker
+
 ## 0.25.0 (March 18, 2022)
 
 - chore(deps): bump chain and common deps to latest
