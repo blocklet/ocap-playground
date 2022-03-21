@@ -69,6 +69,7 @@ interfaces:
             - /api/nft/**
             - /blocklet/**
             - /instance/**
+            - /manifest.json
 timeout:
   start: 15
 requirements:
