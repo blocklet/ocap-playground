@@ -605,6 +605,28 @@ export default function IndexPage() {
                 success: 'Success',
               }}
             />
+            <AuthButton
+              button="Explicit Connect"
+              action="connect-only"
+              extraParams={{}}
+              messages={{
+                title: 'Explicit Connect',
+                scan: 'Connect your DID Wallet to continue',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Success',
+              }}
+            />
+            <AuthButton
+              button="Explicit Connect + Dynamic Claims"
+              action="dynamic-claims"
+              extraParams={{}}
+              messages={{
+                title: 'Dynamic Claims',
+                scan: 'Connect your DID Wallet to continue',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Success',
+              }}
+            />
           </div>
         </section>
         <section className="section">
