@@ -32,7 +32,12 @@ registerRoute(
     if (request.mode !== 'navigate') {
       return false;
     } // If this is a URL that starts with /_, skip.
-
+    if (url.pathname.startsWith('/.well-known')) {
+      return false;
+    }
+    if (url.pathname === '/') {
+      return false;
+    }
     if (url.pathname.startsWith('/_')) {
       return false;
     } // If this looks like a URL for a resource, because it contains // a file extension, skip.
@@ -70,3 +75,6 @@ self.addEventListener('message', event => {
 });
 
 // Any other custom service worker logic can go here.
+self.addEventListener('install', () => {
+  self.skipWaiting();
+});

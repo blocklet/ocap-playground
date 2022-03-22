@@ -54,6 +54,16 @@ export function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshing) {
+      return;
+    }
+    refreshing = true;
+    // eslint-disable-next-line no-console
+    console.log('***controllerchange***');
+    window.location.reload();
+  });
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
