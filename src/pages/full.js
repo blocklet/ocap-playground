@@ -638,6 +638,17 @@ export default function IndexPage() {
                 success: 'Success',
               }}
             />
+            <AuthButton
+              button="No Connect"
+              action="no-connect"
+              extraParams={{}}
+              messages={{
+                title: 'No Connect',
+                scan: 'Connect your DID Wallet to continue',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Success',
+              }}
+            />
           </div>
         </section>
         <section className="section">

@@ -108,6 +108,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/tes
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-dynamic')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-connect-only')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-connect-optional-vc')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-no-connect')));
 
 agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-profile'))); // we can reuse something here
 
