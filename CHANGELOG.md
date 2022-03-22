@@ -1,3 +1,7 @@
+## 0.25.2 (March 22, 2022)
+
+- chore: add test case for explicit connect
+
 ## 0.25.1 (March 18, 2022)
 
 - support service worker
