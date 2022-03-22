@@ -12,14 +12,6 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register({
   onUpdate: () => {
-    try {
-      navigator.serviceWorker.getRegistration().then(reg => {
-        reg.waiting.postMessage({ type: 'SKIP_WAITING' });
-      });
-    } catch (e) {
-      window.location.reload();
-    }
-
     let refreshing = false;
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       if (refreshing) {
