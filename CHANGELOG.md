@@ -1,3 +1,8 @@
+## 0.25.4 (March 22, 2022)
+
+- fix: test case depends on sessionDid
+- chore: add test case for no connect
+
 ## 0.25.3 (March 22, 2022)
 
 - chore: add test case for explicit connect
