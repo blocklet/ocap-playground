@@ -48,10 +48,10 @@
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "4.11.2",
     "@ocap/asset": "^1.15.2",
+    "@ocap/client": "^1.15.2",
     "@ocap/mcrypto": "^1.15.2",
     "@ocap/message": "^1.15.2",
     "@ocap/proto": "^1.15.2",
-    "@ocap/client": "^1.15.2",
     "@ocap/tx-util": "^1.15.2",
     "@ocap/util": "^1.15.2",
     "@ocap/wallet": "^1.15.2",
@@ -62,6 +62,7 @@
     "cookie-parser": "^1.4.4",
     "core-js": "2.5.7",
     "cors": "^2.8.5",
+    "customize-cra": "^1.0.0",
     "debug": "^4.1.1",
     "dotenv": "^8.0.0",
     "dsbridge": "^3.1.4",
@@ -85,6 +86,7 @@
     "pako": "^1.0.11",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
+    "react-app-rewired": "^2.2.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
@@ -105,7 +107,8 @@
     "workbox-range-requests": "^5.1.4",
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
-    "workbox-streams": "^5.1.4"
+    "workbox-streams": "^5.1.4",
+    "workbox-webpack-plugin": "^6.5.1"
   },
   "scripts": {
     "lint": "eslint src api",
@@ -113,19 +116,19 @@
     "prepush": "npm run lint",
     "clean": "rm -rf build api/dist .blocklet",
     "start": "npm-run-all --parallel start:*",
-    "start:client": "PUBLIC_URL=\"\" react-scripts start",
+    "start:client": "PUBLIC_URL=\"\" react-app-rewired start",
     "start:server": "NODE_ENV=development DEBUG=@arcblock/* nodemon api/index.js -w api",
     "build": "npm run clean && npm-run-all build:*",
-    "build:client": "react-scripts build && rm -f build/static/**/*.map",
+    "build:client": "react-app-rewired build && rm -f build/static/**/*.map",
     "bundle": "npm run clean && npm run bundle:client && npm run bundle:server",
     "bundle:client": "PUBLIC_URL=\"/.blocklet/proxy/z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM\" REACT_APP_API_PREFIX=\"\" REACT_APP_APP_NAME=\"OCAP Playground\" npm run build:client",
     "bundle:server": "blocklet bundle --zip --create-release",
     "prepublishOnly": "npm run bundle",
     "release": "npm run clean && npm run bundle",
     "deploy": "npm run release && blocklet deploy .blocklet/bundle --skip-hooks",
-    "test": "react-scripts test",
+    "test": "react-app-rewired test",
     "echo": "export MESSAGE=$1 && echo $MESSAGE",
-    "eject": "react-scripts eject"
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"

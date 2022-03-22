@@ -20,7 +20,7 @@ const isLocalhost = Boolean(
 );
 
 export function register(config) {
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  if ('serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
     if (publicUrl.origin !== window.location.origin) {
@@ -54,16 +54,6 @@ export function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
-  let refreshing = false;
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (refreshing) {
-      return;
-    }
-    refreshing = true;
-    // eslint-disable-next-line no-console
-    console.log('***controllerchange***');
-    window.location.reload();
-  });
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
@@ -72,6 +62,14 @@ function registerValidSW(swUrl, config) {
         if (installingWorker == null) {
           return;
         }
+
+        if (registration.waiting) {
+          if (config && config.onUpdate) {
+            config.onUpdate(registration);
+          }
+          return;
+        }
+
         installingWorker.onstatechange = () => {
           if (installingWorker.state === 'installed') {
             if (navigator.serviceWorker.controller) {

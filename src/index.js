@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorkerRegistration from './service-worker-registration';
@@ -11,7 +12,22 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register({
   onUpdate: () => {
-    // eslint-disable-next-line no-console
-    console.log('onUpdate');
+    try {
+      navigator.serviceWorker.getRegistration().then(reg => {
+        reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+      });
+    } catch (e) {
+      window.location.reload();
+    }
+
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshing) {
+        return;
+      }
+
+      refreshing = true;
+      window.location.reload();
+    });
   },
 });

@@ -38,3 +38,4 @@ blocklet.js
 .eslintcache
 
 .abtnode
+dist/
