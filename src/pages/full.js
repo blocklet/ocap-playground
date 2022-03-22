@@ -627,6 +627,17 @@ export default function IndexPage() {
                 success: 'Success',
               }}
             />
+            <AuthButton
+              button="Explicit Connect + Optional VC"
+              action="connect-optional-vc"
+              extraParams={{}}
+              messages={{
+                title: 'Optional VC',
+                scan: 'Connect your DID Wallet to continue',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Success',
+              }}
+            />
           </div>
         </section>
         <section className="section">
