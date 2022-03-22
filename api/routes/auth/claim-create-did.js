@@ -39,7 +39,7 @@ module.exports = {
   ],
 
   // eslint-disable-next-line object-curly-newline
-  onAuth: async ({ userDid, userPk, sessionDid, claims }) => {
+  onAuth: async ({ userDid, userPk, claims, extraParams: { sessionDid } }) => {
     const claim = claims.find(x => x.type === 'signature');
     logger.info('claim.create_did.onAuth', { userPk, userDid, claim });
 

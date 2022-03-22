@@ -515,6 +515,7 @@ export default function IndexPage() {
             <AuthButton
               button="Create New DID"
               action="claim_create_did"
+              extraParams={{ sessionDid: session.user.did }}
               messages={{
                 title: 'Create DID',
                 scan: 'Connect your DID Wallet to get the did spec',
@@ -525,6 +526,7 @@ export default function IndexPage() {
             <AuthButton
               button="Proof of DID Holding"
               action="claim_target"
+              extraParams={{ sessionDid: session.user.did }}
               messages={{
                 title: 'Provide DID',
                 scan: 'Connect your DID Wallet to prove you own the DID',
@@ -779,6 +781,7 @@ export default function IndexPage() {
             <AuthButton
               button="Claim Fake Passport"
               action="fake_passport"
+              extraParams={{ sessionDid: session.user.did }}
               messages={{
                 title: 'Claim Fake Passport',
                 scan: 'Connect your DID Wallet to sign a message',
@@ -789,7 +792,7 @@ export default function IndexPage() {
             <AuthButton
               button="Claim Target VC"
               action="claim_target_vc"
-              extraParams={{ type: 'NFTCertificate' }}
+              extraParams={{ type: 'NFTCertificate', sessionDid: session.user.did }}
               messages={{
                 title: 'Provide your Fake Passport',
                 scan: 'Connect your DID Wallet to sign a message',

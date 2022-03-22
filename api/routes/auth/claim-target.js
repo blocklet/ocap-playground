@@ -9,7 +9,7 @@ module.exports = {
   authPrincipal: false, // disable default auth principal
   claims: [
     {
-      authPrincipal: async ({ sessionDid }) => {
+      authPrincipal: async ({ extraParams: { sessionDid } }) => {
         const user = await User.findOne({ did: sessionDid });
         if (!user) {
           throw new Error('You are not a valid user, please login and retry');
@@ -38,7 +38,7 @@ module.exports = {
     },
   ],
 
-  onAuth: async ({ userDid, userPk, sessionDid, claims }) => {
+  onAuth: async ({ userDid, userPk, claims, extraParams: { sessionDid } }) => {
     const claim = claims.find(x => x.type === 'signature');
     logger.info('claim.create_did.onAuth', { userPk, userDid, claim });
 

@@ -18,7 +18,7 @@ module.exports = {
     }),
   },
 
-  onAuth: async ({ userDid, userPk, claims, sessionDid }) => {
+  onAuth: async ({ userDid, userPk, claims, extraParams: { sessionDid } }) => {
     const type = toTypeInfo(userDid);
     const user = fromPublicKey(userPk, type);
     const claim = claims.find(x => x.type === 'signature');
