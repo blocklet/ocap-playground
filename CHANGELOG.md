@@ -1,3 +1,6 @@
+## 0.25.8 (March 22, 2022)
+- chore: update page when servce worker available new content
+
 ## 0.25.7 (March 22, 2022)
 
 - chore: update ux lib to latest
