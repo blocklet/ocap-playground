@@ -1,3 +1,7 @@
+## 0.25.7 (March 22, 2022)
+
+- chore: update ux lib to latest
+
 ## 0.25.6 (March 22, 2022)
 - support update sw
 
