@@ -1,3 +1,6 @@
+## 0.25.6 (March 22, 2022)
+- support update sw
+
 ## 0.25.5 (March 22, 2022)
 
 - chore(deps): bump chain and common deps to latest
