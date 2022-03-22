@@ -1,3 +1,7 @@
+## 0.25.5 (March 22, 2022)
+
+- chore(deps): bump chain and common deps to latest
+
 ## 0.25.4 (March 22, 2022)
 
 - fix: test case depends on sessionDid
