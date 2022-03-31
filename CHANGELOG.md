@@ -1,3 +1,7 @@
+## 0.26.0 (March 31, 2022)
+
+- feat: ensure fuel during setup
+
 ## 0.25.8 (March 22, 2022)
 - chore: update page when servce worker available new content
 
