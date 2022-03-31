@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.25.8
+version: 0.26.0
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -38,20 +38,23 @@ environments:
     required: true
     default: 'https://beta.abtnetwork.io/api/'
     secure: false
+    shared: true
   - name: LOCAL_TOKEN_ID
     description: Please provide local token for the playground
     required: true
     default: z35n6UoHSi9MED4uaQy6ozFgKPaZj2UKrurBG
     secure: false
+    shared: true
   - name: FOREIGN_TOKEN_ID
     description: Please provide foreign token for the playground
     required: true
     default: z35n3WVTnN7KrR4gXn3szR6oneVefkBBx78Fc
     secure: false
+    shared: true
 scripts:
   preStart: node api/libs/hooks/pre-start.js
   dev: npm run start
-specVersion: 1.2.3
+specVersion: 1.2.4
 interfaces:
   - type: web
     name: publicUrl
@@ -73,9 +76,13 @@ interfaces:
 timeout:
   start: 15
 requirements:
-  abtnode: '>=1.3.5'
+  server: '>=1.7.4'
   os: '*'
   cpu: '*'
+  fuels:
+    - endpoint: '{env.CHAIN_HOST}'
+      value: '2000'
+      reason: For Creating Token and NFT Factory
 did: z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM
 children:
   - name: promotion-tool
