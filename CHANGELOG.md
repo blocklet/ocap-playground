@@ -1,3 +1,7 @@
+## 0.27.0 (April 02, 2022)
+
+- chore(deps): bump chain and common deps to latest
+
 ## 0.26.0 (March 31, 2022)
 
 - feat: ensure fuel during setup
