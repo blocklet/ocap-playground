@@ -1,3 +1,6 @@
+## 0.28.0 (April 02, 2022)
+- chore: disable service worker
+
 ## 0.27.0 (April 02, 2022)
 
 - chore(deps): bump chain and common deps to latest
