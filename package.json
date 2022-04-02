@@ -43,7 +43,7 @@
     "@arcblock/react-hooks": "^1.16.69",
     "@arcblock/ux": "^1.16.69",
     "@arcblock/vc": "^1.15.7",
-    "@blocklet/sdk": "^1.7.4",
+    "@blocklet/sdk": "^1.7.5",
     "@fontsource/rubik": "^4.5.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "4.11.2",
