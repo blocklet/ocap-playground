@@ -9,7 +9,7 @@ const env = require('../../libs/env');
 module.exports = {
   action: 'send_token',
   claims: {
-    signature: async ({ extraParams: { locale, chain, amount } }) => {
+    signature: async ({ userDid, userPk, extraParams: { locale, chain, amount } }) => {
       const token = await getTokenInfo();
       if (amount === 'random') {
         // eslint-disable-next-line no-param-reassign
@@ -28,6 +28,8 @@ module.exports = {
       return {
         type: 'TransferV2Tx',
         data: {
+          from: userDid,
+          pk: userPk,
           itx: {
             to: wallet.address,
             tokens: [
