@@ -1,3 +1,7 @@
+## 0.29.1 (April 06, 2022)
+
+- fix: send token failed
+
 ## 0.29.0 (April 02, 2022)
 
 - chore(deps): bump chain and common deps to latest
