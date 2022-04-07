@@ -2,14 +2,14 @@
 # yarn lockfile v1
 
 
-"@abtnode/client@1.7.5":
-  version "1.7.5"
-  resolved "https://registry.yarnpkg.com/@abtnode/client/-/client-1.7.5.tgz#964fc4fff2fce46da0965cf04750f0cdd5732974"
-  integrity sha512-sfoaHthWDGfnjDI3HLi6fGMKXuYv9VzO7XQGlHomhMdwrKmFP52pIQehG6vUvjC1i5AiQ4SodKSCxu+70+ZO+g==
+"@abtnode/client@1.7.6":
+  version "1.7.6"
+  resolved "https://registry.yarnpkg.com/@abtnode/client/-/client-1.7.6.tgz#aecdcb837dc7671cdcc1782df0629e573c5db1cd"
+  integrity sha512-rsEqB5ER7J5+7dBuNGbo5boWivkCMUHFdTvNI/IWRaErsg6Jzauzqqk+RdgqZoGiL0IKKGIGL+purt2EjSlMYw==
   dependencies:
     "@arcblock/sdk-util" "^0.30.0"
-    "@ocap/util" "^1.15.7"
-    "@ocap/wallet" "^1.15.7"
+    "@ocap/util" "^1.16.0"
+    "@ocap/wallet" "^1.16.0"
     axios "^0.25.0"
     blueimp-md5 "^2.10.0"
     core-js "^3.6.5"
@@ -18,10 +18,10 @@
     lodash "^4.17.21"
     react-app-polyfill "^1.0.6"
 
-"@abtnode/constant@1.7.5":
-  version "1.7.5"
-  resolved "https://registry.yarnpkg.com/@abtnode/constant/-/constant-1.7.5.tgz#41fbfd50af0421df2d4c5386ecec5e44f04fe955"
-  integrity sha512-/2Kn50iBxUP87sUXwTnS4QYoLLhFTKVrwknymG8TBv3o+BRMnOXCU4oiKGl6rmGEBLtP1ckRci7alvHzjYZ+KA==
+"@abtnode/constant@1.7.6":
+  version "1.7.6"
+  resolved "https://registry.yarnpkg.com/@abtnode/constant/-/constant-1.7.6.tgz#5676af8233540dd8875199ac3fb8adc7c6a4f121"
+  integrity sha512-i/YVqJ4pwyouRVeLwMdpWWoQk98RHJC+qfSQXoHVdu0KFnfJaFaBPw0Ni/JuX0x/un3Tk+wbpRCimeRKT2c9hQ==
 
 "@ampproject/remapping@^2.1.0":
   version "2.1.2"
@@ -70,32 +70,34 @@
   resolved "https://registry.yarnpkg.com/@arcblock/did-auth-storage/-/did-auth-storage-1.6.3.tgz#74b4f29471b3381a393d58eb5bfe4c3f11ad57fa"
   integrity sha512-tKzoPR9MHXyiVoz98fJnDyPzyfkAZ1eFxZil/gDQIGJyP+yfpV8bPgLfe2W0ig8XceizbogBlhn5EqWnXreV8g==
 
-"@arcblock/did-auth@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-auth/-/did-auth-1.15.7.tgz#b5c842c941f77c592d699cda737f6d2b5403c944"
-  integrity sha512-gucqkL0ob8usah37ujllxdIUpEx94i+8e77ULWCBqvck2Yiq12uep0igvwNt/37OYorTYegLyuo1vGiGUsgc5A==
+"@arcblock/did-auth@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-auth/-/did-auth-1.16.0.tgz#5c8ea23cc715d9351c1e4855b9243f80fdc31b66"
+  integrity sha512-eaMiBfB8Dn1upgruhwTjYmsV05AsGcLRo+RjNDF1IhNjHuc38lRPpOxvVRQc5wz/vcqqIirmT1L1WWa412P9zQ==
   dependencies:
-    "@arcblock/did" "1.15.7"
-    "@arcblock/jwt" "1.15.7"
-    "@arcblock/validator" "1.15.7"
-    "@ocap/client" "1.15.7"
-    "@ocap/mcrypto" "1.15.7"
-    "@ocap/util" "1.15.7"
-    "@ocap/wallet" "1.15.7"
+    "@arcblock/did" "1.16.0"
+    "@arcblock/jwt" "1.16.0"
+    "@arcblock/validator" "1.16.0"
+    "@ocap/client" "1.16.0"
+    "@ocap/mcrypto" "1.16.0"
+    "@ocap/util" "1.16.0"
+    "@ocap/wallet" "1.16.0"
     debug "^4.3.3"
+    json-stable-stringify "^1.0.1"
     lodash "^4.17.21"
     semver "^7.3.4"
+    tweetnacl-sealedbox-js "^1.2.0"
 
-"@arcblock/did-connect@^1.16.69":
-  version "1.16.69"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-1.16.69.tgz#384254f51e62fbcf242bb8121f0c5f6b268dedc8"
-  integrity sha512-olJnY6K486xHzRIi9YsUbLTxGKpgadhCcRR+CdDx2TBm99wGmit3Js0qknlc33jzqNVSGtAaFz3rpomdoQ2PmA==
+"@arcblock/did-connect@^1.17.0":
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-1.17.0.tgz#ebb9d154892ff2829e5cea9e9fc5cea765e3f9d7"
+  integrity sha512-s/wjHllp7+19b5Ufu9kX5On4tcN4he7XvnM0aqUMA3FcqTythsW2n27JcpAO8y8eo+zwQhIZtrlrBN65/pTVJQ==
   dependencies:
     "@arcblock/did-motif" "^1.1.1"
     "@arcblock/event-client" "^1.0.23"
-    "@arcblock/icons" "^1.16.69"
-    "@arcblock/react-hooks" "^1.16.69"
-    "@arcblock/ux" "^1.16.69"
+    "@arcblock/icons" "^1.17.0"
+    "@arcblock/react-hooks" "^1.17.0"
+    "@arcblock/ux" "^1.17.0"
     "@fontsource/rubik" "^4.5.0"
     "@fontsource/ubuntu-mono" "^4.4.5"
     "@material-ui/core" "^4.12.3"
@@ -108,16 +110,18 @@
     querystring "^0.2.1"
     react-use "^17.2.4"
     styled-components "^5.0.0"
+    tweetnacl "^1.0.3"
+    tweetnacl-sealedbox-js "^1.2.0"
 
-"@arcblock/did-ext@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-ext/-/did-ext-1.15.7.tgz#964a5654d351fbd845f7d2d4166be39ed08f0911"
-  integrity sha512-sT2rRmnpqA4ri9qIQYqcONyRdQB/oXg1MDROibLqknBwF7aHiWLFi+dWs7fbESfYkLXANNbbX1w3BxBNPiD2wA==
+"@arcblock/did-ext@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-ext/-/did-ext-1.16.0.tgz#7204e0c069c719ed9c2c22a46f958c36b50462d9"
+  integrity sha512-1EI1lV675J9RWixFwIqtZ1qGBFsPnA1nHcxU9jI1hB2LQtaZV1WV2fpPcBF8e2Q2cOoYqruA7x7n/fx8klrc5w==
   dependencies:
-    "@arcblock/did" "1.15.7"
-    "@ocap/mcrypto" "1.15.7"
-    "@ocap/util" "1.15.7"
-    "@ocap/wallet" "1.15.7"
+    "@arcblock/did" "1.16.0"
+    "@ocap/mcrypto" "1.16.0"
+    "@ocap/util" "1.16.0"
+    "@ocap/wallet" "1.16.0"
     "@wangshijun/hdkey" "^2.0.4"
     bn.js "^5.2.0"
     debug "^4.3.3"
@@ -130,14 +134,14 @@
   dependencies:
     multibase "^4.0.6"
 
-"@arcblock/did-playground@^1.16.69":
-  version "1.16.69"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-1.16.69.tgz#5809779356266b9b851f426cad794543100c729b"
-  integrity sha512-aFzsppCvu+KtbhI6yWRSpnB4Nn0+nkr+jX7kbuon2t3WjGMMXx0dc4cIBzyOYpQtyUi9uLktzx8EoQyEq5+17Q==
+"@arcblock/did-playground@^1.17.0":
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-1.17.0.tgz#79e5ab122454c23717019fbf3a17bebfcf5e8ee4"
+  integrity sha512-Ndrhh0GYyAMC3PAnnomhpx3NaZFYc1cGWB55Uk0owCQ30TA0gRzY7opoMIn55r3pxoQkrsbGGHs8Ey3VwQCMZQ==
   dependencies:
-    "@arcblock/did-connect" "^1.16.69"
-    "@arcblock/react-hooks" "^1.16.69"
-    "@arcblock/ux" "^1.16.69"
+    "@arcblock/did-connect" "^1.17.0"
+    "@arcblock/react-hooks" "^1.17.0"
+    "@arcblock/ux" "^1.17.0"
     "@material-ui/core" "^4.12.3"
     axios "^0.21.1"
     core-js "^3.6.4"
@@ -145,25 +149,25 @@
     react-use "^17.2.4"
     styled-components "^5.0.1"
 
-"@arcblock/did-util@1.15.7", "@arcblock/did-util@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-util/-/did-util-1.15.7.tgz#545591563498c2653f9be62d16570bf9556e4534"
-  integrity sha512-fRy8Z7M9JsoNBT0kF4XuPJJSttXDOqeB/IX87gslkm6t1b/QIH1RNDuWNeVMd6vCcEon8Hk0XCiVz+jH0Ior9A==
+"@arcblock/did-util@1.16.0", "@arcblock/did-util@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-util/-/did-util-1.16.0.tgz#f65b231ece8aa605bfa3479ece1cd644f96d4421"
+  integrity sha512-5q0C/l6HM4FUra4SJDl9StsAtME703w558xapPR/7et3rXa/zAsB+lRrZbkRoXhkh5K7AfU+9wpYs9/CKddpRQ==
   dependencies:
-    "@arcblock/did" "1.15.7"
-    "@ocap/mcrypto" "1.15.7"
-    "@ocap/message" "1.15.7"
-    "@ocap/proto" "1.15.7"
-    "@ocap/util" "1.15.7"
-    "@ocap/wallet" "1.15.7"
+    "@arcblock/did" "1.16.0"
+    "@ocap/mcrypto" "1.16.0"
+    "@ocap/message" "1.16.0"
+    "@ocap/proto" "1.16.0"
+    "@ocap/util" "1.16.0"
+    "@ocap/wallet" "1.16.0"
 
-"@arcblock/did@1.15.7", "@arcblock/did@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/did/-/did-1.15.7.tgz#0c2689672f444341b81102ef19e6b25b421f76f2"
-  integrity sha512-yc0RrVII4yl7R2NRObM4NFAZZCuh5FbnEiaru0bMxuslBASy11SEqc7HnZV+8SMS4HKlu3ANCsEIvTGQaHQaOw==
+"@arcblock/did@1.16.0", "@arcblock/did@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/did/-/did-1.16.0.tgz#88b5a9580b2d09068afd54564845df8452a2a005"
+  integrity sha512-FK9Dmik98IbFWBJt+cMtSlg5JdE4RViSKPiSzLxv0ygtULumhbeZx8WWRbUlYcgtnaop+e6fs7Xk/3yeEt6GRQ==
   dependencies:
-    "@ocap/mcrypto" "1.15.7"
-    "@ocap/util" "1.15.7"
+    "@ocap/mcrypto" "1.16.0"
+    "@ocap/util" "1.16.0"
     bn.js "^5.2.0"
     debug "^4.3.3"
     lodash "^4.17.21"
@@ -184,62 +188,62 @@
     wolfy87-eventemitter "^5.2.5"
     ws "^7.2.0"
 
-"@arcblock/event-hub@1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/event-hub/-/event-hub-1.15.7.tgz#d30d53150e29d4fb42ce2451d1363969f50a90ac"
-  integrity sha512-JSJX/8AcjYRbVLa88r3Pw+THSKlxYKPRVyRbA0odORM95QC37lu2R1dLr6P5RQAXTMlyMX56jcvMoWdR9zMBpQ==
+"@arcblock/event-hub@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/event-hub/-/event-hub-1.16.0.tgz#4de5fb47397c43469df930f5db7e97e516fd5e3f"
+  integrity sha512-xlvktdAiDwrWXh501Q5ApJW6tZNPt/QW9HJLAEF2LRNIni7RCONqth5596XMmkBsCWCHfwPBQ3CrJovyLsqGag==
   dependencies:
-    "@arcblock/did" "1.15.7"
-    "@arcblock/jwt" "1.15.7"
-    "@ocap/wallet" "1.15.7"
+    "@arcblock/did" "1.16.0"
+    "@arcblock/jwt" "1.16.0"
+    "@ocap/wallet" "1.16.0"
     amp-message "~0.1.1"
     axon "^2.0.3"
 
-"@arcblock/icons@^1.16.69":
-  version "1.16.69"
-  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-1.16.69.tgz#547d5a6e9047b80993bed5ede78c3df4cb69b46b"
-  integrity sha512-TuQ+9TTDAxroljV3HVfGYewj92KQkkWvV66mn/PVt3hk/ljzIEQTmS7ML9g56K+39RIFp8oYljCJO9RLUBwqGg==
+"@arcblock/icons@^1.17.0":
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-1.17.0.tgz#bdc255ec2161f1bc8935c27acda22c5d8fdbdd83"
+  integrity sha512-jZHi3Lxj7dKc5vm1o7VMkPyiSMJLe76wM6MGofX0LOsbA5kAQDF/GvZIEmr+bU9pugOna0Mw+jUg2BVGfC9l9w==
 
-"@arcblock/jwt@1.15.7", "@arcblock/jwt@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/jwt/-/jwt-1.15.7.tgz#dbf503adb7c1d92e826dbe7eea9a0c0ce73cf07a"
-  integrity sha512-Mwuv8pbXRBtvcedAnn+h8PtU37M7+UVHL5ejkfWmj3YBIOFQgqCwPyjW0YHwiaLDt7gXv8qrjgbYKTam7OLRiA==
+"@arcblock/jwt@1.16.0", "@arcblock/jwt@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/jwt/-/jwt-1.16.0.tgz#7f8a4570fe49edb0c36e77cd0de437e34e89a8db"
+  integrity sha512-wZI9BD5DgnXNFNyYHD5ksXNYpcPDdp7SIUR46mZVkaOw9Yi/hTs/Fto6Kt1czPHKaWL4vpyZM/G9sIl2l+5Bnw==
   dependencies:
-    "@arcblock/did" "1.15.7"
-    "@ocap/mcrypto" "1.15.7"
-    "@ocap/util" "1.15.7"
+    "@arcblock/did" "1.16.0"
+    "@ocap/mcrypto" "1.16.0"
+    "@ocap/util" "1.16.0"
     debug "^4.3.3"
     json-stable-stringify "^1.0.1"
     semver "^7.3.4"
 
-"@arcblock/nft-template@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/nft-template/-/nft-template-1.15.7.tgz#991b565a57447aba4d936cffc41187267ee5d1a1"
-  integrity sha512-zZ66hudQce65XKdXINM0aMyMYXljBFr+LafmyDycyCzZjD2kOhezPyTzUMuasFAaW4m/ESeKaB0qEJXgo0Kj0w==
+"@arcblock/nft-template@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/nft-template/-/nft-template-1.16.0.tgz#cde27016884900e0011b157496b73bef3dd8859a"
+  integrity sha512-+zvlyFeI2/VLLY6WCV6P2WvElnUPgqDU2SEqESjnkJ1nckrlfLfMjeeIkz597/RNEjAriMo8cwavfKia30IwPQ==
   dependencies:
-    "@ocap/util" "1.15.7"
+    "@ocap/util" "1.16.0"
     pako "^1.0.11"
 
-"@arcblock/nft@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/nft/-/nft-1.15.7.tgz#ae16c61b53f666af249ab13777ca66d99c80bcfe"
-  integrity sha512-SZr1IMQ86vz1klEUwDTTd2kxbzzfbwjxhDwyMjX57EyuaHrSHS9fKT/dLPq/Gu2+iK2DbYdB3CWF9IdHo7C8AA==
+"@arcblock/nft@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/nft/-/nft-1.16.0.tgz#187fbf6f11c30eb3e61ec80f8a53300a42a8f5fe"
+  integrity sha512-5Yf3P/YMM3BDZRnveOZPyMiqPKxstULx+mjasJxZqyphPw9WwTrKegq9r7FzCqj359A9NoVgI+rn7VgvOl7IWg==
   dependencies:
-    "@arcblock/did-util" "1.15.7"
-    "@arcblock/vc" "1.15.7"
-    "@ocap/client" "1.15.7"
-    "@ocap/util" "1.15.7"
-    "@ocap/wallet" "1.15.7"
+    "@arcblock/did-util" "1.16.0"
+    "@arcblock/vc" "1.16.0"
+    "@ocap/client" "1.16.0"
+    "@ocap/util" "1.16.0"
+    "@ocap/wallet" "1.16.0"
     debug "^4.3.3"
     json-stable-stringify "^1.0.1"
     lodash "^4.17.21"
     pako "^1.0.11"
     url-join "^4.0.1"
 
-"@arcblock/react-hooks@^1.16.69":
-  version "1.16.69"
-  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-1.16.69.tgz#69581673e0624c2100885e7c7db87e3cdd74a965"
-  integrity sha512-AS1x1TRS3IizdvuNB8AkmQG1FoiYxhpSwGpsWuHEZHe1WeRUGiZIoKCKHDI41xpoTVfq+fNSz2hlkviuDZzKdg==
+"@arcblock/react-hooks@^1.17.0":
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-1.17.0.tgz#37bbd46ab09179e9dc26732056dcd332bd718970"
+  integrity sha512-8gseNHXF9cZvxaKLmv0T1WNE3NKolBE/yAT8BH9KVjZV8qqNI4Nz1Yr5MTAN30jJ0T7rGoVTd2Bz7EKrWW9mNA==
   dependencies:
     core-js "^3.6.4"
     event-target-shim "^5.0.1"
@@ -256,13 +260,13 @@
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
-"@arcblock/ux@^1.16.69":
-  version "1.16.69"
-  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-1.16.69.tgz#4663ba22e977b4820c07861672f72f04d223b399"
-  integrity sha512-LnvEa2AMWzIMmb77y//pxlZV8bleIyO3Sfmi4jYhYGZeZKEoXx9VzN5k8Mr+n93PyaDP71pyp1voE+xa8hFSpw==
+"@arcblock/ux@^1.17.0":
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-1.17.0.tgz#a0f167b61de7d13933fbcf21e4f05dcf5067757a"
+  integrity sha512-1MOhSLbVY3mJJZc/0wg3mh0SujhR9x5pj2hE5VfTX+K5ywEJXVKNVrzPa9vXR8Xh4LUFVdSuYD+jpY6mhBq/AQ==
   dependencies:
-    "@arcblock/icons" "^1.16.69"
-    "@arcblock/react-hooks" "^1.16.69"
+    "@arcblock/icons" "^1.17.0"
+    "@arcblock/react-hooks" "^1.17.0"
     "@babel/plugin-syntax-dynamic-import" "^7.8.3"
     "@fontsource/lato" "^4.5.3"
     "@material-ui/core" "^4.12.3"
@@ -294,37 +298,37 @@
     xterm-addon-fit "^0.2.1"
     xterm-addon-web-links "^0.2.1"
 
-"@arcblock/validator@1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/validator/-/validator-1.15.7.tgz#f7fadfc668546a1d76fe8221214ceb3832b76fd2"
-  integrity sha512-BUnton8euRDzFaVojY4fu7ekq1fMM2mNFHS/n1MGwxXumLbSLAHn5F9dFE8lwl3Kt+qIVjExfs1S3g8zwiBeVA==
+"@arcblock/validator@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/validator/-/validator-1.16.0.tgz#8ed95b1b93a56d4c48596cf4d803580786622493"
+  integrity sha512-LWRSxVUIq6UJ+a/BY6lpxr/wvIs0sKjoVljUju9t7hg3nkNCU1qTCGA4eMCCxJPU86CH9pokWEG1BBNjXtqPtQ==
   dependencies:
-    "@arcblock/did" "1.15.7"
-    "@ocap/mcrypto" "1.15.7"
-    "@ocap/util" "1.15.7"
+    "@arcblock/did" "1.16.0"
+    "@ocap/mcrypto" "1.16.0"
+    "@ocap/util" "1.16.0"
     joi "^17.6.0"
     lodash "^4.17.21"
 
-"@arcblock/vc@1.15.7", "@arcblock/vc@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/vc/-/vc-1.15.7.tgz#6465351636a40ee6c2a447b16093c22300d3ea20"
-  integrity sha512-74ZLCCGxamyW5iZguxo+uT1Z8yEpbpmIou0qvTzRCxgYlYyRE9F2PDUErQyj7saLqs5igvPIvW7dzLVfFMxKkA==
+"@arcblock/vc@1.16.0", "@arcblock/vc@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/vc/-/vc-1.16.0.tgz#751f1feeec24c0f80b54e93e8bf386699d002dbc"
+  integrity sha512-d+6/yg6LC7GgKICDimV4m4fEF30WI5HDD/Aw4Gp0CbF3I9AtR2k2/4DwWAyD0FinfOPqzuWez1aQ+hqL5MiYJw==
   dependencies:
-    "@arcblock/did" "1.15.7"
-    "@ocap/mcrypto" "1.15.7"
-    "@ocap/util" "1.15.7"
-    "@ocap/wallet" "1.15.7"
+    "@arcblock/did" "1.16.0"
+    "@ocap/mcrypto" "1.16.0"
+    "@ocap/util" "1.16.0"
+    "@ocap/wallet" "1.16.0"
     debug "^4.3.3"
     is-absolute-url "^3.0.3"
     json-stable-stringify "^1.0.1"
     lodash "^4.17.21"
 
-"@arcblock/ws@1.15.7", "@arcblock/ws@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@arcblock/ws/-/ws-1.15.7.tgz#3a3ef71fef68f9e4fbafa4fd9777be3cd6559174"
-  integrity sha512-RnEWJGourQQZU9tZWLQ+R1eyCo6T012RqoK/YHZ7L5dnGqsnpDYVsUmnWIMQRv74d9/GOFMwoTaDwoqCYgt7Wg==
+"@arcblock/ws@1.16.0", "@arcblock/ws@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@arcblock/ws/-/ws-1.16.0.tgz#e8897ebeb6b7181832b7aaead7794b4366c3d865"
+  integrity sha512-MNiz28zueRcxoWSMt77HDvciRWUOfTSealwI3Ry359dpczs0YDBPofeOuxKUQSpZBMAAVvGC7jGFPpVXV5R4CA==
   dependencies:
-    "@arcblock/event-hub" "1.15.7"
+    "@arcblock/event-hub" "1.16.0"
     debug "^4.3.3"
     eventemitter3 "^4.0.4"
     phoenix "1.5.12"
@@ -1543,20 +1547,20 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@blocklet/meta@1.7.5":
-  version "1.7.5"
-  resolved "https://registry.yarnpkg.com/@blocklet/meta/-/meta-1.7.5.tgz#305be0f06ae1e146f37187ab823eb15a5f412b35"
-  integrity sha512-ab1G9GLlP3oJyJo9nbOJhf/jeHjejAQgTJJXG51c5gXGX2vy1Al6Y1N585V5XWCUkR5oDobKULyDTz+U0wyyCQ==
+"@blocklet/meta@1.7.6":
+  version "1.7.6"
+  resolved "https://registry.yarnpkg.com/@blocklet/meta/-/meta-1.7.6.tgz#015d5a6ad772b9c3642f4d0df661f54a32d841ae"
+  integrity sha512-ZO818znngjJVeW1+mkR40vXpaIM2CDjZlhEu7sgzuutASeSRwKafegxdIY/nVx/Hxa5FnN/6vF7TAuZds4bPVQ==
   dependencies:
-    "@abtnode/constant" "1.7.5"
-    "@arcblock/did" "^1.15.7"
-    "@arcblock/did-ext" "^1.15.7"
-    "@arcblock/did-util" "^1.15.7"
-    "@arcblock/nft" "^1.15.7"
-    "@ocap/asset" "^1.15.7"
-    "@ocap/mcrypto" "^1.15.7"
-    "@ocap/util" "^1.15.7"
-    "@ocap/wallet" "^1.15.7"
+    "@abtnode/constant" "1.7.6"
+    "@arcblock/did" "^1.16.0"
+    "@arcblock/did-ext" "^1.16.0"
+    "@arcblock/did-util" "^1.16.0"
+    "@arcblock/nft" "^1.16.0"
+    "@ocap/asset" "^1.16.0"
+    "@ocap/mcrypto" "^1.16.0"
+    "@ocap/util" "^1.16.0"
+    "@ocap/wallet" "^1.16.0"
     ajv "^7.0.3"
     cjk-length "^1.0.0"
     debug "^4.3.3"
@@ -1571,20 +1575,20 @@
     url-join "^4.0.1"
     validate-npm-package-name "^3.0.0"
 
-"@blocklet/sdk@^1.7.5":
-  version "1.7.5"
-  resolved "https://registry.yarnpkg.com/@blocklet/sdk/-/sdk-1.7.5.tgz#317096e2aa70b800ad0bcd844e4546ad6e6783ff"
-  integrity sha512-ncAsaPa0bVeJzD/FeRf9eABPB3kOKNWcBFJJMsDBPJzwTJPCT0sjz35JJPo8iNLevPz9WZH3L/R0oB87uWZdrQ==
+"@blocklet/sdk@^1.7.6":
+  version "1.7.6"
+  resolved "https://registry.yarnpkg.com/@blocklet/sdk/-/sdk-1.7.6.tgz#e4656bfdfde8699b6c610dde912744d9ecb96b9f"
+  integrity sha512-4+YOAEpb2bR2eKWLT12C6FQYlWu3QhEXJmRLvaUAEG3qofuFZ3G9K2qF59qxjO+EVM3Ic/PrtITprdADADJXYA==
   dependencies:
-    "@abtnode/client" "1.7.5"
-    "@abtnode/constant" "1.7.5"
-    "@arcblock/did-auth" "^1.15.7"
-    "@arcblock/jwt" "^1.15.7"
-    "@arcblock/ws" "^1.15.7"
-    "@blocklet/meta" "1.7.5"
+    "@abtnode/client" "1.7.6"
+    "@abtnode/constant" "1.7.6"
+    "@arcblock/did-auth" "^1.16.0"
+    "@arcblock/jwt" "^1.16.0"
+    "@arcblock/ws" "^1.16.0"
+    "@blocklet/meta" "1.7.6"
     "@nedb/core" "^1.2.2"
-    "@ocap/mcrypto" "^1.15.7"
-    "@ocap/wallet" "^1.15.7"
+    "@ocap/mcrypto" "^1.16.0"
+    "@ocap/wallet" "^1.16.0"
     axios "^0.25.0"
     fs-extra "^10.0.1"
     joi "^17.6.0"
@@ -2079,18 +2083,18 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@ocap/asset@1.15.7", "@ocap/asset@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@ocap/asset/-/asset-1.15.7.tgz#1050dd4ece99b3ffc83b004c6f0fe3a6008bf251"
-  integrity sha512-mklKCbV7D29Fm5udHiqXlSkUqEOW1nauw3f8O3xVCt/ZzDL/d5aJwMWBYv/YHgVTdaKqKS85eoNCUxhDqy7blA==
+"@ocap/asset@1.16.0", "@ocap/asset@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@ocap/asset/-/asset-1.16.0.tgz#a309cf4dd82345358d72e00e7954e5e4f61892ad"
+  integrity sha512-cmhI0FMYLPPULRMd5U9IZHfd7v0FkSzRud00ig2hMuq6iRTPQ+EMl2MDopGvtrwv7YnoTUPVPUXZY2mEwt3+5Q==
   dependencies:
-    "@arcblock/did" "1.15.7"
-    "@arcblock/did-util" "1.15.7"
-    "@arcblock/vc" "1.15.7"
-    "@ocap/contract" "1.15.7"
-    "@ocap/mcrypto" "1.15.7"
-    "@ocap/util" "1.15.7"
-    "@ocap/wallet" "1.15.7"
+    "@arcblock/did" "1.16.0"
+    "@arcblock/did-util" "1.16.0"
+    "@arcblock/vc" "1.16.0"
+    "@ocap/contract" "1.16.0"
+    "@ocap/mcrypto" "1.16.0"
+    "@ocap/util" "1.16.0"
+    "@ocap/wallet" "1.16.0"
     debug "^4.3.3"
     empty-value "^1.0.1"
     flat "^5.0.2"
@@ -2099,21 +2103,21 @@
     lodash "^4.17.21"
     mustache "^4.1.0"
 
-"@ocap/client@1.15.7", "@ocap/client@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@ocap/client/-/client-1.15.7.tgz#2be85201e7d5ddf7703390c387d674a7d0f5177c"
-  integrity sha512-5AoXGmX1XCQ9ZAEbUqZlDGBL1qmcdKpFNjMtSFCif9PGMrs7NzLWrLaTv3M7QTfXUyWbQ7ktgt4gt4HWT+oiPQ==
+"@ocap/client@1.16.0", "@ocap/client@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@ocap/client/-/client-1.16.0.tgz#909a7c20d1c57e18f9d5a93a90bcb7926afd9656"
+  integrity sha512-1+oK1+Xmsfrm9vY3dmUFPQ1zkZ+zHzIVRRxFuUdgbREosq5Lz5/q5p4vwMZCygQfq+xjpdwnWvO0pqdtOgflLQ==
   dependencies:
-    "@arcblock/did" "1.15.7"
-    "@arcblock/did-util" "1.15.7"
+    "@arcblock/did" "1.16.0"
+    "@arcblock/did-util" "1.16.0"
     "@arcblock/sdk-util" "^0.30.0"
-    "@arcblock/ws" "1.15.7"
-    "@ocap/asset" "1.15.7"
-    "@ocap/mcrypto" "1.15.7"
-    "@ocap/message" "1.15.7"
-    "@ocap/proto" "1.15.7"
-    "@ocap/util" "1.15.7"
-    "@ocap/wallet" "1.15.7"
+    "@arcblock/ws" "1.16.0"
+    "@ocap/asset" "1.16.0"
+    "@ocap/mcrypto" "1.16.0"
+    "@ocap/message" "1.16.0"
+    "@ocap/proto" "1.16.0"
+    "@ocap/util" "1.16.0"
+    "@ocap/wallet" "1.16.0"
     blueimp-md5 "^2.10.0"
     debug "^4.3.3"
     is-absolute-url "^3.0.3"
@@ -2122,24 +2126,24 @@
     react-app-polyfill "^1.0.1"
     wolfy87-eventemitter "^5.2.5"
 
-"@ocap/contract@1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@ocap/contract/-/contract-1.15.7.tgz#0054fbc60a9dadda448ddf1daadc6306995b09d1"
-  integrity sha512-jTa44THpjGz74R6mQT8MyT8QMdKd9qCFKtDP4fW/Pb4vq76WVCkQ+gXtyKd+v923J78WMC9DB1RqnxspVQPt4g==
+"@ocap/contract@1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@ocap/contract/-/contract-1.16.0.tgz#9fa4c2ddee99d15f9ca944b5f7f039ed28c1d811"
+  integrity sha512-n+M02jejwCov7nHo7DppC3XUiQQnVgm4bNHD4zLzQ+645DGvpZ0uXEoDD929sVHRM0Kxh5SxLzDlNeKbTToGUw==
   dependencies:
-    "@arcblock/did" "1.15.7"
-    "@ocap/mcrypto" "1.15.7"
-    "@ocap/util" "1.15.7"
+    "@arcblock/did" "1.16.0"
+    "@ocap/mcrypto" "1.16.0"
+    "@ocap/util" "1.16.0"
     debug "^4.3.3"
     esprima "^4.0.1"
     lodash "^4.17.21"
 
-"@ocap/mcrypto@1.15.7", "@ocap/mcrypto@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@ocap/mcrypto/-/mcrypto-1.15.7.tgz#fa944d4505eb440a3ffa1ca34d5a88f82d9be7b2"
-  integrity sha512-vPjyFXCcs+vD8GQctmhtaReltlZVCobcgek3hC3ZaVR3FnfB/AArxcAJBkfAoiZER5yupF1UXHT9Smc+h6/REw==
+"@ocap/mcrypto@1.16.0", "@ocap/mcrypto@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@ocap/mcrypto/-/mcrypto-1.16.0.tgz#69b675b971110663ed57def825740ba753d55840"
+  integrity sha512-jR46F8Q3XFPIijZp4XvEVgNvvD0CLFaZ3lfG49JNhmf1KSPGr/o5hG2pAuKMSJNMootaySD7WH9F9C9iXYOcyw==
   dependencies:
-    "@ocap/util" "1.15.7"
+    "@ocap/util" "1.16.0"
     bn.js "5.2.0"
     crypto-js "^4.0.0"
     elliptic "^6.5.3"
@@ -2150,37 +2154,37 @@
     randombytes "^2.1.0"
     tweetnacl "^1.0.3"
 
-"@ocap/message@1.15.7", "@ocap/message@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@ocap/message/-/message-1.15.7.tgz#6fc80c05f008dc9658320c3758cfc0851b46bb2a"
-  integrity sha512-40WZkjia5dv4PfLXyV+LVfZbmysn40RFxpquY7pANT6mGOlz2aHlHpZGZuCrWXqPSpD54e2DC0ZCeqxIp3rC/g==
+"@ocap/message@1.16.0", "@ocap/message@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@ocap/message/-/message-1.16.0.tgz#3d69e2a086430041a851cd9bda169297d344a962"
+  integrity sha512-ywXZycsSo8l811Wzr7RHJ9TLeUzHRo2YgG/RF8Xc/Ub/YYdyPh505Wg1KtyXj+1MBQCIwfzsZnWlr8WGt/cRsw==
   dependencies:
-    "@ocap/proto" "1.15.7"
-    "@ocap/util" "1.15.7"
+    "@ocap/proto" "1.16.0"
+    "@ocap/util" "1.16.0"
     debug "^4.3.3"
     google-protobuf "3.18.0"
     lodash "^4.17.21"
 
-"@ocap/proto@1.15.7", "@ocap/proto@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@ocap/proto/-/proto-1.15.7.tgz#be99d3106f6820e6845393c64bf8f975ee5e6acf"
-  integrity sha512-RWVpIB5s1HdvZ1vx+3auM9LCBkHN3J7q/dXW67U/JKFTXaTcRMUdm5K382vp18/gbgOpDlIaPx+0eo4xeR7z1A==
+"@ocap/proto@1.16.0", "@ocap/proto@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@ocap/proto/-/proto-1.16.0.tgz#f779b66caf29863bd367aeb43237250389669014"
+  integrity sha512-dzXMboMJUg91J7kf6sp4R3EvdaLqL0/7HJU8gZph3RfkPWZXpfZzNBELrJTVLCRcWZZ3vdspsdUCxke8stLuNQ==
   dependencies:
     debug "^4.3.3"
     lodash "^4.17.21"
 
-"@ocap/tx-util@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@ocap/tx-util/-/tx-util-1.15.7.tgz#2f79d7e980f9db2abf84fd86be63d56dc60038f9"
-  integrity sha512-fMCcB2hMWeN+WLeqlEYm6oZnU4idoz+sby4VDE/OWcPndoa2TDJu6/TSYN7Ikti/hSZUPKZZLQ3ESIIbEyEE/A==
+"@ocap/tx-util@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@ocap/tx-util/-/tx-util-1.16.0.tgz#fd3e1d005375940e863eebb93870730d23651605"
+  integrity sha512-wMpYtzo51Fr8DdungwkETFyzlVlXHZ6S2xwyvXv3RlGtKmQMqz/V7+DfLtAVPGtSnQ6qIlZEzv7hhYe7YUMxyg==
   dependencies:
-    "@ocap/client" "1.15.7"
+    "@ocap/client" "1.16.0"
     debug "^4.3.3"
 
-"@ocap/util@1.15.7", "@ocap/util@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@ocap/util/-/util-1.15.7.tgz#9b7cae902b4ad73894c5e2326ce438a1740dabd2"
-  integrity sha512-1klC66Wg63EXTTrgcMH7Mj9Nr+GSSxQ33W+oHYCyMymOPEko6/n+rN2ct+nJZF0yp5S6oP1moeBD+SQ4XN885Q==
+"@ocap/util@1.16.0", "@ocap/util@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@ocap/util/-/util-1.16.0.tgz#09a99e82fde7e4a1cd3b220233ceea13cffb6921"
+  integrity sha512-AUGzjk+hrmXod/+LVNXlG9eHYhxYSq6jcg47PPgAQ1usTwPBRp1Kw4fJFW8Qluuxf9f+w5hwF0zG/PZ6Q7GkZA==
   dependencies:
     base64-url "^2.3.3"
     bn.js "5.2.0"
@@ -2188,13 +2192,13 @@
     multibase "^3.1.1"
     utf8 "^3.0.0"
 
-"@ocap/wallet@1.15.7", "@ocap/wallet@^1.15.7":
-  version "1.15.7"
-  resolved "https://registry.yarnpkg.com/@ocap/wallet/-/wallet-1.15.7.tgz#eaaf2d2c69775f1d402128306e7706af7e76d954"
-  integrity sha512-LtYMoWqgYkgYwD/M+mILc/nnps3DgSMOiJRKsYcMW8u1D/4aqzXGi22SslMb6//oKOB+35dWUjBa/F02V1yB2A==
+"@ocap/wallet@1.16.0", "@ocap/wallet@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@ocap/wallet/-/wallet-1.16.0.tgz#a7b14dd5fd45ac3b13b4d2d88077cf469c401c37"
+  integrity sha512-rZiv5Q9jwq3HIQK2dxanJUBue2agGIsB9PR1StUSIgwqEDmA+58NJHcLxsZiyx20I1kyxkFREySYm5uBYitVLw==
   dependencies:
-    "@arcblock/did" "1.15.7"
-    "@ocap/mcrypto" "1.15.7"
+    "@arcblock/did" "1.16.0"
+    "@ocap/mcrypto" "1.16.0"
 
 "@pmmmwh/react-refresh-webpack-plugin@0.4.2":
   version "0.4.2"
@@ -3711,6 +3715,11 @@ bindings@^1.5.0:
   integrity sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==
   dependencies:
     file-uri-to-path "1.0.0"
+
+blakejs@^1.1.0:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/blakejs/-/blakejs-1.2.1.tgz#5057e4206eadb4a97f7c0b6e197a505042fc3814"
+  integrity sha512-QXUSXI3QVc/gJME0dBpXrag1kbzOqCjCX8/b54ntNyW6sjtoqxqRk3LTmXzaJoh71zMsDCjM+47jS7XiwN/+fQ==
 
 bluebird@^3.5.5:
   version "3.7.2"
@@ -13284,7 +13293,15 @@ tty-browserify@0.0.0:
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
   integrity sha1-oVe6QC2iTpv5V/mqadUk7tQpAaY=
 
-tweetnacl@^1.0.3:
+tweetnacl-sealedbox-js@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/tweetnacl-sealedbox-js/-/tweetnacl-sealedbox-js-1.2.0.tgz#37f0d49a24445d6f55a1b9e8870568529bcb233f"
+  integrity sha512-QoCr8K2hwri+ky7SUa22oSre8g88XaWi0hwwWd16pJMuDyn5gL/UyE0PyR2EOFEMJ70T2trJ9+Sv+Qa18olEmQ==
+  dependencies:
+    blakejs "^1.1.0"
+    tweetnacl "^1.0.1"
+
+tweetnacl@^1.0.1, tweetnacl@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.3.tgz#ac0af71680458d8a6378d0d0d050ab1407d35596"
   integrity sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==
