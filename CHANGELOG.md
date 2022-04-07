@@ -1,3 +1,7 @@
+## 0.32.0 (April 07, 2022)
+
+- fix: ensure connected did is same when test
+
 ## 0.31.0 (April 07, 2022)
 
 - fix: use appName as nft issuer from playground
