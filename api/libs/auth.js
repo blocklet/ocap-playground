@@ -76,8 +76,8 @@ const factory = new NFTFactory({
   chainHost: env.chainHost,
   wallet,
   issuer: {
-    name: 'ArcBlock',
-    url: 'https://www.arcblock.io',
+    name: env.appName,
+    url: env.appUrl,
     logo: 'https://releases.arcblockio.cn/dapps/labs.png',
   },
 });
