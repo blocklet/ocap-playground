@@ -1,3 +1,7 @@
+## 0.31.0 (April 07, 2022)
+
+- fix: use appName as nft issuer from playground
+
 ## 0.30.0 (April 07, 2022)
 
 - chore(deps): bump chain and common deps to latest
@@ -23,6 +27,7 @@
 - feat: ensure fuel during setup
 
 ## 0.25.8 (March 22, 2022)
+
 - chore: update page when servce worker available new content
 
 ## 0.25.7 (March 22, 2022)
@@ -30,6 +35,7 @@
 - chore: update ux lib to latest
 
 ## 0.25.6 (March 22, 2022)
+
 - support update sw
 
 ## 0.25.5 (March 22, 2022)
