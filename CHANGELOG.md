@@ -1,3 +1,7 @@
+## 0.32.1 (April 11, 2022)
+
+- fix: auto connect does not work
+
 ## 0.32.0 (April 07, 2022)
 
 - fix: ensure connected did is same when test
