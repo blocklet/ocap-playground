@@ -1,12 +1,12 @@
 import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import { createGlobalStyle, ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { SessionProvider } from '@arcblock/did-playground';
 import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
 
-import CssBaseline from '@material-ui/core/CssBaseline';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CssBaseline from '@mui/material/CssBaseline';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { UserProvider } from './context/user';
 
@@ -36,38 +36,40 @@ if (window.blocklet && window.blocklet.prefix) {
 const webWalletUrl = getWebWalletUrl();
 
 export const App = () => (
-  <MuiThemeProvider theme={theme}>
+  <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
-      <SessionProvider serviceHost={apiPrefix} webWalletUrl={webWalletUrl}>
-        {({ session }) => {
-          if (session.loading) {
-            return <CircularProgress />;
-          }
+      <StyledThemeProvider theme={theme}>
+        <SessionProvider serviceHost={apiPrefix} webWalletUrl={webWalletUrl}>
+          {({ session }) => {
+            if (session.loading) {
+              return <CircularProgress />;
+            }
 
-          if (session.user) {
-            return (
-              <UserProvider>
-                <>
-                  <CssBaseline />
-                  <GlobalStyle />
-                  <div className="wrapper">
-                    <Switch>
-                      <Route exact path="/" component={MiniPage} />
-                      <Route exact path="/full" component={HomePage} />
-                      <Route exact path="/profile" component={ProfilePage} />
-                      <Redirect to="/" />
-                    </Switch>
-                  </div>
-                </>
-              </UserProvider>
-            );
-          }
+            if (session.user) {
+              return (
+                <UserProvider>
+                  <>
+                    <CssBaseline />
+                    <GlobalStyle />
+                    <div className="wrapper">
+                      <Switch>
+                        <Route exact path="/" component={MiniPage} />
+                        <Route exact path="/full" component={HomePage} />
+                        <Route exact path="/profile" component={ProfilePage} />
+                        <Redirect to="/" />
+                      </Switch>
+                    </div>
+                  </>
+                </UserProvider>
+              );
+            }
 
-          return null;
-        }}
-      </SessionProvider>
+            return null;
+          }}
+        </SessionProvider>
+      </StyledThemeProvider>
     </ThemeProvider>
-  </MuiThemeProvider>
+  </StyledEngineProvider>
 );
 
 const WrappedApp = withRouter(App);

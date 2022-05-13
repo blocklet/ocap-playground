@@ -4,11 +4,11 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { fromUnitToToken } from '@ocap/util';
 
-import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
+import Grid from '@mui/material/Grid';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Typography from '@mui/material/Typography';
 import Avatar from '@arcblock/did-connect/lib/Avatar';
 import Button from '@arcblock/ux/lib/Button';
 import useBrowser from '@arcblock/react-hooks/lib/useBrowser';
@@ -39,11 +39,11 @@ export default function ProfilePage() {
         <Grid container spacing={6}>
           <Grid item xs={12} md={3} className="avatar">
             {user.avatar ? <img src={user.avatar} alt="user-avatar" /> : <Avatar size={240} did={user.did} />}
-            <Button color="secondary" className="button" variant="contained" href="/orders">
+            <Button className="button" variant="contained" href="/orders">
               My Orders
             </Button>
             {!browser.wallet && (
-              <Button color="danger" className="button" variant="contained" href="#" onClick={onLogout}>
+              <Button className="button" color="error" variant="contained" href="#" onClick={onLogout}>
                 Logout
               </Button>
             )}

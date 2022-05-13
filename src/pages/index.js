@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import { PlaygroundAction } from '@arcblock/did-playground';
 import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
 
@@ -114,7 +114,7 @@ const Main = styled.main`
       .action {
         margin-bottom: 16px;
         margin-right: 32px;
-        max-width: 360px;
+        max-width: 320px;
         @media (max-width: ${props => props.theme.breakpoints.values.sm}px) {
           margin-right: 0;
         }

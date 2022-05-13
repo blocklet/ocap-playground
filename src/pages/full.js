@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import useBrowser from '@arcblock/react-hooks/lib/useBrowser';
 
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import WalletDownload from '@arcblock/ux/lib/Wallet/Download';
 import { PlaygroundAction } from '@arcblock/did-playground';
 
@@ -1151,7 +1151,7 @@ const Main = styled.main`
           margin-right: 0;
         }
         width: 100%;
-        max-width: 360px;
+        max-width: 320px;
         display: block;
       }
     }

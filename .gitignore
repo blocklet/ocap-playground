@@ -39,3 +39,5 @@ blocklet.js
 
 .abtnode
 dist/
+.yalc
+yalc.lock
