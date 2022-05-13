@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.32.1
+version: 0.33.0
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -20,12 +20,12 @@ keywords:
   - wallet
 repository:
   type: git
-  url: 'git+https://github.com/blocklet/ocap-playground.git'
+  url: git+https://github.com/blocklet/ocap-playground.git
 license: Apache-2.0
 group: dapp
 main: api/index.js
 logo: logo.png
-community: 'https://community.arcblockio.cn'
+community: https://community.arcblockio.cn
 documentation: ''
 homepage: ''
 screenshots:
@@ -36,7 +36,7 @@ environments:
   - name: CHAIN_HOST
     description: Please provide endpoint of local chain
     required: true
-    default: 'https://beta.abtnetwork.io/api/'
+    default: https://beta.abtnetwork.io/api/
     secure: false
     shared: true
   - name: LOCAL_TOKEN_ID
@@ -54,7 +54,7 @@ environments:
 scripts:
   preStart: node api/libs/hooks/pre-start.js
   dev: npm run start
-specVersion: 1.2.4
+specVersion: 1.2.7
 interfaces:
   - type: web
     name: publicUrl
@@ -73,6 +73,14 @@ interfaces:
             - /blocklet/**
             - /instance/**
             - /manifest.json
+          whoCanAccess: all
+          profileFields:
+            - fullName
+            - email
+            - avatar
+          allowSwitchProfile: true
+          webWalletUrl: https://web.abtwallet.io
+          blockUnauthorized: false
 timeout:
   start: 15
 requirements:

@@ -1,3 +1,7 @@
+## 0.33.0 (May 13, 2022)
+
+- chore: upgrade to react v18 and mui v5
+
 ## 0.32.1 (April 11, 2022)
 
 - fix: auto connect does not work
