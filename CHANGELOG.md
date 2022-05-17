@@ -1,3 +1,7 @@
+## 0.33.1 (May 17, 2022)
+
+- fix: snackbar caused crash
+
 ## 0.33.0 (May 13, 2022)
 
 - chore: upgrade to react v18 and mui v5
