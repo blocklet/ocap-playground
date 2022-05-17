@@ -86,6 +86,7 @@
     "nedb": "^1.8.0",
     "nocache": "^2.1.0",
     "nodemailer": "^6.4.2",
+    "notistack": "^2.0.5",
     "pako": "^1.0.11",
     "prop-types": "^15.7.2",
     "react": "^18.1.0",

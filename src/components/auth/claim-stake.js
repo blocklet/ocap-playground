@@ -10,7 +10,7 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 
-import Alert from '../alert';
+import Toast from '../toast';
 import api from '../../libs/api';
 
 export default function ClaimButton({ button, action, messages, timeout, extraParams }) {
@@ -89,10 +89,12 @@ export default function ClaimButton({ button, action, messages, timeout, extraPa
         onClose={() => setOpen(false)}
         checkTimeout={timeout}
         extraParams={{ hash: selected, ...extraParams }}
-        onSuccess={() => setComplete(true)}
+        onSuccess={() => {
+          setComplete(true);
+          Toast.success(messages.success);
+        }}
         messages={messages}
       />
-      {isComplete && <Alert onClose={onClose} message={messages.success} />}
     </>
   );
 }

@@ -1,21 +1,17 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import DidConnect from '@arcblock/did-connect/lib/Connect';
 import Button from '@arcblock/ux/lib/Button';
 
-import Alert from '../alert';
 import api from '../../libs/api';
+import Toast from '../toast';
 
 // eslint-disable-next-line object-curly-newline
 export default function GeneralAuthButton({ button, action, messages, timeout, extraParams }) {
   const [isOpen, setOpen] = useState(false);
   const [isComplete, setComplete] = useState(false);
-
-  const onClose = () => {
-    setOpen(false);
-    setComplete(false);
-  };
 
   return (
     <>
@@ -31,10 +27,12 @@ export default function GeneralAuthButton({ button, action, messages, timeout, e
         onClose={() => setOpen(false)}
         checkTimeout={timeout}
         extraParams={extraParams}
-        onSuccess={() => setComplete(true)}
+        onSuccess={() => {
+          setComplete(true);
+          Toast.success(messages.success);
+        }}
         messages={messages}
       />
-      {isComplete && <Alert onClose={onClose} message={messages.success} />}
     </>
   );
 }

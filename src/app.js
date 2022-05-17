@@ -9,6 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { UserProvider } from './context/user';
+import { ToastProvider } from './components/toast';
 
 import HomePage from './pages/full';
 import ProfilePage from './pages/profile';
@@ -48,7 +49,7 @@ export const App = () => (
             if (session.user) {
               return (
                 <UserProvider>
-                  <>
+                  <ToastProvider>
                     <CssBaseline />
                     <GlobalStyle />
                     <div className="wrapper">
@@ -59,7 +60,7 @@ export const App = () => (
                         <Redirect to="/" />
                       </Switch>
                     </div>
-                  </>
+                  </ToastProvider>
                 </UserProvider>
               );
             }
