@@ -1,3 +1,7 @@
+## 0.34.0 (May 25, 2022)
+
+- chore(deps): bump chain and common deps to latest
+
 ## 0.33.1 (May 17, 2022)
 
 - fix: snackbar caused crash
