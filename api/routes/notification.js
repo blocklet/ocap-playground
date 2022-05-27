@@ -3,6 +3,7 @@ const Mcrypto = require('@ocap/mcrypto');
 const { fromTokenToUnit, toBase64 } = require('@ocap/util');
 const { fromRandom } = require('@ocap/wallet');
 const { create } = require('@arcblock/vc');
+const { LoremIpsum } = require('lorem-ipsum');
 const createPassportSvg = require('../libs/nft/passport');
 const badgeArray = require('../libs/svg');
 
@@ -12,6 +13,17 @@ const { ensureAsset } = require('../libs/util');
 const itx = require('../libs/token');
 
 const hasher = Mcrypto.getHasher(Mcrypto.types.HashType.SHA3);
+
+const lorem = new LoremIpsum({
+  sentencesPerParagraph: {
+    max: 10,
+    min: 3,
+  },
+  wordsPerSentence: {
+    max: 16,
+    min: 4,
+  },
+});
 
 module.exports = {
   init(app) {
@@ -37,8 +49,8 @@ module.exports = {
             });
 
             await Notification.sendToUser(userDid, {
-              title,
-              body,
+              title: title + lorem.generateWords(3),
+              body: body + lorem.generateSentences(Math.ceil(Math.random() * 5)),
               attachments: [
                 {
                   type,
@@ -62,8 +74,8 @@ module.exports = {
             });
 
             await Notification.sendToUser(userDid, {
-              title,
-              body,
+              title: title + lorem.generateWords(3),
+              body: body + lorem.generateSentences(Math.ceil(Math.random() * 5)),
               attachments: [
                 {
                   type,
@@ -125,8 +137,8 @@ module.exports = {
           });
 
           await Notification.sendToUser(userDid, {
-            title,
-            body,
+            title: title + lorem.generateWords(3),
+            body: body + lorem.generateSentences(Math.ceil(Math.random() * 5)),
             attachments: [
               {
                 type,
@@ -189,8 +201,8 @@ module.exports = {
           });
 
           await Notification.sendToUser(userDid, {
-            title,
-            body,
+            title: title + lorem.generateWords(3),
+            body: body + lorem.generateSentences(Math.ceil(Math.random() * 5)),
             attachments: [
               {
                 type,
@@ -216,20 +228,26 @@ module.exports = {
 
         // text
         if (type === 'text') {
-          const messages = {
-            en: {
-              title: 'Hello',
-              body: 'Hello World',
-            },
-            zh: {
-              title: '你好',
-              body: '你好，世界',
-            },
+          const message = {
+            title: lorem.generateWords(3),
+            body: lorem.generateSentences(Math.ceil(Math.random() * 5)),
           };
 
-          const { user } = await authClient.getUser(userDid);
-          const locale = user.locale || 'en';
-          const message = messages[locale] || messages.en;
+          await Notification.sendToUser(userDid, {
+            title: message.title,
+            body: message.body,
+            actions,
+          });
+
+          res.status(200).end();
+          return;
+        }
+
+        if (type === 'long-text') {
+          const message = {
+            title: lorem.generateWords(Math.ceil(Math.random() * 9)),
+            body: lorem.generateParagraphs(Math.ceil(Math.random() * 5)),
+          };
 
           await Notification.sendToUser(userDid, {
             title: message.title,
