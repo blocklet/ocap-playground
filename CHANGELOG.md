@@ -1,3 +1,7 @@
+## 0.35.0 (May 27, 2022)
+
+- chore: support sending random messages
+
 ## 0.34.0 (May 25, 2022)
 
 - chore(deps): bump chain and common deps to latest
