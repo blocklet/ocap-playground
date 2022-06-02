@@ -1,3 +1,8 @@
+## 0.35.1 (June 02, 2022)
+
+- fix: correct broken "open in wallet" link
+- chore: update deps
+
 ## 0.35.0 (May 27, 2022)
 
 - chore: support sending random messages
