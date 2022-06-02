@@ -42,7 +42,12 @@ export default function Layout({ title, children, contentOnly }) {
   links.push({ url: 'https://github.com/blocklet/ocap-playground', title: 'GitHub' });
 
   return (
-    <BaseLayout title={title} brand={window.env.appName} links={links} contentOnly={contentOnly} baseUrl="/">
+    <BaseLayout
+      title={title}
+      brand={window.env.appName}
+      links={links}
+      contentOnly={contentOnly}
+      baseUrl={window.location.origin}>
       {children}
     </BaseLayout>
   );
