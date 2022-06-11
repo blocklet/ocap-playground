@@ -15,7 +15,7 @@
     "blocklet.yml",
     "README.md"
   ],
-  "version": "0.35.1",
+  "version": "0.36.0",
   "author": "wangshijun <shijun@arcblock.io> https://github.com/wangshijun",
   "keywords": [
     "dapp",
