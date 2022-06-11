@@ -1,4 +1,3 @@
-import React from 'react';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { createGlobalStyle, ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
@@ -77,7 +76,7 @@ export function App() {
 
 const WrappedApp = withRouter(App);
 
-export default function () {
+export default function Main() {
   let basename = '/';
 
   if (window.env && window.env.apiPrefix) {

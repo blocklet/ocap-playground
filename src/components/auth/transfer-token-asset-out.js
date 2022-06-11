@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
 import PropTypes from 'prop-types';
 import useToggle from 'react-use/lib/useToggle';
 

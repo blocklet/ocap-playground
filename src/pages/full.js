@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable arrow-parens */
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
 import useBrowser from '@arcblock/react-hooks/lib/useBrowser';
 

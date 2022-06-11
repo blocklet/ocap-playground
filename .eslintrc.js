@@ -4,4 +4,15 @@ module.exports = {
   globals: {
     logger: true,
   },
+  rules: {
+    'unicorn/filename-case': [
+      'error',
+      {
+        cases: {
+          kebabCase: true,
+        },
+        ignore: ['setupProxy.js', 'App.test.js'],
+      },
+    ],
+  },
 };

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable arrow-parens */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 

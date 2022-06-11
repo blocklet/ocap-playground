@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react/no-unstable-nested-components */
+import { createRef } from 'react';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
@@ -20,7 +21,7 @@ const genFn = (enqueueSnackbar, variant) => (message, opts) => {
 
 // eslint-disable-next-line react/prop-types
 function ToastProvider({ children }) {
-  const notistackRef = React.createRef();
+  const notistackRef = createRef();
   const onClickDismiss = key => () => {
     notistackRef.current.closeSnackbar(key);
   };
