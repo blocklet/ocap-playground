@@ -515,6 +515,7 @@ export default function IndexPage() {
             <AuthButton
               button="Create New DID"
               action="claim_create_did"
+              saveConnect={false}
               extraParams={{ sessionDid: session.user.did }}
               messages={{
                 title: 'Create DID',

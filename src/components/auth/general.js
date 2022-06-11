@@ -9,7 +9,15 @@ import api from '../../libs/api';
 import Toast from '../toast';
 
 // eslint-disable-next-line object-curly-newline
-export default function GeneralAuthButton({ button, action, messages, timeout, extraParams }) {
+export default function GeneralAuthButton({
+  button,
+  action,
+  messages,
+  timeout,
+  extraParams,
+  autoConnect,
+  saveConnect,
+}) {
   const [isOpen, setOpen] = useState(false);
   const [isComplete, setComplete] = useState(false);
 
@@ -31,6 +39,8 @@ export default function GeneralAuthButton({ button, action, messages, timeout, e
           setComplete(true);
           Toast.success(messages.success);
         }}
+        autoConnect={autoConnect}
+        saveConnect={saveConnect}
         messages={messages}
       />
     </>
@@ -42,10 +52,14 @@ GeneralAuthButton.propTypes = {
   action: PropTypes.string.isRequired,
   messages: PropTypes.object.isRequired,
   timeout: PropTypes.number,
+  autoConnect: PropTypes.bool,
+  saveConnect: PropTypes.bool,
   extraParams: PropTypes.object,
 };
 
 GeneralAuthButton.defaultProps = {
   extraParams: {},
   timeout: 5 * 60 * 1000,
+  autoConnect: true,
+  saveConnect: true,
 };

@@ -36,46 +36,48 @@ if (window.blocklet && window.blocklet.prefix) {
 }
 const webWalletUrl = getWebWalletUrl();
 
-export const App = () => (
-  <StyledEngineProvider injectFirst>
-    <ThemeProvider theme={theme}>
-      <StyledThemeProvider theme={theme}>
-        <SessionProvider serviceHost={apiPrefix} webWalletUrl={webWalletUrl}>
-          {({ session }) => {
-            if (session.loading) {
-              return <CircularProgress />;
-            }
+export function App() {
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <StyledThemeProvider theme={theme}>
+          <SessionProvider serviceHost={apiPrefix} webWalletUrl={webWalletUrl}>
+            {({ session }) => {
+              if (session.loading) {
+                return <CircularProgress />;
+              }
 
-            if (session.user) {
-              return (
-                <UserProvider>
-                  <ToastProvider>
-                    <CssBaseline />
-                    <GlobalStyle />
-                    <div className="wrapper">
-                      <Switch>
-                        <Route exact path="/" component={MiniPage} />
-                        <Route exact path="/full" component={HomePage} />
-                        <Route exact path="/profile" component={ProfilePage} />
-                        <Redirect to="/" />
-                      </Switch>
-                    </div>
-                  </ToastProvider>
-                </UserProvider>
-              );
-            }
+              if (session.user) {
+                return (
+                  <UserProvider>
+                    <ToastProvider>
+                      <CssBaseline />
+                      <GlobalStyle />
+                      <div className="wrapper">
+                        <Switch>
+                          <Route exact path="/" component={MiniPage} />
+                          <Route exact path="/full" component={HomePage} />
+                          <Route exact path="/profile" component={ProfilePage} />
+                          <Redirect to="/" />
+                        </Switch>
+                      </div>
+                    </ToastProvider>
+                  </UserProvider>
+                );
+              }
 
-            return null;
-          }}
-        </SessionProvider>
-      </StyledThemeProvider>
-    </ThemeProvider>
-  </StyledEngineProvider>
-);
+              return null;
+            }}
+          </SessionProvider>
+        </StyledThemeProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
+  );
+}
 
 const WrappedApp = withRouter(App);
 
-export default () => {
+export default function () {
   let basename = '/';
 
   if (window.env && window.env.apiPrefix) {
@@ -91,4 +93,4 @@ export default () => {
       <WrappedApp />
     </Router>
   );
-};
+}

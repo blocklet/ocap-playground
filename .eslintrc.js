@@ -1,25 +1,7 @@
 module.exports = {
-  parser: 'babel-eslint',
-  extends: ['@arcblock/eslint-config'],
-  env: {
-    es6: true,
-    browser: true,
-    node: true,
-    mocha: true,
-    jest: true,
-  },
+  root: true,
+  extends: '@arcblock/eslint-config',
   globals: {
     logger: true,
-  },
-  rules: {
-    'unicorn/filename-case': [
-      'error',
-      {
-        cases: {
-          kebabCase: true,
-        },
-        ignore: ['setupProxy.js', 'App.test.js'],
-      },
-    ],
   },
 };
