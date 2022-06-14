@@ -19,7 +19,6 @@ export default function GeneralAuthButton({
   saveConnect,
 }) {
   const [isOpen, setOpen] = useState(false);
-  const [isComplete, setComplete] = useState(false);
 
   return (
     <>
@@ -28,7 +27,7 @@ export default function GeneralAuthButton({
       </Button>
       <DidConnect
         popup
-        open={isOpen && !isComplete}
+        open={isOpen}
         action={action}
         checkFn={api.get}
         socketUrl={api.socketUrl}
@@ -36,7 +35,7 @@ export default function GeneralAuthButton({
         checkTimeout={timeout}
         extraParams={extraParams}
         onSuccess={() => {
-          setComplete(true);
+          setOpen(false);
           Toast.success(messages.success);
         }}
         autoConnect={autoConnect}
