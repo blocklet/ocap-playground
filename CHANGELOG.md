@@ -1,3 +1,8 @@
+## 0.36.1 (June 14, 2022)
+
+- fix #177
+- fix #183
+
 ## 0.36.0 (June 12, 2022)
 
 - chore: update eslint
