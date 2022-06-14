@@ -11,7 +11,6 @@ import Toast from '../toast';
 // eslint-disable-next-line object-curly-newline
 export default function GeneralAuthButton({ button, action, messages, timeout, extraParams }) {
   const [isOpen, setOpen] = useState(false);
-  const [isComplete, setComplete] = useState(false);
 
   return (
     <>
@@ -20,7 +19,7 @@ export default function GeneralAuthButton({ button, action, messages, timeout, e
       </Button>
       <DidConnect
         popup
-        open={isOpen && !isComplete}
+        open={isOpen}
         action={action}
         checkFn={api.get}
         socketUrl={api.socketUrl}
@@ -28,7 +27,7 @@ export default function GeneralAuthButton({ button, action, messages, timeout, e
         checkTimeout={timeout}
         extraParams={extraParams}
         onSuccess={() => {
-          setComplete(true);
+          setOpen(false);
           Toast.success(messages.success);
         }}
         messages={messages}

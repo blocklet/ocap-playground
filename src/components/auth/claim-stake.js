@@ -46,7 +46,10 @@ export default function ClaimButton({ button, action, messages, timeout, extraPa
     setLoading(false);
   };
 
-  const onConfirmSelect = () => setOpen(!!selected);
+  const onConfirmSelect = () => {
+    setClaimableOpen(false);
+    setOpen(!!selected);
+  };
 
   const onClaimableChange = e => setSelected(e.target.value);
 
