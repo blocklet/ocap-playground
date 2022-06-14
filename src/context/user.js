@@ -1,11 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { SessionContext } from '@arcblock/did-playground';
 
-const UserContext = React.createContext({});
+const UserContext = createContext({});
 const { Provider, Consumer } = UserContext;
 
 function UserProvider({ children }) {

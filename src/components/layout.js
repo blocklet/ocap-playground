@@ -1,5 +1,4 @@
 /* eslint-disable prefer-destructuring */
-import React from 'react';
 import PropTypes from 'prop-types';
 import BaseLayout from '@arcblock/ux/lib/Layout';
 

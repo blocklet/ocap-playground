@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useToggle from 'react-use/lib/useToggle';
 
 import DidConnect from '@arcblock/did-connect/lib/Connect';

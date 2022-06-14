@@ -1,3 +1,9 @@
+## 0.36.0 (June 12, 2022)
+
+- chore: update eslint
+- fix #184
+- fix #145
+
 ## 0.35.1 (June 02, 2022)
 
 - fix: correct broken "open in wallet" link

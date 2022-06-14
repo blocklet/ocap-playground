@@ -56,7 +56,12 @@ const agentStorage = new AgentNedbStorage({
 const walletHandlers = new WalletHandlers({
   authenticator: walletAuth,
   tokenStorage,
-  onConnect: ({ userDid, extraParams }) => {
+  onConnect: args => {
+    const { userDid, extraParams } = args;
+    if (extraParams.action === 'claim_create_did') {
+      return;
+    }
+
     if (userDid && extraParams.connectedDid && userDid !== extraParams.connectedDid) {
       throw new Error('你可能使用了多个不同的钱包来和本应用交互，请使用当前登录的钱包交互');
     }

@@ -1,4 +1,7 @@
-const sleep = timeout => new Promise(resolve => setTimeout(resolve, timeout));
+const sleep = timeout =>
+  new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
 
 module.exports = {
   action: 'timeout',

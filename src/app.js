@@ -1,4 +1,3 @@
-import React from 'react';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { createGlobalStyle, ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
@@ -36,46 +35,48 @@ if (window.blocklet && window.blocklet.prefix) {
 }
 const webWalletUrl = getWebWalletUrl();
 
-export const App = () => (
-  <StyledEngineProvider injectFirst>
-    <ThemeProvider theme={theme}>
-      <StyledThemeProvider theme={theme}>
-        <SessionProvider serviceHost={apiPrefix} webWalletUrl={webWalletUrl}>
-          {({ session }) => {
-            if (session.loading) {
-              return <CircularProgress />;
-            }
+export function App() {
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <StyledThemeProvider theme={theme}>
+          <SessionProvider serviceHost={apiPrefix} webWalletUrl={webWalletUrl}>
+            {({ session }) => {
+              if (session.loading) {
+                return <CircularProgress />;
+              }
 
-            if (session.user) {
-              return (
-                <UserProvider>
-                  <ToastProvider>
-                    <CssBaseline />
-                    <GlobalStyle />
-                    <div className="wrapper">
-                      <Switch>
-                        <Route exact path="/" component={MiniPage} />
-                        <Route exact path="/full" component={HomePage} />
-                        <Route exact path="/profile" component={ProfilePage} />
-                        <Redirect to="/" />
-                      </Switch>
-                    </div>
-                  </ToastProvider>
-                </UserProvider>
-              );
-            }
+              if (session.user) {
+                return (
+                  <UserProvider>
+                    <ToastProvider>
+                      <CssBaseline />
+                      <GlobalStyle />
+                      <div className="wrapper">
+                        <Switch>
+                          <Route exact path="/" component={MiniPage} />
+                          <Route exact path="/full" component={HomePage} />
+                          <Route exact path="/profile" component={ProfilePage} />
+                          <Redirect to="/" />
+                        </Switch>
+                      </div>
+                    </ToastProvider>
+                  </UserProvider>
+                );
+              }
 
-            return null;
-          }}
-        </SessionProvider>
-      </StyledThemeProvider>
-    </ThemeProvider>
-  </StyledEngineProvider>
-);
+              return null;
+            }}
+          </SessionProvider>
+        </StyledThemeProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
+  );
+}
 
 const WrappedApp = withRouter(App);
 
-export default () => {
+export default function Main() {
   let basename = '/';
 
   if (window.env && window.env.apiPrefix) {
@@ -91,4 +92,4 @@ export default () => {
       <WrappedApp />
     </Router>
   );
-};
+}
