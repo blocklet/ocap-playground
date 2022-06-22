@@ -1,3 +1,7 @@
+## 0.36.2 (June 22, 2022)
+
+- fix: delegate case user mismatch error
+
 ## 0.36.1 (June 14, 2022)
 
 - fix #177
