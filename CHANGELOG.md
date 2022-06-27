@@ -1,3 +1,7 @@
+## 0.36.3 (June 27, 2022)
+
+- fix: resize the logo
+
 ## 0.36.2 (June 22, 2022)
 
 - fix: delegate case user mismatch error
