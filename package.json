@@ -82,7 +82,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "morgan": "^1.9.1",
     "nedb": "^1.8.0",
     "nocache": "^2.1.0",
