@@ -1,6 +1,6 @@
-import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
-import { createGlobalStyle, ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { ThemeProvider as MuiThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import { Global, css, ThemeProvider as EmotionThemeProvider } from '@emotion/react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { SessionProvider } from '@arcblock/did-playground';
 import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
 
@@ -16,9 +16,9 @@ import MiniPage from './pages/index';
 
 import theme from './libs/theme';
 
-const GlobalStyle = createGlobalStyle`
+const globalStyles = css`
   a {
-    color: ${props => props.theme.colors.green};
+    color: ${theme.colors.green};
     text-decoration: none;
   }
   a:hover,
@@ -38,8 +38,8 @@ const webWalletUrl = getWebWalletUrl();
 export function App() {
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <StyledThemeProvider theme={theme}>
+      <MuiThemeProvider theme={theme}>
+        <EmotionThemeProvider theme={theme}>
           <SessionProvider serviceHost={apiPrefix} webWalletUrl={webWalletUrl}>
             {({ session }) => {
               if (session.loading) {
@@ -51,14 +51,14 @@ export function App() {
                   <UserProvider>
                     <ToastProvider>
                       <CssBaseline />
-                      <GlobalStyle />
+                      <Global styles={globalStyles} />
                       <div className="wrapper">
-                        <Switch>
-                          <Route exact path="/" component={MiniPage} />
-                          <Route exact path="/full" component={HomePage} />
-                          <Route exact path="/profile" component={ProfilePage} />
-                          <Redirect to="/" />
-                        </Switch>
+                        <Routes>
+                          <Route path="/" element={<MiniPage />} />
+                          <Route path="/full" element={<HomePage />} />
+                          <Route path="/profile" element={<ProfilePage />} />
+                          <Route path="*" element={<Navigate to="/" replace />} />
+                        </Routes>
                       </div>
                     </ToastProvider>
                   </UserProvider>
@@ -68,13 +68,11 @@ export function App() {
               return null;
             }}
           </SessionProvider>
-        </StyledThemeProvider>
-      </ThemeProvider>
+        </EmotionThemeProvider>
+      </MuiThemeProvider>
     </StyledEngineProvider>
   );
 }
-
-const WrappedApp = withRouter(App);
 
 export default function Main() {
   let basename = '/';
@@ -89,7 +87,7 @@ export default function Main() {
 
   return (
     <Router basename={basename}>
-      <WrappedApp />
+      <App />
     </Router>
   );
 }

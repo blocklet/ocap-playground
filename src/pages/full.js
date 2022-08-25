@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable arrow-parens */
 import { useContext } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import useBrowser from '@arcblock/react-hooks/lib/useBrowser';
 
 import Typography from '@mui/material/Typography';

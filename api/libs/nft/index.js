@@ -1,12 +1,10 @@
 /* eslint-disable indent */
 const { createCredentialList } = require('@arcblock/vc');
+const { toFactoryAddress } = require('@arcblock/did-util');
 const { isValidFactory, formatFactoryState } = require('@ocap/asset');
-const {
-  getNodePurchaseTemplate,
-  getNodeOwnerTemplate,
-  getBlockletPurchaseTemplate,
-} = require('@arcblock/nft/lib/templates');
-
+const getNodePurchaseTemplate = require('./templates/node-purchase');
+const getNodeOwnerTemplate = require('./templates/node-owner');
+const getBlockletPurchaseTemplate = require('./templates/blocklet-purchase');
 const { wallet } = require('../auth');
 const env = require('../env');
 
@@ -57,7 +55,9 @@ const getFactoryProps = ({
     hooks: Array.isArray(hooks) ? hooks : [],
   };
 
+  props.address = toFactoryAddress(props);
   isValidFactory(props, true);
+
   return props;
 };
 
