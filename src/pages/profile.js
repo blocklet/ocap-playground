@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from '@emotion/styled';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import { fromUnitToToken } from '@ocap/util';
 
 import Grid from '@mui/material/Grid';
@@ -18,7 +18,7 @@ import Layout from '../components/layout';
 
 export default function ProfilePage() {
   const browser = useBrowser();
-  const navigate = useNavigate();
+  const history = useHistory();
   const { session } = useContext(UserContext);
 
   const { user, stake, token } = session;
@@ -29,7 +29,7 @@ export default function ProfilePage() {
 
   const onLogout = () => {
     session.logout();
-    navigate('/');
+    history.push('/');
     window.location.reload();
   };
 

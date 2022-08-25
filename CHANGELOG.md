@@ -1,7 +1,3 @@
-## 0.36.4 (August 25, 2022)
-
-- chore: update deps to latest safely
-
 ## 0.36.3 (June 27, 2022)
 
 - fix: resize the logo
