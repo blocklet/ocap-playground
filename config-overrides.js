@@ -3,7 +3,6 @@ const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const { override, overrideDevServer, addWebpackPlugin } = require('customize-cra');
 
 const devServerConfig = () => config => {
-  config.writeToDisk = true;
   return config;
 };
 

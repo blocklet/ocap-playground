@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useContext } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import Typography from '@mui/material/Typography';
 import { PlaygroundAction } from '@arcblock/did-playground';
