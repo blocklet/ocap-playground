@@ -3,17 +3,18 @@ import { useContext } from 'react';
 import styled from '@emotion/styled';
 
 import Typography from '@mui/material/Typography';
-import { PlaygroundAction } from '@arcblock/did-playground';
-import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
+// import { PlaygroundAction } from '@arcblock/did-playground';
+// import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
 
 import { UserContext } from '../context/user';
 import Layout from '../components/layout';
+import AuthButton from '../components/auth/general';
 
 // 临时 demo 的页面
 export default function MiniPage() {
   const { session } = useContext(UserContext);
   const { token } = session;
-  const webWalletUrl = getWebWalletUrl();
+  // const webWalletUrl = getWebWalletUrl();
 
   return (
     <Layout title="Home">
@@ -23,60 +24,57 @@ export default function MiniPage() {
         </Typography>
         <section className="section">
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
-            Feeling lucky{' '}
+            Actions{' '}
             <Typography component="small" color="textSecondary">
               Get your account funded for doing later testing
             </Typography>
           </Typography>
           <div className="section__content">
-            <PlaygroundAction
-              action="login"
-              className="action"
-              buttonVariant="contained"
-              buttonText="Please Login"
-              successMessage="Hello (%user.name%)"
-              webWalletUrl={webWalletUrl}
+            <AuthButton
+              button="sign typed data"
+              action="eth_sign"
+              extraParams={{ type: 'eth_typed_data' }}
+              messages={{
+                title: 'You will get a random badge',
+                scan: 'Connect your DID Wallet to sign a message',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'sign success',
+              }}
             />
-            <PlaygroundAction
-              action="receive_foreign_token"
-              className="action"
-              buttonVariant="contained"
-              amount={10}
-              title={`Get 10 ${token.foreign.symbol}`}
-              webWalletUrl={webWalletUrl}
+            <AuthButton
+              button="eth sign"
+              action="eth_sign"
+              extraParams={{ type: 'eth_standard_data' }}
+              messages={{
+                title: 'Same As Wallet Connect Sign Data',
+                scan: 'Connect your DID Wallet to sign a message',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'sign success',
+              }}
             />
-            <PlaygroundAction
-              action="receive_local_token"
-              className="action"
-              amount={10}
-              title={`Get 10 ${token.local.symbol}`}
-              webWalletUrl={webWalletUrl}
+
+            <AuthButton
+              button="personal sign"
+              action="eth_sign"
+              extraParams={{ type: 'eth_personal_sign' }}
+              messages={{
+                title: 'Same As Wallet Connect Sign Personal Data',
+                scan: 'Connect your DID Wallet to sign a message',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'sign success',
+              }}
             />
-          </div>
-        </section>
-        <section className="section">
-          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
-            Transfer Scenarios{' '}
-            <Typography component="small" color="textSecondary">
-              Help to generate different transfer transactions in DID Wallet
-            </Typography>
-          </Typography>
-          <div className="section__content">
-            <PlaygroundAction
-              action="send_foreign_token"
-              className="action"
-              buttonVariant="contained"
-              amount={0.5}
-              title={`Send 0.5 ${token.foreign.symbol}`}
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              action="send_local_token"
-              className="action"
-              buttonVariant="contained"
-              amount={0.5}
-              title={`Send 0.5 ${token.local.symbol}`}
-              webWalletUrl={webWalletUrl}
+
+            <AuthButton
+              button="send 0.01 rinkeby"
+              action="eth_sign"
+              extraParams={{ type: 'eth_tx' }}
+              messages={{
+                title: 'Same As Wallet Connect Sign Transaction',
+                scan: 'Connect your DID Wallet to sign a message',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'sign success',
+              }}
             />
           </div>
         </section>
