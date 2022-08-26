@@ -1,3 +1,7 @@
+## 0.36.5 (August 26, 2022)
+
+- fix #195
+
 ## 0.36.4 (August 25, 2022)
 
 - chore: update deps to latest safely
