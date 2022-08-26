@@ -58,10 +58,7 @@ const walletHandlers = new WalletHandlers({
   tokenStorage,
   onConnect: args => {
     const { userDid, extraParams } = args;
-    if (extraParams.action === 'claim_create_did') {
-      return;
-    }
-    if (extraParams.action === 'delegate') {
+    if (['claim_create_did', 'delegate', 'claim_target'].includes(extraParams.action)) {
       return;
     }
 
