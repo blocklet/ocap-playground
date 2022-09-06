@@ -1,3 +1,7 @@
+## 0.36.6 (September 06, 2022)
+
+- fix: connect-only case is broken #194
+
 ## 0.36.5 (August 26, 2022)
 
 - fix #195
