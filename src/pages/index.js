@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 // import { PlaygroundAction } from '@arcblock/did-playground';
 // import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
 
+import Header from '@blocklet/ui-react/lib/Header';
 import { UserContext } from '../context/user';
 import Layout from '../components/layout';
 import AuthButton from '../components/auth/general';
@@ -19,6 +20,13 @@ export default function MiniPage() {
   return (
     <Layout title="Home">
       <Main>
+        <Header
+          // eslint-disable-next-line react/no-unstable-nested-components
+          addons={addons => {
+            // eslint-disable-next-line react/jsx-no-useless-fragment
+            return <>{addons}</>;
+          }}
+        />
         <Typography component="h3" variant="subtitle1" color="textSecondary">
           {token.local.symbol} is the primary token, {token.foreign.symbol} is the secondary token.
         </Typography>

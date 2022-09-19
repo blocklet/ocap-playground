@@ -3,13 +3,11 @@ import { Global, css, ThemeProvider as EmotionThemeProvider } from '@emotion/rea
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { SessionProvider } from '@arcblock/did-playground';
 import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
-
 import CssBaseline from '@mui/material/CssBaseline';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { UserProvider } from './context/user';
 import { ToastProvider } from './components/toast';
-
 import HomePage from './pages/full';
 import ProfilePage from './pages/profile';
 import MiniPage from './pages/index';
@@ -50,6 +48,14 @@ export function App() {
                 return (
                   <UserProvider>
                     <ToastProvider>
+                      {/* <Header
+                      // className={clsx(classes.header)}
+                      // meta={info.meta}
+                      // eslint-disable-next-line react/no-unstable-nested-components
+                      // addons={addons => {
+                      //   return {addons}
+                      // }}
+                      /> */}
                       <CssBaseline />
                       <Global styles={globalStyles} />
                       <div className="wrapper">

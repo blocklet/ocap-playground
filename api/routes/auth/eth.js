@@ -1,91 +1,94 @@
+/* eslint-disable no-console */
 // const { HashType } = require('@ocap/client');
 // const { hexToBytes } = require('@ocap/util');
-const { providers,utils, Contract } =  require('ethers');
-const ethUtil = require ('ethereumjs-util');
-const { fromRpcSig, ecrecover, toBuffer, bufferToHex, publicToAddress } = require ('ethereumjs-util');
+const { providers, utils, Contract } = require('ethers');
+const ethUtil = require('ethereumjs-util');
+const { fromRpcSig, ecrecover, toBuffer, bufferToHex, publicToAddress } = require('ethereumjs-util');
 const { TypedDataUtils } = require('eth-sig-util');
 
 const Mcrypto = require('@ocap/mcrypto');
 const { utf8ToHex } = require('@ocap/util');
-const { toBase58, fromBase58 } = require('@ocap/util');
+const { toBase58 } = require('@ocap/util');
 
 // const Web3 = require('Web3');
 
+// eslint-disable-next-line no-unused-vars
 const SUPPORTED_CHAINS = [
   {
-    name: "Ethereum Mainnet",
-    short_name: "eth",
-    chain: "ETH",
-    network: "mainnet",
+    name: 'Ethereum Mainnet',
+    short_name: 'eth',
+    chain: 'ETH',
+    network: 'mainnet',
     chain_id: 1,
     network_id: 1,
-    rpc_url: "https://mainnet.infura.io/v3/%API_KEY%",
+    rpc_url: 'https://mainnet.infura.io/v3/%API_KEY%',
     native_currency: {
-      symbol: "ETH",
-      name: "Ether",
-      decimals: "18",
-      contractAddress: "",
-      balance: "",
+      symbol: 'ETH',
+      name: 'Ether',
+      decimals: '18',
+      contractAddress: '',
+      balance: '',
     },
   },
   {
-    name: "Ethereum Ropsten",
-    short_name: "rop",
-    chain: "ETH",
-    network: "ropsten",
+    name: 'Ethereum Ropsten',
+    short_name: 'rop',
+    chain: 'ETH',
+    network: 'ropsten',
     chain_id: 3,
     network_id: 3,
-    rpc_url: "https://ropsten.infura.io/v3/%API_KEY%",
+    rpc_url: 'https://ropsten.infura.io/v3/%API_KEY%',
     native_currency: {
-      symbol: "ETH",
-      name: "Ether",
-      decimals: "18",
-      contractAddress: "",
-      balance: "",
+      symbol: 'ETH',
+      name: 'Ether',
+      decimals: '18',
+      contractAddress: '',
+      balance: '',
     },
   },
   {
-    name: "Ethereum Rinkeby",
-    short_name: "rin",
-    chain: "ETH",
-    network: "rinkeby",
+    name: 'Ethereum Rinkeby',
+    short_name: 'rin',
+    chain: 'ETH',
+    network: 'rinkeby',
     chain_id: 4,
     network_id: 4,
-    rpc_url: "https://rinkeby.infura.io/v3/%API_KEY%",
+    rpc_url: 'https://rinkeby.infura.io/v3/%API_KEY%',
     native_currency: {
-      symbol: "ETH",
-      name: "Ether",
-      decimals: "18",
-      contractAddress: "",
-      balance: "",
+      symbol: 'ETH',
+      name: 'Ether',
+      decimals: '18',
+      contractAddress: '',
+      balance: '',
     },
-  }];
+  },
+];
 
 const spec = {
-  magicValue: "0x1626ba7e",
+  magicValue: '0x1626ba7e',
   abi: [
     {
       constant: true,
       inputs: [
         {
-          name: "_hash",
-          type: "bytes32",
+          name: '_hash',
+          type: 'bytes32',
         },
         {
-          name: "_sig",
-          type: "bytes",
+          name: '_sig',
+          type: 'bytes',
         },
       ],
-      name: "isValidSignature",
+      name: 'isValidSignature',
       outputs: [
         {
-          name: "magicValue",
-          type: "bytes4",
+          name: 'magicValue',
+          type: 'bytes4',
         },
       ],
       payable: false,
-      stateMutability: "view",
-      type: "function",
+      stateMutability: 'view',
+      type: 'function',
     },
   ],
 };
@@ -145,23 +148,22 @@ const convertUtf8ToHex = str => {
   return utf8ToHex(str);
 };
 
-
 const encodeTypedDataMsg = msg => {
-  const data  = TypedDataUtils.sanitizeData(JSON.parse(msg));
+  const data = TypedDataUtils.sanitizeData(JSON.parse(msg));
   const buf = Buffer.concat([
-    Buffer.from("1901", "hex"),
-    TypedDataUtils.hashStruct("EIP712Domain", data.domain, data.types),
+    Buffer.from('1901', 'hex'),
+    TypedDataUtils.hashStruct('EIP712Domain', data.domain, data.types),
     TypedDataUtils.hashStruct(data.primaryType, data.message, data.types),
   ]);
-  return ethUtil.bufferToHex(buf); 
-}
+  return ethUtil.bufferToHex(buf);
+};
 
 const hashTypedDataMessage = msg => {
   const data = encodeTypedDataMsg(msg);
   const buf = ethUtil.toBuffer(data);
   const hash = ethUtil.keccak256(buf);
   return ethUtil.bufferToHex(hash);
-}
+};
 
 const encodePersonalMessage = msg => {
   const data = hexToBuffer(convertUtf8ToHex(msg));
@@ -184,20 +186,10 @@ function recoverAddress(sig, hash) {
   return signer;
 }
 
-async function isValidSignature(
-  address,
-  sig,
-  data,
-  provider,
-  abi,
-  magicValue,
-){
+async function isValidSignature(address, sig, data, provider, abi, magicValue) {
   let returnValue;
   try {
-    returnValue = await new Contract(address, abi, provider).isValidSignature(
-      utils.arrayify(data),
-      sig,
-    );
+    returnValue = await new Contract(address, abi, provider).isValidSignature(utils.arrayify(data), sig);
   } catch (e) {
     return false;
   }
@@ -209,29 +201,24 @@ const eip1271 = {
   isValidSignature,
 };
 
-async function verifySignature(
-  address,
-  sig,
-  hash,
-  chainId
-) {
+async function verifySignature(address, sig, hash) {
+  // const checkChain = SUPPORTED_CHAINS.filter(chain => chain.chain_id === chainId);
   const rpcUrl = 'https://rinkeby.infura.io/v3/7feb76462cf7419ea41845147456947c';
   const provider = new providers.JsonRpcProvider(rpcUrl);
   const bytecode = await provider.getCode(address);
-  if (!bytecode || bytecode === "0x" || bytecode === "0x0" || bytecode === "0x00") {
+  if (!bytecode || bytecode === '0x' || bytecode === '0x0' || bytecode === '0x00') {
     const signer = recoverAddress(sig, hash);
     return signer.toLowerCase() === address.toLowerCase();
-  } else {
-    return eip1271.isValidSignature(address, sig, hash, provider);
   }
+  return eip1271.isValidSignature(address, sig, hash, provider);
 }
-const message = `My email is john@doe.com - Fri, 26 Aug 2022 13:57:57 GMT`;
+
+const message = 'My email is john@doe.com - Fri, 26 Aug 2022 13:57:57 GMT';
 module.exports = {
   action: 'eth_sign',
   claims: {
     signature: async ({ userDid, extraParams: { type } }) => {
       // const description = 'Please sign this message';
-     
       const hexMessage = utf8ToHex(message);
       const txString = JSON.stringify({
         network: 4,
@@ -244,12 +231,20 @@ module.exports = {
       });
       const origin = toBase58(Buffer.from(txString, 'utf-8'));
       const params = {
+        eth_legacy_data: {
+          type: 'eth:legacy-data',
+          data: JSON.stringify({
+            network: 4,
+            address: userDid,
+            data: hashMessage(message),
+          }),
+        },
         eth_typed_data: {
           type: 'eth:typed-data',
           data: JSON.stringify({
             network: 4,
             address: userDid,
-            data: JSON.stringify(example)
+            data: JSON.stringify(example),
           }),
         },
         eth_personal_sign: {
@@ -257,7 +252,7 @@ module.exports = {
           data: JSON.stringify({
             network: 4,
             address: userDid,
-            data: hexMessage
+            data: hexMessage,
           }),
         },
         eth_standard_data: {
@@ -265,7 +260,7 @@ module.exports = {
           data: JSON.stringify({
             network: 4,
             address: userDid,
-            data: hashMessage(message),
+            data: hexMessage,
           }),
         },
         eth_tx: {
@@ -285,22 +280,19 @@ module.exports = {
   onAuth: async ({ claims, userDid, extraParams: { locale } }) => {
     logger.info('eth.onAuth', { claims, userDid, locale });
     const claim = claims.find(x => x.type === 'signature');
-    const sig = claim.sig
-    
+    const { sig } = claim;
+
     // const data = fromBase58(claim.origin)
-    console.info(`signature: ${sig}`)
-    if(claim.typeUrl == 'eth:typed-data'){
-      const message = JSON.stringify(example);
-      const hash = hashTypedDataMessage(message);
+    console.info(`signature: ${sig}`);
+    if (claim.typeUrl === 'eth:typed-data') {
+      const tmessage = JSON.stringify(example);
+      const hash = hashTypedDataMessage(tmessage);
       const valid = await verifySignature(userDid, sig, hash, 4);
-      if(!valid) throw Error("message signature wrong!")
-
-    }else {
-      const hashMsg = hashMessage(message)
-      const isValid = await verifySignature(userDid, sig, hashMsg, 4)
-      if(!isValid) throw Error("message signature wrong!")
+      if (!valid) throw Error('message signature wrong!');
+    } else {
+      const hashMsg = hashMessage(message);
+      const isValid = await verifySignature(userDid, sig, hashMsg, 4);
+      if (!isValid) throw Error('message signature wrong!');
     }
-    
-
   },
 };
