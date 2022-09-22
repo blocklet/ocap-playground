@@ -3,7 +3,6 @@
 // const { hexToBytes } = require('@ocap/util');
 const { providers, utils, Contract } = require('ethers');
 const ethUtil = require('ethereumjs-util');
-const { fromRpcSig, ecrecover, toBuffer, bufferToHex, publicToAddress } = require('ethereumjs-util');
 const { TypedDataUtils } = require('eth-sig-util');
 
 const Mcrypto = require('@ocap/mcrypto');
@@ -180,9 +179,13 @@ const hashMessage = msg => {
 };
 
 function recoverAddress(sig, hash) {
-  const params = fromRpcSig(sig);
-  const result = ecrecover(toBuffer(hash), params.v, params.r, params.s);
-  const signer = bufferToHex(publicToAddress(result));
+  console.info(`fromRpcSig: ${sig}`);
+  const params = ethUtil.fromRpcSig(sig);
+  console.info(`ecrecover: ${hash}`);
+  const result = ethUtil.ecrecover(ethUtil.toBuffer(hash), params.v, params.r, params.s);
+  console.info(`publicToAddress: ${result}`);
+  const signer = ethUtil.bufferToHex(ethUtil.publicToAddress(result));
+  console.info(`recoverAddress signer: ${JSON.stringify(signer)}`);
   return signer;
 }
 
@@ -207,12 +210,15 @@ async function verifySignature(address, sig, hash) {
   const provider = new providers.JsonRpcProvider(rpcUrl);
   const bytecode = await provider.getCode(address);
   if (!bytecode || bytecode === '0x' || bytecode === '0x0' || bytecode === '0x00') {
+    console.info('is not a eth1271 varify');
     const signer = recoverAddress(sig, hash);
     return signer.toLowerCase() === address.toLowerCase();
   }
+  console.info('is a eth1271 varify');
   return eip1271.isValidSignature(address, sig, hash, provider);
 }
-const message = 'My email is john@doe.com - Thu, 22 Sep 2022 07:04:04 GMT';
+const message = 'My email is john@doe.com - Thu, 22 Sep 2022 07:38:55 GMT';
+// 0xa1855e977fbb2e565f649f98543a296f55284afdd40085c67e956fdc3dbc79435765b94db6555025a4a914b85b002d60b8d475584d87356099633b96ba5faf9e1b
 
 // const message = 'My email is john@doe.com - Fri, 26 Aug 2022 13:57:57 GMT';
 module.exports = {
@@ -295,8 +301,8 @@ module.exports = {
       const isValid = await verifySignature(userDid, sig, hashMsg);
       if (!isValid) throw Error('message signature wrong!');
     } else {
-      const hashMsg = hashMessage(message);
-      const isValid = await verifySignature(userDid, sig, hashMsg);
+      const standardHash = hashMessage(message);
+      const isValid = await verifySignature(userDid, sig, standardHash);
       if (!isValid) throw Error('message signature wrong!');
     }
   },
