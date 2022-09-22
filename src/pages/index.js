@@ -50,6 +50,17 @@ export default function MiniPage() {
               }}
             />
             <AuthButton
+              button="eth legacy sign"
+              action="eth_sign"
+              extraParams={{ type: 'eth_legacy_data' }}
+              messages={{
+                title: 'Same As Wallet Connect Sign Data',
+                scan: 'Connect your DID Wallet to sign a message',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'sign success',
+              }}
+            />
+            <AuthButton
               button="eth sign"
               action="eth_sign"
               extraParams={{ type: 'eth_standard_data' }}

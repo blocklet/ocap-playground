@@ -212,8 +212,9 @@ async function verifySignature(address, sig, hash) {
   }
   return eip1271.isValidSignature(address, sig, hash, provider);
 }
+const message = 'My email is john@doe.com - Thu, 22 Sep 2022 07:04:04 GMT';
 
-const message = 'My email is john@doe.com - Fri, 26 Aug 2022 13:57:57 GMT';
+// const message = 'My email is john@doe.com - Fri, 26 Aug 2022 13:57:57 GMT';
 module.exports = {
   action: 'eth_sign',
   claims: {
@@ -281,17 +282,21 @@ module.exports = {
     logger.info('eth.onAuth', { claims, userDid, locale });
     const claim = claims.find(x => x.type === 'signature');
     const { sig } = claim;
-
+    const hexMessage = utf8ToHex(message);
     // const data = fromBase58(claim.origin)
-    console.info(`signature: ${sig}`);
+    console.info(`signature: ${sig} userDid: ${userDid}`);
     if (claim.typeUrl === 'eth:typed-data') {
       const tmessage = JSON.stringify(example);
       const hash = hashTypedDataMessage(tmessage);
-      const valid = await verifySignature(userDid, sig, hash, 4);
+      const valid = await verifySignature(userDid, sig, hash);
       if (!valid) throw Error('message signature wrong!');
+    } else if (claim.typeUrl === 'eth:legacy-data') {
+      const hashMsg = hashMessage(hexMessage);
+      const isValid = await verifySignature(userDid, sig, hashMsg);
+      if (!isValid) throw Error('message signature wrong!');
     } else {
       const hashMsg = hashMessage(message);
-      const isValid = await verifySignature(userDid, sig, hashMsg, 4);
+      const isValid = await verifySignature(userDid, sig, hashMsg);
       if (!isValid) throw Error('message signature wrong!');
     }
   },

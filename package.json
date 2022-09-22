@@ -176,7 +176,8 @@
     "@ocap/client": "^1.17.19",
     "@ocap/tx-util": "^1.17.19",
     "@ocap/util": "^1.17.19",
-    "@ocap/wallet": "^1.17.19"
+    "@ocap/wallet": "^1.17.19",
+    "react-router-dom": "^6.3.0"
   },
   "license": "Apache-2.0"
 }
