@@ -4,7 +4,7 @@
 const { providers, utils, Contract } = require('ethers');
 const ethUtil = require('ethereumjs-util');
 const { TypedDataUtils } = require('eth-sig-util');
-
+const ethers = require('ethers');
 const Mcrypto = require('@ocap/mcrypto');
 const { utf8ToHex } = require('@ocap/util');
 const { toBase58 } = require('@ocap/util');
@@ -217,10 +217,11 @@ async function verifySignature(address, sig, hash) {
   console.info('is a eth1271 varify');
   return eip1271.isValidSignature(address, sig, hash, provider);
 }
-const message = 'My email is john@doe.com - Thu, 22 Sep 2022 07:38:55 GMT';
-// 0xa1855e977fbb2e565f649f98543a296f55284afdd40085c67e956fdc3dbc79435765b94db6555025a4a914b85b002d60b8d475584d87356099633b96ba5faf9e1b
+const message = 'My email is john@doe.com - Fri, 23 Sep 2022 02:09:24 GMT';
+// const result =
+//   '0x10f450c0c600da1a3722ab2bdba61e56ab671b0d4dc90b3ac8567e66f37cd39d734eb6ea79156652007bf7aa8bd29c43f593dbc0e02a63277a6c6b3ba65fb1c41b';
+// const curAddr = '0x22aB72d93DCee39C01aD6e6ac7276d5a674Ec325';
 
-// const message = 'My email is john@doe.com - Fri, 26 Aug 2022 13:57:57 GMT';
 module.exports = {
   action: 'eth_sign',
   claims: {
@@ -290,7 +291,6 @@ module.exports = {
     const { sig } = claim;
     const hexMessage = utf8ToHex(message);
     // const data = fromBase58(claim.origin)
-    console.info(`signature: ${sig} userDid: ${userDid}`);
     if (claim.typeUrl === 'eth:typed-data') {
       const tmessage = JSON.stringify(example);
       const hash = hashTypedDataMessage(tmessage);
@@ -301,8 +301,8 @@ module.exports = {
       const isValid = await verifySignature(userDid, sig, hashMsg);
       if (!isValid) throw Error('message signature wrong!');
     } else {
-      const standardHash = hashMessage(message);
-      const isValid = await verifySignature(userDid, sig, standardHash);
+      // const standardHash = hashMessage(message);
+      const isValid = userDid === ethers.utils.verifyMessage(message, sig);
       if (!isValid) throw Error('message signature wrong!');
     }
   },
