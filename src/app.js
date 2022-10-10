@@ -8,8 +8,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import { UserProvider } from './context/user';
 import { ToastProvider } from './components/toast';
-import HomePage from './pages/full';
-import ProfilePage from './pages/profile';
+// import HomePage from './pages/full';
+// import ProfilePage from './pages/profile';
 import MiniPage from './pages/index';
 
 import theme from './libs/theme';
@@ -61,8 +61,6 @@ export function App() {
                       <div className="wrapper">
                         <Routes>
                           <Route path="/" element={<MiniPage />} />
-                          <Route path="/full" element={<HomePage />} />
-                          <Route path="/profile" element={<ProfilePage />} />
                           <Route path="*" element={<Navigate to="/" replace />} />
                         </Routes>
                       </div>

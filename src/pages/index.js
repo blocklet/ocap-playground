@@ -1,24 +1,50 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useContext } from 'react';
 import styled from '@emotion/styled';
-
+import clsx from 'clsx';
+import makeStyles from '@mui/styles/makeStyles';
 import Typography from '@mui/material/Typography';
 // import { PlaygroundAction } from '@arcblock/did-playground';
 // import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
-
+// import Layout from '../components/layout';
 import Header from '@blocklet/ui-react/lib/Header';
+import { Container } from '@mui/material';
 import { UserContext } from '../context/user';
-import Layout from '../components/layout';
 import AuthButton from '../components/auth/general';
 
+const useStyles = makeStyles(() => ({
+  root: {
+    display: 'flex',
+    minHeight: '100vh',
+    paddingLeft: 0,
+    paddingRight: 0,
+    flexDirection: 'column',
+    '& .layout__main': {
+      flex: 1,
+    },
+  },
+  header: {
+    backgroundColor: '#fff',
+    position: 'sticky',
+    zIndex: 1,
+
+    top: 64,
+    '& .MuiContainer-root': {
+      maxWidth: '100%',
+    },
+    '& .navmenu-item--active, & .navmenu-item:hover': {
+      color: 'var(--main-color)',
+    },
+  },
+}));
 // 临时 demo 的页面
 export default function MiniPage() {
   const { session } = useContext(UserContext);
   const { token } = session;
   // const webWalletUrl = getWebWalletUrl();
-
+  const classes = useStyles();
   return (
-    <Layout title="Home">
+    <Container className={clsx(classes.root)}>
       <Main>
         <Header
           // eslint-disable-next-line react/no-unstable-nested-components
@@ -85,9 +111,43 @@ export default function MiniPage() {
             />
 
             <AuthButton
-              button="send 0.01 rinkeby"
+              button="send 0.0001 GOR"
               action="eth_sign"
               extraParams={{ type: 'eth_tx' }}
+              messages={{
+                title: 'Same As Wallet Connect Sign Transaction',
+                scan: 'Connect your DID Wallet to sign a message',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'sign success',
+              }}
+            />
+            <AuthButton
+              button="send 12 MARS"
+              action="eth_sign"
+              extraParams={{ type: 'eth_tx_erc_20' }}
+              messages={{
+                title: 'Same As Wallet Connect Sign Transaction',
+                scan: 'Connect your DID Wallet to sign a message',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'sign success',
+              }}
+            />
+
+            <AuthButton
+              button="send much GOR"
+              action="eth_sign"
+              extraParams={{ type: 'eth_tx_max' }}
+              messages={{
+                title: 'Same As Wallet Connect Sign Transaction',
+                scan: 'Connect your DID Wallet to sign a message',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'sign success',
+              }}
+            />
+            <AuthButton
+              button="send much MARS"
+              action="eth_sign"
+              extraParams={{ type: 'eth_tx_erc_20_max' }}
               messages={{
                 title: 'Same As Wallet Connect Sign Transaction',
                 scan: 'Connect your DID Wallet to sign a message',
@@ -98,7 +158,7 @@ export default function MiniPage() {
           </div>
         </section>
       </Main>
-    </Layout>
+    </Container>
   );
 }
 

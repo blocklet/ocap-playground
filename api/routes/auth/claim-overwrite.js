@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 const fakeChainInfo = {
-  id: 'xenon-2020-01-15',
-  host: 'http://47.104.23.85:8214/api',
+  type: 'arcblock|ethereum|sonola',
+  id: 'xenon-2020-01-15', // string
+  host: 'http://47.104.23.85:8214/api', // optional
 };
 
 module.exports = {

@@ -206,7 +206,7 @@ const eip1271 = {
 
 async function verifySignature(address, sig, hash) {
   // const checkChain = SUPPORTED_CHAINS.filter(chain => chain.chain_id === chainId);
-  const rpcUrl = 'https://rinkeby.infura.io/v3/7feb76462cf7419ea41845147456947c';
+  const rpcUrl = 'https://goerli.infura.io/v3/7feb76462cf7419ea41845147456947c';
   const provider = new providers.JsonRpcProvider(rpcUrl);
   const bytecode = await provider.getCode(address);
   if (!bytecode || bytecode === '0x' || bytecode === '0x0' || bytecode === '0x00') {
@@ -229,20 +229,60 @@ module.exports = {
       // const description = 'Please sign this message';
       const hexMessage = utf8ToHex(message);
       const txString = JSON.stringify({
-        network: 4,
+        network: 5,
         tx: {
           to: '0x162e56f12ba101dBcA8b90Afe45FA24B08C233D3',
-          value: '1000000000000000',
+          value: '100000000000000',
           gasLimit: '80000',
           data: '',
         },
       });
       const origin = toBase58(Buffer.from(txString, 'utf-8'));
+      const originMax = toBase58(
+        Buffer.from(
+          JSON.stringify({
+            network: 5,
+            tx: {
+              to: '0x162e56f12ba101dBcA8b90Afe45FA24B08C233D3',
+              value: '10000000000000000000',
+              gasLimit: '80000',
+              data: '',
+            },
+          }),
+          'utf-8'
+        )
+      );
+
+      const txErc20String = JSON.stringify({
+        network: 5,
+        tx: {
+          to: '0x5c93d55f3d90664fd649ca65551af156adb909e9',
+          value: '0',
+          gasLimit: '250000',
+          data: '0xa9059cbb000000000000000000000000162e56f12ba101dbca8b90afe45fa24b08c233d3000000000000000000000000000000000000000000000000a688906bd8b00000',
+        },
+      });
+      const originErc20 = toBase58(Buffer.from(txErc20String, 'utf-8'));
+      const originErc20Max = toBase58(
+        Buffer.from(
+          JSON.stringify({
+            network: 5,
+            tx: {
+              to: '0x5c93d55f3d90664fd649ca65551af156adb909e9',
+              value: '0',
+              gasLimit: '250000',
+              data: '0xa9059cbb000000000000000000000000162e56f12ba101dbca8b90afe45fa24b08c233d300000000000000000000000000000000000000000001969368974C05B0000000',
+            },
+          }),
+          'utf-8'
+        )
+      );
+
       const params = {
         eth_legacy_data: {
           type: 'eth:legacy-data',
           data: JSON.stringify({
-            network: 4,
+            network: 5,
             address: userDid,
             data: hashMessage(message),
           }),
@@ -250,7 +290,7 @@ module.exports = {
         eth_typed_data: {
           type: 'eth:typed-data',
           data: JSON.stringify({
-            network: 4,
+            network: 5,
             address: userDid,
             data: JSON.stringify(example),
           }),
@@ -258,7 +298,7 @@ module.exports = {
         eth_personal_sign: {
           type: 'eth:personal-data',
           data: JSON.stringify({
-            network: 4,
+            network: 5,
             address: userDid,
             data: hexMessage,
           }),
@@ -266,7 +306,7 @@ module.exports = {
         eth_standard_data: {
           type: 'eth:standard-data',
           data: JSON.stringify({
-            network: 4,
+            network: 5,
             address: userDid,
             data: hexMessage,
           }),
@@ -275,6 +315,20 @@ module.exports = {
           type: 'eth:transaction',
 
           data: origin,
+        },
+        eth_tx_erc_20: {
+          type: 'eth:transaction',
+          data: originErc20,
+        },
+
+        eth_tx_max: {
+          type: 'eth:transaction',
+
+          data: originMax,
+        },
+        eth_tx_erc_20_max: {
+          type: 'eth:transaction',
+          data: originErc20Max,
         },
       };
 
@@ -290,6 +344,7 @@ module.exports = {
     const claim = claims.find(x => x.type === 'signature');
     const { sig } = claim;
     const hexMessage = utf8ToHex(message);
+    if (claim.typeUrl === 'eth:transaction') return;
     // const data = fromBase58(claim.origin)
     if (claim.typeUrl === 'eth:typed-data') {
       const tmessage = JSON.stringify(example);
