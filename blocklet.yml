@@ -4,6 +4,7 @@ description: >-
   A simple playground that shows the potential of OCAP powered blockchain and
   DID Wallet V2
 files:
+  - api/libs/hooks/pre-start.js
   - screenshots
   - logo.png
   - blocklet.md
@@ -32,12 +33,20 @@ screenshots:
   - 1-profile.png
   - 2-everything.png
 environments:
-  # - name: CHAIN_HOST
-  #   description: Please provide endpoint of local chain
-  #   required: true
-  #   default: https://beta.abtnetwork.io/api/
-  #   secure: false
-  #   shared: true
+  - name: CHAIN_HOST
+    description: Please provide endpoint of local chain
+    required: true
+    default: 'https://beta.abtnetwork.io/api/'
+    secure: false
+    shared: true
+  - name: CHAIN_TYPE
+    description: Please provide chain type arcblock/ethereum/solana
+    required: true
+    default: 'ethereum'
+  - name: CHAIN_ID
+    description: Please provide chain id
+    required: true
+    default: '5'
   - name: LOCAL_TOKEN_ID
     description: Please provide local token for the playground
     required: true
@@ -86,10 +95,10 @@ requirements:
   server: '>=1.7.4'
   os: '*'
   cpu: '*'
-  fuels:
-    - endpoint: '{env.CHAIN_HOST}'
-      value: '2000'
-      reason: For Creating Token and NFT Factory
+  # fuels:
+    # - endpoint: '{env.CHAIN_HOST}'
+      # value: '2000'
+      # reason: For Creating Token and NFT Factory
 did: z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM
 children: []
 payment:

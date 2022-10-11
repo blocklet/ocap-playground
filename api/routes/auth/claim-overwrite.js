@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const fakeChainInfo = {
-  type: 'arcblock|ethereum|sonola',
-  id: 'xenon-2020-01-15', // string
+  type: 'ethereum',
+  id: '5', // string
   host: 'http://47.104.23.85:8214/api', // optional
 };
 
