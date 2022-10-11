@@ -14,7 +14,9 @@ const env = require('./env');
 const wallet = getWallet();
 const client = new Client(env.chainHost);
 
-const walletAuth = new WalletAuthenticator();
+const walletAuth = new WalletAuthenticator({
+  chainInfo: { host: 'none', id: '5', type: 'ethereum', restrictedDeclare: false },
+});
 
 const walletAuthWithNoChainInfo = new WalletAuthenticator({
   chainInfo: { host: 'none', id: 'none', restrictedDeclare: false },

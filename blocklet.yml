@@ -4,7 +4,6 @@ description: >-
   A simple playground that shows the potential of OCAP powered blockchain and
   DID Wallet V2
 files:
-  - api/libs/hooks/pre-start.js
   - screenshots
   - logo.png
   - blocklet.md
@@ -33,12 +32,12 @@ screenshots:
   - 1-profile.png
   - 2-everything.png
 environments:
-  - name: CHAIN_HOST
-    description: Please provide endpoint of local chain
-    required: true
-    default: https://beta.abtnetwork.io/api/
-    secure: false
-    shared: true
+  # - name: CHAIN_HOST
+  #   description: Please provide endpoint of local chain
+  #   required: true
+  #   default: https://beta.abtnetwork.io/api/
+  #   secure: false
+  #   shared: true
   - name: LOCAL_TOKEN_ID
     description: Please provide local token for the playground
     required: true
@@ -52,7 +51,7 @@ environments:
     secure: false
     shared: true
 scripts:
-  preStart: node api/libs/hooks/pre-start.js
+  # preStart: node api/libs/hooks/pre-start.js
   dev: npm run start
 specVersion: 1.2.7
 interfaces:

@@ -224,6 +224,13 @@ const message = 'My email is john@doe.com - Fri, 23 Sep 2022 02:09:24 GMT';
 
 module.exports = {
   action: 'eth_sign',
+  authPrincipal: {
+    chainInfo: {
+      type: 'ethereum',
+      id: '5', // string
+      // host: 'http://47.104.23.85:8214/api', // optional
+    },
+  },
   claims: {
     signature: async ({ userDid, extraParams: { type } }) => {
       // const description = 'Please sign this message';
