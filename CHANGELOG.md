@@ -1,4 +1,9 @@
+## 0.36.8 (November 01, 2022)
+
+- fix: blocklet.yml
+
 ## 0.36.7 (November 01, 2022)
+
 - fix nft endpoint
 
 ## 0.36.6 (September 06, 2022)
