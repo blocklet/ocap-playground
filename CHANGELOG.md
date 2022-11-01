@@ -1,3 +1,6 @@
+## 0.36.7 (November 01, 2022)
+- fix nft endpoint
+
 ## 0.36.6 (September 06, 2022)
 
 - fix: connect-only case is broken #194
