@@ -281,7 +281,7 @@ const verifyAssetClaim = async ({ claim, challenge, trustedIssuers = [], trusted
   return state;
 };
 
-const pickGasStakeHeaders = ({ headers }) => ({ headers: pick(headers, ['x-gas-stake-sig', 'x-gas-stake-pk']) });
+const pickGasStakeHeaders = ({ headers }) => ({ headers: pick(headers, ['x-gas-payer-sig', 'x-gas-payer-pk']) });
 
 module.exports = {
   getTransferrableAssets,

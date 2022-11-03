@@ -72,10 +72,10 @@ export default function IndexPage() {
               title={`Send 1 ${token.local.symbol} to me`}
             />
             <PlaygroundAction
-              action="send_local_token"
+              action="send_foreign_token"
               className="action"
               amount={1}
-              title={`Send 1 ${token.local.symbol} to application`}
+              title={`Send 1 ${token.foreign.symbol} to application`}
             />
             <TransferAssetOut {...session} />
             <TransferAssetIn {...session} />
