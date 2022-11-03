@@ -4,6 +4,7 @@ const { fromBase58 } = require('@ocap/util');
 const { fromAddress } = require('@ocap/wallet');
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
+const { pickGasStakeHeaders } = require('../../libs/util');
 
 module.exports = {
   action: 'swap_token_v2',
@@ -56,7 +57,7 @@ module.exports = {
     },
   },
 
-  onAuth: async ({ userDid, claims }) => {
+  onAuth: async ({ req, userDid, claims }) => {
     try {
       const claim = claims.find(x => x.type === 'signature');
       logger.info('swap_token.auth.claim', claim);
@@ -70,10 +71,13 @@ module.exports = {
       }
       tx.signaturesList[0].signature = claim.sig;
 
-      const hash = await client.sendExchangeV2Tx({
-        tx,
-        wallet: fromAddress(userDid),
-      });
+      const hash = await client.sendExchangeV2Tx(
+        {
+          tx,
+          wallet: fromAddress(userDid),
+        },
+        pickGasStakeHeaders(req)
+      );
 
       logger.info('swap_token tx hash:', hash);
       return { hash, tx: claim.origin };

@@ -5,7 +5,7 @@ const { fromTokenToUnit } = require('@ocap/util');
 
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
-const { getTokenInfo } = require('../../libs/util');
+const { getTokenInfo, pickGasStakeHeaders } = require('../../libs/util');
 
 const txCreators = {
   StakeLocalToken: async ({ userDid, userPk }) => {
@@ -99,7 +99,7 @@ module.exports = {
     },
   },
 
-  onAuth: async ({ userDid, claims }) => {
+  onAuth: async ({ req, userDid, claims }) => {
     const claim = claims.find(x => x.type === 'prepareTx');
     logger.info('stake.auth.claim', claim);
     if (!claim.finalTx) {
@@ -108,7 +108,7 @@ module.exports = {
 
     const tx = client.decodeTx(claim.finalTx);
 
-    const hash = await client.sendStakeTx({ tx, wallet: fromAddress(userDid) });
+    const hash = await client.sendStakeTx({ tx, wallet: fromAddress(userDid) }, pickGasStakeHeaders(req));
     return { hash, tx: claim.finalTx };
   },
 };

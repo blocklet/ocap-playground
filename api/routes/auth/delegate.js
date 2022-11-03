@@ -7,7 +7,7 @@ const { preMintFromFactory } = require('@ocap/asset');
 
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
-const { getAccountStateOptions, getTokenInfo } = require('../../libs/util');
+const { getAccountStateOptions, getTokenInfo, pickGasStakeHeaders } = require('../../libs/util');
 const { formatFactoryState, factories, inputs } = require('../../libs/factory');
 
 const txCreators = {
@@ -131,7 +131,7 @@ module.exports = {
     },
   ],
 
-  onAuth: async ({ userDid, claims, extraParams: { type } }) => {
+  onAuth: async ({ req, userDid, claims, extraParams: { type } }) => {
     // 1. we need to ensure that the wallet is returning expected did type
     const info = toTypeInfo(userDid);
     if (info.role !== types.RoleType.ROLE_ACCOUNT) {
@@ -167,7 +167,7 @@ module.exports = {
       tx.signature = claim.sig;
       tx.delegator = claim.delegator;
       tx.from = claim.from;
-      const hash = await client.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) });
+      const hash = await client.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) }, pickGasStakeHeaders(req));
       return { hash, tx: claim.origin };
     }
 
@@ -175,7 +175,7 @@ module.exports = {
       tx.signature = claim.sig;
       tx.delegator = claim.delegator;
       tx.from = claim.from;
-      const hash = await client.sendTransferV2Tx({ tx, wallet: fromAddress(userDid) });
+      const hash = await client.sendTransferV2Tx({ tx, wallet: fromAddress(userDid) }, pickGasStakeHeaders(req));
       return { hash, tx: claim.origin };
     }
 
@@ -183,7 +183,7 @@ module.exports = {
       tx.signaturesList[0].signature = claim.sig;
       tx.signaturesList[0].signer = claim.from;
       tx.signaturesList[0].delegator = claim.delegator;
-      const hash = await client.sendExchangeV2Tx({ tx, wallet: fromAddress(userDid) });
+      const hash = await client.sendExchangeV2Tx({ tx, wallet: fromAddress(userDid) }, pickGasStakeHeaders(req));
       return { hash, tx: claim.origin };
     }
 

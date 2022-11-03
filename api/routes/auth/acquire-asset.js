@@ -6,6 +6,7 @@ const { preMintFromFactory } = require('@ocap/asset');
 const { formatFactoryState, factories, inputs } = require('../../libs/factory');
 const { wallet, client } = require('../../libs/auth');
 const { create } = require('../../libs/nft/display');
+const { pickGasStakeHeaders } = require('../../libs/util');
 
 module.exports = {
   action: 'acquire_asset',
@@ -61,7 +62,7 @@ module.exports = {
       };
     },
   },
-  onAuth: async ({ claims, userDid }) => {
+  onAuth: async ({ req, claims, userDid }) => {
     const claim = claims.find(x => x.type === 'signature');
     logger.info('acquire.auth.claim', claim);
 
@@ -77,7 +78,7 @@ module.exports = {
     }
 
     logger.info('acquire.auth.tx', tx);
-    const hash = await client.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) });
+    const hash = await client.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) }, pickGasStakeHeaders(req));
     logger.info('hash:', hash);
 
     // return the nft(vc) if exists

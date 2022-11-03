@@ -6,7 +6,7 @@ const { fromPublicKey } = require('@ocap/wallet');
 
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
-const { getRandomMessage } = require('../../libs/util');
+const { getRandomMessage, pickGasStakeHeaders } = require('../../libs/util');
 
 const data = 'abcdefghijklmnopqrstuvwxyz'.repeat(32);
 const hasher = Mcrypto.getHasher(Mcrypto.types.HashType.SHA3);
@@ -98,7 +98,7 @@ module.exports = {
   },
 
   // eslint-disable-next-line consistent-return
-  onAuth: async ({ userDid, userPk, claims }) => {
+  onAuth: async ({ req, userDid, userPk, claims }) => {
     const type = toTypeInfo(userDid);
     const user = fromPublicKey(userPk, type);
     const claim = claims.find(x => x.type === 'signature');
@@ -120,11 +120,14 @@ module.exports = {
 
     if (claim.meta && claim.meta.origin) {
       const tx = client.decodeTx(claim.meta.origin);
-      const hash = await client.sendTransferV2Tx({
-        tx,
-        wallet: user,
-        signature: claim.sig,
-      });
+      const hash = await client.sendTransferV2Tx(
+        {
+          tx,
+          wallet: user,
+          signature: claim.sig,
+        },
+        pickGasStakeHeaders(req)
+      );
 
       logger.info('signature.evil.onAuth', { claims, userDid, hash });
       return { hash, tx: claim.meta.origin };

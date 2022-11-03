@@ -7,6 +7,7 @@ const { fromBase58, toAddress } = require('@ocap/util');
 const { createZippedSvgDisplay, createCertSvg, createTicketSvg } = require('@arcblock/nft-template');
 const { NFTRecipient, NFTIssuer } = require('@arcblock/nft');
 const { NFTType } = require('@arcblock/nft/lib/enum');
+const pick = require('lodash/pick');
 
 const axios = require('axios');
 const fs = require('fs');
@@ -280,6 +281,8 @@ const verifyAssetClaim = async ({ claim, challenge, trustedIssuers = [], trusted
   return state;
 };
 
+const pickGasStakeHeaders = ({ headers }) => ({ headers: pick(headers, ['x-gas-stake-sig', 'x-gas-stake-pk']) });
+
 module.exports = {
   getTransferrableAssets,
   getTokenInfo,
@@ -291,4 +294,5 @@ module.exports = {
   ensureAsset,
   consumeNodePurchaseNFT,
   verifyAssetClaim,
+  pickGasStakeHeaders,
 };

@@ -5,7 +5,7 @@ const { preMintFromFactory } = require('@ocap/asset');
 
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
-const { getTokenInfo } = require('../../libs/util');
+const { getTokenInfo, pickGasStakeHeaders } = require('../../libs/util');
 const { formatFactoryState, factories, inputs } = require('../../libs/factory');
 
 const secondAddress = 'zNKqftHB7ibZkHrz6Gu37xJXHLKqH5TJYEgd';
@@ -198,7 +198,7 @@ module.exports = {
     },
   },
 
-  onAuth: async ({ userDid, claims, extraParams: { type } }) => {
+  onAuth: async ({ req, userDid, claims, extraParams: { type } }) => {
     const claim = claims.find(x => x.type === 'prepareTx');
     logger.info('prepare.auth.claim', claim);
     if (!claim.finalTx) {
@@ -208,12 +208,12 @@ module.exports = {
     const tx = client.decodeTx(claim.finalTx);
 
     if (type.startsWith('AcquireAssetV3Tx')) {
-      const hash = await client.sendAcquireAssetV3Tx({ tx, wallet: fromAddress(userDid) });
+      const hash = await client.sendAcquireAssetV3Tx({ tx, wallet: fromAddress(userDid) }, pickGasStakeHeaders(req));
       return { hash, tx: claim.finalTx };
     }
 
     if (type.startsWith('TransferV3Tx')) {
-      const hash = await client.sendTransferV3Tx({ tx, wallet: fromAddress(userDid) });
+      const hash = await client.sendTransferV3Tx({ tx, wallet: fromAddress(userDid) }, pickGasStakeHeaders(req));
       return { hash, tx: claim.finalTx };
     }
 
