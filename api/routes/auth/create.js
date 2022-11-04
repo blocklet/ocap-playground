@@ -157,12 +157,12 @@ module.exports = {
     }
 
     if (typeUrl === 'asset' || typeUrl === 'nft') {
-      const hash = await client.sendCreateAssetTx({ tx, wallet }, pickGasStakeHeaders);
+      const hash = await client.sendCreateAssetTx({ tx, wallet }, pickGasStakeHeaders(req));
       return { hash };
     }
 
     if (typeUrl === 'factory') {
-      const hash = await client.sendCreateFactoryTx({ tx, wallet }, pickGasStakeHeaders);
+      const hash = await client.sendCreateFactoryTx({ tx, wallet }, pickGasStakeHeaders(req));
       return { hash };
     }
 

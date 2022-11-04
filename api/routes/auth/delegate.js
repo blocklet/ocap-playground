@@ -145,10 +145,10 @@ module.exports = {
     }
 
     // 2. we need to ensure that the did is declared onchain
-    const { state } = await client.getAccountState({ address: userDid }, getAccountStateOptions);
-    if (!state) {
-      throw new Error('The created DID is not created on chain as required');
-    }
+    // const { state } = await client.getAccountState({ address: userDid }, getAccountStateOptions);
+    // if (!state) {
+    //   throw new Error('The created DID is not created on chain as required');
+    // }
 
     // 3. ensure that delegator is set in response claim
     const claim = claims.find(x => x.type === 'signature');
