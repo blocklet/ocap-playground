@@ -7,7 +7,7 @@ const { preMintFromFactory } = require('@ocap/asset');
 
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
-const { getAccountStateOptions, getTokenInfo, pickGasStakeHeaders } = require('../../libs/util');
+const { getTokenInfo, pickGasStakeHeaders } = require('../../libs/util');
 const { formatFactoryState, factories, inputs } = require('../../libs/factory');
 
 const txCreators = {
