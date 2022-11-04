@@ -1,3 +1,6 @@
+## 0.36.9 (November 05, 2022)
+- feat: support gas stake headers from wallet
+
 ## 0.36.8 (November 01, 2022)
 
 - fix: blocklet.yml
