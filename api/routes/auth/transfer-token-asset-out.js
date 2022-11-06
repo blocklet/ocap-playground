@@ -3,6 +3,7 @@ const { fromAddress } = require('@ocap/wallet');
 
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
+const { pickGasStakeHeaders } = require('../../libs/util');
 
 module.exports = {
   action: 'transfer_token_asset_out',
@@ -35,18 +36,21 @@ module.exports = {
       };
     },
   },
-  onAuth: async ({ claims, userDid }) => {
+  onAuth: async ({ req, claims, userDid }) => {
     try {
       logger.info('transfer_asset_token_out.onAuth', { claims, userDid });
       const claim = claims.find(({ type }) => type === 'signature');
       const tx = client.decodeTx(claim.origin);
       const user = fromAddress(userDid);
 
-      const hash = await client.sendTransferV2Tx({
-        tx,
-        wallet: user,
-        signature: claim.sig,
-      });
+      const hash = await client.sendTransferV2Tx(
+        {
+          tx,
+          wallet: user,
+          signature: claim.sig,
+        },
+        pickGasStakeHeaders(req)
+      );
 
       logger.info('transfer_asset_token_out.onAuth.hash', hash);
       return { hash, tx: claim.origin };

@@ -3,6 +3,7 @@ const { fromAddress } = require('@ocap/wallet');
 const { toStakeAddress } = require('@arcblock/did-util');
 
 const { wallet, client } = require('../../libs/auth');
+const { pickGasStakeHeaders } = require('../../libs/util');
 
 module.exports = {
   action: 'claim-stake',
@@ -24,18 +25,21 @@ module.exports = {
     },
   },
 
-  onAuth: async ({ userDid, claims }) => {
+  onAuth: async ({ req, userDid, claims }) => {
     const claim = claims.find(x => x.type === 'signature');
     logger.info('claim-stake.auth.claim', claim);
 
     const tx = client.decodeTx(claim.origin);
     const user = fromAddress(userDid);
 
-    const hash = await client.sendClaimStakeTx({
-      tx,
-      wallet: user,
-      signature: claim.sig,
-    });
+    const hash = await client.sendClaimStakeTx(
+      {
+        tx,
+        wallet: user,
+        signature: claim.sig,
+      },
+      pickGasStakeHeaders(req)
+    );
 
     return { hash, tx };
   },

@@ -5,7 +5,7 @@ const { fromTokenToUnit } = require('@ocap/util');
 
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
-const { getTokenInfo } = require('../../libs/util');
+const { getTokenInfo, pickGasStakeHeaders } = require('../../libs/util');
 
 const txCreators = {
   RevokeLocalToken: async ({ userDid, userPk }) => {
@@ -91,18 +91,21 @@ module.exports = {
     },
   },
 
-  onAuth: async ({ userDid, claims }) => {
+  onAuth: async ({ req, userDid, claims }) => {
     const claim = claims.find(x => x.type === 'signature');
     logger.info('revoke-stake.auth.claim', claim);
 
     const tx = client.decodeTx(claim.origin);
     const user = fromAddress(userDid);
 
-    const hash = await client.sendRevokeStakeTx({
-      tx,
-      wallet: user,
-      signature: claim.sig,
-    });
+    const hash = await client.sendRevokeStakeTx(
+      {
+        tx,
+        wallet: user,
+        signature: claim.sig,
+      },
+      pickGasStakeHeaders(req)
+    );
 
     return { hash, tx };
   },

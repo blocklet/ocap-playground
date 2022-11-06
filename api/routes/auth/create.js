@@ -8,6 +8,7 @@ const { toTokenAddress, toAssetAddress, toFactoryAddress } = require('@arcblock/
 const env = require('../../libs/env');
 const { client } = require('../../libs/auth');
 const { randomSVG } = require('../../libs/nft/svg');
+const { pickGasStakeHeaders } = require('../../libs/util');
 
 const randomStr = str => `${str}${Math.floor(Math.random() * 10000)}`;
 
@@ -136,7 +137,7 @@ module.exports = {
   },
 
   // eslint-disable-next-line consistent-return
-  onAuth: async ({ userDid, userPk, claims, extraParams: { type: typeUrl } }) => {
+  onAuth: async ({ req, userDid, userPk, claims, extraParams: { type: typeUrl } }) => {
     const type = toTypeInfo(userDid);
     const wallet = fromPublicKey(userPk, type);
     const claim = claims.find(x => x.type === 'signature');
@@ -151,17 +152,17 @@ module.exports = {
     }
 
     if (typeUrl === 'token') {
-      const hash = await client.sendCreateTokenTx({ tx, wallet });
+      const hash = await client.sendCreateTokenTx({ tx, wallet }, pickGasStakeHeaders(req));
       return { hash };
     }
 
     if (typeUrl === 'asset' || typeUrl === 'nft') {
-      const hash = await client.sendCreateAssetTx({ tx, wallet });
+      const hash = await client.sendCreateAssetTx({ tx, wallet }, pickGasStakeHeaders(req));
       return { hash };
     }
 
     if (typeUrl === 'factory') {
-      const hash = await client.sendCreateFactoryTx({ tx, wallet });
+      const hash = await client.sendCreateFactoryTx({ tx, wallet }, pickGasStakeHeaders(req));
       return { hash };
     }
 
