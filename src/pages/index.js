@@ -37,21 +37,6 @@ export default function MiniPage() {
               successMessage="Hello (%user.name%)"
               webWalletUrl={webWalletUrl}
             />
-            <PlaygroundAction
-              action="receive_foreign_token"
-              className="action"
-              buttonVariant="contained"
-              amount={10}
-              title={`Get 10 ${token.foreign.symbol}`}
-              webWalletUrl={webWalletUrl}
-            />
-            <PlaygroundAction
-              action="receive_local_token"
-              className="action"
-              amount={10}
-              title={`Get 10 ${token.local.symbol}`}
-              webWalletUrl={webWalletUrl}
-            />
           </div>
         </section>
         <section className="section">
