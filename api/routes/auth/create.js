@@ -8,7 +8,7 @@ const { toTokenAddress, toAssetAddress, toFactoryAddress } = require('@arcblock/
 const env = require('../../libs/env');
 const { client } = require('../../libs/auth');
 const { randomSVG } = require('../../libs/nft/svg');
-const { pickGasStakeHeaders } = require('../../libs/util');
+const { pickGasPayerHeaders } = require('../../libs/util');
 
 const randomStr = str => `${str}${Math.floor(Math.random() * 10000)}`;
 
@@ -152,17 +152,17 @@ module.exports = {
     }
 
     if (typeUrl === 'token') {
-      const hash = await client.sendCreateTokenTx({ tx, wallet }, pickGasStakeHeaders(req));
+      const hash = await client.sendCreateTokenTx({ tx, wallet }, pickGasPayerHeaders(req));
       return { hash };
     }
 
     if (typeUrl === 'asset' || typeUrl === 'nft') {
-      const hash = await client.sendCreateAssetTx({ tx, wallet }, pickGasStakeHeaders(req));
+      const hash = await client.sendCreateAssetTx({ tx, wallet }, pickGasPayerHeaders(req));
       return { hash };
     }
 
     if (typeUrl === 'factory') {
-      const hash = await client.sendCreateFactoryTx({ tx, wallet }, pickGasStakeHeaders(req));
+      const hash = await client.sendCreateFactoryTx({ tx, wallet }, pickGasPayerHeaders(req));
       return { hash };
     }
 

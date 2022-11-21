@@ -3,7 +3,7 @@ const { fromAddress } = require('@ocap/wallet');
 const { toStakeAddress } = require('@arcblock/did-util');
 
 const { wallet, client } = require('../../libs/auth');
-const { pickGasStakeHeaders } = require('../../libs/util');
+const { pickGasPayerHeaders } = require('../../libs/util');
 
 module.exports = {
   action: 'claim-stake',
@@ -38,7 +38,7 @@ module.exports = {
         wallet: user,
         signature: claim.sig,
       },
-      pickGasStakeHeaders(req)
+      pickGasPayerHeaders(req)
     );
 
     return { hash, tx };

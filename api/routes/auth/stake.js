@@ -5,7 +5,7 @@ const { fromTokenToUnit } = require('@ocap/util');
 
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
-const { getTokenInfo, pickGasStakeHeaders } = require('../../libs/util');
+const { getTokenInfo, pickGasPayerHeaders } = require('../../libs/util');
 
 const txCreators = {
   StakeLocalToken: async ({ userDid, userPk }) => {
@@ -108,7 +108,7 @@ module.exports = {
 
     const tx = client.decodeTx(claim.finalTx);
 
-    const hash = await client.sendStakeTx({ tx, wallet: fromAddress(userDid) }, pickGasStakeHeaders(req));
+    const hash = await client.sendStakeTx({ tx, wallet: fromAddress(userDid) }, pickGasPayerHeaders(req));
     return { hash, tx: claim.finalTx };
   },
 };

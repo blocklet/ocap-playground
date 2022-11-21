@@ -7,7 +7,7 @@ const { preMintFromFactory } = require('@ocap/asset');
 
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
-const { getTokenInfo, pickGasStakeHeaders } = require('../../libs/util');
+const { getTokenInfo, pickGasPayerHeaders } = require('../../libs/util');
 const { formatFactoryState, factories, inputs } = require('../../libs/factory');
 
 const txCreators = {
@@ -167,7 +167,7 @@ module.exports = {
       tx.signature = claim.sig;
       tx.delegator = claim.delegator;
       tx.from = claim.from;
-      const hash = await client.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) }, pickGasStakeHeaders(req));
+      const hash = await client.sendAcquireAssetV2Tx({ tx, wallet: fromAddress(userDid) }, pickGasPayerHeaders(req));
       return { hash, tx: claim.origin };
     }
 
@@ -175,7 +175,7 @@ module.exports = {
       tx.signature = claim.sig;
       tx.delegator = claim.delegator;
       tx.from = claim.from;
-      const hash = await client.sendTransferV2Tx({ tx, wallet: fromAddress(userDid) }, pickGasStakeHeaders(req));
+      const hash = await client.sendTransferV2Tx({ tx, wallet: fromAddress(userDid) }, pickGasPayerHeaders(req));
       return { hash, tx: claim.origin };
     }
 
@@ -183,7 +183,7 @@ module.exports = {
       tx.signaturesList[0].signature = claim.sig;
       tx.signaturesList[0].signer = claim.from;
       tx.signaturesList[0].delegator = claim.delegator;
-      const hash = await client.sendExchangeV2Tx({ tx, wallet: fromAddress(userDid) }, pickGasStakeHeaders(req));
+      const hash = await client.sendExchangeV2Tx({ tx, wallet: fromAddress(userDid) }, pickGasPayerHeaders(req));
       return { hash, tx: claim.origin };
     }
 

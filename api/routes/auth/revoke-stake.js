@@ -5,7 +5,7 @@ const { fromTokenToUnit } = require('@ocap/util');
 
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
-const { getTokenInfo, pickGasStakeHeaders } = require('../../libs/util');
+const { getTokenInfo, pickGasPayerHeaders } = require('../../libs/util');
 
 const txCreators = {
   RevokeLocalToken: async ({ userDid, userPk }) => {
@@ -104,7 +104,7 @@ module.exports = {
         wallet: user,
         signature: claim.sig,
       },
-      pickGasStakeHeaders(req)
+      pickGasPayerHeaders(req)
     );
 
     return { hash, tx };

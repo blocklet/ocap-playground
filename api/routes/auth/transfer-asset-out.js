@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const { fromAddress } = require('@ocap/wallet');
 const { wallet, client } = require('../../libs/auth');
-const { getTransferrableAssets, pickGasStakeHeaders } = require('../../libs/util');
+const { getTransferrableAssets, pickGasPayerHeaders } = require('../../libs/util');
 
 module.exports = {
   action: 'transfer_asset_out',
@@ -34,7 +34,7 @@ module.exports = {
           wallet: user,
           signature: claim.sig,
         },
-        pickGasStakeHeaders(req)
+        pickGasPayerHeaders(req)
       );
 
       logger.info('transfer_asset_out.onAuth', hash);

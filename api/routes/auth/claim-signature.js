@@ -6,7 +6,7 @@ const { fromPublicKey } = require('@ocap/wallet');
 
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
-const { getRandomMessage, pickGasStakeHeaders } = require('../../libs/util');
+const { getRandomMessage, pickGasPayerHeaders } = require('../../libs/util');
 
 const data = 'abcdefghijklmnopqrstuvwxyz'.repeat(32);
 const hasher = Mcrypto.getHasher(Mcrypto.types.HashType.SHA3);
@@ -126,7 +126,7 @@ module.exports = {
           wallet: user,
           signature: claim.sig,
         },
-        pickGasStakeHeaders(req)
+        pickGasPayerHeaders(req)
       );
 
       logger.info('signature.evil.onAuth', { claims, userDid, hash });

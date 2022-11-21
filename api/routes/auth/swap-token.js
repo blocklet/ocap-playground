@@ -4,7 +4,7 @@ const { fromBase58 } = require('@ocap/util');
 const { fromAddress } = require('@ocap/wallet');
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
-const { pickGasStakeHeaders } = require('../../libs/util');
+const { pickGasPayerHeaders } = require('../../libs/util');
 
 module.exports = {
   action: 'swap_token_v2',
@@ -76,7 +76,7 @@ module.exports = {
           tx,
           wallet: fromAddress(userDid),
         },
-        pickGasStakeHeaders(req)
+        pickGasPayerHeaders(req)
       );
 
       logger.info('swap_token tx hash:', hash);

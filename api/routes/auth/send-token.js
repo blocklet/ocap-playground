@@ -3,7 +3,7 @@ const { fromTokenToUnit } = require('@ocap/util');
 const { fromAddress } = require('@ocap/wallet');
 
 const { wallet, client } = require('../../libs/auth');
-const { getTokenInfo, pickGasStakeHeaders } = require('../../libs/util');
+const { getTokenInfo, pickGasPayerHeaders } = require('../../libs/util');
 const env = require('../../libs/env');
 
 module.exports = {
@@ -61,7 +61,7 @@ module.exports = {
           wallet: user,
           signature: claim.sig,
         },
-        pickGasStakeHeaders(req)
+        pickGasPayerHeaders(req)
       );
 
       logger.info('send_token.onAuth', { claims, userDid, hash });

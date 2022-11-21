@@ -3,7 +3,7 @@ const { fromAddress } = require('@ocap/wallet');
 
 const env = require('../../libs/env');
 const { wallet, client } = require('../../libs/auth');
-const { pickGasStakeHeaders } = require('../../libs/util');
+const { pickGasPayerHeaders } = require('../../libs/util');
 
 module.exports = {
   action: 'transfer_token_asset_out',
@@ -49,7 +49,7 @@ module.exports = {
           wallet: user,
           signature: claim.sig,
         },
-        pickGasStakeHeaders(req)
+        pickGasPayerHeaders(req)
       );
 
       logger.info('transfer_asset_token_out.onAuth.hash', hash);
