@@ -1,3 +1,6 @@
+## 0.36.11 (November 21, 2022)
+- chore: rename pickGasPayerHeader
+
 ## 0.36.10 (November 10, 2022)
 
 - fix: disable receive token case
