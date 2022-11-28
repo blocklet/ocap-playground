@@ -7,6 +7,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const fallback = require('express-history-api-fallback');
 const compression = require('compression');
+const middlewares = require('@blocklet/sdk/lib/middlewares');
 const displayRoutes = require('express-routemap');
 
 const { walletHandlers, walletHandlersWithNoChainInfo, agentHandlers } = require('../libs/auth');
@@ -40,16 +41,7 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  if (req.headers['x-user-did']) {
-    req.user = {
-      did: req.headers['x-user-did'],
-      role: req.headers['x-user-role'],
-    };
-  }
-
-  next();
-});
+app.use(middlewares.user());
 
 const router = express.Router();
 

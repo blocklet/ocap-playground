@@ -1,4 +1,9 @@
+## 0.36.12 (November 28, 2022)
+
+- feat: support slash stake case
+
 ## 0.36.11 (November 21, 2022)
+
 - chore: rename pickGasPayerHeader
 
 ## 0.36.10 (November 10, 2022)
