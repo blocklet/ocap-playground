@@ -13,6 +13,7 @@ import Layout from '../components/layout';
 
 import AuthButton from '../components/auth/general';
 import ClaimButton from '../components/auth/claim-stake';
+import SlashButton from '../components/auth/slash-stake';
 import SignButton from '../components/auth/auth/sign';
 import TransferAssetOut from '../components/auth/transfer-asset-out';
 import TransferAssetIn from '../components/auth/transfer-asset-in';
@@ -946,6 +947,8 @@ export default function IndexPage() {
                 success: 'Claim Success',
               }}
             />
+            <SlashButton type="token" />
+            <SlashButton type="asset" />
           </div>
         </section>
 
