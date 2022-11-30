@@ -1,3 +1,7 @@
+## 0.36.13 (December 01, 2022)
+
+- fix: should not send slash tx with zero token
+
 ## 0.36.12 (November 28, 2022)
 
 - feat: support slash stake case
