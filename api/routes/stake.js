@@ -70,9 +70,11 @@ module.exports = {
         }
 
         const assets = [...stake.assets, ...stake.revokedAssets];
-        const tokens = [...stake.tokens, ...stake.revokedTokens].sort((a, b) => {
-          return +fromUnitToToken(a.balance, a.decimal) - +fromUnitToToken(b.balance, b.decimal);
-        });
+        const tokens = [...stake.tokens, ...stake.revokedTokens]
+          .filter(t => +fromUnitToToken(t.balance, t.decimal) > 0)
+          .sort((t1, t2) => {
+            return +fromUnitToToken(t1.balance, t1.decimal) - +fromUnitToToken(t2.balance, t2.decimal);
+          });
 
         const itx = { address: stake.address, message: 'slash-test', outputs: [] };
         if (req.params.type === 'token') {
