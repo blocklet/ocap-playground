@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.36.13
+version: 0.36.14
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -79,7 +79,6 @@ interfaces:
             - email
             - avatar
           allowSwitchProfile: true
-          webWalletUrl: https://web.abtwallet.io
           blockUnauthorized: false
 timeout:
   start: 15
@@ -98,6 +97,7 @@ payment:
 capabilities:
   clusterMode: false
   component: true
+  navigation: true
 components:
   - name: promotion-tool
     mountPoint: /promotion-tool

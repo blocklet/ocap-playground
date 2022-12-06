@@ -1,3 +1,6 @@
+## 0.36.14 (December 06, 2022)
+- chore: bump deps to latest
+
 ## 0.36.13 (December 01, 2022)
 
 - fix: should not send slash tx with zero token
