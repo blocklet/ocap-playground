@@ -74,7 +74,7 @@
     "ip": "^1.1.8",
     "ismobilejs": "^1.1.1",
     "json-stable-stringify": "^1.0.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.8",
     "moment": "^2.29.4",
