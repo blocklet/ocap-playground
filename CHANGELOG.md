@@ -1,3 +1,6 @@
+## 0.36.15 (December 26, 2022)
+- feat: message super link
+
 ## 0.36.14 (December 06, 2022)
 - chore: bump deps to latest
 
