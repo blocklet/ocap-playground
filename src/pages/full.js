@@ -815,6 +815,9 @@ export default function IndexPage() {
             <NotificationButton type="text" className="action">
               Send text
             </NotificationButton>
+            <NotificationButton type="link" className="action">
+              Send Link
+            </NotificationButton>
             <NotificationButton type="long-text" className="action">
               Send Long Text
             </NotificationButton>

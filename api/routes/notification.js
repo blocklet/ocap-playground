@@ -259,6 +259,30 @@ module.exports = {
           return;
         }
 
+        if (type === 'link') {
+          const { transactions } = await client.listTransactions({
+            accountFilter: { accounts: [userDid] },
+            validityFilter: { validity: 'VALID' },
+            paging: { size: 10 },
+          });
+          const txHash = transactions
+            ? transactions[0].hash
+            : '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
+          const { assets } = await client.listAssets({ ownerAddress: userDid });
+          const assetsDid = assets ? assets[0].address : 'zjdouRzvdb4jRYuV6ZBdGMV93K2ciDyETCtj';
+          const message = {
+            title: 'Test link text',
+            body: `User <did:abt:${userDid}> has a transaction <tx:beta:${txHash}> and it will give your a <nft:beta:${assetsDid}> on the DApp <dapp:zNKeLKixvCM32TkVM1zmRDdAU3bvm3dTtAcM>`,
+          };
+          await Notification.sendToUser(userDid, {
+            title: message.title,
+            body: message.body,
+            actions: [],
+          });
+          res.status(200).end();
+          return;
+        }
+
         // feed graphic single
         if (type === 'feed-graphic-single') {
           const feedTitles = [
