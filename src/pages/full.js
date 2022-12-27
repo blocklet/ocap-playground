@@ -837,6 +837,21 @@ export default function IndexPage() {
               className="action">
               Send random {token.local.symbol}
             </NotificationButton>
+            <NotificationButton type="fake_reply" className="action">
+              Fake Reply
+            </NotificationButton>
+            <NotificationButton type="fake_dapp" className="action">
+              Fake DApp
+            </NotificationButton>
+            <NotificationButton type="fake_tx" className="action">
+              Fake Transaction
+            </NotificationButton>
+            <NotificationButton type="fake_img" className="action">
+              Fake Image
+            </NotificationButton>
+            <NotificationButton type="fake_reward" className="action">
+              Fake Sold DApp
+            </NotificationButton>
             <NotificationButton
               type="text"
               actions={[{ name: 'launch', title: 'Launch ABT Node', link: 'https://arcblock.io' }]}
