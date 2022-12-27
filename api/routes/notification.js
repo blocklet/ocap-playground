@@ -11,7 +11,6 @@ const { wallet, client, authClient, factory: assetFactory } = require('../libs/a
 const env = require('../libs/env');
 const { ensureAsset } = require('../libs/util');
 const itx = require('../libs/token');
-const { data } = require('../libs/token');
 
 const hasher = Mcrypto.getHasher(Mcrypto.types.HashType.SHA3);
 
