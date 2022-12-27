@@ -815,6 +815,9 @@ export default function IndexPage() {
             <NotificationButton type="text" className="action">
               Send text
             </NotificationButton>
+            <NotificationButton type="link" className="action">
+              Send Link
+            </NotificationButton>
             <NotificationButton type="long-text" className="action">
               Send Long Text
             </NotificationButton>
@@ -833,6 +836,21 @@ export default function IndexPage() {
               actions={[{ name: 'primary', title: 'Launch', link: 'https://arcblock.io' }]}
               className="action">
               Send random {token.local.symbol}
+            </NotificationButton>
+            <NotificationButton type="fake_reply" className="action">
+              Fake Reply
+            </NotificationButton>
+            <NotificationButton type="fake_dapp" className="action">
+              Fake DApp
+            </NotificationButton>
+            <NotificationButton type="fake_tx" className="action">
+              Fake Transaction
+            </NotificationButton>
+            <NotificationButton type="fake_img" className="action">
+              Fake Image
+            </NotificationButton>
+            <NotificationButton type="fake_reward" className="action">
+              Fake Sold DApp
             </NotificationButton>
             <NotificationButton
               type="text"
