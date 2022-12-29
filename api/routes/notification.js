@@ -260,6 +260,8 @@ module.exports = {
         }
 
         if (type === 'link') {
+          const { user: vt } = await authClient.getUser(userDid);
+
           const { transactions } = await client.listTransactions({
             accountFilter: { accounts: [userDid] },
             validityFilter: { validity: 'VALID' },
@@ -270,9 +272,10 @@ module.exports = {
             : '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
           const { assets } = await client.listAssets({ ownerAddress: userDid });
           const assetsDid = assets ? assets[0].address : 'zjdouRzvdb4jRYuV6ZBdGMV93K2ciDyETCtj';
+          const assetName = assets ? assets[0].moniker : 'Badge';
           const message = {
             title: 'Test link text',
-            body: `User <did:abt:${userDid}> has a transaction <tx:beta:${txHash}> and it will give your a <nft:beta:${assetsDid}> on the DApp <dapp:zNKeLKixvCM32TkVM1zmRDdAU3bvm3dTtAcM>`,
+            body: `User <${vt.fullName}(did:abt:${userDid})> has a <Transaction(tx:beta:${txHash})> and it will give your a <${assetName}(nft:beta:${assetsDid})> on the DApp <OCAP Playground(dapp:beta:zNKeLKixvCM32TkVM1zmRDdAU3bvm3dTtAcM)>`,
           };
           await Notification.sendToUser(userDid, {
             title: message.title,
@@ -283,9 +286,11 @@ module.exports = {
           return;
         }
         if (type === 'fake_reply') {
+          const { user: vt } = await authClient.getUser(userDid);
+
           await Notification.sendToUser(userDid, {
             title: 'User reply to you',
-            body: `<did:abt:${userDid}> reply to you: 这个教程很赞👍🏻️`,
+            body: `<${vt.fullName}(did:abt:${userDid})> reply to you: 这个教程很赞👍🏻️`,
             priority: 2,
             attachments: [
               {
@@ -374,9 +379,11 @@ module.exports = {
           return;
         }
         if (type === 'fake_reward') {
+          const { user: vt } = await authClient.getUser(userDid);
+
           await Notification.sendToUser(userDid, {
             title: 'Sold a DApp',
-            body: `<did:abt:${userDid}> 购买了您的应用 DID Discuss`,
+            body: `<${vt.fullName}(did:abt:${userDid})> 购买了您的应用 DID Discuss`,
             priority: 10,
             attachments: [
               {
@@ -386,6 +393,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
+                      text_color: '#000000',
                       text: '收益：',
                     },
                   },
@@ -400,6 +408,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
+                      text_color: '#000000',
                       text: '今日收益：',
                     },
                   },
@@ -423,6 +432,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
+                      text_color: '#000000',
                       text: '当月总收益：',
                     },
                   },
@@ -430,6 +440,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
+                      text_color: '#FF0000',
                       text: '888 ABT',
                     },
                   },
