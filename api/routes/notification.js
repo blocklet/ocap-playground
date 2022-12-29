@@ -285,15 +285,16 @@ module.exports = {
         if (type === 'fake_reply') {
           await Notification.sendToUser(userDid, {
             title: 'User reply to you',
-            body: `<did:abt:${userDid}> reply to you: 你这个说法很对`,
+            body: `<did:abt:${userDid}> reply to you: 这个教程很赞👍🏻️`,
+            priority: 2,
             attachments: [
               {
                 type: 'reply',
                 data: {
-                  link: 'https://team.arcblock.io/comment/discussions/62cee271-b756-454e-a494-7cb847a84dd5#f638d32f-78dc-47c4-8df1-e2df017245dd',
-                  title: 'Message类应用的消息体结构',
+                  link: 'https://giveaway.didwallet.io/did-comments/discussions/49231adb-9008-4c05-bfb2-9d2dedf9a7c2',
+                  title: '如何参加转推领奖活动',
                   origin_content:
-                    '现在比较主流的消息应用主要是Slack 和 Telegram，两者都有可取之处，我们可以参考一下他们的设计。',
+                    '1.使用浏览器打开转推领奖活动页面. 2.点击想要参加或者查看的活动，进入活动详情. 3.填写推文链接完成活动绑定. 4.完成绑定之后，即可根据奖励的要求奖励领取',
                 },
               },
             ],
@@ -306,6 +307,7 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: '应用推荐',
             body: '推荐给你一个有趣的应用',
+            priority: 8,
             attachments: [
               {
                 type: 'dapp',
@@ -335,6 +337,7 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: '奖励交易',
             body: '恭喜你！你获得了本次的幸运大奖',
+            priority: 5,
             attachments: [
               {
                 type: 'transaction',
@@ -353,6 +356,7 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: 'Send you a image',
             body: '这张图片已上传DID Space',
+            priority: 1,
             attachments: [
               {
                 type: 'image',
@@ -373,6 +377,7 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: 'Sold a DApp',
             body: `<did:abt:${userDid}> 购买了您的应用 DID Discuss`,
+            priority: 10,
             attachments: [
               {
                 type: 'section',
