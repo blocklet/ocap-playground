@@ -1,3 +1,13 @@
+## 0.36.16 (December 29, 2022)
+- feat: add text color
+- feat: add priority
+- feat: send new type message (#208)
+- fix lint
+- feat: add several message case
+- update dependencies
+- bump version
+- feat: message super link
+
 ## 0.36.15 (December 26, 2022)
 - feat: message super link
 

@@ -260,6 +260,8 @@ module.exports = {
         }
 
         if (type === 'link') {
+          const { user: vt } = await authClient.getUser(userDid);
+
           const { transactions } = await client.listTransactions({
             accountFilter: { accounts: [userDid] },
             validityFilter: { validity: 'VALID' },
@@ -270,9 +272,10 @@ module.exports = {
             : '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
           const { assets } = await client.listAssets({ ownerAddress: userDid });
           const assetsDid = assets ? assets[0].address : 'zjdouRzvdb4jRYuV6ZBdGMV93K2ciDyETCtj';
+          const assetName = assets ? assets[0].moniker : 'Badge';
           const message = {
             title: 'Test link text',
-            body: `User <did:abt:${userDid}> has a transaction <tx:beta:${txHash}> and it will give your a <nft:beta:${assetsDid}> on the DApp <dapp:zNKeLKixvCM32TkVM1zmRDdAU3bvm3dTtAcM>`,
+            body: `User <${vt.fullName}(did:abt:${userDid})> has a <Transaction(tx:beta:${txHash})> and it will give your a <${assetName}(nft:beta:${assetsDid})> on the DApp <OCAP Playground(dapp:beta:zNKeLKixvCM32TkVM1zmRDdAU3bvm3dTtAcM)>`,
           };
           await Notification.sendToUser(userDid, {
             title: message.title,
@@ -283,17 +286,20 @@ module.exports = {
           return;
         }
         if (type === 'fake_reply') {
+          const { user: vt } = await authClient.getUser(userDid);
+
           await Notification.sendToUser(userDid, {
             title: 'User reply to you',
-            body: `<did:abt:${userDid}> reply to you: 你这个说法很对`,
+            body: `<${vt.fullName}(did:abt:${userDid})> reply to you: 这个教程很赞👍🏻️`,
+            priority: 2,
             attachments: [
               {
                 type: 'reply',
                 data: {
-                  link: 'https://team.arcblock.io/comment/discussions/62cee271-b756-454e-a494-7cb847a84dd5#f638d32f-78dc-47c4-8df1-e2df017245dd',
-                  title: 'Message类应用的消息体结构',
+                  link: 'https://giveaway.didwallet.io/did-comments/discussions/49231adb-9008-4c05-bfb2-9d2dedf9a7c2',
+                  title: '如何参加转推领奖活动',
                   origin_content:
-                    '现在比较主流的消息应用主要是Slack 和 Telegram，两者都有可取之处，我们可以参考一下他们的设计。',
+                    '1.使用浏览器打开转推领奖活动页面. 2.点击想要参加或者查看的活动，进入活动详情. 3.填写推文链接完成活动绑定. 4.完成绑定之后，即可根据奖励的要求奖励领取',
                 },
               },
             ],
@@ -306,6 +312,7 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: '应用推荐',
             body: '推荐给你一个有趣的应用',
+            priority: 8,
             attachments: [
               {
                 type: 'dapp',
@@ -335,6 +342,7 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: '奖励交易',
             body: '恭喜你！你获得了本次的幸运大奖',
+            priority: 5,
             attachments: [
               {
                 type: 'transaction',
@@ -353,6 +361,7 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: 'Send you a image',
             body: '这张图片已上传DID Space',
+            priority: 1,
             attachments: [
               {
                 type: 'image',
@@ -370,9 +379,12 @@ module.exports = {
           return;
         }
         if (type === 'fake_reward') {
+          const { user: vt } = await authClient.getUser(userDid);
+
           await Notification.sendToUser(userDid, {
             title: 'Sold a DApp',
-            body: `<did:abt:${userDid}> 购买了您的应用 DID Discuss`,
+            body: `<${vt.fullName}(did:abt:${userDid})> 购买了您的应用 DID Discuss`,
+            priority: 10,
             attachments: [
               {
                 type: 'section',
@@ -381,6 +393,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
+                      text_color: '#000000',
                       text: '收益：',
                     },
                   },
@@ -395,6 +408,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
+                      text_color: '#000000',
                       text: '今日收益：',
                     },
                   },
@@ -418,6 +432,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
+                      text_color: '#000000',
                       text: '当月总收益：',
                     },
                   },
@@ -425,6 +440,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
+                      text_color: '#FF0000',
                       text: '888 ABT',
                     },
                   },
