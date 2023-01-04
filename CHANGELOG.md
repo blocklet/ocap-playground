@@ -1,3 +1,8 @@
+## 0.36.17 (January 04, 2023)
+
+- ci: fix wrong branch name in version-check actions
+- chore: update deps to latest
+
 ## 0.36.16 (December 29, 2022)
 - feat: add text color
 - feat: add priority
