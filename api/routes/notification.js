@@ -277,7 +277,7 @@ module.exports = {
           const assetName = assets && assets.size > 0 ? assets[0].moniker : 'Badge';
           const message = {
             title: 'Test link text',
-            body: `User <${vt.fullName}(did:abt:${userDid})> has a <Transaction(tx:beta:${txHash})> and it will give your a <${assetName}(nft:beta:${assetsDid})> on the DApp <OCAP Playground(dapp:beta:zNKeLKixvCM32TkVM1zmRDdAU3bvm3dTtAcM)> and there maybe is a <Stake(stake:beta:zrjzeu6w2Q7UBqRN32WrRvxRUrt8idndd7FX)>, this stake is coming from <Unknown User(did:abt:z1USvbEsoy5maeUuzP1vt9ZoX5pmdBmkb7t)>.`,
+            body: `User <${vt.fullName}(did:beta:${userDid})> has a <Transaction(tx:beta:${txHash})> and it will give your a <${assetName}(nft:beta:${assetsDid})> on the DApp <OCAP Playground(dapp:beta:zNKeLKixvCM32TkVM1zmRDdAU3bvm3dTtAcM)> and there maybe is a <Stake(stake:beta:zrjzeu6w2Q7UBqRN32WrRvxRUrt8idndd7FX)>, this stake is coming from <Unknown User(did:beta:z1USvbEsoy5maeUuzP1vt9ZoX5pmdBmkb7t)>.`,
           };
           await Notification.sendToUser(userDid, {
             title: message.title,
