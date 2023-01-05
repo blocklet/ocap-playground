@@ -1,3 +1,6 @@
+## 0.36.18 (January 05, 2023)
+- fix: reply -> link
+
 ## 0.36.17 (January 04, 2023)
 
 - ci: fix wrong branch name in version-check actions
