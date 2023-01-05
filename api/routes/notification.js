@@ -267,15 +267,17 @@ module.exports = {
             validityFilter: { validity: 'VALID' },
             paging: { size: 10 },
           });
-          const txHash = transactions
-            ? transactions[0].hash
-            : '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
+          logger.info(transactions);
+          const txHash =
+            transactions && transactions.size > 0
+              ? transactions[0].hash
+              : '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
           const { assets } = await client.listAssets({ ownerAddress: userDid });
-          const assetsDid = assets ? assets[0].address : 'zjdouRzvdb4jRYuV6ZBdGMV93K2ciDyETCtj';
-          const assetName = assets ? assets[0].moniker : 'Badge';
+          const assetsDid = assets && assets.size > 0 ? assets[0].address : 'zjdouRzvdb4jRYuV6ZBdGMV93K2ciDyETCtj';
+          const assetName = assets && assets.size > 0 ? assets[0].moniker : 'Badge';
           const message = {
             title: 'Test link text',
-            body: `User <${vt.fullName}(did:abt:${userDid})> has a <Transaction(tx:beta:${txHash})> and it will give your a <${assetName}(nft:beta:${assetsDid})> on the DApp <OCAP Playground(dapp:beta:zNKeLKixvCM32TkVM1zmRDdAU3bvm3dTtAcM)>`,
+            body: `User <${vt.fullName}(did:abt:${userDid})> has a <Transaction(tx:beta:${txHash})> and it will give your a <${assetName}(nft:beta:${assetsDid})> on the DApp <OCAP Playground(dapp:beta:zNKeLKixvCM32TkVM1zmRDdAU3bvm3dTtAcM)> and there maybe is a <Stake(stake:beta:zrjzeu6w2Q7UBqRN32WrRvxRUrt8idndd7FX)>, this stake is coming from <Unknown User(did:abt:z1USvbEsoy5maeUuzP1vt9ZoX5pmdBmkb7t)>.`,
           };
           await Notification.sendToUser(userDid, {
             title: message.title,
@@ -287,19 +289,19 @@ module.exports = {
         }
         if (type === 'fake_reply') {
           const { user: vt } = await authClient.getUser(userDid);
-
+          const num = Math.floor(Math.random() * 100 + 1);
           await Notification.sendToUser(userDid, {
             title: 'User reply to you',
             body: `<${vt.fullName}(did:abt:${userDid})> reply to you: 这个教程很赞👍🏻️`,
             priority: 2,
             attachments: [
               {
-                type: 'reply',
+                type: 'link',
                 data: {
                   link: 'https://giveaway.didwallet.io/did-comments/discussions/49231adb-9008-4c05-bfb2-9d2dedf9a7c2',
                   title: '如何参加转推领奖活动',
-                  origin_content:
-                    '1.使用浏览器打开转推领奖活动页面. 2.点击想要参加或者查看的活动，进入活动详情. 3.填写推文链接完成活动绑定. 4.完成绑定之后，即可根据奖励的要求奖励领取',
+                  desc: '1.使用浏览器打开转推领奖活动页面. 2.点击想要参加或者查看的活动，进入活动详情. 3.填写推文链接完成活动绑定. 4.完成绑定之后，即可根据奖励的要求奖励领取',
+                  image: `https://picsum.photos/id/${num}/200/300`,
                 },
               },
             ],
