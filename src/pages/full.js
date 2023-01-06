@@ -844,7 +844,10 @@ export default function IndexPage() {
               Fake DApp
             </NotificationButton>
             <NotificationButton type="fake_tx" className="action">
-              Fake Transaction
+              Fake User Transaction
+            </NotificationButton>
+            <NotificationButton type="fake_other_tx" className="action">
+              Fake Other Transaction
             </NotificationButton>
             <NotificationButton type="fake_img" className="action">
               Fake Image

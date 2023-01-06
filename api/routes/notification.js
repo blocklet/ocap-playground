@@ -269,7 +269,7 @@ module.exports = {
           });
           logger.info(transactions);
           const txHash =
-            transactions && transactions.size > 0
+            transactions && transactions.length > 0
               ? transactions[0].hash
               : '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
           const { assets } = await client.listAssets({ ownerAddress: userDid });
@@ -287,13 +287,14 @@ module.exports = {
           res.status(200).end();
           return;
         }
+
         if (type === 'fake_reply') {
           const { user: vt } = await authClient.getUser(userDid);
           const num = Math.floor(Math.random() * 100 + 1);
           await Notification.sendToUser(userDid, {
             title: 'User reply to you',
-            body: `<${vt.fullName}(did:abt:${userDid})> reply to you: 这个教程很赞👍🏻️`,
-            priority: 2,
+            body: `<${vt.fullName}(did:abt:${userDid})> reply to you: \n点击【一键转发】按钮，然后转到推特上去发送。👍🏻️`,
+            level: 'normal', // success error warning
             attachments: [
               {
                 type: 'link',
@@ -310,41 +311,101 @@ module.exports = {
           res.status(200).end();
           return;
         }
+
         if (type === 'fake_dapp') {
           await Notification.sendToUser(userDid, {
             title: '应用推荐',
-            body: '推荐给你一个有趣的应用',
-            priority: 8,
+            body: '推荐给你一个有趣的应用:',
+            level: 'success', // success error warning
             attachments: [
               {
                 type: 'dapp',
                 data: {
-                  url: 'https://explore.didwallet.io/',
-                  app_did: 'zNKZNVyUAJyyv2A7V8B8BDTWGU1dJk5adhzh',
-                  logo: 'https://node-p-1.didwallet.io/admin/blocklet/logo/z8ia2YcGbZWnwgWW4fWVyWBPEdm723N4ip6YM?v=0.2.8',
-                  title: 'Dapp Explore',
-                  desc: 'If you tweeted, you will receive a special and unique non-fungible token (NFT) Christmas card.',
+                  url: 'https://token-prize-pool-bfg-18-180-145-193.ip.abtnet.io/',
+                  app_did: 'zNKuEeFscqBDfaS5RMrmFKdQmucpcQkPEJgi',
+                  logo: 'https://token-prize-pool-bfg-18-180-145-193.ip.abtnet.io/.well-known/service/blocklet/logo/',
+                  title: 'Token Prize',
+                  desc: '奖金池开启，速来瓜分🏃🏻🏃🏻🏃🏻~\n[测试] 使用 DID 钱包 + Twitter 账户即可参与奖池瓜分，更有机会直接赢走 50% 奖池数额，快来参加吧！！！',
+                },
+              },
+              {
+                type: 'text',
+                data: {
+                  text: '奖金池开启，速来瓜分🏃🏻🏃🏻🏃🏻~\n[测试] 使用 DID 钱包 + Twitter 账户即可参与奖池瓜分，更有机会直接赢走 50% 奖池数额，快来参加吧！！！',
+                },
+              },
+              {
+                type: 'image',
+                data: {
+                  image_url:
+                    'https://image-bin-gp9-18-180-145-193.ip.abtnet.io/uploads/1672901762844-W7CNIE6B3av0F_6zR5uURKQB.jpeg',
+                  alt_text: '',
+                  title: '',
                 },
               },
             ],
-            actions: [],
+            actions: [
+              {
+                name: 'Open Dapp',
+                title: 'Open Dapp',
+                link: 'https://token-prize-pool-bfg-18-180-145-193.ip.abtnet.io/',
+              },
+            ],
           });
           res.status(200).end();
           return;
         }
+
+        if (type === 'fake_other_tx') {
+          const txHash = '6AD235F0AA930FA32AA48D30006855DBDE4B5BB74E246890310E711B46523B64';
+          await Notification.sendToUser(userDid, {
+            title: '您监控的账户产生交易',
+            body: '您监控的账户产生了交易：',
+            level: 'warning', // success error warning
+            attachments: [
+              {
+                type: 'link',
+                data: {
+                  link: 'https://giveaway.didwallet.io/did-comments/discussions/49231adb-9008-4c05-bfb2-9d2dedf9a7c2',
+                  title: '如何参加转推领奖活动',
+                  desc: '1.使用浏览器打开转推领奖活动页面. 2.点击想要参加或者查看的活动，进入活动详情. 3.填写推文链接完成活动绑定. 4.完成绑定之后，即可根据奖励的要求奖励领取',
+                },
+              },
+              {
+                type: 'transaction',
+                data: {
+                  hash: txHash,
+                  chainId: 'beta',
+                },
+              },
+            ],
+            actions: [
+              {
+                name: 'Open Tx',
+                title: 'Open Tx',
+                link: 'https://explorer.abtnetwork.io/explorer/txs/6AD235F0AA930FA32AA48D30006855DBDE4B5BB74E246890310E711B46523B64',
+              },
+            ],
+          });
+          res.status(200).end();
+          return;
+        }
+
         if (type === 'fake_tx') {
           const { transactions } = await client.listTransactions({
             accountFilter: { accounts: [userDid] },
-            validityFilter: { validity: 'VALID' },
             paging: { size: 10 },
           });
-          const txHash = transactions
-            ? transactions[0].hash
-            : '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
+
+          const txHash =
+            transactions && transactions.length > 0
+              ? transactions[0].hash
+              : '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
+
           await Notification.sendToUser(userDid, {
             title: '奖励交易',
             body: '恭喜你！你获得了本次的幸运大奖',
-            priority: 5,
+            level: 'error',
             attachments: [
               {
                 type: 'transaction',
@@ -359,11 +420,12 @@ module.exports = {
           res.status(200).end();
           return;
         }
+
         if (type === 'fake_img') {
           await Notification.sendToUser(userDid, {
             title: 'Send you a image',
             body: '这张图片已上传DID Space',
-            priority: 1,
+            level: 'success', // normal success error warning
             attachments: [
               {
                 type: 'image',
@@ -375,18 +437,19 @@ module.exports = {
                 },
               },
             ],
-            actions: [],
+            actions: [{ name: 'View', title: 'View', link: 'https://storage.staging.abtnet.io/app/admin/user/spaces' }],
           });
           res.status(200).end();
           return;
         }
+
         if (type === 'fake_reward') {
           const { user: vt } = await authClient.getUser(userDid);
 
           await Notification.sendToUser(userDid, {
             title: 'Sold a DApp',
-            body: `<${vt.fullName}(did:abt:${userDid})> 购买了您的应用 DID Discuss`,
-            priority: 10,
+            body: `<${vt.fullName}(did:abt:${userDid})> 购买了您的应用 <DID Discuss(link:https://test.store.blocklet.dev/blocklets/z8ia1WEiBZ7hxURf6LwH21Wpg99vophFwSJdu)>`,
+            level: 'normal', // success error warning
             attachments: [
               {
                 type: 'section',
@@ -395,30 +458,61 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text_color: '#000000',
-                      text: '收益：',
+                      text_color: '#9397A1',
+                      text: '本次收益',
                     },
                   },
                   {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text: '8 ABT',
+                      text_color: '#25C99B',
+                      text: '+ 8 ABT',
                     },
                   },
                   {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text_color: '#000000',
-                      text: '今日收益：',
+                      text_color: '#9397A1',
+                      text: '收益日期',
                     },
                   },
                   {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text: '88 ABT',
+                      text: '2023年1月3日 上午8:00',
+                    },
+                  },
+                  {
+                    type: 'text',
+                    data: {
+                      type: 'plain',
+                      text_color: '#9397A1',
+                      text: '今日收益',
+                    },
+                  },
+                  {
+                    type: 'text',
+                    data: {
+                      type: 'plain',
+                      text: '+ 10 TBA',
+                    },
+                  },
+                  {
+                    type: 'text',
+                    data: {
+                      type: 'plain',
+                      text_color: '#9397A1',
+                      text: '本月收益',
+                    },
+                  },
+                  {
+                    type: 'text',
+                    data: {
+                      type: 'plain',
+                      text: '+ 100 TBA',
                     },
                   },
                 ],
@@ -428,25 +522,11 @@ module.exports = {
                 data: {},
               },
               {
-                type: 'section',
-                fields: [
-                  {
-                    type: 'text',
-                    data: {
-                      type: 'plain',
-                      text_color: '#000000',
-                      text: '当月总收益：',
-                    },
-                  },
-                  {
-                    type: 'text',
-                    data: {
-                      type: 'plain',
-                      text_color: '#FF0000',
-                      text: '888 ABT',
-                    },
-                  },
-                ],
+                type: 'transaction',
+                data: {
+                  hash: 'EA0DC45CA6BFB3ED2A0E7406952C813D0C285E317F450244ACD73FB2602CD78B',
+                  chainId: 'beta',
+                },
               },
             ],
             actions: [],
@@ -454,6 +534,7 @@ module.exports = {
           res.status(200).end();
           return;
         }
+
         // feed graphic single
         if (type === 'feed-graphic-single') {
           const feedTitles = [

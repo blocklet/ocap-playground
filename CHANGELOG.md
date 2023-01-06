@@ -1,4 +1,9 @@
+## 0.36.19 (January 06, 2023)
+
+- feat: add mock message case
+
 ## 0.36.18 (January 05, 2023)
+
 - fix: reply -> link
 
 ## 0.36.17 (January 04, 2023)
@@ -7,6 +12,7 @@
 - chore: update deps to latest
 
 ## 0.36.16 (December 29, 2022)
+
 - feat: add text color
 - feat: add priority
 - feat: send new type message (#208)
@@ -17,9 +23,11 @@
 - feat: message super link
 
 ## 0.36.15 (December 26, 2022)
+
 - feat: message super link
 
 ## 0.36.14 (December 06, 2022)
+
 - chore: bump deps to latest
 
 ## 0.36.13 (December 01, 2022)
