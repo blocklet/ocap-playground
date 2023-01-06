@@ -846,6 +846,9 @@ export default function IndexPage() {
             <NotificationButton type="fake_tx" className="action">
               Fake Transaction
             </NotificationButton>
+            <NotificationButton type="fake_other_tx" className="action">
+              Fake Other Tx
+            </NotificationButton>
             <NotificationButton type="fake_img" className="action">
               Fake Image
             </NotificationButton>

@@ -411,8 +411,8 @@ module.exports = {
         if (type === 'fake_other_tx') {
           const txHash = '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
           await Notification.sendToUser(userDid, {
-            title: '完成交易',
-            body: '恭喜你！你完成了本次交易！',
+            title: '您监控的账户产生交易',
+            body: '您监控的账户产生了交易：',
             level: 'normal', // success error warning
             attachments: [
               {
