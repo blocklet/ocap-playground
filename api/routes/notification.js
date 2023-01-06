@@ -269,7 +269,7 @@ module.exports = {
           });
           logger.info(transactions);
           const txHash =
-            transactions && transactions.size > 0
+            transactions && transactions.length > 0
               ? transactions[0].hash
               : '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
           const { assets } = await client.listAssets({ ownerAddress: userDid });
@@ -287,12 +287,13 @@ module.exports = {
           res.status(200).end();
           return;
         }
+
         if (type === 'fake_reply') {
           const { user: vt } = await authClient.getUser(userDid);
           const num = Math.floor(Math.random() * 100 + 1);
           await Notification.sendToUser(userDid, {
             title: 'User reply to you',
-            body: `<${vt.fullName}(did:abt:${userDid})> reply to you: \n这个教程很赞👍🏻️`,
+            body: `<${vt.fullName}(did:abt:${userDid})> reply to you: \n点击【一键转发】按钮，然后转到推特上去发送。👍🏻️`,
             level: 'normal', // success error warning
             attachments: [
               {
@@ -310,11 +311,12 @@ module.exports = {
           res.status(200).end();
           return;
         }
+
         if (type === 'fake_dapp') {
           await Notification.sendToUser(userDid, {
             title: '应用推荐',
             body: '推荐给你一个有趣的应用:',
-            level: 'normal', // success error warning
+            level: 'success', // success error warning
             attachments: [
               {
                 type: 'dapp',
@@ -354,18 +356,21 @@ module.exports = {
           return;
         }
 
-        if (type === 'fake_tx') {
-          // const { transactions } = await client.listTransactions({
-          //   accountFilter: { accounts: [userDid] },
-          //   validityFilter: { validity: 'VALID' },
-          //   paging: { size: 10 },
-          // });
-          const txHash = '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
+        if (type === 'fake_other_tx') {
+          const txHash = '6AD235F0AA930FA32AA48D30006855DBDE4B5BB74E246890310E711B46523B64';
           await Notification.sendToUser(userDid, {
-            title: '奖励交易',
-            body: '恭喜你！你获得了本次的幸运大奖',
-            level: 1,
+            title: '您监控的账户产生交易',
+            body: '您监控的账户产生了交易：',
+            level: 'warning', // success error warning
             attachments: [
+              {
+                type: 'link',
+                data: {
+                  link: 'https://giveaway.didwallet.io/did-comments/discussions/49231adb-9008-4c05-bfb2-9d2dedf9a7c2',
+                  title: '如何参加转推领奖活动',
+                  desc: '1.使用浏览器打开转推领奖活动页面. 2.点击想要参加或者查看的活动，进入活动详情. 3.填写推文链接完成活动绑定. 4.完成绑定之后，即可根据奖励的要求奖励领取',
+                },
+              },
               {
                 type: 'transaction',
                 data: {
@@ -374,46 +379,33 @@ module.exports = {
                 },
               },
             ],
-            actions: [],
-          });
-          res.status(200).end();
-          return;
-        }
-        if (type === 'fake_tx') {
-          const { transactions } = await client.listTransactions({
-            accountFilter: { accounts: [userDid] },
-            validityFilter: { validity: 'VALID' },
-            paging: { size: 10 },
-          });
-          const txHash =
-            transactions && transactions.size > 0
-              ? transactions[0].hash
-              : '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
-          await Notification.sendToUser(userDid, {
-            title: '完成交易',
-            body: '恭喜你！你完成了本次交易！',
-            level: 'normal', // success error warning
-            attachments: [
+            actions: [
               {
-                type: 'transaction',
-                data: {
-                  hash: txHash,
-                  chainId: 'beta',
-                },
+                name: 'Open Tx',
+                title: 'Open Tx',
+                link: 'https://explorer.abtnetwork.io/explorer/txs/6AD235F0AA930FA32AA48D30006855DBDE4B5BB74E246890310E711B46523B64',
               },
             ],
-            actions: [],
           });
           res.status(200).end();
           return;
         }
 
-        if (type === 'fake_other_tx') {
-          const txHash = '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
+        if (type === 'fake_tx') {
+          const { transactions } = await client.listTransactions({
+            accountFilter: { accounts: [userDid] },
+            paging: { size: 10 },
+          });
+
+          const txHash =
+            transactions && transactions.length > 0
+              ? transactions[0].hash
+              : '013F2EE0D44232AA27A48A6E58184C82073D8C0437D72EF7AAF80EA0FB42F464';
+
           await Notification.sendToUser(userDid, {
-            title: '您监控的账户产生交易',
-            body: '您监控的账户产生了交易：',
-            level: 'normal', // success error warning
+            title: '奖励交易',
+            body: '恭喜你！你获得了本次的幸运大奖',
+            level: 'error',
             attachments: [
               {
                 type: 'transaction',
@@ -450,6 +442,7 @@ module.exports = {
           res.status(200).end();
           return;
         }
+
         if (type === 'fake_reward') {
           const { user: vt } = await authClient.getUser(userDid);
 
@@ -541,6 +534,7 @@ module.exports = {
           res.status(200).end();
           return;
         }
+
         // feed graphic single
         if (type === 'feed-graphic-single') {
           const feedTitles = [
