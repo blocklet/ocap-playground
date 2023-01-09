@@ -290,11 +290,10 @@ module.exports = {
 
         if (type === 'fake_reply') {
           const { user: vt } = await authClient.getUser(userDid);
-          const num = Math.floor(Math.random() * 100 + 1);
           await Notification.sendToUser(userDid, {
             title: 'User reply to you',
             body: `<${vt.fullName}(did:abt:${userDid})> reply to you: \n点击【一键转发】按钮，然后转到推特上去发送。👍🏻️`,
-            level: 'normal', // success error warning
+            severity: 'normal', // success error warning
             attachments: [
               {
                 type: 'link',
@@ -302,7 +301,7 @@ module.exports = {
                   link: 'https://giveaway.didwallet.io/did-comments/discussions/49231adb-9008-4c05-bfb2-9d2dedf9a7c2',
                   title: '如何参加转推领奖活动',
                   desc: '1.使用浏览器打开转推领奖活动页面. 2.点击想要参加或者查看的活动，进入活动详情. 3.填写推文链接完成活动绑定. 4.完成绑定之后，即可根据奖励的要求奖励领取',
-                  image: `https://picsum.photos/id/${num}/200/300`,
+                  image: 'https://picsum.photos/600/400',
                 },
               },
             ],
@@ -316,13 +315,13 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: '应用推荐',
             body: '推荐给你一个有趣的应用:',
-            level: 'success', // success error warning
+            severity: 'success', // success error warning
             attachments: [
               {
                 type: 'dapp',
                 data: {
                   url: 'https://token-prize-pool-bfg-18-180-145-193.ip.abtnet.io/',
-                  app_did: 'zNKuEeFscqBDfaS5RMrmFKdQmucpcQkPEJgi',
+                  appDID: 'zNKuEeFscqBDfaS5RMrmFKdQmucpcQkPEJgi',
                   logo: 'https://token-prize-pool-bfg-18-180-145-193.ip.abtnet.io/.well-known/service/blocklet/logo/',
                   title: 'Token Prize',
                   desc: '奖金池开启，速来瓜分🏃🏻🏃🏻🏃🏻~\n[测试] 使用 DID 钱包 + Twitter 账户即可参与奖池瓜分，更有机会直接赢走 50% 奖池数额，快来参加吧！！！',
@@ -337,10 +336,8 @@ module.exports = {
               {
                 type: 'image',
                 data: {
-                  image_url:
-                    'https://image-bin-gp9-18-180-145-193.ip.abtnet.io/uploads/1672901762844-W7CNIE6B3av0F_6zR5uURKQB.jpeg',
-                  alt_text: '',
-                  title: '',
+                  url: 'https://image-bin-gp9-18-180-145-193.ip.abtnet.io/uploads/1672901762844-W7CNIE6B3av0F_6zR5uURKQB.jpeg',
+                  alt: 'uploaded image',
                 },
               },
             ],
@@ -361,7 +358,7 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: '您监控的账户产生交易',
             body: '您监控的账户产生了交易：',
-            level: 'warning', // success error warning
+            severity: 'warning', // success error warning
             attachments: [
               {
                 type: 'link',
@@ -405,7 +402,7 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: '奖励交易',
             body: '恭喜你！你获得了本次的幸运大奖',
-            level: 'error',
+            severity: 'error',
             attachments: [
               {
                 type: 'transaction',
@@ -425,15 +422,13 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: 'Send you a image',
             body: '这张图片已上传DID Space',
-            level: 'success', // normal success error warning
+            severity: 'success', // normal success error warning
             attachments: [
               {
                 type: 'image',
                 data: {
-                  image_url:
-                    'https://image-bin-gp9-52-52-139-202.ip.abtnet.io/uploads/1671690265269-s2gGJ6PmJkq4raXidJM3aIMk.png',
-                  alt_text: 'DID Spaces Image',
-                  title: 'DID Spaces Image',
+                  url: 'https://image-bin-gp9-52-52-139-202.ip.abtnet.io/uploads/1671690265269-s2gGJ6PmJkq4raXidJM3aIMk.png',
+                  alt: 'DID Spaces Image',
                 },
               },
             ],
@@ -449,7 +444,7 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: 'Sold a DApp',
             body: `<${vt.fullName}(did:abt:${userDid})> 购买了您的应用 <DID Discuss(link:https://test.store.blocklet.dev/blocklets/z8ia1WEiBZ7hxURf6LwH21Wpg99vophFwSJdu)>`,
-            level: 'normal', // success error warning
+            severity: 'normal', // success error warning
             attachments: [
               {
                 type: 'section',
@@ -458,7 +453,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text_color: '#9397A1',
+                      color: '#9397A1',
                       text: '本次收益',
                     },
                   },
@@ -466,7 +461,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text_color: '#25C99B',
+                      color: '#25C99B',
                       text: '+ 8 ABT',
                     },
                   },
@@ -474,7 +469,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text_color: '#9397A1',
+                      color: '#9397A1',
                       text: '收益日期',
                     },
                   },
@@ -489,7 +484,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text_color: '#9397A1',
+                      color: '#9397A1',
                       text: '今日收益',
                     },
                   },
@@ -504,7 +499,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text_color: '#9397A1',
+                      color: '#9397A1',
                       text: '本月收益',
                     },
                   },
@@ -520,13 +515,6 @@ module.exports = {
               {
                 type: 'divider',
                 data: {},
-              },
-              {
-                type: 'link',
-                data: {
-                  link: 'https://explorer.abtnetwork.io/explorer/txs/EA0DC45CA6BFB3ED2A0E7406952C813D0C285E317F450244ACD73FB2602CD78B',
-                  title: 'Explorer Transaction Detail',
-                },
               },
               {
                 type: 'transaction',
@@ -546,7 +534,7 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: 'Sold a DApp',
             body: '您的节点 <Moon Node (link:https://node-dev-1.arcblock.io/admin)> 将在月初自动续费，当前账户余额不足，请尽快续费以免丢失重要数据。 ',
-            level: 'warning', // success error warning
+            severity: 'warning', // success error warning
             attachments: [
               {
                 type: 'section',
@@ -555,7 +543,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text_color: '#9397A1',
+                      color: '#9397A1',
                       text: '当前余额',
                     },
                   },
@@ -563,7 +551,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text_color: '#DE9E37',
+                      color: '#DE9E37',
                       text: '+ 100 ABT',
                     },
                   },
@@ -571,7 +559,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text_color: '#9397A1',
+                      color: '#9397A1',
                       text: '扣费日期',
                     },
                   },
@@ -586,7 +574,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text_color: '#9397A1',
+                      color: '#9397A1',
                       text: '下月扣除',
                     },
                   },
@@ -601,7 +589,7 @@ module.exports = {
                     type: 'text',
                     data: {
                       type: 'plain',
-                      text_color: '#9397A1',
+                      color: '#9397A1',
                       text: '本月支出',
                     },
                   },
@@ -625,7 +613,7 @@ module.exports = {
           await Notification.sendToUser(userDid, {
             title: '您的节点升级失败已停止运行。 ',
             body: '您的节点升级失败已停止运行。  ',
-            level: 'error', // success error warning
+            severity: 'error', // success error warning
             attachments: [
               {
                 type: 'link',
