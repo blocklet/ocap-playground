@@ -1,3 +1,6 @@
+## 0.36.21 (January 09, 2023)
+- chore: rename message properties
+
 ## 0.36.20 (January 09, 2023)
 
 - feat: add mock message case
