@@ -852,8 +852,14 @@ export default function IndexPage() {
             <NotificationButton type="fake_img" className="action">
               Fake Image
             </NotificationButton>
-            <NotificationButton type="fake_reward" className="action">
-              Fake Sold DApp
+            <NotificationButton type="fake_store" className="action">
+              Fake Store
+            </NotificationButton>
+            <NotificationButton type="fake_server" className="action">
+              Fake Server
+            </NotificationButton>
+            <NotificationButton type="fake_failed_server" className="action">
+              Fake Server Fail
             </NotificationButton>
             <NotificationButton
               type="text"

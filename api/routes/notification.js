@@ -443,7 +443,7 @@ module.exports = {
           return;
         }
 
-        if (type === 'fake_reward') {
+        if (type === 'fake_store') {
           const { user: vt } = await authClient.getUser(userDid);
 
           await Notification.sendToUser(userDid, {
@@ -522,6 +522,13 @@ module.exports = {
                 data: {},
               },
               {
+                type: 'link',
+                data: {
+                  link: 'https://explorer.abtnetwork.io/explorer/txs/EA0DC45CA6BFB3ED2A0E7406952C813D0C285E317F450244ACD73FB2602CD78B',
+                  title: 'Explorer Transaction Detail',
+                },
+              },
+              {
                 type: 'transaction',
                 data: {
                   hash: 'EA0DC45CA6BFB3ED2A0E7406952C813D0C285E317F450244ACD73FB2602CD78B',
@@ -530,6 +537,106 @@ module.exports = {
               },
             ],
             actions: [],
+          });
+          res.status(200).end();
+          return;
+        }
+
+        if (type === 'fake_server') {
+          await Notification.sendToUser(userDid, {
+            title: 'Sold a DApp',
+            body: '您的节点 <Moon Node (link:https://node-dev-1.arcblock.io/admin)> 将在月初自动续费，当前账户余额不足，请尽快续费以免丢失重要数据。 ',
+            level: 'warning', // success error warning
+            attachments: [
+              {
+                type: 'section',
+                fields: [
+                  {
+                    type: 'text',
+                    data: {
+                      type: 'plain',
+                      text_color: '#9397A1',
+                      text: '当前余额',
+                    },
+                  },
+                  {
+                    type: 'text',
+                    data: {
+                      type: 'plain',
+                      text_color: '#DE9E37',
+                      text: '+ 100 ABT',
+                    },
+                  },
+                  {
+                    type: 'text',
+                    data: {
+                      type: 'plain',
+                      text_color: '#9397A1',
+                      text: '扣费日期',
+                    },
+                  },
+                  {
+                    type: 'text',
+                    data: {
+                      type: 'plain',
+                      text: '2023年1月3日 上午8:00',
+                    },
+                  },
+                  {
+                    type: 'text',
+                    data: {
+                      type: 'plain',
+                      text_color: '#9397A1',
+                      text: '下月扣除',
+                    },
+                  },
+                  {
+                    type: 'text',
+                    data: {
+                      type: 'plain',
+                      text: '200 ABT',
+                    },
+                  },
+                  {
+                    type: 'text',
+                    data: {
+                      type: 'plain',
+                      text_color: '#9397A1',
+                      text: '本月支出',
+                    },
+                  },
+                  {
+                    type: 'text',
+                    data: {
+                      type: 'plain',
+                      text: '-200 ABT',
+                    },
+                  },
+                ],
+              },
+            ],
+            actions: [{ name: '前往管理', title: '前往管理', link: 'https://node-dev-1.arcblock.io/admin' }],
+          });
+          res.status(200).end();
+          return;
+        }
+
+        if (type === 'fake_failed_server') {
+          await Notification.sendToUser(userDid, {
+            title: '您的节点升级失败已停止运行。 ',
+            body: '您的节点升级失败已停止运行。  ',
+            level: 'error', // success error warning
+            attachments: [
+              {
+                type: 'link',
+                data: {
+                  link: 'https://node-dev-1.arcblock.io/admin',
+                  title: 'ArcNode',
+                  desc: 'Arc自己的网站博客',
+                },
+              },
+            ],
+            actions: [{ name: '重新启动', title: '重新启动', link: 'https://node-dev-1.arcblock.io/admin' }],
           });
           res.status(200).end();
           return;

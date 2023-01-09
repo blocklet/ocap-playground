@@ -1,4 +1,4 @@
-## 0.36.19 (January 06, 2023)
+## 0.36.20 (January 09, 2023)
 
 - feat: add mock message case
 
