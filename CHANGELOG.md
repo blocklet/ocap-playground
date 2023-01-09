@@ -1,3 +1,6 @@
+## 0.36.22 (January 09, 2023)
+- chore: fix typo
+
 ## 0.36.21 (January 09, 2023)
 - chore: rename message properties
 
