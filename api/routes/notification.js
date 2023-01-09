@@ -517,13 +517,6 @@ module.exports = {
                 data: {},
               },
               {
-                type: 'link',
-                data: {
-                  link: 'https://explorer.abtnetwork.io/explorer/txs/EA0DC45CA6BFB3ED2A0E7406952C813D0C285E317F450244ACD73FB2602CD78B',
-                  title: 'Explorer Transaction Detail',
-                },
-              },
-              {
                 type: 'transaction',
                 data: {
                   hash: 'EA0DC45CA6BFB3ED2A0E7406952C813D0C285E317F450244ACD73FB2602CD78B',
