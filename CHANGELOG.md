@@ -1,3 +1,6 @@
+## 0.36.23 (January 09, 2023)
+- fix: change link -> url
+
 ## 0.36.22 (January 09, 2023)
 - chore: fix typo
 
