@@ -40,7 +40,7 @@
     "@arcblock/react-hooks": "^2.4.65",
     "@arcblock/ux": "^2.4.65",
     "@arcblock/vc": "^1.18.35",
-    "@blocklet/sdk": "^1.8.55",
+    "@blocklet/sdk": "^1.8.59",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.2",
