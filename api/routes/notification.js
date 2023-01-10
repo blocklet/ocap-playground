@@ -298,7 +298,7 @@ module.exports = {
               {
                 type: 'link',
                 data: {
-                  link: 'https://giveaway.didwallet.io/did-comments/discussions/49231adb-9008-4c05-bfb2-9d2dedf9a7c2',
+                  url: 'https://giveaway.didwallet.io/did-comments/discussions/49231adb-9008-4c05-bfb2-9d2dedf9a7c2',
                   title: '如何参加转推领奖活动',
                   description:
                     '1.使用浏览器打开转推领奖活动页面. 2.点击想要参加或者查看的活动，进入活动详情. 3.填写推文链接完成活动绑定. 4.完成绑定之后，即可根据奖励的要求奖励领取',
@@ -364,7 +364,7 @@ module.exports = {
               {
                 type: 'link',
                 data: {
-                  link: 'https://giveaway.didwallet.io/did-comments/discussions/49231adb-9008-4c05-bfb2-9d2dedf9a7c2',
+                  url: 'https://giveaway.didwallet.io/did-comments/discussions/49231adb-9008-4c05-bfb2-9d2dedf9a7c2',
                   title: '如何参加转推领奖活动',
                   description:
                     '1.使用浏览器打开转推领奖活动页面. 2.点击想要参加或者查看的活动，进入活动详情. 3.填写推文链接完成活动绑定. 4.完成绑定之后，即可根据奖励的要求奖励领取',
@@ -620,7 +620,7 @@ module.exports = {
               {
                 type: 'link',
                 data: {
-                  link: 'https://node-dev-1.arcblock.io/admin',
+                  url: 'https://node-dev-1.arcblock.io/admin',
                   title: 'ArcNode',
                   description: 'Arc自己的网站博客',
                 },
