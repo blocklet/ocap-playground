@@ -1,3 +1,6 @@
+## 0.36.24 (January 10, 2023)
+- update dep version
+
 ## 0.36.23 (January 09, 2023)
 - fix: change link -> url
 
