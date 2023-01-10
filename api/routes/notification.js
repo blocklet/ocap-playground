@@ -331,6 +331,7 @@ module.exports = {
               {
                 type: 'text',
                 data: {
+                  type: 'plain',
                   text: '奖金池开启，速来瓜分🏃🏻🏃🏻🏃🏻~\n[测试] 使用 DID 钱包 + Twitter 账户即可参与奖池瓜分，更有机会直接赢走 50% 奖池数额，快来参加吧！！！',
                 },
               },
@@ -516,7 +517,6 @@ module.exports = {
               },
               {
                 type: 'divider',
-                data: {},
               },
               {
                 type: 'transaction',
