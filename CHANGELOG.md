@@ -1,3 +1,6 @@
+## 0.36.25 (January 10, 2023)
+- fix: message data structure
+
 ## 0.36.24 (January 10, 2023)
 - update dep version
 
