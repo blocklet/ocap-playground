@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@abtnode/client@1.8.55":
-  version "1.8.55"
-  resolved "https://registry.yarnpkg.com/@abtnode/client/-/client-1.8.55.tgz#b0e79f969e2d62b4973fe409e9e554b3ac8cde9a"
-  integrity sha512-yU9oTPV1FX8iTzql3QqA4ImH+4A4zAxW8dQAPtp6Yt6w1Cf32gahQjMGEuF4rYOh5euMwQlWWoe0RCqtzWK4sA==
+"@abtnode/client@1.8.59":
+  version "1.8.59"
+  resolved "https://registry.yarnpkg.com/@abtnode/client/-/client-1.8.59.tgz#e235b7ab78e3019f1428516df06dd049010ea8c8"
+  integrity sha512-SMxfAtXyTjwiLyR0BafnxSeYDyqwbMT32ugUFNf57SIeltnLNtW35O96+Q73j76GMp/9h70P6BE6CKeuPMsCuw==
   dependencies:
     "@arcblock/sdk-util" "^0.33.0"
     "@ocap/util" "1.18.34"
@@ -18,16 +18,17 @@
     lodash "^4.17.21"
     react-app-polyfill "^1.0.6"
 
-"@abtnode/constant@1.8.55":
-  version "1.8.55"
-  resolved "https://registry.yarnpkg.com/@abtnode/constant/-/constant-1.8.55.tgz#1cb61541c3a2dc98c9b768c93e0207e5bcaced7b"
-  integrity sha512-8nYvfVeAcUgAkmi1jwtaoPisrpgbEmXDFEu8tFBXjgrO6v0sArLoTFpOPVa5LAuAlg05Q6YJidktZ9PbUvw8zA==
+"@abtnode/constant@1.8.59":
+  version "1.8.59"
+  resolved "https://registry.yarnpkg.com/@abtnode/constant/-/constant-1.8.59.tgz#77ccbf1bef636303836eb39e2363d24bfe90be51"
+  integrity sha512-0cwkWJolphNRi6Jen/QfCTOAJkbXxVBc9bYTWYLnXdI/6140kyiNxs7Vah7B/d4WtlHEp46LJH9k4mMJ16Neuw==
 
-"@abtnode/logger@1.8.55":
-  version "1.8.55"
-  resolved "https://registry.yarnpkg.com/@abtnode/logger/-/logger-1.8.55.tgz#15d15b1e5a8449171a2f4e242ae35393b7e2066e"
-  integrity sha512-ON+K7Hys6EqjtZB3PQxEdOx+pqTs15xWUqotbX/+St/cIu7La6sBGGu4sX0hBAji7JIKGBY0MKD/dQNaPMe4mw==
+"@abtnode/logger@1.8.59":
+  version "1.8.59"
+  resolved "https://registry.yarnpkg.com/@abtnode/logger/-/logger-1.8.59.tgz#4e3ad66bfdbaddfe8e1436094b1eeb8717d71573"
+  integrity sha512-ZBqNO3nrB3+21x+o9gd50lKQuDYe6d0HWMDSd8M5wNFHEiGf+E9bT2g6BKnimKJaNhuKnBNUl7UYmcNIjMNlFg==
   dependencies:
+    "@abtnode/constant" "1.8.59"
     debug "^4.3.4"
     fast-safe-stringify "^2.1.1"
     fs-extra "^10.1.0"
@@ -37,15 +38,15 @@
     winston "^3.8.2"
     winston-daily-rotate-file "^4.7.1"
 
-"@abtnode/util@1.8.55":
-  version "1.8.55"
-  resolved "https://registry.yarnpkg.com/@abtnode/util/-/util-1.8.55.tgz#a1603c9024f5663a6c9fd2c68c452925c4c3e31c"
-  integrity sha512-4AvL353D9T80a6ZvMmgiJQhDM3Wb4ue6ZzSOgi4ICZ4vs3/5/5VTSDAgFZRMKaNqs2MDFEf4cAci6PYk8mfKNA==
+"@abtnode/util@1.8.59":
+  version "1.8.59"
+  resolved "https://registry.yarnpkg.com/@abtnode/util/-/util-1.8.59.tgz#b917cd75a6a60fb34dd5364b3eafcb6eca04726d"
+  integrity sha512-Xwx0jzP/Xhe9OldpkNWn4CKAmvjTvUTrGa18pXiW/ZYJCNgxDaSG5tm1MYPZcOlv68wnZR2/bp9IEO5ntVUq4A==
   dependencies:
-    "@abtnode/constant" "1.8.55"
-    "@abtnode/logger" "1.8.55"
+    "@abtnode/constant" "1.8.59"
+    "@abtnode/logger" "1.8.59"
     "@arcblock/jwt" "^1.18.34"
-    "@blocklet/constant" "1.8.55"
+    "@blocklet/constant" "1.8.59"
     "@ocap/mcrypto" "1.18.34"
     "@ocap/util" "1.18.34"
     "@ocap/wallet" "1.18.34"
@@ -1523,24 +1524,24 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@blocklet/constant@1.8.55":
-  version "1.8.55"
-  resolved "https://registry.yarnpkg.com/@blocklet/constant/-/constant-1.8.55.tgz#1613fb87e42cf1d5a5597f479f0caa5fb6df72fd"
-  integrity sha512-p8CDlRXMILuq9zFri0ohRfUhTM4+bXBUGq11bsfhHSFL1Af3e1rdNxhck06tuB7ASTBRwQ181tNFZoGSWrd8ZQ==
+"@blocklet/constant@1.8.59":
+  version "1.8.59"
+  resolved "https://registry.yarnpkg.com/@blocklet/constant/-/constant-1.8.59.tgz#d70d1b2e7c908218517ebd0071eb228cc551060a"
+  integrity sha512-i2pKQXhd7EXl3P8pU9o1AXzqmSz3KSxUVg/LgRVL4tsZS3VeSdC8+12ZJkYffTvE2T7qBrZX5f99QYJFfJDqlA==
 
-"@blocklet/meta@1.8.55":
-  version "1.8.55"
-  resolved "https://registry.yarnpkg.com/@blocklet/meta/-/meta-1.8.55.tgz#c553cca76b5efaba7be86a482da6413e43462d5e"
-  integrity sha512-NY+1XDWa3V7B+o+j9AEgC/3ZHMyRlQGryJngHVosCgq+GyCai+tHEoZIeJfZMKRq/5MHxnrfW0ruXqt68g3Ocg==
+"@blocklet/meta@1.8.59":
+  version "1.8.59"
+  resolved "https://registry.yarnpkg.com/@blocklet/meta/-/meta-1.8.59.tgz#7a73b460eb6d9c14f4cf2f3fd253e6ae5a081572"
+  integrity sha512-WNAG4DW/XKYEfJyFbNnIoG/Oda5AojrrqnE4KZgYDtG5imG/JI7bhZ/EzHfLoGCAzTNFDisnLX/AaKLBYjXIHA==
   dependencies:
-    "@abtnode/client" "1.8.55"
-    "@abtnode/constant" "1.8.55"
-    "@abtnode/util" "1.8.55"
+    "@abtnode/client" "1.8.59"
+    "@abtnode/constant" "1.8.59"
+    "@abtnode/util" "1.8.59"
     "@arcblock/did" "1.18.34"
     "@arcblock/did-ext" "1.18.34"
     "@arcblock/did-util" "1.18.34"
     "@arcblock/jwt" "1.18.34"
-    "@blocklet/constant" "1.8.55"
+    "@blocklet/constant" "1.8.59"
     "@ocap/asset" "1.18.34"
     "@ocap/mcrypto" "1.18.34"
     "@ocap/types" "1.18.34"
@@ -1567,18 +1568,18 @@
     utility-types "^3.10.0"
     validate-npm-package-name "^3.0.0"
 
-"@blocklet/sdk@^1.8.55":
-  version "1.8.55"
-  resolved "https://registry.yarnpkg.com/@blocklet/sdk/-/sdk-1.8.55.tgz#857535a751b1983952a1c1c48c58f80f65fd699f"
-  integrity sha512-DYXC2IWZnLM382VdtVKezuAMOZghc9bOTmxC6D8mLth9of25GPpAx3njWAiCGs/tLvfT2Mqdxc7AGFndGrp+jA==
+"@blocklet/sdk@^1.8.59":
+  version "1.8.59"
+  resolved "https://registry.yarnpkg.com/@blocklet/sdk/-/sdk-1.8.59.tgz#a9f50aae07ca33902b47d3709ce927dde2c508f0"
+  integrity sha512-i4NVzzi8YK85HHy160S5r9AcA0o5oG+sTaBuDS/tu5WTxKwGSt+OL2XMiVfXm3JaksTI//AdXTSrphmoHGdGYw==
   dependencies:
-    "@abtnode/client" "1.8.55"
-    "@abtnode/constant" "1.8.55"
+    "@abtnode/client" "1.8.59"
+    "@abtnode/constant" "1.8.59"
     "@arcblock/did-auth" "1.18.34"
     "@arcblock/jwt" "1.18.34"
     "@arcblock/ws" "1.18.34"
-    "@blocklet/constant" "1.8.55"
-    "@blocklet/meta" "1.8.55"
+    "@blocklet/constant" "1.8.59"
+    "@blocklet/meta" "1.8.59"
     "@did-connect/authenticator" "^2.1.33"
     "@did-connect/handler" "^2.1.33"
     "@nedb/core" "^2.1.2"
