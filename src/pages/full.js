@@ -514,18 +514,6 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="Create New DID"
-              action="claim_create_did"
-              saveConnect={false}
-              extraParams={{ sessionDid: session.user.did }}
-              messages={{
-                title: 'Create DID',
-                scan: 'Connect your DID Wallet to get the did spec',
-                confirm: 'Confirm on your DID Wallet',
-                success: 'Application Created',
-              }}
-            />
-            <AuthButton
               button="Proof of DID Holding"
               action="claim_target"
               extraParams={{ sessionDid: session.user.did }}
@@ -651,6 +639,42 @@ export default function IndexPage() {
                 scan: 'Connect your DID Wallet to continue',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Success',
+              }}
+            />
+            <AuthButton
+              button="Derive Key Pair"
+              action="derive-key-pair"
+              saveConnect={false}
+              extraParams={{ sessionDid: session.user.did }}
+              messages={{
+                title: 'Create Key Pair',
+                scan: 'Connect your DID Wallet to get the did spec',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Application Created',
+              }}
+            />
+            <AuthButton
+              button="Sign Delegation"
+              action="sign-delegation"
+              saveConnect={false}
+              extraParams={{ sessionDid: session.user.did }}
+              messages={{
+                title: 'Sign Delegation',
+                scan: 'Connect your DID Wallet to sign the delegation',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Delegation Signed',
+              }}
+            />
+            <AuthButton
+              button="Decrypt Info"
+              action="decrypt-info"
+              saveConnect={false}
+              extraParams={{ sessionDid: session.user.did }}
+              messages={{
+                title: 'Decrypt Info',
+                scan: 'Connect your DID Wallet to decrypt the info',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Info decrypted',
               }}
             />
           </div>
