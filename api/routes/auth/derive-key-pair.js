@@ -13,6 +13,7 @@ module.exports = {
       return {
         mfa: true,
         description: 'Please generate a new key-pair',
+        moniker: 'test-application',
         targetType: {
           role: 'application',
           hash: 'sha3',
