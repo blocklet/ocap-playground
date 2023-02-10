@@ -46,12 +46,13 @@ module.exports = {
         const data = toHex(headerAndPayload);
 
         return {
-          meta: {
-            headerAndPayload,
-          },
+          type: 'fg:x:delegation',
           description: 'Sign this delegation to allow playground to retrieve encryption key',
           mfa: true,
           data,
+          meta: {
+            headerAndPayload,
+          },
         };
       },
     },
