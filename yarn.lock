@@ -136,16 +136,16 @@
   resolved "https://registry.yarnpkg.com/@arcblock/did-auth-storage/-/did-auth-storage-1.7.1.tgz#6c184f8cedf57f01a1761555b521a831011b6b54"
   integrity sha512-yFqCUyjWydgbB+LgK1rYiAh3srDZ/SwE6+jFuHR8oU+jSkv/JssppgS1pNE70cUcZVZIkD40ptVh3xPaHOvv2Q==
 
-"@arcblock/did-auth@1.18.37", "@arcblock/did-auth@^1.18.40-beta.5":
-  version "1.18.40-beta.5"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-auth/-/did-auth-1.18.40-beta.5.tgz#49ff43d6a05cbbbf0eb906d0f503020c64463f7b"
-  integrity sha512-KIXYZK15mfV9t9zX6YOaJFP5oDNoVKi7Z2hV6mqmVB00KOs42Odvk0GvUeak0mYwtWxCvdjGT1bIWo1Qc8dAGw==
+"@arcblock/did-auth@1.18.37", "@arcblock/did-auth@^1.18.40-beta.6":
+  version "1.18.40-beta.6"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-auth/-/did-auth-1.18.40-beta.6.tgz#22edf5f8312eb55da1f0067f4556d81ba1a47450"
+  integrity sha512-5c6I6azZN3ogTZ1mlI2FHTBipmvntI7ihYR2BHoUbZmZQJFx/xZ2sNvl0Oq6v3XYQzn88XNGW4HXNO+USFrZXg==
   dependencies:
     "@arcblock/did" "1.18.39"
     "@arcblock/jwt" "1.18.39"
     "@arcblock/validator" "1.18.39"
     "@ocap/client" "1.18.39"
-    "@ocap/mcrypto" "1.18.40-beta.5"
+    "@ocap/mcrypto" "1.18.40-beta.6"
     "@ocap/util" "1.18.39"
     "@ocap/wallet" "1.18.39"
     debug "^4.3.4"
@@ -2610,10 +2610,10 @@
     esprima "^4.0.1"
     lodash "^4.17.21"
 
-"@ocap/mcrypto@1.18.37", "@ocap/mcrypto@1.18.39", "@ocap/mcrypto@1.18.40-beta.5", "@ocap/mcrypto@^1.18.34", "@ocap/mcrypto@^1.18.40-beta.5":
-  version "1.18.40-beta.5"
-  resolved "https://registry.yarnpkg.com/@ocap/mcrypto/-/mcrypto-1.18.40-beta.5.tgz#b143b538ebc725831af038460f07e2c9ad08fd01"
-  integrity sha512-gUxsANzMIXTZ8ADKIj5UuTksB/gccpi3UQUPXBxpxb/hOA5fTQCwd5M2Hr2/Qp1k6bkVu5nBtq6kWyCG1tmXEg==
+"@ocap/mcrypto@1.18.37", "@ocap/mcrypto@1.18.39", "@ocap/mcrypto@1.18.40-beta.6", "@ocap/mcrypto@^1.18.34", "@ocap/mcrypto@^1.18.40-beta.6":
+  version "1.18.40-beta.6"
+  resolved "https://registry.yarnpkg.com/@ocap/mcrypto/-/mcrypto-1.18.40-beta.6.tgz#9d55c2af1a27969557ad6e6228153146c6da55ba"
+  integrity sha512-V8CM3Sv56RoM5oxIDAK8nlbvWXD9QZBlPNDjE3VjwbfmzBG5u4u0Nzo80jgeje3OHg0lV0Lqdh/le8SXoq2xDA==
   dependencies:
     "@ocap/util" "1.18.39"
     bn.js "5.2.1"
