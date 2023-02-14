@@ -1,3 +1,7 @@
+## 0.36.26 (February 14, 2023)
+
+- chore: add routes for derive/delegate/encryptionKey
+
 ## 0.36.25 (January 10, 2023)
 - fix: message data structure
 
