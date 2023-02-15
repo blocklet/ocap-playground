@@ -1,3 +1,6 @@
+## 0.36.27 (February 15, 2023)
+- fix: index.html cache
+
 ## 0.36.26 (February 14, 2023)
 
 - chore: add routes for derive/delegate/encryptionKey
