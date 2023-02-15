@@ -125,7 +125,7 @@ if (isDev) {
 
   const staticDir = path.resolve(__dirname, '../../', 'build');
   app.use(express.static(staticDir, { maxAge: '365d', index: false }));
-  app.use(fallback('index.html', { root: staticDir }));
+  app.use(fallback('index.html', { root: staticDir, maxAge: 0 }));
 
   app.use((req, res) => {
     res.status(404).send('404 NOT FOUND');
