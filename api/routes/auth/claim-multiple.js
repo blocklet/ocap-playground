@@ -7,6 +7,19 @@ const { wallet } = require('../../libs/auth');
 module.exports = {
   action: 'claim_multiple',
   claims: {
+    keyPair: () => {
+      return {
+        mfa: true,
+        description: 'Please generate a new key-pair',
+        moniker: 'test-application',
+        targetType: {
+          role: 'application',
+          hash: 'sha3',
+          key: 'ed25519',
+          encoding: 'base58',
+        },
+      };
+    },
     signTx: [
       'signature',
       async () => ({
@@ -25,6 +38,7 @@ module.exports = {
         description: 'Please sign the transaction, you will send 1 token',
       }),
     ],
+
     signText: [
       'signature',
       () => ({

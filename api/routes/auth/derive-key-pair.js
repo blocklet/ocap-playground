@@ -11,7 +11,7 @@ module.exports = {
   claims: {
     keyPair: () => {
       return {
-        mfa: true,
+        mfa: false,
         description: 'Please generate a new key-pair',
         moniker: 'test-application',
         targetType: {
