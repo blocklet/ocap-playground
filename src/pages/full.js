@@ -158,7 +158,7 @@ export default function IndexPage() {
           </Typography>
           <div className="section__content">
             <AuthButton
-              button="Purchase ABT Node"
+              button="Purchase Server NFT"
               action="acquire_asset"
               extraParams={{ factory: 'nodePurchase' }}
               messages={{
@@ -166,6 +166,17 @@ export default function IndexPage() {
                 scan: 'Connect your DID Wallet to complete the purchase',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'The purchase was successful, now you can launch your node',
+              }}
+            />
+            <AuthButton
+              button="Consume Server NFT"
+              action="consume-asset"
+              extraParams={{}}
+              messages={{
+                title: 'Consume Server NFT you just purchased',
+                scan: 'Connect your DID Wallet to complete the consume',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'The consume was successful',
               }}
             />
             <AuthButton
@@ -1081,9 +1092,9 @@ export default function IndexPage() {
         </section>
         <section className="section">
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
-            VC Claim 筛选兼容测试(filters 字段){' '}
+            NFT + VC 筛选{' '}
             <Typography component="small" color="textSecondary">
-              链上 NFT: Blocklet Purchase NFT, 离线 VC: PlaygroundFakePassport
+              链上 NFT: Blocklet/Server NFT, 离线 VC: PlaygroundFakePassport
             </Typography>
           </Typography>
           <div className="section__content">
@@ -1148,6 +1159,28 @@ export default function IndexPage() {
               extraParams={{ type: 'mix-online' }}
               messages={{
                 title: 'Provide NFT',
+                scan: 'Connect your DID Wallet to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
+            <AuthButton
+              button="未消费的 Server NFT"
+              action="test_vc_claim_filter"
+              extraParams={{ type: 'not-consumed-nft' }}
+              messages={{
+                title: 'Provide Not(Consumed) NFT',
+                scan: 'Connect your DID Wallet to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
+            <AuthButton
+              button="已消费的 Server NFT"
+              action="test_vc_claim_filter"
+              extraParams={{ type: 'consumed-nft' }}
+              messages={{
+                title: 'Provide Consumed NFT',
                 scan: 'Connect your DID Wallet to provide',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Verified',
