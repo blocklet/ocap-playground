@@ -16,12 +16,12 @@ module.exports = {
         throw new Error('You have no NodePurchaseCredential nft to consume, please purchase 1 first');
       }
 
-      const tx = await client.multiSignConsumeAssetTx({
+      const tx = await client.encodeConsumeAssetTx({
         tx: {
           from: wallet.address,
           pk: wallet.publicKey,
           itx: {
-            address: wallet.address,
+            address: notConsumed.address,
           },
           signatures: [
             {
@@ -50,10 +50,12 @@ module.exports = {
   onAuth: async ({ userDid, claims }) => {
     const claim = claims.find(x => x.type === 'signature');
     const tx = client.decodeTx(claim.origin);
-    const userSig = tx.signaturesList.find(x => x.signer === userDid);
+    const multiSigned = await client.multiSignConsumeAssetTx({ tx, wallet });
+
+    const userSig = multiSigned.signaturesList.find(x => x.signer === userDid);
     userSig.signature = claim.sig;
 
-    const signed = await client.signConsumeAssetTx({ tx, wallet });
+    const signed = await client.signConsumeAssetTx({ tx: multiSigned, wallet });
     const hash = await client.sendConsumeAssetTx({ tx: signed, wallet });
 
     return { hash };
