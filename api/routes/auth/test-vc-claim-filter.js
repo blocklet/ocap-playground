@@ -82,32 +82,6 @@ module.exports = {
         };
       }
 
-      if (type === 'not-consumed-nft') {
-        return {
-          description: 'Please provide not consumed Server NFT',
-          filters: [
-            {
-              type: ['NodePurchaseCredential'],
-              trustedIssuers: [wallet.address],
-              consumed: false,
-            },
-          ],
-        };
-      }
-
-      if (type === 'consumed-nft') {
-        return {
-          description: 'Please provide consumed Server NFT',
-          filters: [
-            {
-              type: ['NodePurchaseCredential'],
-              trustedIssuers: [wallet.address],
-              consumed: true,
-            },
-          ],
-        };
-      }
-
       throw new Error(`Unknown type ${type}`);
     },
   },

@@ -1166,7 +1166,7 @@ export default function IndexPage() {
             />
             <AuthButton
               button="未消费的 Server NFT"
-              action="test_vc_claim_filter"
+              action="test_nft_claim_filter"
               extraParams={{ type: 'not-consumed-nft' }}
               messages={{
                 title: 'Provide Not(Consumed) NFT',
@@ -1177,7 +1177,7 @@ export default function IndexPage() {
             />
             <AuthButton
               button="已消费的 Server NFT"
-              action="test_vc_claim_filter"
+              action="test_nft_claim_filter"
               extraParams={{ type: 'consumed-nft' }}
               messages={{
                 title: 'Provide Consumed NFT',
