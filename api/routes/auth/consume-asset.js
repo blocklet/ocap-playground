@@ -16,8 +16,9 @@ module.exports = {
         throw new Error('You have no NodePurchaseCredential nft to consume, please purchase 1 first');
       }
 
-      const tx = await client.encodeConsumeAssetTx({
-        tx: {
+      return {
+        type: 'ConsumeAssetTx',
+        data: {
           from: wallet.address,
           pk: wallet.publicKey,
           itx: {
@@ -36,12 +37,6 @@ module.exports = {
             },
           ],
         },
-        wallet,
-      });
-
-      return {
-        type: 'ConsumeAssetTx',
-        data: tx,
         description: 'Please sign the transaction to consume asset',
       };
     },
