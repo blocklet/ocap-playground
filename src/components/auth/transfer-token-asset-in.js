@@ -20,7 +20,6 @@ export default function TransferTokenAssetIn({ token }) {
         open={isOpen}
         action="transfer_token_asset_in"
         checkFn={api.get}
-        socketUrl={api.socketUrl}
         onClose={() => setOpen()}
         onSuccess={() => window.location.reload()}
         messages={{

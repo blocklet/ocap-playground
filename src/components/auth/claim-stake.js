@@ -88,7 +88,6 @@ export default function ClaimButton({ button, action, messages, timeout, extraPa
         open={isOpen && !isComplete && selected}
         action={action}
         checkFn={api.get}
-        socketUrl={api.socketUrl}
         onClose={() => setOpen(false)}
         checkTimeout={timeout}
         extraParams={{ hash: selected, ...extraParams }}

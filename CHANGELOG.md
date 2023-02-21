@@ -1,3 +1,7 @@
+## 0.36.28 (February 21, 2023)
+
+- chore: support asset consume related cases
+
 ## 0.36.27 (February 15, 2023)
 - fix: index.html cache
 

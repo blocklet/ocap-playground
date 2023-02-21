@@ -97,6 +97,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/cla
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/create')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-asset')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/test-vc-claim-filter')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/test-nft-claim-filter')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-dynamic')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-connect-only')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-connect-optional-vc')));
@@ -104,6 +105,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/cla
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/derive-key-pair')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/sign-delegation')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/decrypt-info')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/consume-asset')));
 
 agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-profile'))); // we can reuse something here
 
