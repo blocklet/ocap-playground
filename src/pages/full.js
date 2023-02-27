@@ -665,6 +665,18 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button="Rotate Key Pair"
+              action="derive-key-pair"
+              saveConnect={false}
+              extraParams={{ sessionDid: session.user.did, rotate: true }}
+              messages={{
+                title: 'Rotate Key Pair',
+                scan: 'Connect your DID Wallet to get the did spec',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Application Rotated',
+              }}
+            />
+            <AuthButton
               button="Sign Delegation"
               action="sign-delegation"
               saveConnect={false}

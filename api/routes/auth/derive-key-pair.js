@@ -9,11 +9,22 @@ const { User } = require('../../models');
 module.exports = {
   action: 'derive-key-pair',
   claims: {
-    keyPair: () => {
+    keyPair: async ({ extraParams: { sessionDid, rotate } }) => {
+      const user = await User.ensureOne({ did: sessionDid });
+
+      let migrateFrom = '';
+      if (rotate) {
+        if ((user.generatedApps || []).length <= 0) {
+          throw new Error('You must generate an application key-pair first');
+        }
+        migrateFrom = user.generatedApps[0].address;
+      }
+
       return {
         mfa: true,
         description: 'Please generate a new key-pair',
         moniker: 'test-application',
+        migrateFrom,
         targetType: {
           role: 'application',
           hash: 'sha3',
