@@ -1,3 +1,7 @@
+## 0.36.30 (February 27, 2023)
+
+- feat: support rotate key-pair case
+
 ## 0.36.29 (February 27, 2023)
 
 - chore: bump deps to latest
