@@ -1,3 +1,8 @@
+## 0.36.29 (February 27, 2023)
+
+- chore: bump deps to latest
+- fix: make connect encryption optional
+
 ## 0.36.28 (February 21, 2023)
 
 - chore: support asset consume related cases
