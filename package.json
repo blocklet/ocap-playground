@@ -126,7 +126,7 @@
     "bundle:server": "blocklet bundle --zip --create-release",
     "prepublishOnly": "npm run bundle",
     "release": "npm run clean && npm run bundle",
-    "deploy": "npm run release && blocklet deploy .blocklet/bundle --skip-hooks",
+    "deploy": "npm run release && blocklet deploy .blocklet/bundle",
     "test": "react-app-rewired test",
     "echo": "export MESSAGE=$1 && echo $MESSAGE",
     "eject": "react-app-rewired eject",
