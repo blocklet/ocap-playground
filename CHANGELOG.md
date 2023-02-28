@@ -1,3 +1,7 @@
+## 0.36.33 (February 28, 2023)
+
+- chore: remove manifest
+
 ## 0.36.32 (February 28, 2023)
 
 - chore: update deps
