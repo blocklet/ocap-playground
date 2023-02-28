@@ -1,3 +1,7 @@
+## 0.36.32 (February 28, 2023)
+
+- chore: update deps
+
 ## 0.36.31 (February 28, 2023)
 
 - fix: index.html ref for PUBLIC_URL
