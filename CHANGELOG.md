@@ -1,3 +1,7 @@
+## 0.36.31 (February 28, 2023)
+
+- fix: index.html ref for PUBLIC_URL
+
 ## 0.36.30 (February 27, 2023)
 
 - feat: support rotate key-pair case
