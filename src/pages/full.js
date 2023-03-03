@@ -700,6 +700,19 @@ export default function IndexPage() {
                 success: 'Info decrypted',
               }}
             />
+            <AuthButton
+              button="Delegated Connect"
+              extraParams={{ delegated: 1 }}
+              saveConnect={false}
+              forceConnected={false}
+              action="connect-only"
+              messages={{
+                title: 'Profile Required',
+                scan: 'You are connecting to another service that delegates playground to do connect on behalf of him',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Profile provided',
+              }}
+            />
           </div>
         </section>
         <section className="section">

@@ -10,7 +10,7 @@ const compression = require('compression');
 const middlewares = require('@blocklet/sdk/lib/middlewares');
 const displayRoutes = require('express-routemap');
 
-const { walletHandlers, walletHandlersWithNoChainInfo, agentHandlers } = require('../libs/auth');
+const { walletHandlers, walletHandlersWithNoChainInfo } = require('../libs/auth');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -107,11 +107,8 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/sig
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/decrypt-info')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/consume-asset')));
 
-agentHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-profile'))); // we can reuse something here
-
 require('../routes/session').init(router);
 require('../routes/nft').init(router);
-require('../routes/authorizations').init(router);
 require('../routes/notification').init(router);
 require('../routes/stake').init(router);
 

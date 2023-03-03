@@ -1,37 +1,77 @@
 /* eslint-disable no-console */
 const path = require('path');
 const Client = require('@ocap/client');
+const Jwt = require('@arcblock/jwt');
 const AuthNedbStorage = require('@arcblock/did-auth-storage-nedb');
-const AgentNedbStorage = require('@arcblock/did-agent-storage-nedb');
 const WalletAuthenticator = require('@blocklet/sdk/lib/wallet-authenticator');
 const WalletHandlers = require('@blocklet/sdk/lib/wallet-handler');
 const getWallet = require('@blocklet/sdk/lib/wallet');
 const AuthService = require('@blocklet/sdk/service/auth');
 const { NFTFactory } = require('@arcblock/nft');
-const { AgentAuthenticator, AgentWalletHandlers } = require('@arcblock/did-auth');
+const { fromSecretKey } = require('@ocap/wallet');
+const { types } = require('@ocap/mcrypto');
+const { toDid } = require('@ocap/util');
+
 const env = require('./env');
 
 const wallet = getWallet();
 const client = new Client(env.chainHost);
 
-const walletAuth = new WalletAuthenticator();
+const getDelegator = () =>
+  process.env.DELEGATOR_APP_SK
+    ? fromSecretKey(process.env.DELEGATOR_APP_SK, { role: types.RoleType.ROLE_APPLICATION })
+    : null;
+
+const walletAuth = new WalletAuthenticator({
+  delegator: ({ request }) => {
+    if (!request.context.store) {
+      return null;
+    }
+
+    const delegator = getDelegator();
+    const { extraParams } = request.context.store;
+    if (extraParams.delegated && delegator) {
+      return delegator;
+    }
+
+    return null;
+  },
+  delegation: ({ request }) => {
+    if (!request.context.store) {
+      return null;
+    }
+
+    const delegator = getDelegator();
+    const { extraParams } = request.context.store;
+    if (extraParams.delegated && delegator) {
+      return Jwt.signV2(delegator.address, delegator.secretKey, {
+        agentDid: toDid(wallet.address),
+        permissions: [
+          {
+            role: 'DIDConnectAgent',
+            claims: [
+              'authPrincipal',
+              'profile',
+              'signature',
+              'prepareTx',
+              'agreement',
+              'verifiableCredential',
+              'asset',
+              'keyPair',
+              'encryptionKey',
+            ],
+          },
+        ],
+        exp: Math.floor(new Date().getTime() / 1000) + 60 * 60 * 24 * 365,
+      });
+    }
+
+    return null;
+  },
+});
 
 const walletAuthWithNoChainInfo = new WalletAuthenticator({
   chainInfo: { host: 'none', id: 'none', restrictedDeclare: false },
-});
-
-const agentAuth = new AgentAuthenticator({
-  wallet,
-  appInfo: ({ baseUrl }) => ({
-    name: 'Agent Service',
-    description: 'This is a demo agent service that can do did-auth on be-half-of another application',
-    icon: env.appIcon,
-    link: baseUrl,
-  }),
-  chainInfo: {
-    host: env.chainHost,
-    id: env.chainId,
-  },
 });
 
 const dbOnload = (err, dbName) => {
@@ -46,19 +86,17 @@ const tokenStorage = new AuthNedbStorage({
     dbOnload(err, 'auth.db');
   },
 });
-const agentStorage = new AgentNedbStorage({
-  dbPath: path.join(process.env.BLOCKLET_DATA_DIR || './', 'agent.db'),
-  onload: err => {
-    dbOnload(err, 'agent.db');
-  },
-});
 
 const walletHandlers = new WalletHandlers({
   authenticator: walletAuth,
   tokenStorage,
   onConnect: args => {
-    const { userDid, extraParams } = args;
+    const { userDid, extraParams, forceConnected } = args;
     if (['claim_create_did', 'delegate', 'claim_target'].includes(extraParams.action)) {
+      return;
+    }
+
+    if (!forceConnected) {
       return;
     }
 
@@ -75,12 +113,6 @@ const walletHandlersWithNoChainInfo = new WalletHandlers({
   },
 });
 
-const agentHandlers = new AgentWalletHandlers({
-  authenticator: agentAuth,
-  tokenStorage,
-  agentStorage,
-});
-
 const factory = new NFTFactory({
   chainId: env.chainId,
   chainHost: env.chainHost,
@@ -94,11 +126,9 @@ const factory = new NFTFactory({
 
 module.exports = {
   tokenStorage,
-  agentStorage,
 
   walletHandlers,
   walletHandlersWithNoChainInfo,
-  agentHandlers,
 
   wallet,
   client,

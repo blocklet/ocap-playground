@@ -17,6 +17,7 @@ export default function GeneralAuthButton({
   extraParams,
   autoConnect,
   saveConnect,
+  forceConnected,
 }) {
   const [isOpen, setOpen] = useState(false);
 
@@ -39,6 +40,7 @@ export default function GeneralAuthButton({
         }}
         autoConnect={autoConnect}
         saveConnect={saveConnect}
+        forceConnected={forceConnected}
         messages={messages}
       />
     </>
@@ -52,6 +54,7 @@ GeneralAuthButton.propTypes = {
   timeout: PropTypes.number,
   autoConnect: PropTypes.bool,
   saveConnect: PropTypes.bool,
+  forceConnected: PropTypes.bool,
   extraParams: PropTypes.object,
 };
 
@@ -60,4 +63,5 @@ GeneralAuthButton.defaultProps = {
   timeout: 5 * 60 * 1000,
   autoConnect: true,
   saveConnect: true,
+  forceConnected: true,
 };

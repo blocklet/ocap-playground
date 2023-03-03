@@ -51,6 +51,11 @@ environments:
     default: z35n3WVTnN7KrR4gXn3szR6oneVefkBBx78Fc
     secure: false
     shared: true
+  - name: DELEGATOR_APP_SK
+    description: Please provide delegator app sk
+    required: false
+    default: ''
+    secure: true
 scripts:
   preStart: node api/libs/hooks/pre-start.js
   dev: npm run start
@@ -68,7 +73,6 @@ interfaces:
           blockUnauthenticated: true
           ignoreUrls:
             - /api/did/**
-            - /api/agent/**
             - /api/nft/**
             - /blocklet/**
             - /instance/**
