@@ -1,3 +1,7 @@
+## 0.36.34 (March 03, 2023)
+
+- feat: support delegated connect
+
 ## 0.36.33 (February 28, 2023)
 
 - chore: remove manifest

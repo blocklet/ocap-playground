@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.36.33
+version: 0.36.34
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -56,6 +56,7 @@ environments:
     required: false
     default: ''
     secure: true
+    shared: false
 scripts:
   preStart: node api/libs/hooks/pre-start.js
   dev: npm run start
