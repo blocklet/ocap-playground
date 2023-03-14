@@ -712,6 +712,50 @@ module.exports = {
           return;
         }
 
+        if (type === 'feed-nft') {
+          await Notification.sendToUser(userDid, {
+            type: 'feed',
+            feedType: 'gallery',
+            data: {
+              cardTitle: 'NFT Marketplace',
+              items: [
+                {
+                  display:
+                    'https://d2himn2hu5r2qx.cloudfront.net/uploads/49be71e3256104fcc73912036040d647.jpeg?assetId=zjdtMya21XbdrHMczgp6gF7kGYeofKFJkjZg&vcId=undefined',
+                  link: 'https://marketplace.staging.arcblock.io/auctions/tTYMOoxBzgayfofW',
+                },
+                {
+                  display:
+                    'https://storage.staging.abtnet.io/app/resolve/display?assetId=zjdukBjChfRVr5C44BPN9rmhAdTTAy9JsvtT&vcId=undefined',
+                  link: 'https://marketplace.staging.arcblock.io/auctions/NK2iL2FafUSnEpPH',
+                },
+                {
+                  display:
+                    'https://storage.staging.abtnet.io/app/resolve/display?assetId=zjdmpgwF3FzQrnoj14m8TK8BVWgZukEJ4Nnw&vcId=undefined',
+                  link: 'https://marketplace.staging.arcblock.io/auctions/PKHtyhZspYzhtKaB',
+                },
+                {
+                  display:
+                    'https://storage.staging.abtnet.io/app/resolve/display?assetId=zjdzDffC8154s2sjZe1uG1e6i7DgCQM8ttSV&vcId=undefined',
+                  link: 'https://marketplace.staging.arcblock.io/auctions/POrbQNDS7NP8xCo8',
+                },
+                {
+                  display:
+                    'https://storage.staging.abtnet.io/app/resolve/display?assetId=zjdxVFHGk4Nw9ZGFLAqa6MEVyVRwhrESZuEA&vcId=undefined',
+                  link: 'https://marketplace.staging.arcblock.io/auctions/ad6rYQ0QR3zKbksA',
+                },
+                {
+                  display:
+                    'https://73aa3e87-znkjt5vbgnezh4p6v4dsaye61e7pxxn3vk4j.did.abtnet.io/app/resolve/display?assetId=zjdyXj5M9HSVf9Jdmif1VDE7cefackAZQHsP&vcId=undefined',
+                  link: 'https://marketplace.staging.arcblock.io/auctions/1NFD9EmfE0MgVFhl',
+                },
+              ],
+            },
+          });
+          res.status(200).end();
+          return;
+        }
+
         // feed-data-tracker
         if (type === 'feed-data-tracker') {
           const feedContent = ['$1111', '$2222', '$3333', '$4444', '$5555'];
