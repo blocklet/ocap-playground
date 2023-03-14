@@ -1,3 +1,6 @@
+## 0.36.35 (March 14, 2023)
+- feat: support feed type gallery
+
 ## 0.36.34 (March 03, 2023)
 
 - feat: support delegated connect
