@@ -944,6 +944,9 @@ export default function IndexPage() {
             <NotificationButton type="feed-graphic-multi" actions={[]} className="action">
               Send Graphic Multi Feed To Me
             </NotificationButton>
+            <NotificationButton type="feed-nft" actions={[]} className="action">
+              Send NFT Marketplace Feed To Me
+            </NotificationButton>
             <NotificationButton type="feed-data-tracker" actions={[]} className="action">
               Send Data Tracker Feed To Me
             </NotificationButton>
