@@ -665,6 +665,18 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button="Derive Key Pair (No Declare)"
+              action="derive-key-pair"
+              saveConnect={false}
+              extraParams={{ sessionDid: session.user.did, declare: false }}
+              messages={{
+                title: 'Create Key Pair without Declare',
+                scan: 'Connect your DID Wallet to get the did spec',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Application Created',
+              }}
+            />
+            <AuthButton
               button="Rotate Key Pair"
               action="derive-key-pair"
               saveConnect={false}

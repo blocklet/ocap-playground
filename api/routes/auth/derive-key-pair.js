@@ -9,7 +9,7 @@ const { User } = require('../../models');
 module.exports = {
   action: 'derive-key-pair',
   claims: {
-    keyPair: async ({ extraParams: { sessionDid, rotate } }) => {
+    keyPair: async ({ extraParams: { sessionDid, rotate, declare } }) => {
       const user = await User.ensureOne({ did: sessionDid });
 
       let migrateFrom = '';
@@ -24,6 +24,7 @@ module.exports = {
         mfa: true,
         description: 'Please generate a new key-pair',
         moniker: 'test-application',
+        declare: typeof declare === 'undefined' ? true : !!JSON.parse(declare),
         migrateFrom,
         targetType: {
           role: 'application',
