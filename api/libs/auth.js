@@ -24,7 +24,7 @@ const getDelegator = () =>
 
 const walletAuth = new WalletAuthenticator({
   delegator: ({ request }) => {
-    if (!request.context.store) {
+    if (!request.context?.store) {
       return null;
     }
 
@@ -37,7 +37,7 @@ const walletAuth = new WalletAuthenticator({
     return null;
   },
   delegation: ({ request }) => {
-    if (!request.context.store) {
+    if (!request.context?.store) {
       return null;
     }
 
