@@ -1,3 +1,7 @@
+## 0.36.38 (March 15, 2023)
+
+- fix: req.context.store can be null
+
 ## 0.36.37 (March 15, 2023)
 
 - feat: add key-pair case with declare disabled
