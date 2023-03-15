@@ -1,5 +1,8 @@
-## 0.36.36 (March 14, 2023)
+## 0.36.37 (March 15, 2023)
 
+- feat: add key-pair case with declare disabled
+
+## 0.36.36 (March 14, 2023)
 
 ## 0.36.35 (March 14, 2023)
 - feat: support feed type gallery
