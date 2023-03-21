@@ -1,3 +1,7 @@
+## 0.36.39 (March 21, 2023)
+
+- chore: update deps to latest
+
 ## 0.36.38 (March 15, 2023)
 
 - fix: req.context.store can be null
