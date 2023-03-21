@@ -34,3 +34,6 @@ jobs:
           access-secret: ${{ secrets.STAGING_NODE_ACCESS_SECRET }}
           slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-app-did: zNKeLKixvCM32TkVM1zmRDdAU3bvm3dTtAcM
+          deploy-mount-point: /
+
