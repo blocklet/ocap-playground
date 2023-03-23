@@ -1,3 +1,7 @@
+## 0.36.40 (March 21, 2023)
+
+- ci: deploy component to staging server
+
 ## 0.36.39 (March 21, 2023)
 
 - chore: update deps to latest
