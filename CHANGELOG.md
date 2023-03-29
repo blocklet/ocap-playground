@@ -1,3 +1,7 @@
+## 0.36.41 (March 29, 2023)
+
+- chore: bump dpes to latest
+
 ## 0.36.40 (March 21, 2023)
 
 - ci: deploy component to staging server
