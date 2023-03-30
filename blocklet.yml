@@ -88,7 +88,7 @@ interfaces:
 timeout:
   start: 15
 requirements:
-  server: '>=1.7.4'
+  server: '>=1.16.0'
   os: '*'
   cpu: '*'
   fuels:
