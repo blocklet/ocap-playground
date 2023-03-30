@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.36.42
+version: 0.36.43
 author:
   name: wangshijun
   email: shijun@arcblock.io
@@ -88,7 +88,7 @@ interfaces:
 timeout:
   start: 15
 requirements:
-  server: '>=1.7.4'
+  server: '>=1.16.0'
   os: '*'
   cpu: '*'
   fuels:

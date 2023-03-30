@@ -12,7 +12,7 @@
     "blocklet.yml",
     "README.md"
   ],
-  "version": "0.36.42",
+  "version": "0.36.43",
   "author": "wangshijun <shijun@arcblock.io> https://github.com/wangshijun",
   "keywords": [
     "dapp",
@@ -40,7 +40,7 @@
     "@arcblock/react-hooks": "^2.5.18",
     "@arcblock/ux": "^2.5.18",
     "@arcblock/vc": "^1.18.65",
-    "@blocklet/sdk": "1.16.0-beta-b741bcb3",
+    "@blocklet/sdk": "^1.16.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.2",
@@ -160,7 +160,7 @@
   },
   "resolutions": {
     "react-error-overlay": "6.0.9",
-    "@blocklet/sdk": "1.16.0-beta-b741bcb3",
+    "@blocklet/sdk": "^1.16.0",
     "@arcblock/did": "^1.18.65",
     "@arcblock/jwt": "^1.18.65",
     "@arcblock/did-auth": "^1.18.65",
