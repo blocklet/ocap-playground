@@ -1,3 +1,7 @@
+## 0.36.43 (March 30, 2023)
+
+- chore: bump @blocklet/sdk to latest
+
 ## 0.36.42 (March 30, 2023)
 
 - chore: bump deps to latest
