@@ -1,3 +1,7 @@
+## 0.36.42 (March 30, 2023)
+
+- chore: bump deps to latest
+
 ## 0.36.41 (March 29, 2023)
 
 - chore: bump dpes to latest
