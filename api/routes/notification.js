@@ -755,7 +755,32 @@ module.exports = {
           res.status(200).end();
           return;
         }
-
+        if (type === 'feed-cpu') {
+          await Notification.sendToUser(userDid, {
+            type: 'feed',
+            feedType: 'data-tracker',
+            data: {
+              cardTitle: 'Server Usage',
+              type: 'table',
+              items: [
+                {
+                  title: 'CPU Usage',
+                  subtitle: '',
+                  content: `${Math.floor(Math.random() * 101)}%`,
+                  content_color: '#222222',
+                },
+                {
+                  title: 'Mem Usage',
+                  subtitle: '',
+                  content: `${Math.floor(Math.random() * 101)}%`,
+                  content_color: '#FF1111',
+                },
+              ],
+            },
+          });
+          res.status(200).end();
+          return;
+        }
         // feed-data-tracker
         if (type === 'feed-data-tracker') {
           const feedContent = ['$1111', '$2222', '$3333', '$4444', '$5555'];

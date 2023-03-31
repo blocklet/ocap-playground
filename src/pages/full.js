@@ -962,6 +962,9 @@ export default function IndexPage() {
             <NotificationButton type="feed-data-tracker" actions={[]} className="action">
               Send Data Tracker Feed To Me
             </NotificationButton>
+            <NotificationButton type="feed-cpu" actions={[]} className="action">
+              Send CPU Usage
+            </NotificationButton>
           </div>
         </section>
         <section className="section">
