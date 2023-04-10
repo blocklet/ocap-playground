@@ -27,8 +27,8 @@ jobs:
           skip-upload: false
           skip-deploy: false
           bundle-command: yarn bundle
-          store-endpoint: ${{ secrets.STORE_ENDPOINT_PROD }}
-          store-access-token: ${{ secrets.STORE_ACCESS_TOKEN_PROD }}
+          store-endpoint: ${{ secrets.STORE_ENDPOINT_DEV }}
+          store-access-token: ${{ secrets.STORE_ACCESS_TOKEN_DEV }}
           abtnode-endpoint: ${{ secrets.STAGING_NODE_ENDPOINT }}
           access-key: ${{ secrets.STAGING_NODE_ACCESS_KEY }}
           access-secret: ${{ secrets.STAGING_NODE_ACCESS_SECRET }}
@@ -36,4 +36,3 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-app-did: zNKeLKixvCM32TkVM1zmRDdAU3bvm3dTtAcM
           deploy-mount-point: /
-
