@@ -1,4 +1,9 @@
+## 0.36.45 (April 10, 2023)
+
+- chore: publish to dev store
+
 ## 0.36.44 (March 31, 2023)
+
 - chore: fake server cpu feed
 
 ## 0.36.43 (March 30, 2023)
