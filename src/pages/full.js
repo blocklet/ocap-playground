@@ -1231,6 +1231,35 @@ export default function IndexPage() {
             />
           </div>
         </section>
+        <section className="section">
+          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
+            多链支持
+          </Typography>
+          <div className="section__content">
+            <AuthButton
+              button="ArcBlock"
+              action="multi-chain"
+              extraParams={{ type: 'arcblock' }}
+              messages={{
+                title: 'Select ArcBlock Account',
+                scan: 'Connect your DID Wallet to select Account',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
+            <AuthButton
+              button="Ethereum"
+              action="multi-chain"
+              extraParams={{ type: 'ethereum' }}
+              messages={{
+                title: 'Select Ethereum Account',
+                scan: 'Connect your DID Wallet to select account',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
+          </div>
+        </section>
 
         {!browser.wallet && (
           <section className="section">

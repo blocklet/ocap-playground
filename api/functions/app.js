@@ -106,6 +106,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/der
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/sign-delegation')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/decrypt-info')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/consume-asset')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/multi-chain')));
 
 require('../routes/session').init(router);
 require('../routes/nft').init(router);
