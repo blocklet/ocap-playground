@@ -1,3 +1,7 @@
+## 0.36.46 (May 08, 2023)
+
+- chore: add test case for different chain
+
 ## 0.36.45 (April 10, 2023)
 
 - chore: publish to dev store
