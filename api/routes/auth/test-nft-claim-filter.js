@@ -1,3 +1,6 @@
+const joinUrl = require('url-join');
+
+const env = require('../../libs/env');
 const { verifyAssetClaim } = require('../../libs/util');
 const { wallet } = require('../../libs/auth');
 
@@ -13,6 +16,7 @@ module.exports = {
               type: ['NodePurchaseCredential'],
               trustedIssuers: [wallet.address],
               consumed: false,
+              acquireUrl: joinUrl(env.appUrl, '/acquire/server'),
             },
           ],
         };
@@ -26,6 +30,7 @@ module.exports = {
               type: ['NodePurchaseCredential'],
               trustedIssuers: [wallet.address],
               consumed: true,
+              acquireUrl: joinUrl(env.appUrl, '/acquire/server'),
             },
           ],
         };

@@ -2,6 +2,7 @@
 const path = require('path');
 const Client = require('@ocap/client');
 const Jwt = require('@arcblock/jwt');
+const JWT = require('jsonwebtoken');
 const AuthNedbStorage = require('@arcblock/did-auth-storage-nedb');
 const WalletAuthenticator = require('@blocklet/sdk/lib/wallet-authenticator');
 const WalletHandlers = require('@blocklet/sdk/lib/wallet-handler');
@@ -9,7 +10,7 @@ const getWallet = require('@blocklet/sdk/lib/wallet');
 const AuthService = require('@blocklet/sdk/service/auth');
 const { NFTFactory } = require('@arcblock/nft');
 const { fromSecretKey } = require('@ocap/wallet');
-const { types } = require('@ocap/mcrypto');
+const { types, Hasher } = require('@ocap/mcrypto');
 const { toDid } = require('@ocap/util');
 
 const env = require('./env');
@@ -124,6 +125,18 @@ const factory = new NFTFactory({
   },
 });
 
+const createLoginToken = ({ did, role = 'guest', expiresIn = '7d' }) => {
+  const secret = Hasher.SHA3.hash256(Buffer.concat([wallet.secretKey, wallet.address].map(Buffer.from)));
+  const payload = {
+    type: 'user',
+    did,
+    role,
+  };
+
+  const token = JWT.sign(payload, secret, { expiresIn });
+  return token;
+};
+
 module.exports = {
   tokenStorage,
 
@@ -135,4 +148,6 @@ module.exports = {
   factory,
 
   authClient: new AuthService(),
+
+  createLoginToken,
 };

@@ -39,6 +39,10 @@ module.exports = {
   onAuth: async ({ claims, extraParams: { sessionDid } }) => {
     const claim = claims.find(x => x.type === 'keyPair');
 
+    if (!claim.userDid) {
+      throw new Error('userDid should be provided in the claim');
+    }
+
     const app = fromSecretKey(fromBase58(claim.secret), {
       role: types.RoleType.ROLE_APPLICATION,
     });
@@ -52,7 +56,7 @@ module.exports = {
     await User.update(user);
 
     return {
-      successMessage: `You have generated new app did: ${app.address}`,
+      successMessage: `You have generated new app did: ${app.address} and corresponding userDid: ${claim.userDid}`,
     };
   },
 };
