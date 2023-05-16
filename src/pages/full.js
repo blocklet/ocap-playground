@@ -725,6 +725,17 @@ export default function IndexPage() {
                 success: 'Profile provided',
               }}
             />
+            <AuthButton
+              button="Next Url"
+              action="claim-next-url"
+              extraParams={{ sessionDid: session.user.did }}
+              messages={{
+                title: 'Connect & Open Webview',
+                scan: 'Connect your DID Wallet to get the web view',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Webview opened',
+              }}
+            />
           </div>
         </section>
         <section className="section">

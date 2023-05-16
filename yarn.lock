@@ -139,7 +139,7 @@
     semver "^7.3.8"
     tweetnacl-sealedbox-js "^1.2.0"
 
-"@arcblock/did-connect@^2.5.37":
+"@arcblock/did-connect@^2.5.37", "@arcblock/did-connect@^2.5.39":
   version "2.5.37"
   resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-2.5.37.tgz#cda396ce1e45feeb34edaebba36add0a1d4ff5e8"
   integrity sha512-8RrKWtLzobzTqrKt4auCkyz3jhl3av5APz2eMEHwl/XfRk2qEuZgH51/wYInbv7U6LRSkY371CF/iaMktNoCXg==
@@ -185,14 +185,14 @@
   dependencies:
     bs58 "^5.0.0"
 
-"@arcblock/did-playground@^2.5.37":
-  version "2.5.37"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-2.5.37.tgz#54fdc04567d4cb6d3b3926a4f32098c84a3e861c"
-  integrity sha512-TCBY1p+SbYk8qypi0a8HQE4HCA60wBSai6ycHlNytxnuMeGlXqjS0fLfEJvWNb653ZX2RZfoWptvqMRwlCCMCg==
+"@arcblock/did-playground@^2.5.39":
+  version "2.5.39"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-2.5.39.tgz#4c5abbc8bb10a427ddd30649258031510acf1c77"
+  integrity sha512-IMVMuZaA50O/G27XUL9s1ZbOVB7u09GTS3XwWWgPL0UcyVyS/XW36Xa7JnnrjRHifzrgU6K237gjsddv7y45Rw==
   dependencies:
-    "@arcblock/did-connect" "^2.5.37"
-    "@arcblock/react-hooks" "^2.5.37"
-    "@arcblock/ux" "^2.5.37"
+    "@arcblock/did-connect" "^2.5.39"
+    "@arcblock/react-hooks" "^2.5.39"
+    "@arcblock/ux" "^2.5.39"
     "@emotion/react" "^11.10.4"
     "@emotion/styled" "^11.10.4"
     "@mui/material" "^5.10.8"
@@ -257,6 +257,11 @@
   resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-2.5.37.tgz#82a2caad0d727392d44ac1e85c5754dc3b3442c3"
   integrity sha512-4NXxroA+xcFqIxudryZGYq1IyozQ8K4JaJUzKG0CGAVO1Z/wwXaFuHHoc26HreS/YJTPgNO6jwhmXDHJ76huVQ==
 
+"@arcblock/icons@^2.5.39":
+  version "2.5.39"
+  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-2.5.39.tgz#a89152e64395e072877952f724ed230009f47d3f"
+  integrity sha512-GNK25YYvV1MaXz54JAyn1gsOPbCoRxyM7vfuFYInprG2/sU0sd2eBXOE3LP/P1eDoDGG1M4YwF9CzJaGP1OksQ==
+
 "@arcblock/jwt@1.18.78", "@arcblock/jwt@^1.18.77", "@arcblock/jwt@^1.18.78":
   version "1.18.78"
   resolved "https://registry.yarnpkg.com/@arcblock/jwt/-/jwt-1.18.78.tgz#186a7cce13a1865c805be10f273591ff41c147fb"
@@ -301,6 +306,15 @@
     event-target-shim "^5.0.1"
     ismobilejs "^1.1.1"
 
+"@arcblock/react-hooks@^2.5.39":
+  version "2.5.39"
+  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-2.5.39.tgz#bfe2b1bb28a0838b19fcb32deec5aca536d8971d"
+  integrity sha512-tb2yBZ9ZNXSIeQfg0EEiNfiUuRM0e2gHkZE4n/Sjxno3/7Ry/fUfz5610lfsGSDaHYeVvfI3fpHfpP9z5roRNQ==
+  dependencies:
+    core-js "^3.25.5"
+    event-target-shim "^5.0.1"
+    ismobilejs "^1.1.1"
+
 "@arcblock/sdk-util@^0.34.0":
   version "0.34.0"
   resolved "https://registry.yarnpkg.com/@arcblock/sdk-util/-/sdk-util-0.34.0.tgz#e84b2daedbfc44e00c2dcd03f5944ea8e73de987"
@@ -321,6 +335,49 @@
     "@arcblock/did-motif" "^1.1.10"
     "@arcblock/icons" "^2.5.37"
     "@arcblock/react-hooks" "^2.5.37"
+    "@babel/plugin-syntax-dynamic-import" "^7.8.3"
+    "@emotion/react" "^11.10.4"
+    "@emotion/styled" "^11.10.4"
+    "@fontsource/lato" "^4.5.10"
+    "@fontsource/ubuntu-mono" "^4.5.11"
+    "@mui/icons-material" "^5.10.6"
+    "@mui/material" "^5.10.8"
+    "@solana/qr-code-styling" "^1.6.0-beta.0"
+    axios "^0.27.2"
+    base64-url "^2.3.3"
+    copy-to-clipboard "^3.3.2"
+    core-js "^3.25.5"
+    d3-geo "^1.12.1"
+    dayjs "^1.11.5"
+    devices.css "^0.1.15"
+    highlight.js "^11.6.0"
+    is-svg "^4.3.2"
+    js-cookie "^2.2.1"
+    lodash "^4.17.21"
+    mdi-material-ui "^7.5.0"
+    mui-datatables "^4.2.2"
+    notistack "^2.0.5"
+    react-cookie-consent "^6.4.1"
+    react-error-boundary "^3.1.4"
+    react-helmet "^6.1.0"
+    react-intersection-observer "^8.34.0"
+    react-lottie-player "^1.4.3"
+    react-player "^1.15.3"
+    react-router-dom "^6.4.2"
+    react-shadow "^19.0.3"
+    react-use "^17.4.0"
+    rebound "^0.1.0"
+    topojson-client "^3.1.0"
+    versor "^0.0.4"
+
+"@arcblock/ux@^2.5.39":
+  version "2.5.39"
+  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-2.5.39.tgz#c3bd36a29bacfee698713b1aac7be61d31c087a1"
+  integrity sha512-RFDwt4bYSDF3u+69QowKYvK8a8naka5ggOucEi3TVEWb+segioUddsVobDwvnPHQ4ZFpIteg2gkHkPMsBCB6xg==
+  dependencies:
+    "@arcblock/did-motif" "^1.1.10"
+    "@arcblock/icons" "^2.5.39"
+    "@arcblock/react-hooks" "^2.5.39"
     "@babel/plugin-syntax-dynamic-import" "^7.8.3"
     "@emotion/react" "^11.10.4"
     "@emotion/styled" "^11.10.4"
@@ -383,7 +440,7 @@
     json-stable-stringify "^1.0.1"
     lodash "^4.17.21"
 
-"@arcblock/ws@1.18.78", "@arcblock/ws@^1.18.75", "@arcblock/ws@^1.18.77":
+"@arcblock/ws@1.18.78", "@arcblock/ws@^1.18.75", "@arcblock/ws@^1.18.77", "@arcblock/ws@^1.18.78":
   version "1.18.78"
   resolved "https://registry.yarnpkg.com/@arcblock/ws/-/ws-1.18.78.tgz#68681a77940c1c5fd207285b595baa3696864e7e"
   integrity sha512-Y0hCAkVUqrCxCp+rjHm/iQlS7oDx/M+qgBn5BqT1T4PK6nQmmUWSrrCOo8ZT7d7IXGPvu5UjwvfFZjhI6uxlLQ==
