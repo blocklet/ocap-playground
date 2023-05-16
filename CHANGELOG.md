@@ -1,3 +1,8 @@
+## 0.36.47 (May 16, 2023)
+
+- feat: add claimUrl and acquireUrl test case and pages
+- feat: support userDid in keyKair and nextUrl in response
+
 ## 0.36.46 (May 08, 2023)
 
 - chore: add test case for different chain
