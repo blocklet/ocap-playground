@@ -1,6 +1,8 @@
 const { verifyPresentation } = require('@arcblock/vc');
 const { types, getHasher } = require('@ocap/mcrypto');
 const { toBase64 } = require('@ocap/util');
+const joinUrl = require('url-join');
+
 const env = require('../../libs/env');
 const { wallet } = require('../../libs/auth');
 const { authClient } = require('../../libs/auth');
@@ -20,12 +22,18 @@ module.exports = {
         tag = user.email;
       }
 
+      const claimUrls = {
+        EmailVerificationCredential: joinUrl(env.appUrl, '/claim/email'),
+        PlaygroundFakePassport: joinUrl(env.appUrl, '/claim/passport'),
+      };
+
       return {
         description: 'Please provide your vc which proves your information',
         item: Array.isArray(type) ? type : [type],
         trustedIssuers,
         tag,
         optional: !!optional,
+        claimUrl: claimUrls[type],
       };
     },
   },

@@ -875,6 +875,17 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button="Request Fake Passport"
+              action="consume_vc"
+              extraParams={{ type: ['PlaygroundFakePassport'] }}
+              messages={{
+                title: 'Provide your PlaygroundPassport',
+                scan: 'Connect your DID Wallet to select Passport',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Success',
+              }}
+            />
+            <AuthButton
               button="Claim Target VC"
               action="claim_target_vc"
               extraParams={{ type: 'NFTCertificate', sessionDid: session.user.did }}
