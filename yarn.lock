@@ -312,6 +312,15 @@
     event-target-shim "^5.0.1"
     ismobilejs "^1.1.1"
 
+"@arcblock/react-hooks@^2.5.45":
+  version "2.5.45"
+  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-2.5.45.tgz#ee77e13f9b70c16598ea65c69930217fd4b5207d"
+  integrity sha512-8TJ4zMOttwgK2ZwgPwz+vkX7OJo6BbcyOLn37Hwj7m0Ivz3P+Wn+RxP+BW4poTdsE71EI/A4o5kNFGC/PmPJbA==
+  dependencies:
+    core-js "^3.25.5"
+    event-target-shim "^5.0.1"
+    ismobilejs "^1.1.1"
+
 "@arcblock/sdk-util@^0.34.0":
   version "0.34.0"
   resolved "https://registry.yarnpkg.com/@arcblock/sdk-util/-/sdk-util-0.34.0.tgz#e84b2daedbfc44e00c2dcd03f5944ea8e73de987"

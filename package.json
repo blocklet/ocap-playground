@@ -12,7 +12,7 @@
     "blocklet.yml",
     "README.md"
   ],
-  "version": "0.36.47",
+  "version": "0.36.48",
   "author": "wangshijun <shijun@arcblock.io> https://github.com/wangshijun",
   "keywords": [
     "dapp",
@@ -37,7 +37,7 @@
     "@arcblock/jwt": "^1.18.79",
     "@arcblock/nft": "^1.18.79",
     "@arcblock/nft-template": "^1.18.79",
-    "@arcblock/react-hooks": "^2.5.39",
+    "@arcblock/react-hooks": "^2.5.45",
     "@arcblock/ux": "^2.5.39",
     "@arcblock/vc": "^1.18.79",
     "@blocklet/sdk": "^1.16.7",
