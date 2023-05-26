@@ -37,7 +37,7 @@
     "@arcblock/jwt": "^1.18.79",
     "@arcblock/nft": "^1.18.79",
     "@arcblock/nft-template": "^1.18.79",
-    "@arcblock/react-hooks": "^2.5.39",
+    "@arcblock/react-hooks": "^2.5.45",
     "@arcblock/ux": "^2.5.39",
     "@arcblock/vc": "^1.18.79",
     "@blocklet/sdk": "^1.16.7",

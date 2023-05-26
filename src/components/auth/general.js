@@ -18,6 +18,7 @@ export default function GeneralAuthButton({
   autoConnect,
   saveConnect,
   forceConnected,
+  onSuccess,
 }) {
   const [isOpen, setOpen] = useState(false);
 
@@ -37,6 +38,7 @@ export default function GeneralAuthButton({
         onSuccess={() => {
           setOpen(false);
           Toast.success(messages.success);
+          onSuccess();
         }}
         autoConnect={autoConnect}
         saveConnect={saveConnect}
@@ -56,6 +58,7 @@ GeneralAuthButton.propTypes = {
   saveConnect: PropTypes.bool,
   forceConnected: PropTypes.bool,
   extraParams: PropTypes.object,
+  onSuccess: PropTypes.func,
 };
 
 GeneralAuthButton.defaultProps = {
@@ -64,4 +67,5 @@ GeneralAuthButton.defaultProps = {
   autoConnect: true,
   saveConnect: true,
   forceConnected: true,
+  onSuccess: () => {},
 };
