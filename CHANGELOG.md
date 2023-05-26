@@ -1,3 +1,6 @@
+## 0.36.48 (May 26, 2023)
+- support auto close
+
 ## 0.36.47 (May 16, 2023)
 
 - feat: add claimUrl and acquireUrl test case and pages
