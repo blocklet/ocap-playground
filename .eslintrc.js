@@ -5,6 +5,7 @@ module.exports = {
     logger: true,
   },
   rules: {
+    'require-await': 'off',
     'unicorn/filename-case': [
       'error',
       {
