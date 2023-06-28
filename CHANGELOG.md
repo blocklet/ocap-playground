@@ -1,3 +1,6 @@
+## 0.36.49 (June 29, 2023)
+- chore: bump deps to latest
+
 ## 0.36.48 (May 26, 2023)
 - support auto close
 
