@@ -1,13 +1,20 @@
+## 0.36.50 (July 20, 2023)
+
+- feat: use inline blocklet.js
+- chore: bump deps to latest
+
 ## 0.36.49 (June 29, 2023)
+
 - chore: bump deps to latest
 
 ## 0.36.48 (May 26, 2023)
+
 - support auto close
 
 ## 0.36.47 (May 16, 2023)
 
 - feat: add claimUrl and acquireUrl test case and pages
-- feat: support userDid in keyKair and nextUrl in response
+- feat: support userDid in keypair and nextUrl in response
 
 ## 0.36.46 (May 08, 2023)
 
@@ -52,6 +59,7 @@
 ## 0.36.36 (March 14, 2023)
 
 ## 0.36.35 (March 14, 2023)
+
 - feat: support feed type gallery
 
 ## 0.36.34 (March 03, 2023)
@@ -84,6 +92,7 @@
 - chore: support asset consume related cases
 
 ## 0.36.27 (February 15, 2023)
+
 - fix: index.html cache
 
 ## 0.36.26 (February 14, 2023)
@@ -91,18 +100,23 @@
 - chore: add routes for derive/delegate/encryptionKey
 
 ## 0.36.25 (January 10, 2023)
+
 - fix: message data structure
 
 ## 0.36.24 (January 10, 2023)
+
 - update dep version
 
 ## 0.36.23 (January 09, 2023)
+
 - fix: change link -> url
 
 ## 0.36.22 (January 09, 2023)
+
 - chore: fix typo
 
 ## 0.36.21 (January 09, 2023)
+
 - chore: rename message properties
 
 ## 0.36.20 (January 09, 2023)
