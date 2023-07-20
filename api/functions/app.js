@@ -5,9 +5,9 @@ const cors = require('cors');
 const morgan = require('morgan');
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const fallback = require('express-history-api-fallback');
 const compression = require('compression');
-const middlewares = require('@blocklet/sdk/lib/middlewares');
+const fallback = require('@blocklet/sdk/lib/middlewares/fallback');
+const user = require('@blocklet/sdk/lib/middlewares/user');
 const displayRoutes = require('express-routemap');
 
 const { walletHandlers, walletHandlersWithNoChainInfo } = require('../libs/auth');
@@ -41,7 +41,7 @@ app.use(
   })
 );
 
-app.use(middlewares.user());
+app.use(user());
 
 const router = express.Router();
 
