@@ -1,7 +1,8 @@
+import { useContext } from 'react';
 import { ThemeProvider as MuiThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { Global, css, ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { SessionProvider } from '@arcblock/did-playground';
+import { SessionProvider, SessionContext } from '@arcblock/did-playground';
 import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -39,45 +40,32 @@ if (window.blocklet && window.blocklet.prefix) {
 const webWalletUrl = getWebWalletUrl();
 
 export function App() {
+  const { session } = useContext(SessionContext);
+
+  if (!session.user) {
+    return <CircularProgress />;
+  }
+
   return (
-    <StyledEngineProvider injectFirst>
-      <MuiThemeProvider theme={theme}>
-        <EmotionThemeProvider theme={theme}>
-          <SessionProvider serviceHost={apiPrefix} webWalletUrl={webWalletUrl}>
-            {({ session }) => {
-              if (session.loading) {
-                return <CircularProgress />;
-              }
-
-              if (session.user) {
-                return (
-                  <UserProvider>
-                    <ToastProvider>
-                      <CssBaseline />
-                      <Global styles={globalStyles} />
-                      <div className="wrapper">
-                        <Routes>
-                          <Route path="/" element={<MiniPage />} />
-                          <Route path="/full" element={<HomePage />} />
-                          <Route path="/profile" element={<ProfilePage />} />
-                          <Route path="/claim/email" element={<ClaimPage />} />
-                          <Route path="/claim/passport" element={<ClaimPassportPage />} />
-                          <Route path="/acquire/server" element={<AcquireServerPage />} />
-                          <Route path="*" element={<Navigate to="/" replace />} />
-                        </Routes>
-                      </div>
-                    </ToastProvider>
-                  </UserProvider>
-                );
-              }
-
-              return null;
-            }}
-          </SessionProvider>
-        </EmotionThemeProvider>
-      </MuiThemeProvider>
-    </StyledEngineProvider>
+    <UserProvider>
+      <ToastProvider>
+        <CssBaseline />
+        <Global styles={globalStyles} />
+        <div className="wrapper">
+          <Routes>
+            <Route path="/" element={<MiniPage />} />
+            <Route path="/full" element={<HomePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/claim/email" element={<ClaimPage />} />
+            <Route path="/claim/passport" element={<ClaimPassportPage />} />
+            <Route path="/acquire/server" element={<AcquireServerPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
+      </ToastProvider>
+    </UserProvider>
   );
+
 }
 
 export default function Main() {
@@ -93,7 +81,15 @@ export default function Main() {
 
   return (
     <Router basename={basename}>
-      <App />
+      <StyledEngineProvider injectFirst>
+        <MuiThemeProvider theme={theme}>
+          <EmotionThemeProvider theme={theme}>
+            <SessionProvider serviceHost={apiPrefix} webWalletUrl={webWalletUrl}>
+              <App />
+            </SessionProvider>
+          </EmotionThemeProvider>
+        </MuiThemeProvider>
+      </StyledEngineProvider>
     </Router>
   );
 }
