@@ -1,3 +1,7 @@
+## 0.36.51 (July 27, 2023)
+
+- fix: crash issue
+
 ## 0.36.50 (July 20, 2023)
 
 - feat: use inline blocklet.js

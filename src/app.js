@@ -65,7 +65,6 @@ export function App() {
       </ToastProvider>
     </UserProvider>
   );
-
 }
 
 export default function Main() {
