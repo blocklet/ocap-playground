@@ -1,3 +1,6 @@
+## 0.36.52 (August 29, 2023)
+- chore: bump deps to latest
+
 ## 0.36.51 (July 27, 2023)
 
 - fix: crash issue
