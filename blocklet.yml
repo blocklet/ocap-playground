@@ -10,10 +10,11 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.36.52
+version: 0.36.53
 author:
-  name: wangshijun
-  email: shijun@arcblock.io
+  name: ArcBlock
+  email: blocklet@arcblock.io
+  url: https://github.com/blocklet
 keywords:
   - dapp
   - playground
@@ -25,8 +26,8 @@ license: Apache-2.0
 group: dapp
 main: api/index.js
 logo: logo.png
-community: https://community.arcblockio.cn
-documentation: ''
+community: https://community.arcblock.io
+documentation: https://developer.blocklet.io
 homepage: ''
 screenshots:
   - 0-home.png
