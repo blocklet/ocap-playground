@@ -28,7 +28,7 @@ main: api/index.js
 logo: logo.png
 community: https://community.arcblock.io
 documentation: https://developer.blocklet.io
-homepage: ''
+homepage: 'https://github.com/blocklet/ocap-playground'
 screenshots:
   - 0-home.png
   - 1-profile.png
