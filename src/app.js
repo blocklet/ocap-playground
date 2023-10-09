@@ -13,7 +13,6 @@ import { ToastProvider } from './components/toast';
 
 import HomePage from './pages/full';
 import ProfilePage from './pages/profile';
-import MiniPage from './pages/index';
 import ClaimPage from './pages/claim-email-vc';
 import ClaimPassportPage from './pages/claim-passport';
 import AcquireServerPage from './pages/acquire-server';
@@ -53,8 +52,7 @@ export function App() {
         <Global styles={globalStyles} />
         <div className="wrapper">
           <Routes>
-            <Route path="/" element={<MiniPage />} />
-            <Route path="/full" element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/claim/email" element={<ClaimPage />} />
             <Route path="/claim/passport" element={<ClaimPassportPage />} />

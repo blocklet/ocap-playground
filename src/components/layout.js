@@ -1,8 +1,10 @@
 /* eslint-disable prefer-destructuring */
 import PropTypes from 'prop-types';
-import BaseLayout from '@arcblock/ux/lib/Layout';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Header from '@blocklet/ui-react/lib/Header';
 
-export default function Layout({ title, children, contentOnly }) {
+export default function Layout({ children }) {
   const getExplorerUrl = (chainHost, type) => {
     if (window.env) {
       if (window.env.localChainExplorer && type === 'local') {
@@ -41,23 +43,17 @@ export default function Layout({ title, children, contentOnly }) {
   links.push({ url: 'https://github.com/blocklet/ocap-playground', title: 'GitHub' });
 
   return (
-    <BaseLayout
-      title={title}
-      brand={window.env.appName}
-      links={links}
-      contentOnly={contentOnly}
-      baseUrl={window.location.origin}>
-      {children}
-    </BaseLayout>
+    <Box>
+      <Header />
+      <Container maxWidth="lg" my={3}>
+        {children}
+      </Container>
+    </Box>
   );
 }
 
 Layout.propTypes = {
-  title: PropTypes.string.isRequired,
   children: PropTypes.any.isRequired,
-  contentOnly: PropTypes.bool,
 };
 
-Layout.defaultProps = {
-  contentOnly: false,
-};
+Layout.defaultProps = {};
