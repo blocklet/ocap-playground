@@ -1,7 +1,13 @@
+## 0.36.54 (October 09, 2023)
+
+- chore: use blocklet ui header
+
 ## 0.36.53 (September 28, 2023)
 
 - chore: update blocklet.yml
+
 ## 0.36.52 (August 29, 2023)
+
 - chore: bump deps to latest
 
 ## 0.36.51 (July 27, 2023)

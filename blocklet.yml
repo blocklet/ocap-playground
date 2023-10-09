@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - build
-version: 0.36.53
+version: 0.36.54
 author:
   name: ArcBlock
   email: blocklet@arcblock.io
@@ -28,7 +28,7 @@ main: api/index.js
 logo: logo.png
 community: https://community.arcblock.io
 documentation: https://developer.blocklet.io
-homepage: 'https://github.com/blocklet/ocap-playground'
+homepage: https://github.com/blocklet/ocap-playground
 screenshots:
   - 0-home.png
   - 1-profile.png
