@@ -30,7 +30,8 @@ module.exports = {
         wallet: fromPublicKey(userPk),
       });
       const origin = toBase58(encoded.buffer);
-      console.log({ encoded, origin });
+
+      const date = new Date();
 
       const params = {
         transaction: {
@@ -41,6 +42,25 @@ module.exports = {
         text: {
           type: 'mime:text/plain',
           data: getRandomMessage(),
+        },
+
+        nonce: {
+          type: 'mime:text/plain',
+          data: getRandomMessage(),
+          nonce: [date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours()].join('-'),
+        },
+
+        requirement: {
+          type: 'mime:text/plain',
+          data: getRandomMessage(),
+          requirement: {
+            tokens: [
+              {
+                address: env.localTokenId,
+                value: (await client.fromTokenToUnit(50)).toString(),
+              },
+            ],
+          },
         },
 
         html: {

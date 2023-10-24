@@ -349,6 +349,55 @@ export default function IndexPage() {
 
         <section className="section">
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
+            Signature Scenarios{' '}
+            <Typography component="small" color="textSecondary">
+              Signature with nonce replay and requirements
+            </Typography>
+          </Typography>
+          <div className="section__content">
+            <SignButton {...session} type="transaction" />
+            <SignButton {...session} type="text" />
+            <SignButton {...session} type="html" />
+            <SignButton {...session} type="skip_hash" />
+            <AuthButton
+              button="Sign Delegation"
+              action="sign-delegation"
+              saveConnect={false}
+              extraParams={{ sessionDid: session.user.did }}
+              messages={{
+                title: 'Sign Delegation',
+                scan: 'Connect your DID Wallet to sign the delegation',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Delegation Signed',
+              }}
+            />
+            <AuthButton
+              button="Sign with nonce"
+              action="claim_signature"
+              extraParams={{ type: 'nonce' }}
+              messages={{
+                title: 'Please check nonce before continue',
+                scan: 'Connect your DID Wallet to complete the session',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Successful',
+              }}
+            />
+            <AuthButton
+              button="Sign with Requirement"
+              action="claim_signature"
+              extraParams={{ type: 'requirement' }}
+              messages={{
+                title: 'Check balance before delegate',
+                scan: 'Connect your DID Wallet to complete the delegate',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Payment successful',
+              }}
+            />
+          </div>
+        </section>
+
+        <section className="section">
+          <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
             Multiple Input Scenarios{' '}
             <Typography component="small" color="textSecondary">
               Wallet can leverage multiple input capabilities of the chain
@@ -535,10 +584,6 @@ export default function IndexPage() {
                 success: 'DID holding confirmed',
               }}
             />
-            <SignButton {...session} type="transaction" />
-            <SignButton {...session} type="text" />
-            <SignButton {...session} type="html" />
-            <SignButton {...session} type="skip_hash" />
             <AuthButton
               button="Multiple Claims"
               action="claim_multiple"
@@ -686,18 +731,6 @@ export default function IndexPage() {
                 scan: 'Connect your DID Wallet to get the did spec',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Application Rotated',
-              }}
-            />
-            <AuthButton
-              button="Sign Delegation"
-              action="sign-delegation"
-              saveConnect={false}
-              extraParams={{ sessionDid: session.user.did }}
-              messages={{
-                title: 'Sign Delegation',
-                scan: 'Connect your DID Wallet to sign the delegation',
-                confirm: 'Confirm on your DID Wallet',
-                success: 'Delegation Signed',
               }}
             />
             <AuthButton
