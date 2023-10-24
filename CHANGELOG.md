@@ -1,3 +1,7 @@
+## 0.36.55 (October 24, 2023)
+
+- chore: prepare for new signature claims
+
 ## 0.36.54 (October 09, 2023)
 
 - chore: use blocklet ui header
