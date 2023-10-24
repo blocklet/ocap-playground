@@ -3,9 +3,9 @@ import { useContext } from 'react';
 import styled from '@emotion/styled';
 
 import Typography from '@mui/material/Typography';
-import { PlaygroundAction } from '@arcblock/did-playground';
 import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
 
+import { PlaygroundAction } from '../components/did-playground';
 import { UserContext } from '../context/user';
 import Layout from '../components/layout';
 

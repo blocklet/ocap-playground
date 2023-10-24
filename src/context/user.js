@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import CircularProgress from '@mui/material/CircularProgress';
 
-import { SessionContext } from '@arcblock/did-playground';
+import { SessionContext } from '../components/did-playground';
 
 const UserContext = createContext({});
 const { Provider, Consumer } = UserContext;
