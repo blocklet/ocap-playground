@@ -38,40 +38,40 @@ export const actions = {
   // Currency
   receive_local_token: {
     action: 'receive_token',
-    extraParams: (props) => ({ chain: 'local', amount: props.amount || 1 }),
+    extraParams: props => ({ chain: 'local', amount: props.amount || 1 }),
   },
   receive_foreign_token: {
     action: 'receive_token',
-    extraParams: (props) => ({ chain: 'foreign', amount: props.amount || 1 }),
+    extraParams: props => ({ chain: 'foreign', amount: props.amount || 1 }),
   },
   send_local_token: {
     action: 'send_token',
-    extraParams: (props) => ({ chain: 'local', amount: props.amount || 1 }),
+    extraParams: props => ({ chain: 'local', amount: props.amount || 1 }),
   },
   send_foreign_token: {
     action: 'send_token',
-    extraParams: (props) => ({ chain: 'foreign', amount: props.amount || 1 }),
+    extraParams: props => ({ chain: 'foreign', amount: props.amount || 1 }),
   },
   exchange_to_foreign_token: {
     action: 'swap_token',
     onStart: createSwapOrder,
-    extraParams: (props) => ({ action: 'buy', rate: props.exchangeRate, amount: props.amount || 1 }),
+    extraParams: props => ({ action: 'buy', rate: props.exchangeRate, amount: props.amount || 1 }),
   },
   exchange_to_local_token: {
     action: 'swap_token',
     onStart: createSwapOrder,
-    extraParams: (props) => ({ action: 'sell', rate: props.exchangeRate, amount: props.amount || 1 }),
+    extraParams: props => ({ action: 'sell', rate: props.exchangeRate, amount: props.amount || 1 }),
   },
 
   exchange_to_foreign_token_v2: {
     action: 'swap_token_v2',
     onStart: createSwapOrder,
-    extraParams: (props) => ({ action: 'buy', rate: props.exchangeRate, amount: props.amount || 1 }),
+    extraParams: props => ({ action: 'buy', rate: props.exchangeRate, amount: props.amount || 1 }),
   },
   exchange_to_local_token_v2: {
     action: 'swap_token_v2',
     onStart: createSwapOrder,
-    extraParams: (props) => ({ action: 'sell', rate: props.exchangeRate, amount: props.amount || 1 }),
+    extraParams: props => ({ action: 'sell', rate: props.exchangeRate, amount: props.amount || 1 }),
   },
 
   // Cross chain assets and tokens

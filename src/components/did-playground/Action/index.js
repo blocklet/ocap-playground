@@ -21,7 +21,7 @@ function Close({ onClose }) {
 
 Close.propTypes = { onClose: PropTypes.func.isRequired };
 const CloseContainer = styled('div')`
-  display: ${(props) => (props.disableClose ? 'none' : 'block')};
+  display: ${props => (props.disableClose ? 'none' : 'block')};
   position: absolute;
   top: 1rem;
   right: 1rem;
