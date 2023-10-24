@@ -6,10 +6,10 @@ import useBrowser from '@arcblock/react-hooks/lib/useBrowser';
 
 import Typography from '@mui/material/Typography';
 import WalletDownload from '@arcblock/ux/lib/Wallet/Download';
-import { PlaygroundAction } from '@arcblock/did-playground';
 
 import Button from '@arcblock/ux/lib/Button';
 import Layout from '../components/layout';
+import { PlaygroundAction } from '../components/did-playground';
 
 import AuthButton from '../components/auth/general';
 import ClaimButton from '../components/auth/claim-stake';

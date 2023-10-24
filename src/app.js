@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { ThemeProvider as MuiThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { Global, css, ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { SessionProvider, SessionContext } from '@arcblock/did-playground';
 import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,6 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import { UserProvider } from './context/user';
 import { ToastProvider } from './components/toast';
+import { SessionProvider, SessionContext } from './components/did-playground';
 
 import HomePage from './pages/full';
 import ProfilePage from './pages/profile';
