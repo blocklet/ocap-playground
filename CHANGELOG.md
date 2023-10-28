@@ -1,3 +1,7 @@
+## 0.36.56 (October 28, 2023)
+
+- chore: bump deps to latest
+
 ## 0.36.55 (October 24, 2023)
 
 - chore: prepare for new signature claims
