@@ -149,14 +149,14 @@
     semver "^7.3.8"
     tweetnacl-sealedbox-js "^1.2.0"
 
-"@arcblock/did-connect@2.8.2", "@arcblock/did-connect@^2.8.2":
-  version "2.8.2"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-2.8.2.tgz#833d7e1f603d70b124b16380bc60d79e5c4641dc"
-  integrity sha512-EpG7jSVJrwkCXDU4IzT1eyeXD4E0knf2cOZHvOF5KaQBQ+cL6ywWAXiEPE43qh91eZLv0yoTsxrfEWPavdIt7g==
+"@arcblock/did-connect@2.8.5", "@arcblock/did-connect@^2.8.5":
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-2.8.5.tgz#4a42d84faa96f7bf0d51d00c2df88e6d9914358f"
+  integrity sha512-lbyNE7thbwFhEWoJr9cjhubKOEXcYvWSC6ewxjbIj72qskzS5hSiPnVDmoS/RP3R5hgO9t5H6RNhdGEXT6wWCQ==
   dependencies:
-    "@arcblock/icons" "^2.8.2"
-    "@arcblock/react-hooks" "^2.8.2"
-    "@arcblock/ux" "^2.8.2"
+    "@arcblock/icons" "^2.8.5"
+    "@arcblock/react-hooks" "^2.8.5"
+    "@arcblock/ux" "^2.8.5"
     "@arcblock/ws" "^1.18.90"
     "@auth0/auth0-react" "^2.0.1"
     "@emotion/react" "^11.10.4"
@@ -203,14 +203,14 @@
   dependencies:
     bs58 "^5.0.0"
 
-"@arcblock/did-playground@2.8.2":
-  version "2.8.2"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-2.8.2.tgz#b02b7f68eb69ed2c61d2e91bc2e7c2dba3b4c5d2"
-  integrity sha512-1elCzHjGvswHkhL4Wxpox+zu86pBDCy73q3X5yXnpdk3LknrIVJId3/Qfjqk7Mwtq7RYCaMu+AIHV9TXa2pJYw==
+"@arcblock/did-playground@2.8.5":
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-playground/-/did-playground-2.8.5.tgz#83ecdbec478da65c02d19d32830ea13b88a99301"
+  integrity sha512-cfibShWhoaNaVRrNFAgeM0Z3Y04OBtPOF5nnrPCqNjnqdb3t+PtJerfvMS2HwslpgHsk1xPIr4nu88+h24VSqA==
   dependencies:
-    "@arcblock/did-connect" "^2.8.2"
-    "@arcblock/react-hooks" "^2.8.2"
-    "@arcblock/ux" "^2.8.2"
+    "@arcblock/did-connect" "^2.8.5"
+    "@arcblock/react-hooks" "^2.8.5"
+    "@arcblock/ux" "^2.8.5"
     "@emotion/react" "^11.10.4"
     "@emotion/styled" "^11.10.4"
     "@mui/material" "^5.14.8"
@@ -280,10 +280,10 @@
     amp-message "~0.1.2"
     axon "^2.0.3"
 
-"@arcblock/icons@^2.8.2":
-  version "2.8.2"
-  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-2.8.2.tgz#d432f07176c4161659b3e7ba2d1f35e6cd3fc68b"
-  integrity sha512-1I64sjNqglJihWzAiixqreWpp6rtZjNfl/92XTSSPyKhKYuu2ybqlf459NeEPx78+Hy6NXrRkGogDGzB1DNm+Q==
+"@arcblock/icons@^2.8.5":
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-2.8.5.tgz#0d80a63aca25aa8f98e7aec6d2d88eb28e5c5ffa"
+  integrity sha512-Bgqida3FHr2iv5JrhHYaU3ZT1fIeYHY0Cnv5RFtMNdME0A3RA/sARCMV5vBD4VT1MlKtvYLzsdyx0NMv9ZbKHQ==
 
 "@arcblock/jwt@1.18.90", "@arcblock/jwt@1.18.93", "@arcblock/jwt@^1.18.87", "@arcblock/jwt@^1.18.93":
   version "1.18.93"
@@ -320,10 +320,10 @@
     lodash "^4.17.21"
     pako "^1.0.11"
 
-"@arcblock/react-hooks@2.8.2", "@arcblock/react-hooks@^2.8.2":
-  version "2.8.2"
-  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-2.8.2.tgz#155bd6fa241be79387bffd49c7b64ffb663bb526"
-  integrity sha512-tx/8s//aqfLKi9ux2afmJ/pufR4UevUh+iGerwaufhMgfSDLk/fzPOlgqhCX+YrRFwsVAM5dEo51ELauVhoMeQ==
+"@arcblock/react-hooks@2.8.5", "@arcblock/react-hooks@^2.8.5":
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-2.8.5.tgz#f5abdcac8def8e82c0cc5bb88c1f21cb09a02444"
+  integrity sha512-oIAJVAczgstT2KvfzauYESQ5L6WdnAjp11GkuvSyS++JOP9vJRYf2WxHSei8btL4t1Yxpy/FqDQrL+nErA7wnA==
   dependencies:
     core-js "^3.25.5"
     event-target-shim "^5.0.1"
@@ -341,14 +341,14 @@
     lodash.isnull "^3.0.0"
     lodash.set "^4.3.2"
 
-"@arcblock/ux@^2.8.2":
-  version "2.8.2"
-  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-2.8.2.tgz#eb1513a4691daf941a02a2252ead4f8e3c88e564"
-  integrity sha512-Cp/VPBI+9YXwEAIPCNeBXk3Dg/2VHdYmCJlDSJE0AyN1GbUxuv5gtlG4tcVoAZFa6DJUTYhNfwbcmCJ9qHq2zA==
+"@arcblock/ux@^2.8.5":
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-2.8.5.tgz#5fbd02ddaf909bf15b5407929789f0d870744951"
+  integrity sha512-YvLJfz1zQksK2g0bDNeqLmEwu4+syrWc89hEV9ci+fY/2c3LSQd7Cp3TOr/FaP/XlK/IJa8+Qnk7VYDWwiqwNQ==
   dependencies:
     "@arcblock/did-motif" "^1.1.13"
-    "@arcblock/icons" "^2.8.2"
-    "@arcblock/react-hooks" "^2.8.2"
+    "@arcblock/icons" "^2.8.5"
+    "@arcblock/react-hooks" "^2.8.5"
     "@babel/plugin-syntax-dynamic-import" "^7.8.3"
     "@emotion/react" "^11.10.4"
     "@emotion/styled" "^11.10.4"
@@ -1677,13 +1677,13 @@
     ufo "^1.1.1"
     url-join "^4.0.1"
 
-"@blocklet/ui-react@2.8.2":
-  version "2.8.2"
-  resolved "https://registry.yarnpkg.com/@blocklet/ui-react/-/ui-react-2.8.2.tgz#622a06c54a563fe0a261988702ccb03790d88af2"
-  integrity sha512-Qtil/M+hox+PI7zWra/yRyc37cdhmfu4GavtCcfSSjHFJYw1APqkENZSOwDFRXo6DKunVRVDvxPrZEIzIm2qRw==
+"@blocklet/ui-react@2.8.5":
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/@blocklet/ui-react/-/ui-react-2.8.5.tgz#3a45854d74e6e97c1afee1ed436b0e1cfc33f3ce"
+  integrity sha512-+xrJwDCAfo1MWFbJRaAOj5ln8ewGyZlZWiaXndkI3wUhWffaVGbGi8vNTvc3ewdORD64/DJXkCnsGFYC7+EK+g==
   dependencies:
-    "@arcblock/did-connect" "^2.8.2"
-    "@arcblock/ux" "^2.8.2"
+    "@arcblock/did-connect" "^2.8.5"
+    "@arcblock/ux" "^2.8.5"
     "@emotion/react" "^11.10.4"
     "@emotion/styled" "^11.10.4"
     "@mui/material" "^5.14.8"
