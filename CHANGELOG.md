@@ -1,3 +1,7 @@
+## 0.36.57 (October 29, 2023)
+
+- chore: bump deps to latest
+
 ## 0.36.56 (October 28, 2023)
 
 - chore: bump deps to latest
