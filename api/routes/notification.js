@@ -259,6 +259,35 @@ module.exports = {
           return;
         }
 
+        if (type === 'multiple-sections') {
+          const message = {
+            title: lorem.generateWords(3),
+            body: lorem.generateSentences(Math.ceil(Math.random() * 5)),
+          };
+
+          await Notification.sendToUser(userDid, {
+            title: message.title,
+            body: message.body,
+            attachments: [
+              {
+                type: 'section',
+                fields: [
+                  { type: 'text', data: { type: 'plain', text: lorem.generateWords(1) } },
+                  { type: 'text', data: { type: 'plain', text: lorem.generateWords(3) } },
+                  { type: 'text', data: { type: 'plain', text: lorem.generateWords(1) } },
+                  { type: 'text', data: { type: 'plain', text: lorem.generateWords(3) } },
+                  { type: 'text', data: { type: 'plain', text: lorem.generateWords(1) } },
+                  { type: 'text', data: { type: 'plain', text: lorem.generateWords(3) } },
+                ],
+              },
+            ],
+            actions,
+          });
+
+          res.status(200).end();
+          return;
+        }
+
         if (type === 'link') {
           const { user: vt } = await authClient.getUser(userDid);
 

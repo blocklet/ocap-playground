@@ -948,6 +948,9 @@ export default function IndexPage() {
             <NotificationButton type="long-text" className="action">
               Send Long Text
             </NotificationButton>
+            <NotificationButton type="multiple-sections" className="action">
+              Send Multiple Sections
+            </NotificationButton>
             <NotificationButton type="asset" data={{ title: 'Asset', body: 'Hello Asset' }} className="action">
               Send asset
             </NotificationButton>
