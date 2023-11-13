@@ -1,3 +1,7 @@
+## 0.36.59 (November 13, 2023)
+
+- chore: bump deps to latest
+
 ## 0.36.58 (November 07, 2023)
 
 - feat: support notification case with sections
