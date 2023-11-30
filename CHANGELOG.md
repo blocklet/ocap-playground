@@ -1,3 +1,7 @@
+## 0.36.60 (November 30, 2023)
+
+- feat: add delegation signing cases
+
 ## 0.36.59 (November 13, 2023)
 
 - chore: bump deps to latest
