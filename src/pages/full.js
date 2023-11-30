@@ -344,6 +344,61 @@ export default function IndexPage() {
                 success: 'Exchange successful',
               }}
             />
+            <AuthButton
+              button="Grant Permission (token x1)"
+              action="delegation-limit"
+              extraParams={{ type: 1, token: 1, asset: 0 }}
+              messages={{
+                title: 'Grant token permission',
+                scan: 'Connect your DID Wallet to complete the delegation',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Delegate successful',
+              }}
+            />
+            <AuthButton
+              button="Grant Permission (token x2)"
+              action="delegation-limit"
+              extraParams={{ type: 1, token: 2, asset: 0 }}
+              messages={{
+                title: 'Grant token permission',
+                scan: 'Connect your DID Wallet to complete the delegation',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Delegate successful',
+              }}
+            />
+            <AuthButton
+              button="Grant Permission (assets)"
+              action="delegation-limit"
+              extraParams={{ type: 1, token: 0, asset: 1 }}
+              messages={{
+                title: 'Grant asset permission',
+                scan: 'Connect your DID Wallet to complete the delegation',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Delegate successful',
+              }}
+            />
+            <AuthButton
+              button="Grant Permission (asset + token)"
+              action="delegation-limit"
+              extraParams={{ type: 1, token: 1, asset: 1 }}
+              messages={{
+                title: 'Grant asset permission',
+                scan: 'Connect your DID Wallet to complete the delegation',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Delegate successful',
+              }}
+            />
+            <AuthButton
+              button="Grant Permission (type x2)"
+              action="delegation-limit"
+              extraParams={{ type: 2, token: 1, asset: 0 }}
+              messages={{
+                title: 'Grant both permission',
+                scan: 'Connect your DID Wallet to complete the delegation',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Delegate successful',
+              }}
+            />
           </div>
         </section>
 
@@ -360,12 +415,12 @@ export default function IndexPage() {
             <SignButton {...session} type="html" />
             <SignButton {...session} type="skip_hash" />
             <AuthButton
-              button="Sign Delegation"
+              button="Sign Offline Delegation"
               action="sign-delegation"
               saveConnect={false}
               extraParams={{ sessionDid: session.user.did }}
               messages={{
-                title: 'Sign Delegation',
+                title: 'Sign Offline Delegation',
                 scan: 'Connect your DID Wallet to sign the delegation',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Delegation Signed',

@@ -79,6 +79,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/iss
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/issue-badge-asset')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/extra-params')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/delegate')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/delegation-limit')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/launch-node')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/verify-vc')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/verify-passport')));
