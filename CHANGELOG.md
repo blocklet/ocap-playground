@@ -1,3 +1,7 @@
+## 0.36.61 (December 01, 2023)
+
+- fix: delegation limit case not working as expected
+
 ## 0.36.60 (November 30, 2023)
 
 - feat: add delegation signing cases
