@@ -11,7 +11,8 @@ const { pickGasPayerHeaders } = require('../../libs/util');
 module.exports = {
   action: 'delegation-limit',
   claims: {
-    signature: async ({ userPk, userDid, extraParams: { type = 1, token = 0, asset = 0 } }) => {
+    signature: async ({ userPk, userDid, extraParams }) => {
+      const { type = 1, tc = 0, ac = 0 } = extraParams;
       const limit = {
         tokens: [],
         assets: [],
@@ -19,8 +20,8 @@ module.exports = {
 
       const now = Math.round(Date.now() / 1000);
       const typeCount = +type;
-      const tokenCount = +token;
-      const assetCount = +asset;
+      const tokenCount = +tc;
+      const assetCount = +ac;
 
       const tokenLimit1 = {
         address: env.localTokenId,

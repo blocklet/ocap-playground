@@ -347,7 +347,7 @@ export default function IndexPage() {
             <AuthButton
               button="Grant Permission (token x1)"
               action="delegation-limit"
-              extraParams={{ type: 1, token: 1, asset: 0 }}
+              extraParams={{ type: 1, tc: 1, ac: 0 }}
               messages={{
                 title: 'Grant token permission',
                 scan: 'Connect your DID Wallet to complete the delegation',
@@ -358,7 +358,7 @@ export default function IndexPage() {
             <AuthButton
               button="Grant Permission (token x2)"
               action="delegation-limit"
-              extraParams={{ type: 1, token: 2, asset: 0 }}
+              extraParams={{ type: 1, tc: 2, ac: 0 }}
               messages={{
                 title: 'Grant token permission',
                 scan: 'Connect your DID Wallet to complete the delegation',
@@ -369,7 +369,7 @@ export default function IndexPage() {
             <AuthButton
               button="Grant Permission (assets)"
               action="delegation-limit"
-              extraParams={{ type: 1, token: 0, asset: 1 }}
+              extraParams={{ type: 1, tc: 0, ac: 1 }}
               messages={{
                 title: 'Grant asset permission',
                 scan: 'Connect your DID Wallet to complete the delegation',
@@ -380,7 +380,7 @@ export default function IndexPage() {
             <AuthButton
               button="Grant Permission (asset + token)"
               action="delegation-limit"
-              extraParams={{ type: 1, token: 1, asset: 1 }}
+              extraParams={{ type: 1, tc: 1, ac: 1 }}
               messages={{
                 title: 'Grant asset permission',
                 scan: 'Connect your DID Wallet to complete the delegation',
@@ -391,7 +391,7 @@ export default function IndexPage() {
             <AuthButton
               button="Grant Permission (type x2)"
               action="delegation-limit"
-              extraParams={{ type: 2, token: 1, asset: 0 }}
+              extraParams={{ type: 2, tc: 1, ac: 0 }}
               messages={{
                 title: 'Grant both permission',
                 scan: 'Connect your DID Wallet to complete the delegation',
