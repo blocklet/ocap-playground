@@ -1,3 +1,7 @@
+## 0.36.62 (December 01, 2023)
+
+- fix: delegation limit case duplicate token
+
 ## 0.36.61 (December 01, 2023)
 
 - fix: delegation limit case not working as expected
