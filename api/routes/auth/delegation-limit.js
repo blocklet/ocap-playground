@@ -33,7 +33,7 @@ module.exports = {
       };
 
       const tokenLimit2 = {
-        address: env.localTokenId,
+        address: env.foreignTokenId,
         txAllowance: fromTokenToUnit(5).toString(),
         totalAllowance: fromTokenToUnit(100).toString(),
         txCount: 20,
