@@ -1,3 +1,7 @@
+## 0.36.63 (December 28, 2023)
+
+- feat(connect): support assetOrVC claim and agentProof validate
+
 ## 0.36.62 (December 01, 2023)
 
 - fix: delegation limit case duplicate token
