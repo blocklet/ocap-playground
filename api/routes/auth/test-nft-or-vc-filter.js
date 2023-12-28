@@ -27,14 +27,14 @@ const validateAgentProof = claim => {
   if (claim.type === 'asset') {
     const signature = fromBase58(claim.agentProof.signature);
     const signer = fromPublicKey(ownerPk, toTypeInfo(ownerDid));
-    if (!signer.verify([wallet.address, claim.agentProof.nonce].join(','), signature)) {
+    if (!signer.verify(`${wallet.address}${claim.agentProof.nonce}`, signature)) {
       throw new Error('agent proof is invalid for asset');
     }
   }
 
   if (claim.type === 'verifiableCredential') {
     const signer = fromPublicKey(ownerPk, toTypeInfo(ownerDid));
-    if (!signer.verify([wallet.address, claim.agentProof.nonce].join(','), claim.agentProof.signature)) {
+    if (!signer.verify(`${wallet.address}${claim.agentProof.nonce}`, claim.agentProof.signature)) {
       throw new Error('agent proof is invalid for vc');
     }
   }
