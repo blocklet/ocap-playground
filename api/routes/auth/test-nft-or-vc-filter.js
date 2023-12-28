@@ -6,7 +6,7 @@ const { blockletDid } = require('../../libs/factory');
 const { verifyAssetClaim } = require('../../libs/util');
 const { wallet } = require('../../libs/auth');
 
-const validateAgentProof = claim => {
+const validateAgentProof = (claim, challenge) => {
   const ownerDid = toAddress(claim.ownerDid);
   const ownerPk = fromBase58(claim.ownerPk);
   if (!claim.agentProof) {
@@ -27,7 +27,7 @@ const validateAgentProof = claim => {
   if (claim.type === 'asset') {
     const signature = fromBase58(claim.agentProof.signature);
     const signer = fromPublicKey(ownerPk, toTypeInfo(ownerDid));
-    if (!signer.verify(`${wallet.address}${claim.agentProof.nonce}`, signature)) {
+    if (!signer.verify(challenge, signature)) {
       throw new Error('agent proof is invalid for asset');
     }
   }
@@ -72,7 +72,7 @@ module.exports = {
     if (asset) {
       logger.info('claim.assetOrVC.onAuth.asset', asset);
 
-      validateAgentProof(asset);
+      validateAgentProof(asset, challenge);
 
       const assetState = await verifyAssetClaim({ claim: asset, challenge });
       return { successMessage: `You provided asset: ${assetState.address}` };
@@ -81,7 +81,7 @@ module.exports = {
     if (vc) {
       logger.info('claim.assetOrVC.onAuth.vc', vc);
 
-      validateAgentProof(vc);
+      validateAgentProof(vc, challenge);
 
       const presentation = JSON.parse(vc.presentation);
       if (challenge !== presentation.challenge) {
