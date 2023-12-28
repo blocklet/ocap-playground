@@ -1,12 +1,12 @@
 const { verifyPresentation } = require('@arcblock/vc');
 const { fromPublicKey } = require('@ocap/wallet');
-const { toAddress, fromBase58 } = require('@ocap/util');
+const { toAddress, fromBase58, toBuffer } = require('@ocap/util');
 const { toTypeInfo } = require('@arcblock/did');
 const { blockletDid } = require('../../libs/factory');
 const { verifyAssetClaim } = require('../../libs/util');
 const { wallet } = require('../../libs/auth');
 
-const validateAgentProof = (claim, challenge) => {
+const validateAgentProof = claim => {
   const ownerDid = toAddress(claim.ownerDid);
   const ownerPk = fromBase58(claim.ownerPk);
   if (!claim.agentProof) {
@@ -20,21 +20,23 @@ const validateAgentProof = (claim, challenge) => {
   logger.info('claim.agentProof.nonce', claim.agentProof.nonce);
   logger.info('claim.agentProof.signature', claim.agentProof.signature);
 
-  if (claim.agentProof.nonce < Math.ceil(Date.now() / 1000) - 5 * 60) {
+  const { nonce } = claim.agentProof;
+  if (nonce < Math.ceil(Date.now() / 1000) - 5 * 60) {
     throw new Error('agent proof is expired: ttl is 5 minutes');
   }
 
+  const message = Buffer.concat([toBuffer(nonce), toBuffer(wallet.address)]);
+  const signer = fromPublicKey(ownerPk, toTypeInfo(ownerDid));
+  const signature = fromBase58(claim.agentProof.signature);
+
   if (claim.type === 'asset') {
-    const signature = fromBase58(claim.agentProof.signature);
-    const signer = fromPublicKey(ownerPk, toTypeInfo(ownerDid));
-    if (!signer.verify(`${claim.agentProof.nonce}${wallet.address}`, signature)) {
+    if (!signer.verify(message, signature)) {
       throw new Error('agent proof is invalid for asset');
     }
   }
 
   if (claim.type === 'verifiableCredential') {
-    const signer = fromPublicKey(ownerPk, toTypeInfo(ownerDid));
-    if (!signer.verify(`${claim.agentProof.nonce}${wallet.address}`, claim.agentProof.signature)) {
+    if (!signer.verify(message, signature)) {
       throw new Error('agent proof is invalid for vc');
     }
   }
