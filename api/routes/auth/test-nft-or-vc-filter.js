@@ -13,6 +13,9 @@ const validateAgentProof = (claim, userPk) => {
     claim.agentProof = JSON.parse(claim.agentProof);
   }
 
+  logger.info('claim.agentProof.nonce', claim.agentProof.nonce);
+  logger.info('claim.agentProof.signature', claim.agentProof.signature);
+
   if (claim.agentProof.nonce < Math.ceil(Date.now() / 1000) - 5 * 60) {
     throw new Error('agent proof is expired: ttl is 5 minutes');
   }

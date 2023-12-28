@@ -1,3 +1,7 @@
+## 0.36.65 (December 28, 2023)
+
+- try fix agent proof
+
 ## 0.36.64 (December 28, 2023)
 
 - fix: agentProof logic
