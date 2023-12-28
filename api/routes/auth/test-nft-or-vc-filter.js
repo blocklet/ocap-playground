@@ -9,6 +9,10 @@ const validateAgentProof = (claim, userPk) => {
     throw new Error('agent proof is empty');
   }
 
+  if (typeof claim.agentProof === 'string') {
+    claim.agentProof = JSON.parse(claim.agentProof);
+  }
+
   if (claim.agentProof.nonce < Math.ceil(Date.now() / 1000) - 5 * 60) {
     throw new Error('agent proof is expired: ttl is 5 minutes');
   }
