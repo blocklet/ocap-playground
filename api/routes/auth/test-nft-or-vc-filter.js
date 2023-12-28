@@ -1,10 +1,14 @@
 const { verifyPresentation } = require('@arcblock/vc');
 const { fromPublicKey } = require('@ocap/wallet');
+const { toAddress, fromBase58 } = require('@ocap/util');
+const { toTypeInfo } = require('@arcblock/did');
 const { blockletDid } = require('../../libs/factory');
 const { verifyAssetClaim } = require('../../libs/util');
 const { wallet } = require('../../libs/auth');
 
-const validateAgentProof = (claim, userPk) => {
+const validateAgentProof = claim => {
+  const ownerDid = toAddress(claim.ownerDid);
+  const ownerPk = fromBase58(claim.ownerPk);
   if (!claim.agentProof) {
     throw new Error('agent proof is empty');
   }
@@ -21,14 +25,15 @@ const validateAgentProof = (claim, userPk) => {
   }
 
   if (claim.type === 'asset') {
-    const signer = fromPublicKey(claim.ownerPk);
-    if (!signer.verify([wallet.address, claim.agentProof.nonce].join(','), claim.agentProof.signature)) {
+    const signature = fromBase58(claim.agentProof.signature);
+    const signer = fromPublicKey(ownerPk, toTypeInfo(ownerDid));
+    if (!signer.verify([wallet.address, claim.agentProof.nonce].join(','), signature)) {
       throw new Error('agent proof is invalid for asset');
     }
   }
 
   if (claim.type === 'verifiableCredential') {
-    const signer = fromPublicKey(userPk);
+    const signer = fromPublicKey(ownerPk, toTypeInfo(ownerDid));
     if (!signer.verify([wallet.address, claim.agentProof.nonce].join(','), claim.agentProof.signature)) {
       throw new Error('agent proof is invalid for vc');
     }
@@ -56,7 +61,7 @@ module.exports = {
       };
     },
   },
-  onAuth: async ({ claims, userPk, challenge }) => {
+  onAuth: async ({ claims, challenge }) => {
     const asset = claims.find(x => x.type === 'asset');
     const vc = claims.find(x => x.type === 'verifiableCredential');
 
@@ -67,7 +72,7 @@ module.exports = {
     if (asset) {
       logger.info('claim.assetOrVC.onAuth.asset', asset);
 
-      validateAgentProof(asset, userPk);
+      validateAgentProof(asset);
 
       const assetState = await verifyAssetClaim({ claim: asset, challenge });
       return { successMessage: `You provided asset: ${assetState.address}` };
@@ -76,7 +81,7 @@ module.exports = {
     if (vc) {
       logger.info('claim.assetOrVC.onAuth.vc', vc);
 
-      validateAgentProof(vc, userPk);
+      validateAgentProof(vc);
 
       const presentation = JSON.parse(vc.presentation);
       if (challenge !== presentation.challenge) {
