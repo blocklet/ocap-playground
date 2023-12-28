@@ -1,3 +1,7 @@
+## 0.36.64 (December 28, 2023)
+
+- fix: agentProof logic
+
 ## 0.36.63 (December 28, 2023)
 
 - feat(connect): support assetOrVC claim and agentProof validate
