@@ -36,6 +36,20 @@ module.exports = {
         };
       }
 
+      if (type === 'either-nft-or-vc') {
+        return {
+          description: 'Please provide not consumed Server NFT',
+          filters: [
+            {
+              type: ['NodePurchaseCredential'],
+              trustedIssuers: [wallet.address],
+              consumed: false,
+              acquireUrl: joinUrl(env.appUrl, '/acquire/server'),
+            },
+          ],
+        };
+      }
+
       throw new Error(`Unknown type ${type}`);
     },
   },

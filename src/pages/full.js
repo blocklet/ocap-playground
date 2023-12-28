@@ -828,9 +828,9 @@ export default function IndexPage() {
         </section>
         <section className="section">
           <Typography component="h3" variant="h5" className="section__header" color="textPrimary" gutterBottom>
-            Verified Credential{' '}
+            Verifiable Credential{' '}
             <Typography component="small" color="textSecondary">
-              verify your email
+              Ask user to present NFT or VC
             </Typography>
           </Typography>
           <div className="section__content">
@@ -1338,6 +1338,17 @@ export default function IndexPage() {
               messages={{
                 title: 'Provide Consumed NFT',
                 scan: 'Connect your DID Wallet to provide',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
+            <AuthButton
+              button="出示 NFT 或 VC"
+              action="test_nft_or_vc_filter"
+              extraParams={{ type: 'either-nft-or-vc' }}
+              messages={{
+                title: 'Provide NFT of VC',
+                scan: 'Connect your DID Wallet to continue',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Verified',
               }}
