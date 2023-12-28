@@ -1,3 +1,6 @@
+## 0.36.67 (December 28, 2023)
+- fix agent proof
+
 ## 0.36.66 (December 28, 2023)
 
 
