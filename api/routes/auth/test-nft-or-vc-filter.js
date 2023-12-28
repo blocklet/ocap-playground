@@ -4,25 +4,25 @@ const { blockletDid } = require('../../libs/factory');
 const { verifyAssetClaim } = require('../../libs/util');
 const { wallet } = require('../../libs/auth');
 
-const validateAgentProof = (claim, timestamp, userPk) => {
+const validateAgentProof = (claim, userPk) => {
   if (!claim.agentProof) {
     throw new Error('agent proof is empty');
   }
 
-  if (timestamp < Math.ceil(Date.now() / 1000) - 5 * 60) {
+  if (claim.agentProof.nonce < Math.ceil(Date.now() / 1000) - 5 * 60) {
     throw new Error('agent proof is expired: ttl is 5 minutes');
   }
 
   if (claim.type === 'asset') {
     const signer = fromPublicKey(claim.ownerPk);
-    if (!signer.verify([wallet.address, timestamp].join(','), claim.agentProof)) {
+    if (!signer.verify([wallet.address, claim.agentProof.nonce].join(','), claim.agentProof.signature)) {
       throw new Error('agent proof is invalid for asset');
     }
   }
 
   if (claim.type === 'verifiableCredential') {
     const signer = fromPublicKey(userPk);
-    if (!signer.verify([wallet.address, timestamp].join(','), claim.agentProof)) {
+    if (!signer.verify([wallet.address, claim.agentProof.nonce].join(','), claim.agentProof.signature)) {
       throw new Error('agent proof is invalid for vc');
     }
   }
@@ -49,7 +49,7 @@ module.exports = {
       };
     },
   },
-  onAuth: async ({ claims, userPk, challenge, timestamp }) => {
+  onAuth: async ({ claims, userPk, challenge }) => {
     const asset = claims.find(x => x.type === 'asset');
     const vc = claims.find(x => x.type === 'verifiableCredential');
 
@@ -60,7 +60,7 @@ module.exports = {
     if (asset) {
       logger.info('claim.assetOrVC.onAuth.asset', asset);
 
-      validateAgentProof(asset, timestamp, userPk);
+      validateAgentProof(asset, userPk);
 
       const assetState = await verifyAssetClaim({ claim: asset, challenge });
       return { successMessage: `You provided asset: ${assetState.address}` };
@@ -69,7 +69,7 @@ module.exports = {
     if (vc) {
       logger.info('claim.assetOrVC.onAuth.vc', vc);
 
-      validateAgentProof(vc, timestamp, userPk);
+      validateAgentProof(vc, userPk);
 
       const presentation = JSON.parse(vc.presentation);
       if (challenge !== presentation.challenge) {
