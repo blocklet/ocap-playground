@@ -25,7 +25,7 @@ const validateAgentProof = claim => {
     throw new Error('agent proof is expired: ttl is 5 minutes');
   }
 
-  const message = Buffer.concat([toBuffer(nonce), toBuffer(wallet.address)]);
+  const message = Buffer.concat([toBuffer(nonce.toString()), toBuffer(wallet.address)]);
   const signer = fromPublicKey(ownerPk, toTypeInfo(ownerDid));
   const signature = fromBase58(claim.agentProof.signature);
 
