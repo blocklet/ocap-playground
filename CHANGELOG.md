@@ -1,3 +1,7 @@
+## 0.36.72 (January 09, 2024)
+
+- chore: bump deps to latest
+
 ## 0.36.71 (December 29, 2023)
 
 - fix agent proof
