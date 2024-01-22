@@ -111,6 +111,7 @@
     "workbox-webpack-plugin": "^6.5.4"
   },
   "scripts": {
+    "dev": "blocklet dev",
     "lint": "eslint src api",
     "lint:fix": "eslint src api --fix",
     "precommit": "npm run lint",

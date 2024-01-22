@@ -1,8 +1,6 @@
-const { verifyPresentation } = require('@arcblock/vc');
 const { fromPublicKey } = require('@ocap/wallet');
 const { toAddress, fromBase58, toBuffer } = require('@ocap/util');
 const { toTypeInfo } = require('@arcblock/did');
-const { blockletDid } = require('../../libs/factory');
 const { verifyAssetClaim } = require('../../libs/util');
 const { wallet } = require('../../libs/auth');
 
@@ -43,30 +41,30 @@ const validateAgentProof = claim => {
 };
 
 module.exports = {
-  action: 'test_nft_or_vc_filter',
+  action: 'test_nft_or_vc_filter_only_did_spaces',
   claims: {
     assetOrVC: () => {
       return {
-        description: 'Please provide NFT or VC to continue',
+        description: "Please provide DID Spaces's NFT or VC to continue",
+        optional: false,
         filters: [
           {
-            type: ['NodePurchaseCredential'],
-            trustedIssuers: [wallet.address],
-            consumed: false,
+            tag: 'did-space-purchase-nft', // 用于筛选 NFT
           },
           {
-            type: ['BlockletPurchaseCredential'],
-            trustedIssuers: [wallet.address],
-            tag: blockletDid,
+            type: ['PersonalSpaceVerifiableCredential', 'EnterpriseSpaceVerifiableCredential'], // 用于筛选 VC
           },
         ],
+        meta: {
+          purpose: 'DidSpace',
+        },
       };
     },
   },
   // eslint-disable-next-line consistent-return
   onAuth: async ({ claims, challenge }) => {
-    const asset = claims.find(x => x.type === 'asset');
-    const vc = claims.find(x => x.type === 'verifiableCredential');
+    const asset = claims.find(x => x.type === 'asset' && x.meta.purpose === 'DidSpace');
+    const vc = claims.find(x => x.type === 'verifiableCredential' && x.meta.purpose === 'DidSpace');
 
     if (!asset && !vc) {
       throw new Error('Neither NFT nor VC is provided');
@@ -91,7 +89,6 @@ module.exports = {
         throw Error('Verifiable credential presentation does not have correct challenge');
       }
 
-      verifyPresentation({ presentation, trustedIssuers: [wallet.address], challenge });
       return { successMessage: 'You provided vc' };
     }
   },
