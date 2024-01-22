@@ -100,6 +100,7 @@ walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/cla
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/test-vc-claim-filter')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/test-nft-claim-filter')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/test-nft-or-vc-filter')));
+walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/test-nft-or-vc-filter-only-did-spaces')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-dynamic')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-connect-only')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-connect-optional-vc')));

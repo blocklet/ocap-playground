@@ -1353,6 +1353,17 @@ export default function IndexPage() {
                 success: 'Verified',
               }}
             />
+            <AuthButton
+              button="出示 NFT 或 VC(DID Spaces)"
+              action="test_nft_or_vc_filter_only_did_spaces"
+              extraParams={{ type: 'either-nft-or-vc' }}
+              messages={{
+                title: 'Provide NFT of VC(DID Spaces)',
+                scan: 'Connect your DID Wallet to continue',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Verified',
+              }}
+            />
           </div>
         </section>
         <section className="section">
