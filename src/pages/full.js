@@ -1358,7 +1358,7 @@ export default function IndexPage() {
               action="test_nft_or_vc_filter_only_did_spaces"
               extraParams={{ type: 'either-nft-or-vc' }}
               messages={{
-                title: 'Provide NFT of VC',
+                title: 'Provide NFT of VC(DID Spaces)',
                 scan: 'Connect your DID Wallet to continue',
                 confirm: 'Confirm on your DID Wallet',
                 success: 'Verified',
