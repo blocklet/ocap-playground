@@ -1,3 +1,7 @@
+## 0.36.74 (January 30, 2024)
+
+- feat: improve test cases for assetOrVC(only DID Spaces)
+
 ## 0.36.73 (January 22, 2024)
 
 - feat: add assetOrVC test case for did spaces

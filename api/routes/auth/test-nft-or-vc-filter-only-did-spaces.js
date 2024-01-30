@@ -1,6 +1,7 @@
 const { fromPublicKey } = require('@ocap/wallet');
 const { toAddress, fromBase58, toBuffer } = require('@ocap/util');
 const { toTypeInfo } = require('@arcblock/did');
+const { getDidSpacesInfoByClaims } = require('@abtnode/auth/lib/util/spaces');
 const { verifyAssetClaim } = require('../../libs/util');
 const { wallet } = require('../../libs/auth');
 
@@ -68,6 +69,14 @@ module.exports = {
 
     if (!asset && !vc) {
       throw new Error('Neither NFT nor VC is provided');
+    }
+
+    const didSpacesInfo = await getDidSpacesInfoByClaims({ claims });
+
+    // eslint-disable-next-line no-console
+    console.log({ didSpacesInfo });
+    if (!didSpacesInfo) {
+      throw new Error('DidSpaces is not found');
     }
 
     if (asset) {

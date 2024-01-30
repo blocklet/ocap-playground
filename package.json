@@ -12,7 +12,7 @@
     "blocklet.yml",
     "README.md"
   ],
-  "version": "0.36.73",
+  "version": "0.36.74",
   "author": "wangshijun <shijun@arcblock.io> https://github.com/wangshijun",
   "keywords": [
     "dapp",
@@ -28,6 +28,7 @@
     "email": "shijun@arcblock.io"
   },
   "dependencies": {
+    "@abtnode/auth": "^1.16.23-beta-abdda301",
     "@arcblock/did": "^1.18.108",
     "@arcblock/did-auth": "^1.18.108",
     "@arcblock/did-auth-storage-nedb": "^1.7.1",
@@ -111,7 +112,7 @@
     "workbox-webpack-plugin": "^6.5.4"
   },
   "scripts": {
-    "dev": "blocklet dev",
+    "dev": "blocklet dev --open",
     "lint": "eslint src api",
     "lint:fix": "eslint src api --fix",
     "precommit": "npm run lint",
