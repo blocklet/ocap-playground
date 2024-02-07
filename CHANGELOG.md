@@ -1,3 +1,7 @@
+## 0.36.75 (February 07, 2024)
+
+- chore: bump deps to latest
+
 ## 0.36.74 (January 30, 2024)
 
 - feat: improve test cases for assetOrVC(only DID Spaces)
