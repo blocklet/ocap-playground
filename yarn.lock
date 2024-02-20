@@ -1757,7 +1757,7 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@blocklet/constant@1.16.23":
+"@blocklet/constant@1.16.23", "@blocklet/constant@^1.16.23":
   version "1.16.23"
   resolved "https://registry.yarnpkg.com/@blocklet/constant/-/constant-1.16.23.tgz#35234aa8e43c129d468e65e5a9cb54249f98b5fa"
   integrity sha512-UtS3y72AR+WOqQ7niQ6Hf+cFHaqS2iLHncfWWtI+L1xS4tnbOgrOXt6ww5B+d2uYHKgUO640IfZ0FMp30QGnqA==

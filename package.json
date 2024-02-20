@@ -41,6 +41,7 @@
     "@arcblock/react-hooks": "2.9.29",
     "@arcblock/ux": "^2.9.29",
     "@arcblock/vc": "^1.18.110",
+    "@blocklet/constant": "^1.16.23",
     "@blocklet/sdk": "1.16.23",
     "@blocklet/ui-react": "2.9.29",
     "@emotion/react": "^11.10.5",
