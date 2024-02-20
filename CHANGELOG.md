@@ -1,3 +1,7 @@
+## 0.36.76 (February 20, 2024)
+
+- feat: updated DID Spaces NFT test cases
+
 ## 0.36.75 (February 07, 2024)
 
 - chore: bump deps to latest
