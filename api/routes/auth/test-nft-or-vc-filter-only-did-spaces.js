@@ -2,6 +2,7 @@ const { fromPublicKey } = require('@ocap/wallet');
 const { toAddress, fromBase58, toBuffer } = require('@ocap/util');
 const { toTypeInfo } = require('@arcblock/did');
 const { getDidSpacesInfoByClaims } = require('@abtnode/auth/lib/util/spaces');
+const { DID_SPACES } = require('@blocklet/constant');
 const { verifyAssetClaim } = require('../../libs/util');
 const { wallet } = require('../../libs/auth');
 
@@ -50,10 +51,10 @@ module.exports = {
         optional: false,
         filters: [
           {
-            tag: 'did-space-purchase-nft', // 用于筛选 NFT
+            tag: DID_SPACES.NFT_TAG, // 用于筛选 NFT
           },
           {
-            type: ['PersonalSpaceVerifiableCredential', 'EnterpriseSpaceVerifiableCredential'], // 用于筛选 VC
+            type: DID_SPACES.VC_TYPES, // 用于筛选 VC
           },
         ],
         meta: {
