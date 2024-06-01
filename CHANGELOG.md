@@ -1,3 +1,7 @@
+## 0.36.78 (June 02, 2024)
+
+- feat: support stake with nonce test case
+
 ## 0.36.77 (April 28, 2024)
 
 - chore: bump deps to latest
