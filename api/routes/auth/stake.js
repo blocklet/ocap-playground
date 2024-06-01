@@ -34,6 +34,34 @@ const txCreators = {
       description: `Stake ${amount} token`,
     };
   },
+  StakeRandomTokenWithNonce: async ({ userDid, userPk }) => {
+    const token = await getTokenInfo();
+    const amount = (Math.random() * 3).toFixed(6);
+    const tokens = [{ address: env.localTokenId, value: fromTokenToUnit(amount, token.local.decimal).toString() }];
+    const nonce = Math.floor(Math.random() * 1000000).toString();
+
+    return {
+      type: 'StakeTx',
+      partialTx: {
+        from: userDid,
+        pk: userPk,
+        itx: {
+          address: toStakeAddress(userDid, wallet.address, nonce),
+          receiver: wallet.address,
+          slashers: [wallet.address],
+          revokeWaitingPeriod: 30,
+          message: 'ocap playground test: local',
+          inputs: [],
+          nonce,
+        },
+        signatures: [],
+      },
+      requirement: {
+        tokens,
+      },
+      description: `Stake ${amount} token with nonce ${nonce}`,
+    };
+  },
   StakeForeignToken: async ({ userDid, userPk }) => {
     const token = await getTokenInfo();
     const amount = 12.3;

@@ -1100,6 +1100,17 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button={`Stake ${token.local.symbol} With Random Nonce`}
+              action="stake"
+              extraParams={{ type: 'StakeRandomTokenWithNonce' }}
+              messages={{
+                title: `Stake ${token.local.symbol}`,
+                scan: 'Connect your DID Wallet to complete the staking',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Token is Locked',
+              }}
+            />
+            <AuthButton
               button={`Revoke Stake: ${token.local.symbol}`}
               action="revoke-stake"
               extraParams={{ type: 'RevokeLocalToken' }}
