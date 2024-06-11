@@ -1,3 +1,7 @@
+## 0.36.79 (June 11, 2024)
+
+- chore(deps): update deps
+
 ## 0.36.78 (June 02, 2024)
 
 - feat: support stake with nonce test case
