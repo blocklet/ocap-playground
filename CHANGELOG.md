@@ -1,3 +1,7 @@
+## 0.36.81 (July 04, 2024)
+
+- feat: support return stake test case
+
 ## 0.36.80 (June 22, 2024)
 
 - chore: bump deps to latest

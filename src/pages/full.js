@@ -1176,8 +1176,10 @@ export default function IndexPage() {
                 success: 'Claim Success',
               }}
             />
-            <SlashButton type="token" />
-            <SlashButton type="asset" />
+            <SlashButton type="token" action="slash" />
+            <SlashButton type="asset" action="slash" />
+            <SlashButton type="token" action="return" />
+            <SlashButton type="asset" action="return" />
           </div>
         </section>
 
