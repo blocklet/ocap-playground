@@ -66,7 +66,7 @@ module.exports = {
         }
 
         if (!stake) {
-          return res.json({ error: `no stake for slashing ${req.params.type}` });
+          return res.json({ error: `no stake for ${req.query.action} ${req.params.type}` });
         }
 
         const assets = [...stake.assets, ...stake.revokedAssets];
@@ -76,26 +76,29 @@ module.exports = {
             return +fromUnitToToken(t1.balance, t1.decimal) - +fromUnitToToken(t2.balance, t2.decimal);
           });
 
-        const itx = { address: stake.address, message: 'slash-test', outputs: [] };
+        const method = req.query.action === 'slash' ? 'sendSlashStakeTx' : 'sendReturnStakeTx';
+        const receiver = req.query.action === 'slash' ? state.vaults.slashedStake : stake.sender;
+
+        const itx = { address: stake.address, message: `${req.query.action}-test`, outputs: [] };
         if (req.params.type === 'token') {
           itx.outputs.push({
-            owner: state.vaults.slashedStake,
+            owner: receiver,
             tokens: [{ address: tokens[0].address, value: tokens[0].balance }],
           });
         } else if (req.params.type === 'asset') {
           itx.outputs.push({
-            owner: state.vaults.slashedStake,
+            owner: receiver,
             assets: [assets[0]],
           });
         } else {
           itx.outputs.push({
-            owner: state.vaults.slashedStake,
+            owner: receiver,
             tokens: [{ address: tokens[0].address, value: tokens[0].balance }],
             assets: [assets[0]],
           });
         }
 
-        const hash = await client.sendSlashStakeTx({ tx: { itx }, wallet });
+        const hash = await client[method]({ tx: { itx }, wallet });
 
         return res.jsonp({ hash });
       } catch (e) {

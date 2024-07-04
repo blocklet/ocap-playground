@@ -114,6 +114,7 @@ const txCreators = {
           ],
           amount: 1,
         },
+        tokens: [],
       },
       description: 'Stake NFT',
     };

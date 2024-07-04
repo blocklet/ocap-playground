@@ -1711,6 +1711,16 @@
   dependencies:
     "@blocklet/constant" "1.16.28"
 
+"@blocklet/js-sdk@^1.16.28":
+  version "1.16.28"
+  resolved "https://registry.yarnpkg.com/@blocklet/js-sdk/-/js-sdk-1.16.28.tgz#ca1a03fa0c8a90649b1af6caed0e2a6e3282cab3"
+  integrity sha512-21GHuTe/ohHuRYP96DHMpb+8hGIWp1BKEp1bb7glZcoZabUDRc/tamCUM2PWk1YoUuWNaRvSTYO3SR7btfc0Zg==
+  dependencies:
+    "@abtnode/constant" "1.16.28"
+    axios "^1.7.2"
+    js-cookie "^3.0.5"
+    ufo "^1.5.3"
+
 "@blocklet/meta@1.16.28":
   version "1.16.28"
   resolved "https://registry.yarnpkg.com/@blocklet/meta/-/meta-1.16.28.tgz#df2e97ed0c4eb4373c819ae03469f1f896653eb3"
@@ -10364,6 +10374,11 @@ js-cookie@^2.2.1, js-cookie@^2.x.x:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
   integrity sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==
+
+js-cookie@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.5.tgz#0b7e2fd0c01552c58ba86e0841f94dc2557dcdbc"
+  integrity sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==
 
 js-git@^0.7.8:
   version "0.7.8"
