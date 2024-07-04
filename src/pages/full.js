@@ -597,6 +597,16 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
+              button="Request Profile with did and url"
+              action="profile-with-did-and-url"
+              messages={{
+                title: 'Profile Required',
+                scan: 'Connect your DID Wallet to provide profile',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'Profile provided',
+              }}
+            />
+            <AuthButton
               button="Show DApp Error"
               action="error"
               messages={{
