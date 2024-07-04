@@ -54,6 +54,10 @@ walletHandlersWithNoChainInfo.attach(
   Object.assign({ app: router }, require('../routes/auth/claim-profile-no-chain-info'))
 );
 
+walletHandlersWithNoChainInfo.attach(
+  Object.assign({ app: router }, require('../routes/auth/claim-profile-with-did-and-url'))
+);
+
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-profile')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-signature')));
 walletHandlers.attach(Object.assign({ app: router }, require('../routes/auth/claim-create-did')));

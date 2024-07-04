@@ -43,7 +43,7 @@
     "@arcblock/vc": "^1.18.125",
     "@blocklet/constant": "^1.16.28",
     "@blocklet/js-sdk": "^1.16.28",
-    "@blocklet/sdk": "1.16.28",
+    "@blocklet/sdk": "1.16.29-beta-924d4db7",
     "@blocklet/ui-react": "^2.10.3",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
