@@ -1,3 +1,8 @@
+## 0.36.83 (August 26, 2024)
+
+- fix: fix Buffer.from second params
+- chore(deps): update deps
+
 ## 0.36.82 (July 04, 2024)
 
 - chore: update deps to support new profile claim
