@@ -126,7 +126,7 @@ const factory = new NFTFactory({
 });
 
 const createLoginToken = ({ did, role = 'guest', expiresIn = '7d' }) => {
-  const secret = Hasher.SHA3.hash256(Buffer.concat([wallet.secretKey, wallet.address].map(Buffer.from)));
+  const secret = Hasher.SHA3.hash256(Buffer.concat([wallet.secretKey, wallet.address].map(v => Buffer.from(v))));
   const payload = {
     type: 'user',
     did,
