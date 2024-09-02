@@ -1,3 +1,7 @@
+## 0.36.84 (September 02, 2024)
+
+- chore: bump deps to latest
+
 ## 0.36.83 (August 26, 2024)
 
 - fix: fix Buffer.from second params
