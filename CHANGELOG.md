@@ -1,3 +1,7 @@
+## 0.36.85 (September 18, 2024)
+
+- add no ux claim test case
+
 ## 0.36.84 (September 02, 2024)
 
 - chore: bump deps to latest
