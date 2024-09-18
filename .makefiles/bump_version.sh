@@ -40,6 +40,7 @@ if [ -f $VERSION ]; then
 
     printf "## $INPUT_STRING ($NOW)" > tmpfile
     echo "" >> tmpfile
+    echo "" >> tmpfile
     git log --pretty=format:"- %s" "v$BASE_STRING"...HEAD >> tmpfile
     echo "" >> tmpfile
     echo "" >> tmpfile
