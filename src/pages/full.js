@@ -835,8 +835,8 @@ export default function IndexPage() {
               }}
             />
             <AuthButton
-              button="No UX Claim"
-              action="claim-no-ux"
+              button="Empty Claim"
+              action="claim-empty"
               extraParams={{ sessionDid: session.user.did }}
               messages={{
                 title: 'Provide DID',

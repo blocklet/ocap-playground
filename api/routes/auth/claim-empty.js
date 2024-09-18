@@ -1,7 +1,5 @@
-const { User } = require('../../models');
-
 module.exports = {
-  action: 'claim-no-ux',
+  action: 'claim-empty',
   authPrincipal: false, // disable default auth principal
   claims: [
     {

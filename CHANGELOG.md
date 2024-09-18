@@ -1,6 +1,6 @@
 ## 0.36.85 (September 18, 2024)
 
-- add no ux claim test case
+- add empty claim test case
 
 ## 0.36.84 (September 02, 2024)
 
