@@ -834,6 +834,17 @@ export default function IndexPage() {
                 success: 'Webview opened',
               }}
             />
+            <AuthButton
+              button="No UX Claim"
+              action="claim-no-ux"
+              extraParams={{ sessionDid: session.user.did }}
+              messages={{
+                title: 'Provide DID',
+                scan: 'Connect your DID Wallet to prove you own the DID',
+                confirm: 'Confirm on your DID Wallet',
+                success: 'DID holding confirmed',
+              }}
+            />
           </div>
         </section>
         <section className="section">
