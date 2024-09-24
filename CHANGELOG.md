@@ -1,3 +1,7 @@
+## 0.36.86 (September 25, 2024)
+
+- chore: bump deps to latest
+
 ## 0.36.85 (September 18, 2024)
 
 - add empty claim test case
