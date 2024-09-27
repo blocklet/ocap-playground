@@ -412,6 +412,7 @@ export default function IndexPage() {
           <div className="section__content">
             <SignButton {...session} type="transaction" />
             <SignButton {...session} type="text" />
+            <SignButton {...session} type="text_tx" />
             <SignButton {...session} type="html" />
             <SignButton {...session} type="skip_hash" />
             <AuthButton
