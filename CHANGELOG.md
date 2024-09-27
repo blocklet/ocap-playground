@@ -1,3 +1,7 @@
+## 0.36.87 (September 27, 2024)
+
+- feat: support sign text transaction
+
 ## 0.36.86 (September 25, 2024)
 
 - chore: bump deps to latest
