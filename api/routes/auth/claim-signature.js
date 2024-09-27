@@ -44,6 +44,11 @@ module.exports = {
           data: getRandomMessage(),
         },
 
+        text_tx: {
+          type: 'mime:text/plain',
+          data: origin,
+        },
+
         nonce: {
           type: 'mime:text/plain',
           data: getRandomMessage(),
