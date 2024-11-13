@@ -30,9 +30,9 @@ community: https://community.arcblock.io
 documentation: https://developer.blocklet.io
 homepage: https://github.com/blocklet/ocap-playground
 screenshots:
-  - 0-home.png
-  - 1-profile.png
-  - 2-everything.png
+  - 45d05357d6e839bd816c75261d49505a.png
+  - 9941cc2aa829789550036906ccbc02a3.png
+  - efc68e96ba4ebd070c5786a1473a775a.png
 environments:
   - name: CHAIN_HOST
     description: Please provide endpoint of local chain
