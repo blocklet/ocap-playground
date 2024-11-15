@@ -1,3 +1,8 @@
+## 0.36.89 (November 15, 2024)
+
+- feat: migrate cra to vite
+- chore: bump deps and update screenshot
+
 ## 0.36.88 (September 27, 2024)
 
 - chore: bump deps to latest
