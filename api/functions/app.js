@@ -25,22 +25,6 @@ app.use(express.json({ limit: '1 mb' }));
 app.use(express.urlencoded({ extended: true, limit: '1 mb' }));
 app.use(cors());
 
-app.use(
-  morgan((tokens, req, res) => {
-    const log = [
-      tokens.method(req, res),
-      tokens.url(req, res),
-      tokens.status(req, res),
-      tokens.res(req, res, 'content-length'),
-      '-',
-      tokens['response-time'](req, res),
-      'ms',
-    ].join(' ');
-
-    return log;
-  })
-);
-
 app.use(user());
 
 const router = express.Router();
@@ -125,6 +109,21 @@ require('../routes/stake').init(router);
 if (isDev) {
   app.use(router);
 } else {
+  app.use(
+    morgan((tokens, req, res) => {
+      const log = [
+        tokens.method(req, res),
+        tokens.url(req, res),
+        tokens.status(req, res),
+        tokens.res(req, res, 'content-length'),
+        '-',
+        tokens['response-time'](req, res),
+        'ms',
+      ].join(' ');
+
+      return log;
+    })
+  );
   app.use(compression());
   app.use(router);
 
@@ -132,7 +131,7 @@ if (isDev) {
     displayRoutes(app);
   }
 
-  const staticDir = path.resolve(__dirname, '../../', 'build');
+  const staticDir = path.resolve(__dirname, '../../', 'dist');
   app.use(express.static(staticDir, { maxAge: '365d', index: false }));
   app.use(fallback('index.html', { root: staticDir, maxAge: 0 }));
 
@@ -147,4 +146,7 @@ if (isDev) {
   });
 }
 
-exports.server = server;
+module.exports = {
+  server,
+  app,
+};
