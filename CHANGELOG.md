@@ -1,3 +1,7 @@
+## 0.36.90 (December 05, 2024)
+
+- chore: bump deps to latest
+
 ## 0.36.89 (November 15, 2024)
 
 - feat: migrate cra to vite
