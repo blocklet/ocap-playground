@@ -24,6 +24,7 @@ jobs:
       - name: Blocklet workflow
         uses: blocklet/action-workflow@v1.1
         with:
+          deps-server-version: beta
           skip-upload: false
           skip-deploy: false
           bundle-command: yarn bundle
