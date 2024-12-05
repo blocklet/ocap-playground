@@ -15,8 +15,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      # - name: Set yarn cache
-      #   uses: c-hive/gha-yarn-cache@v2
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
 
       - name: Init
         run: make github-init
