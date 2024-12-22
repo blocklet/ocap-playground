@@ -162,10 +162,10 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@arcblock/bridge@^2.11.2":
-  version "2.11.2"
-  resolved "https://registry.yarnpkg.com/@arcblock/bridge/-/bridge-2.11.2.tgz#fc1acfcda1280dafb5c708058033972a20988fe3"
-  integrity sha512-aW0n1g1O8U8ih6m5OeKIL9skEdkjWC0edz1bIHx5Fe0D7iJNG0NkjNbajf9Hf9nXe2HFQu/6JT6YdN5rqqnHfQ==
+"@arcblock/bridge@^2.11.3":
+  version "2.11.3"
+  resolved "https://registry.yarnpkg.com/@arcblock/bridge/-/bridge-2.11.3.tgz#ec6ee1a58e91225953c824e288a3deaa217c6f33"
+  integrity sha512-0D3V9/3nH0OJEnWkqYLEDxo4ni84vujONsAzUo1VXYR7NHUgHpzTBIEl/tmsiw6VGM4ZvIYMMQQTdV0gc1S5wQ==
 
 "@arcblock/did-auth-storage-nedb@^1.7.1":
   version "1.7.1"
@@ -201,15 +201,15 @@
     semver "^7.6.3"
     tweetnacl-sealedbox-js "^1.2.0"
 
-"@arcblock/did-connect@^2.11.2":
-  version "2.11.2"
-  resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-2.11.2.tgz#abf5c2bc12a227ba28632ed07c0134864e0decc3"
-  integrity sha512-eY7u6k3r0GfkM/DAoVb2FQ/+0wrmsD4X6NxbN7+X2egWMcgRSx7wHu9CPWBcd5UyK6WCs8+lg5E3HmQi192jxg==
+"@arcblock/did-connect@^2.11.3":
+  version "2.11.3"
+  resolved "https://registry.yarnpkg.com/@arcblock/did-connect/-/did-connect-2.11.3.tgz#da4961242d7107a8696ce0a620c98fb2af102bb1"
+  integrity sha512-cuqpPmNhtAlKA4ifgNnY8KgIx4dWSM2PvkVeBNvX6aJmFw0oWa5VNs6HmIAjYFOk0CB9hpkmb8HospM/7duvUw==
   dependencies:
-    "@arcblock/bridge" "^2.11.2"
+    "@arcblock/bridge" "^2.11.3"
     "@arcblock/did" "^1.18.162"
-    "@arcblock/icons" "^2.11.2"
-    "@arcblock/react-hooks" "^2.11.2"
+    "@arcblock/icons" "^2.11.3"
+    "@arcblock/react-hooks" "^2.11.3"
     "@arcblock/ws" "^1.18.162"
     "@fontsource/lexend" "^5.1.1"
     "@iconify-icons/logos" "^1.2.36"
@@ -304,10 +304,10 @@
     amp-message "~0.1.2"
     axon "^2.0.3"
 
-"@arcblock/icons@^2.11.2":
-  version "2.11.2"
-  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-2.11.2.tgz#b7ed234e6d2fc10b5443d7587007f9d2e80e42c1"
-  integrity sha512-O7+IlifKgA97LUf6MFPSSMO7ZLd5bqS7j7q7cJYO7tnHNCa6OCEJm2RHEtz6F4C5oj8nLC4KpVPj8DpP8ez0xw==
+"@arcblock/icons@^2.11.3":
+  version "2.11.3"
+  resolved "https://registry.yarnpkg.com/@arcblock/icons/-/icons-2.11.3.tgz#7ef964c62095503d2c85765b8eb1c1b48da6516f"
+  integrity sha512-iVMdkx3kz2zsGvAlR4lqDh2Nc86sXAuwfsPQHG1jkuurBibL3QpqhQ+LEC1dZ1ZoS4qUz/Xt7rBfpQ8bVcPb7g==
 
 "@arcblock/jwt@1.18.162", "@arcblock/jwt@^1.18.115", "@arcblock/jwt@^1.18.162":
   version "1.18.162"
@@ -321,10 +321,10 @@
     json-stable-stringify "^1.0.1"
     semver "^7.6.3"
 
-"@arcblock/nft-display@^2.11.1", "@arcblock/nft-display@^2.11.2":
-  version "2.11.2"
-  resolved "https://registry.yarnpkg.com/@arcblock/nft-display/-/nft-display-2.11.2.tgz#26823a5996638b0ec0844fe4329cfaca1e78eb7e"
-  integrity sha512-DS5KQ2+9zhMzhiLIl+P7577HFmdFfg4cZiOkoPNON+8NnvgABoT5rRLDg9zl8GhfpJK78fpcvMFvXdB4WWjmxA==
+"@arcblock/nft-display@^2.11.1", "@arcblock/nft-display@^2.11.3":
+  version "2.11.3"
+  resolved "https://registry.yarnpkg.com/@arcblock/nft-display/-/nft-display-2.11.3.tgz#a00ea3683c8fb5a0126daecc86503ee9466b74db"
+  integrity sha512-CFlFV5WFijE9iTw1vTiCld03LqDdYcxG0w5+XgSIcyqJJjFuAFsl6fabQqRZbwOj36fR5zOYdfP3RUzkx0wstg==
   dependencies:
     "@arcblock/did-motif" "^1.1.13"
     "@ocap/mcrypto" "^1.18.162"
@@ -407,10 +407,10 @@
   optionalDependencies:
     pm2-sysmonit "^1.2.8"
 
-"@arcblock/react-hooks@^2.11.2":
-  version "2.11.2"
-  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-2.11.2.tgz#f61ffff37af37e13d98e349d6b6d86d7475bdf9c"
-  integrity sha512-ro1TAC0Qnf84ti30aSibJgkFGdJR1dVeeVkV30pXoLQCxVt9HlO9TOkO2razKr2B0YYtWee3nW/C/pwG5wXVuQ==
+"@arcblock/react-hooks@^2.11.3":
+  version "2.11.3"
+  resolved "https://registry.yarnpkg.com/@arcblock/react-hooks/-/react-hooks-2.11.3.tgz#6e6edbe63b9ddf618fda9b07a05e699ddaeb4cee"
+  integrity sha512-9C5j1IbfTpQnybMd2N9H9xPDV7MHt062XfTjiihqa8gDyoMfDhhcNoxZn8JqRUybF/A+qzF2fs21fvloZ5bM6w==
   dependencies:
     core-js "^3.25.5"
     event-target-shim "^5.0.1"
@@ -428,15 +428,15 @@
     lodash.isnull "^3.0.0"
     lodash.set "^4.3.2"
 
-"@arcblock/ux@^2.11.2":
-  version "2.11.2"
-  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-2.11.2.tgz#90c6dc5e7e693f037e243f33b723ab8372089ded"
-  integrity sha512-gWKYZAJOjgFdtb3OLo+DiMnXsv+W10CAuUFq+++0crXpN6WuTfDnxavYQyrxV/BXJY+Kl23chavra6cwhDvUDg==
+"@arcblock/ux@^2.11.3":
+  version "2.11.3"
+  resolved "https://registry.yarnpkg.com/@arcblock/ux/-/ux-2.11.3.tgz#2e59a58f36377d7589874cd34bc3a64edcff22b8"
+  integrity sha512-DV2x92Gt1EDMTf9yxnemm3+e4vhuabzoVECj8fsuhNKxK/yatzEC1527iVSO8NAeF+WOGU572BAgv/6WIJHgiA==
   dependencies:
     "@arcblock/did-motif" "^1.1.13"
-    "@arcblock/icons" "^2.11.2"
-    "@arcblock/nft-display" "^2.11.2"
-    "@arcblock/react-hooks" "^2.11.2"
+    "@arcblock/icons" "^2.11.3"
+    "@arcblock/nft-display" "^2.11.3"
+    "@arcblock/react-hooks" "^2.11.3"
     "@babel/plugin-syntax-dynamic-import" "^7.8.3"
     "@fontsource/inter" "^5.0.16"
     "@fontsource/ubuntu-mono" "^5.0.18"
@@ -908,13 +908,13 @@
     ufo "^1.5.3"
     wait-port "^1.1.0"
 
-"@blocklet/ui-react@^2.11.2":
-  version "2.11.2"
-  resolved "https://registry.yarnpkg.com/@blocklet/ui-react/-/ui-react-2.11.2.tgz#f9c2efeb8df6241bdf6cab441531d158a9de91e4"
-  integrity sha512-ltl91iMJSnUUXoG72FqBBcP6/wpqILl9AtCHNwT3MtuR6BxEiFrQdgBVHNmeLeS0KudTieijOKwWrq0ppNu98Q==
+"@blocklet/ui-react@^2.11.3":
+  version "2.11.3"
+  resolved "https://registry.yarnpkg.com/@blocklet/ui-react/-/ui-react-2.11.3.tgz#b52a11adb014eff9280989d3ad587fbfd0f471cd"
+  integrity sha512-nnz9R9OWTmQMtWlxN/LMII9PcfIZdiTu2jMQzDUlhMUxp9smhVhUsMrawge4quPkLF7wihQbddLcdgJ3CA6QaA==
   dependencies:
-    "@arcblock/bridge" "^2.11.2"
-    "@arcblock/react-hooks" "^2.11.2"
+    "@arcblock/bridge" "^2.11.3"
+    "@arcblock/react-hooks" "^2.11.3"
     "@blocklet/did-space-react" "^0.5.83"
     "@iconify-icons/logos" "^1.2.36"
     "@iconify-icons/material-symbols" "^1.2.58"
