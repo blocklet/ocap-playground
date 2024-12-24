@@ -12,7 +12,6 @@ init: install dep
 
 install:
 	@echo "Install software required for this repo..."
-	@yarn global add @blocklet/cli @babel/cli
 
 dep:
 	@echo "Install dependencies required for this repo..."
