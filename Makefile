@@ -45,7 +45,6 @@ setenv:
 precommit: setenv lint test coverage
 
 github-init:
-	@sudo yarn global add @blocklet/cli @babel/cli
 	@make dep
 	@make setenv
 
