@@ -1,3 +1,7 @@
+## 0.36.94 (December 30, 2024)
+
+- chore: bump deps to latest
+
 ## 0.36.93 (December 26, 2024)
 
 - chore: update deps
