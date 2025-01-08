@@ -21,7 +21,7 @@ module.exports = {
         throw new Error('Asset factory does not exist on chain');
       }
 
-      const preMint = preMintFromFactory({
+      const preMint = await preMintFromFactory({
         factory: formatFactoryState(state),
         inputs: (typeof inputs[factory] === 'function' ? inputs[factory]() : inputs[factory]) || {},
         owner: userDid,

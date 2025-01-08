@@ -22,7 +22,7 @@ const txCreators = {
       throw new Error('Asset factory does not exist on chain');
     }
 
-    const preMint = preMintFromFactory({
+    const preMint = await preMintFromFactory({
       factory: formatFactoryState(state),
       inputs: inputs.blockletPurchase,
       owner: userDid,
