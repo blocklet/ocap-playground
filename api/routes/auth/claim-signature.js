@@ -131,14 +131,14 @@ module.exports = {
     logger.info('claim.signature.onAuth', { userPk, userDid, claim });
 
     if (claim.origin) {
-      if (user.verify(claim.origin, claim.sig, claim.method !== 'none') === false) {
+      if ((await user.verify(claim.origin, claim.sig, claim.method !== 'none')) === false) {
         throw new Error('Origin 签名错误');
       }
     }
 
     // We do not need to hash the data when verifying
     if (claim.digest) {
-      if (user.verify(claim.digest, claim.sig, false) === false) {
+      if ((await user.verify(claim.digest, claim.sig, false)) === false) {
         throw new Error('Digest 签名错误');
       }
     }

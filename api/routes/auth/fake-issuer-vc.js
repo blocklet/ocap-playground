@@ -27,7 +27,7 @@ module.exports = {
     logger.info('claim.signature.onAuth', { userPk, userDid, claim });
 
     if (claim.origin) {
-      if (user.verify(claim.origin, claim.sig) === false) {
+      if ((await user.verify(claim.origin, claim.sig)) === false) {
         throw new Error('Origin 签名错误');
       }
     }
@@ -36,7 +36,7 @@ module.exports = {
 
     const w = fromRandom();
     const emailDigest = hasher(vt.email, 1);
-    const vc = create({
+    const vc = await create({
       type: 'EmailVerificationCredential',
       issuer: {
         wallet: w,

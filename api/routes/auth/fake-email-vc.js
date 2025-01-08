@@ -28,14 +28,14 @@ module.exports = {
     logger.info('claim.signature.onAuth', { userPk, userDid, claim });
 
     if (claim.origin) {
-      if (user.verify(claim.origin, claim.sig) === false) {
+      if ((await user.verify(claim.origin, claim.sig)) === false) {
         throw new Error('Origin 签名错误');
       }
     }
 
     const randomEmail = `${fromRandom().address.substring(0, 10)}@arcblock.io`;
     const emailDigest = hasher(randomEmail, 1);
-    const vc = create({
+    const vc = await create({
       type: 'EmailVerificationCredential',
       issuer: {
         wallet,

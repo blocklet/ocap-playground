@@ -65,7 +65,7 @@ module.exports = {
 
     const claim = claims.find(c => c.type === 'signature');
     const delegation = `${claim.meta.headerAndPayload}.${toBase64(fromBase58(claim.sig))}`;
-    assert(verify(delegation, fromBase58(app.publicKey)), 'delegation verify failed');
+    assert(await verify(delegation, fromBase58(app.publicKey)), 'delegation verify failed');
 
     app.delegation = delegation;
 

@@ -30,13 +30,13 @@ module.exports = {
     const type = toTypeInfo(userDid);
     const user = fromPublicKey(userPk, type);
     const claim = claims.find(x => x.type === 'signature');
-    if (user.verify(claim.origin, claim.sig) === false) {
+    if ((await user.verify(claim.origin, claim.sig)) === false) {
       throw new Error('签名错误');
     }
 
     const svg = badgeArray[claim.meta.index];
 
-    const vc = create({
+    const vc = await create({
       type: ['NFTBadge', 'VerifiableCredential'],
       issuer: {
         wallet,

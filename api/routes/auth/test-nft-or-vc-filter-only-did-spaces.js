@@ -6,7 +6,7 @@ const { DID_SPACES } = require('@blocklet/constant');
 const { verifyAssetClaim } = require('../../libs/util');
 const { wallet } = require('../../libs/auth');
 
-const validateAgentProof = claim => {
+const validateAgentProof = async claim => {
   const ownerDid = toAddress(claim.ownerDid);
   const ownerPk = fromBase58(claim.ownerPk);
   if (!claim.agentProof) {
@@ -30,13 +30,13 @@ const validateAgentProof = claim => {
   const signature = fromBase58(claim.agentProof.signature);
 
   if (claim.type === 'asset') {
-    if (!signer.verify(message, signature)) {
+    if (!(await signer.verify(message, signature))) {
       throw new Error('agent proof is invalid for asset');
     }
   }
 
   if (claim.type === 'verifiableCredential') {
-    if (!signer.verify(message, signature)) {
+    if (!(await signer.verify(message, signature))) {
       throw new Error('agent proof is invalid for vc');
     }
   }
@@ -83,7 +83,7 @@ module.exports = {
     if (asset) {
       logger.info('claim.assetOrVC.onAuth.asset', asset);
 
-      validateAgentProof(asset, challenge);
+      await validateAgentProof(asset, challenge);
 
       const assetState = await verifyAssetClaim({ claim: asset, challenge });
       return { successMessage: `You provided asset: ${assetState.address}` };
@@ -92,7 +92,7 @@ module.exports = {
     if (vc) {
       logger.info('claim.assetOrVC.onAuth.vc', vc);
 
-      validateAgentProof(vc, challenge);
+      await validateAgentProof(vc, challenge);
 
       const presentation = JSON.parse(vc.presentation);
       if (challenge !== presentation.challenge) {
