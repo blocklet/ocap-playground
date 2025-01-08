@@ -1,3 +1,8 @@
+## 0.36.95 (January 08, 2025)
+
+- chore: bump deps to latest
+- chore: migrate from yarn to pnpm
+
 ## 0.36.94 (December 30, 2024)
 
 - chore: bump deps to latest
