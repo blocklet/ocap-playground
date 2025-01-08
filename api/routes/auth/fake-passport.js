@@ -26,13 +26,13 @@ module.exports = {
     logger.info('claim.fakePassport.onAuth', { userPk, userDid, claim });
 
     if (claim.origin) {
-      if (user.verify(claim.origin, claim.sig) === false) {
+      if ((await user.verify(claim.origin, claim.sig)) === false) {
         throw new Error('Origin 签名错误');
       }
     }
 
     const passport = { name: 'arcblocker', title: 'ArcBlocker' };
-    const vc = create({
+    const vc = await create({
       type: ['PlaygroundFakePassport', 'NFTPassport', 'VerifiableCredential'],
       issuer: {
         wallet,
@@ -53,6 +53,7 @@ module.exports = {
         },
       },
     });
+
     const sessionUser = await User.ensureOne({ did: sessionDid });
     sessionUser.extraVC = vc.id;
     await User.update(sessionUser);

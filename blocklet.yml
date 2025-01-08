@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - dist
-version: 0.36.95
+version: 0.36.96
 author:
   name: ArcBlock
   email: blocklet@arcblock.io

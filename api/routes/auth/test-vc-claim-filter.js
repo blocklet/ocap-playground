@@ -91,6 +91,6 @@ module.exports = {
       throw Error('Verifiable credential presentation does not have correct challenge');
     }
 
-    verifyPresentation({ presentation, trustedIssuers: [wallet.address], challenge });
+    await verifyPresentation({ presentation, trustedIssuers: [wallet.address], challenge });
   },
 };

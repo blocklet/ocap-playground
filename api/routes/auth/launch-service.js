@@ -57,7 +57,7 @@ module.exports = {
       throw Error('Blocklet Purchase Verifiable credential presentation does not have correct challenge');
     }
 
-    verifyPresentation({
+    await verifyPresentation({
       presentation: blockletPurchaseCredential.presentation,
       trustedIssuers: [wallet.address],
       challenge,

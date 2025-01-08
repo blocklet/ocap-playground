@@ -15,11 +15,16 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
+      - name: Use PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: yarn
+          cache: pnpm
 
       - name: Init
         run: make github-init
@@ -30,7 +35,7 @@ jobs:
           deps-server-version: beta
           skip-upload: false
           skip-deploy: false
-          bundle-command: yarn bundle
+          bundle-command: pnpm run bundle
           store-endpoint: ${{ secrets.STORE_ENDPOINT_DEV }}
           store-access-token: ${{ secrets.STORE_ACCESS_TOKEN_DEV }}
           abtnode-endpoint: ${{ secrets.STAGING_NODE_ENDPOINT }}

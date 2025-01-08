@@ -25,7 +25,7 @@ module.exports = {
       ? presentation.verifiableCredential
       : [presentation.verifiableCredential];
 
-    verifyPresentation({ presentation, trustedIssuers: [wallet.address], challenge });
+    await verifyPresentation({ presentation, trustedIssuers: [wallet.address], challenge });
 
     return consumeNodePurchaseNFT({ assetId, vc: JSON.parse(vcArray[0]), userDid, locale });
   },

@@ -11,7 +11,6 @@ module.exports = {
   claims: {
     signature: async () => {
       const { state } = await client.getForgeState();
-
       return {
         description: `签名该文本，你将获得 1 个测试用的 ${state.token.symbol}  和一个证书`,
         data: getRandomMessage(),
@@ -38,7 +37,7 @@ module.exports = {
       const user = fromPublicKey(userPk, type);
       const claim = claims.find(x => x.type === 'signature');
 
-      if (user.verify(claim.origin, claim.sig) === false) {
+      if ((await user.verify(claim.origin, claim.sig)) === false) {
         throw new Error('签名错误');
       }
 

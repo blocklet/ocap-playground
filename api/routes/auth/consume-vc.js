@@ -79,6 +79,6 @@ module.exports = {
       .split(',')
       .concat(wallet.address);
 
-    verifyPresentation({ presentation, trustedIssuers, challenge });
+    await verifyPresentation({ presentation, trustedIssuers, challenge });
   },
 };

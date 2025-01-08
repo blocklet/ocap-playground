@@ -57,7 +57,7 @@ module.exports = {
 
     // 3. we need to ensure that the did has the same signature
     const w = fromPublicKey(userPk, type);
-    if (w.verify(claim.origin, claim.sig) === false) {
+    if ((await w.verify(claim.origin, claim.sig)) === false) {
       throw new Error('签名错误');
     }
 

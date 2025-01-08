@@ -202,7 +202,7 @@ const consumeNodePurchaseNFT = async ({ assetId, vc, userDid, locale }) => {
     throw new Error('Asset factory does not exist on chain');
   }
 
-  const preMint = preMintFromFactory({
+  const preMint = await preMintFromFactory({
     factory: formatFactoryState(state),
     inputs: { ...inputs.nodeOwner, purchaseId: vc.id, purchaseIssueId: vc.issuer.id },
     owner: userDid,
@@ -260,7 +260,7 @@ const verifyAssetClaim = async ({ claim, challenge, trustedIssuers = [], trusted
   }
 
   const owner = fromPublicKey(ownerPk, toTypeInfo(ownerDid));
-  if (owner.verify(challenge, ownerProof) === false) {
+  if ((await owner.verify(challenge, ownerProof)) === false) {
     throw new Error('Invalid asset claim: owner proof invalid');
   }
 

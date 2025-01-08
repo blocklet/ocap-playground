@@ -5,7 +5,7 @@ VERSION=$(strip $(shell cat version))
 
 build: init
 	@echo "Building the software..."
-	@yarn bundle
+	@pnpm run  bundle
 
 init: install dep
 	@echo "Initializing the repo..."
@@ -15,7 +15,7 @@ install:
 
 dep:
 	@echo "Install dependencies required for this repo..."
-	@yarn install --ignore-engines
+	@pnpm i
 
 pre-build: install dep
 	@echo "Running scripts before the build..."
@@ -36,7 +36,7 @@ coverage:
 
 lint:
 	@echo "Linting the software..."
-	@yarn lint
+	@pnpm run lint
 
 setenv:
 	@echo "Setup .env file..."
@@ -53,7 +53,7 @@ clean:
 
 run:
 	@echo "Running the software..."
-	@yarn start
+	@pnpm run start
 
 include .makefiles/*.mk
 

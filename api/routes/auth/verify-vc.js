@@ -56,7 +56,7 @@ module.exports = {
       ? presentation.verifiableCredential
       : [presentation.verifiableCredential];
 
-    verifyPresentation({ presentation, trustedIssuers: [wallet.address], challenge });
+    await verifyPresentation({ presentation, trustedIssuers: [wallet.address], challenge });
 
     const vc = JSON.parse(vcArray[0]);
 

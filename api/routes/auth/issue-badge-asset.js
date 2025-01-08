@@ -46,7 +46,7 @@ module.exports = {
       const user = fromPublicKey(userPk, type);
       const claim = claims.find(x => x.type === 'signature');
 
-      if (user.verify(claim.origin, claim.sig) === false) {
+      if ((await user.verify(claim.origin, claim.sig)) === false) {
         throw new Error('签名错误');
       }
 

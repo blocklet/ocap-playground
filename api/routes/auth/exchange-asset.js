@@ -151,7 +151,7 @@ const transferAsset = async ({ claim, userDid, userPk }) => {
     const type = toTypeInfo(userDid);
     const user = fromPublicKey(userPk, type);
 
-    if (user.verify(claim.origin, claim.sig) === false) {
+    if ((await user.verify(claim.origin, claim.sig)) === false) {
       throw new Error('签名错误');
     }
 

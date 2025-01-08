@@ -102,7 +102,7 @@ module.exports = {
 
           const w = fromRandom();
           const emailDigest = hasher(vt.email, 1);
-          const vc = create({
+          const vc = await create({
             type: 'EmailVerificationCredential',
             issuer: {
               wallet: w,
@@ -115,7 +115,7 @@ module.exports = {
             },
           });
           const passport = { name: 'arcblocker', title: 'ArcBlocker' };
-          const pp = create({
+          const pp = await create({
             type: ['PlaygroundFakePassport', 'NFTPassport', 'VerifiableCredential'],
             issuer: {
               wallet: w,

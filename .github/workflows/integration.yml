@@ -17,6 +17,17 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
 
+    - name: Use PNPM
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
+
+    - name: Use Node.js v20
+      uses: actions/setup-node@v2
+      with:
+        node-version: 20
+        cache: 'pnpm'
+
     - name: Init
       run: make github-init
 

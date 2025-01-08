@@ -52,7 +52,7 @@ module.exports = {
 
     const type = toTypeInfo(userDid);
     const w = fromPublicKey(userPk, type);
-    if (w.verify(claim.origin, claim.sig) === false) {
+    if ((await w.verify(claim.origin, claim.sig)) === false) {
       throw new Error('签名错误');
     }
   },
