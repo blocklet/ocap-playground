@@ -12,8 +12,12 @@ overrides:
   '@arcblock/nft': ^1.19.2
   '@arcblock/nft-template': ^1.19.2
   '@arcblock/vc': ^1.19.2
+  '@arcblock/ws': ^1.19.2
+  '@arcblock/did-ext': ^1.19.2
+  '@arcblock/event-hub': ^1.19.2
   '@blocklet/js-sdk': 1.16.36
   '@blocklet/sdk': 1.16.36
+  '@ocap/types': ^1.19.2
   '@ocap/asset': ^1.19.2
   '@ocap/client': ^1.19.2
   '@ocap/mcrypto': ^1.19.2
@@ -340,8 +344,8 @@ packages:
       react: ^18.2.0
       react-dom: ^18.2.0
 
-  '@arcblock/did-ext@1.18.162':
-    resolution: {integrity: sha512-gzR4V3zrXNHiIRZ2rNdgr0KGobfKpTbsjmBKeL6n6k6+SrU8+VWfo0TZly+9wZluD6G/hzIZWz2oDp5qE/WdSw==}
+  '@arcblock/did-ext@1.19.2':
+    resolution: {integrity: sha512-o6Z41wNy1VlijXJO9GcCMHF87o71+mdEesEkG8yewPd+1P2QR2rASw8tRnVurrtRFirsQQy/wYMmzklrLj/ISA==}
 
   '@arcblock/did-motif@1.1.13':
     resolution: {integrity: sha512-l0rMeDkJpo+U+xVnVF4+znjZelKwGu7JqXti1pw0/16fIQz6AC/Q+p+VStwqZw51B31nHT2Gr+4oCnvMRuWscg==}
@@ -358,12 +362,6 @@ packages:
       eslint: ^8.57.0
       prettier: ^3.3.2
       react: ^18.2.0
-
-  '@arcblock/event-hub@1.18.162':
-    resolution: {integrity: sha512-NaYP9ew9xIW2LygOr9rDAGV3s37qhdkbHe7qifFg4MD/Ra2xn+6Paar/5jsLkY8rg7W6Rdj3YZb4AjZPYQ/QOg==}
-
-  '@arcblock/event-hub@1.18.165':
-    resolution: {integrity: sha512-zY6p6CTHcI8uIhvWAp70JuMMVMo1cvTio43EvmX9k3kb9fUawYmsi2KnSH4oXY0OQka1X1YHer7o0YAY6IR3ig==}
 
   '@arcblock/event-hub@1.19.2':
     resolution: {integrity: sha512-qGoMhjb5QKV1vu5yof9QNBP1xvsEPmAYkrKuCgJDFuhfgfGCGoAagXn690vBzjFUHqiCoFdHNMFVfb6GivjrLQ==}
@@ -415,12 +413,6 @@ packages:
 
   '@arcblock/vc@1.19.2':
     resolution: {integrity: sha512-tGvkVeH4EhdEOxh1p1QJ6MP/gSWme0W74Ynd6Ah3SjsSKd0y5YciAnfkepvN/OoD36HchqNJolLGeHFSw7hbNA==}
-
-  '@arcblock/ws@1.18.162':
-    resolution: {integrity: sha512-LVpWuZ+309o5i57VdX9lpaPfjcuLqbapiSidEbHKqRPjNzaV8BdQMPWI7XHdsPkhWgPA9a5GHKVu7SZ37NXbAg==}
-
-  '@arcblock/ws@1.18.165':
-    resolution: {integrity: sha512-LSGp8oL+qgUVxR8qlxl5x5hBk7kMnqH+Ha20puwOe2a0C3ySKnV90KUzqq4lJyOHTxGajWVpfxMCmWSFukNmSA==}
 
   '@arcblock/ws@1.19.2':
     resolution: {integrity: sha512-lgz1296XdPbyHdoigXhTRqKOYcn3jHgligSec2Kpf38aMQtdQ9DaYi8DsJS2nD4stSDyvgehpBPbLEo8qx8B/A==}
@@ -1459,9 +1451,6 @@ packages:
 
   '@ocap/tx-util@1.19.2':
     resolution: {integrity: sha512-7TU3HFUUlVWfLEgRwTSAZZZRnoL9PkaSylowqwEXNtnNsa/JSL5RjWXR0v8h6ctZBhY/bV61EoH+FFBHtXNcqw==}
-
-  '@ocap/types@1.18.162':
-    resolution: {integrity: sha512-EiSKdLOccGd1wGkTQoRa3pDheWXJMM0mjGbjKfoD6SoosHmUs82D6itqvwZaJT9eIiLFwFpR4E++zJdLkGuEMQ==}
 
   '@ocap/types@1.19.2':
     resolution: {integrity: sha512-ESvExSpDKZZZxJh3D2X6YS0NsjpgvLy4pDSNPM0TlZVFaPnL5Dq7Oz9SxssYA/CgiyailbLA0V1E2J+U1eporQ==}
@@ -8161,7 +8150,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@arcblock/did-ext@1.18.162(encoding@0.1.13)':
+  '@arcblock/did-ext@1.19.2(encoding@0.1.13)':
     dependencies:
       '@arcblock/did': 1.19.2(encoding@0.1.13)
       '@ocap/mcrypto': 1.19.2(encoding@0.1.13)
@@ -8226,28 +8215,6 @@ snapshots:
       - jest
       - supports-color
       - typescript
-
-  '@arcblock/event-hub@1.18.162(encoding@0.1.13)':
-    dependencies:
-      '@arcblock/did': 1.19.2(encoding@0.1.13)
-      '@arcblock/jwt': 1.19.2(encoding@0.1.13)
-      '@ocap/wallet': 1.19.2(encoding@0.1.13)
-      amp-message: 0.1.2
-      axon: 2.0.3
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
-
-  '@arcblock/event-hub@1.18.165(encoding@0.1.13)':
-    dependencies:
-      '@arcblock/did': 1.19.2(encoding@0.1.13)
-      '@arcblock/jwt': 1.19.2(encoding@0.1.13)
-      '@ocap/wallet': 1.19.2(encoding@0.1.13)
-      amp-message: 0.1.2
-      axon: 2.0.3
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
 
   '@arcblock/event-hub@1.19.2(encoding@0.1.13)':
     dependencies:
@@ -8470,34 +8437,6 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
-
-  '@arcblock/ws@1.18.162(encoding@0.1.13)':
-    dependencies:
-      '@arcblock/event-hub': 1.18.162(encoding@0.1.13)
-      debug: 4.3.7(supports-color@5.5.0)
-      eventemitter3: 4.0.7
-      lodash: 4.17.21
-      phoenix: 1.7.2
-      ws: 8.18.0
-    transitivePeerDependencies:
-      - bufferutil
-      - encoding
-      - supports-color
-      - utf-8-validate
-
-  '@arcblock/ws@1.18.165(encoding@0.1.13)':
-    dependencies:
-      '@arcblock/event-hub': 1.18.165(encoding@0.1.13)
-      debug: 4.4.0
-      eventemitter3: 4.0.7
-      lodash: 4.17.21
-      phoenix: 1.7.2
-      ws: 8.18.0
-    transitivePeerDependencies:
-      - bufferutil
-      - encoding
-      - supports-color
-      - utf-8-validate
 
   '@arcblock/ws@1.19.2(encoding@0.1.13)':
     dependencies:
@@ -8777,13 +8716,13 @@ snapshots:
     dependencies:
       '@abtnode/constant': 1.16.36
       '@arcblock/did': 1.19.2(encoding@0.1.13)
-      '@arcblock/did-ext': 1.18.162(encoding@0.1.13)
+      '@arcblock/did-ext': 1.19.2(encoding@0.1.13)
       '@arcblock/did-util': 1.19.2(encoding@0.1.13)
       '@arcblock/jwt': 1.19.2(encoding@0.1.13)
       '@blocklet/constant': 1.16.36
       '@ocap/asset': 1.19.2(encoding@0.1.13)
       '@ocap/mcrypto': 1.19.2(encoding@0.1.13)
-      '@ocap/types': 1.18.162
+      '@ocap/types': 1.19.2
       '@ocap/util': 1.19.2
       '@ocap/wallet': 1.19.2(encoding@0.1.13)
       ajv: 8.17.1
@@ -8819,7 +8758,7 @@ snapshots:
       '@arcblock/did': 1.19.2(encoding@0.1.13)
       '@arcblock/did-auth': 1.19.2(encoding@0.1.13)
       '@arcblock/jwt': 1.19.2(encoding@0.1.13)
-      '@arcblock/ws': 1.18.162(encoding@0.1.13)
+      '@arcblock/ws': 1.19.2(encoding@0.1.13)
       '@blocklet/constant': 1.16.36
       '@blocklet/env': 1.16.36
       '@blocklet/meta': 1.16.36(encoding@0.1.13)
@@ -8924,7 +8863,7 @@ snapshots:
     dependencies:
       '@arcblock/did': 1.19.2(encoding@0.1.13)
       '@arcblock/jwt': 1.19.2(encoding@0.1.13)
-      '@arcblock/ws': 1.18.165(encoding@0.1.13)
+      '@arcblock/ws': 1.19.2(encoding@0.1.13)
       '@did-connect/authenticator': 2.2.4(encoding@0.1.13)
       '@did-connect/storage': 2.2.4(encoding@0.1.13)
       '@did-connect/types': 2.2.4(encoding@0.1.13)
@@ -9875,10 +9814,6 @@ snapshots:
       - encoding
       - supports-color
       - utf-8-validate
-
-  '@ocap/types@1.18.162':
-    dependencies:
-      google-protobuf: 3.21.0
 
   '@ocap/types@1.19.2':
     dependencies:
