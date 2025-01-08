@@ -92,7 +92,7 @@
     "upload": "npm run bundle && blocklet upload .blocklet/release/blocklet.json",
     "prepublishOnly": "npm run bundle",
     "release": "npm run clean && npm run bundle",
-    "update:deps": "taze -f -r -n '/arcblock|ocap|abtnode|blocklet|did-connect|did-comment|nedb/' -w && yarn && npm run dedupe",
+    "update:deps": "taze -f -r -n '/arcblock|ocap|abtnode|blocklet|did-connect|did-comment|nedb/' -w && pnpm i",
     "dedupe": "npx yarn-deduplicate yarn.lock && yarn"
   },
   "browserslist": {

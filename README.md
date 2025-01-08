@@ -11,11 +11,11 @@ Click the "Open in Gitpod" button, Gitpod will start Blocklet Server and the blo
 ## Run and debug in local
 
 ```shell
-yarn global add @blocklet/cli
+pnpm i @blocklet/cli -g
 git clone git@github.com:blocklet/ocap-playground.git
 cd ocap-playground
 cp .env.bac .env
-yarn
+pnpm i
 blocklet server init -f --mode debug
 blocklet server start
 blocklet dev
