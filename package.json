@@ -12,7 +12,7 @@
     "blocklet.yml",
     "README.md"
   ],
-  "version": "0.36.96",
+  "version": "0.36.97",
   "author": "wangshijun <shijun@arcblock.io> https://github.com/wangshijun",
   "keywords": [
     "dapp",
@@ -94,7 +94,8 @@
     "prepublishOnly": "npm run bundle",
     "release": "npm run clean && npm run bundle",
     "update:deps": "taze -f -r -n '/arcblock|ocap|abtnode|blocklet|did-connect|did-comment|nedb/' -w && pnpm i",
-    "dedupe": "npx yarn-deduplicate yarn.lock && yarn"
+    "dedupe": "npx yarn-deduplicate yarn.lock && yarn",
+    "bump-version": "make bump-version"
   },
   "browserslist": {
     "production": [
