@@ -110,12 +110,12 @@
     ]
   },
   "devDependencies": {
-    "@arcblock/did-connect": "^2.11.23",
+    "@arcblock/did-connect": "^2.11.25",
     "@arcblock/eslint-config": "0.3.3",
-    "@arcblock/react-hooks": "^2.11.23",
-    "@arcblock/ux": "^2.11.23",
+    "@arcblock/react-hooks": "^2.11.25",
+    "@arcblock/ux": "^2.11.25",
     "@blocklet/js-sdk": "1.16.37",
-    "@blocklet/ui-react": "^2.11.23",
+    "@blocklet/ui-react": "^2.11.25",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.15.14",
