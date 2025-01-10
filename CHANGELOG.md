@@ -1,3 +1,7 @@
+## 0.36.100 (January 10, 2025)
+
+- chore(release): bump version
+
 ## 0.36.99 (January 10, 2025)
 
 - chore(release): bump version
