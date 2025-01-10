@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - dist
-version: 0.36.97
+version: 0.36.98
 author:
   name: ArcBlock
   email: blocklet@arcblock.io
@@ -111,3 +111,4 @@ components:
       store: https://dev.store.blocklet.dev
       name: promotion-tool
       version: latest
+egress: true

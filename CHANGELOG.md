@@ -1,3 +1,7 @@
+## 0.36.98 (January 10, 2025)
+
+- chore(deps): update deps
+
 ## 0.36.97 (January 09, 2025)
 
 - chore(deps): bump deps to latest
