@@ -4,8 +4,6 @@
 require('dotenv').config();
 require('@blocklet/sdk/lib/error-handler');
 
-const { verifyAccountAsync } = require('@ocap/tx-util');
-
 const { wallet, client } = require('../auth');
 const { getAccountStateOptions } = require('../util');
 const token = require('../token');
@@ -17,15 +15,9 @@ const { chainId, tokenId } = env;
 const ensureAccountDeclared = async () => {
   const { state } = await client.getAccountState({ address: wallet.address }, { ...getAccountStateOptions });
   if (!state) {
-    console.error('Application account not declared on chain');
-
-    const hash = await client.declare({
-      moniker: 'ocap-playground',
-      wallet,
-    });
-
-    console.log(`Application declared on chain ${chainId}`, hash);
-    return { balance: 0, address: wallet.address };
+    throw new Error(
+      `Application account not declared on chain [${chainId}], You must manually transfer some tokens to this address to declare the account [${wallet.address}]`
+    );
   }
 
   return state;
@@ -65,7 +57,6 @@ const ensureFactoryCreated = async itx => {
 (async () => {
   try {
     await ensureAccountDeclared();
-    await verifyAccountAsync({ chainId: env.chainId, chainHost: env.chainHost, address: wallet.address });
     await ensureTokenCreated();
     await ensureTokenFunded();
     await ensureFactoryCreated(factory.nodePurchaseFactory);
@@ -77,7 +68,7 @@ const ensureFactoryCreated = async itx => {
     await ensureFactoryCreated(factory.nftTestFactory);
     process.exit(0);
   } catch (err) {
-    console.error('ocap-playground pre-start error', err.message);
+    console.error('ocap-playground pre-start error:', err.message);
     process.exit(1);
   }
 })();
