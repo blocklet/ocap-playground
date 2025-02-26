@@ -1,11 +1,14 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable arrow-parens */
-import { useContext } from 'react';
+import { useState, useContext, useMemo } from 'react';
 import styled from '@emotion/styled';
 import useBrowser from '@arcblock/react-hooks/lib/useBrowser';
 
 import Typography from '@mui/material/Typography';
 import WalletDownload from '@arcblock/ux/lib/Wallet/Download';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 import Button from '@arcblock/ux/lib/Button';
 import Layout from '../components/layout';
@@ -20,6 +23,7 @@ import TransferAssetIn from '../components/auth/transfer-asset-in';
 import TransferTokenAssetIn from '../components/auth/transfer-token-asset-in';
 import TransferTokenAssetOut from '../components/auth/transfer-token-asset-out';
 import NotificationButton from '../components/notification/button';
+import NotificationSend, { defaultChannels } from './notification-send';
 
 import { UserContext } from '../context/user';
 
@@ -28,6 +32,16 @@ export default function IndexPage() {
   const { session } = useContext(UserContext);
 
   const { token } = session;
+
+  const [channels, setChannels] = useState(defaultChannels);
+  const [selectedAll, setSelectedAll] = useState(false);
+
+  const onChange = ev => {
+    ev.stopPropagation();
+    const { checked } = ev.target;
+    setSelectedAll(checked);
+  };
+  const selectedChannels = useMemo(() => channels.filter(c => c.checked).map(c => c.value), [channels]);
 
   return (
     <Layout title="Home">
@@ -1015,63 +1029,99 @@ export default function IndexPage() {
               Send a notification to your wallet
             </Typography>
           </Typography>
+          <Typography component="div" color="textSecondary">
+            <NotificationSend channels={channels} onChange={setChannels} />
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox checked={selectedAll} onChange={onChange} />}
+                label="Send to All Users"
+              />
+            </FormGroup>
+          </Typography>
           <div className="section__content">
-            <NotificationButton type="text" className="action">
+            <NotificationButton type="text" className="action" channels={selectedChannels} toAll={selectedAll}>
               Send text
             </NotificationButton>
-            <NotificationButton type="link" className="action">
+            <NotificationButton type="link" className="action" channels={selectedChannels} toAll={selectedAll}>
               Send Link
             </NotificationButton>
-            <NotificationButton type="long-text" className="action">
+            <NotificationButton type="long-text" className="action" channels={selectedChannels} toAll={selectedAll}>
               Send Long Text
             </NotificationButton>
-            <NotificationButton type="multiple-sections" className="action">
+            <NotificationButton
+              type="multiple-sections"
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Send Multiple Sections
             </NotificationButton>
-            <NotificationButton type="asset" data={{ title: 'Asset', body: 'Hello Asset' }} className="action">
+            <NotificationButton
+              type="asset"
+              data={{ title: 'Asset', body: 'Hello Asset' }}
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Send asset
             </NotificationButton>
-            <NotificationButton type="vc" data={{ title: 'VC', body: 'Hello VC' }} className="action">
+            <NotificationButton
+              type="vc"
+              data={{ title: 'VC', body: 'Hello VC' }}
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Send VC
             </NotificationButton>
-            <NotificationButton type="token" data={{ title: 'Token', body: 'Hello token' }} className="action">
+            <NotificationButton
+              type="token"
+              data={{ title: 'Token', body: 'Hello token' }}
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Send random {token.foreign.symbol}
             </NotificationButton>
             <NotificationButton
               type="token"
               data={{ title: 'Primary Token', body: 'Hello TBA' }}
               actions={[{ name: 'primary', title: 'Launch', link: 'https://arcblock.io' }]}
-              className="action">
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Send random {token.local.symbol}
             </NotificationButton>
-            <NotificationButton type="fake_reply" className="action">
+            <NotificationButton type="fake_reply" className="action" channels={selectedChannels} toAll={selectedAll}>
               Fake Reply
             </NotificationButton>
-            <NotificationButton type="fake_dapp" className="action">
+            <NotificationButton type="fake_dapp" className="action" channels={selectedChannels} toAll={selectedAll}>
               Fake DApp
             </NotificationButton>
-            <NotificationButton type="fake_tx" className="action">
+            <NotificationButton type="fake_tx" className="action" channels={selectedChannels} toAll={selectedAll}>
               Fake User Transaction
             </NotificationButton>
-            <NotificationButton type="fake_other_tx" className="action">
+            <NotificationButton type="fake_other_tx" className="action" channels={selectedChannels} toAll={selectedAll}>
               Fake Other Transaction
             </NotificationButton>
-            <NotificationButton type="fake_img" className="action">
+            <NotificationButton type="fake_img" className="action" channels={selectedChannels} toAll={selectedAll}>
               Fake Image
             </NotificationButton>
-            <NotificationButton type="fake_store" className="action">
+            <NotificationButton type="fake_store" className="action" channels={selectedChannels} toAll={selectedAll}>
               Fake Store
             </NotificationButton>
-            <NotificationButton type="fake_server" className="action">
+            <NotificationButton type="fake_server" className="action" channels={selectedChannels} toAll={selectedAll}>
               Fake Server
             </NotificationButton>
-            <NotificationButton type="fake_failed_server" className="action">
+            <NotificationButton
+              type="fake_failed_server"
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Fake Server Fail
             </NotificationButton>
             <NotificationButton
               type="text"
               actions={[{ name: 'launch', title: 'Launch ABT Node', link: 'https://arcblock.io' }]}
-              className="action">
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Send with action
             </NotificationButton>
             <NotificationButton
@@ -1082,22 +1132,49 @@ export default function IndexPage() {
                 { name: 'Do What', title: 'Node', link: 'https://arcblock.io' },
                 { name: 'More', title: 'More Action', link: 'https://arcblock.io' },
               ]}
-              className="action">
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Send with 4 action
             </NotificationButton>
-            <NotificationButton type="feed-graphic-single" actions={[]} className="action">
+            <NotificationButton
+              type="feed-graphic-single"
+              actions={[]}
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Send Graphic Single Feed To Me
             </NotificationButton>
-            <NotificationButton type="feed-graphic-multi" actions={[]} className="action">
+            <NotificationButton
+              type="feed-graphic-multi"
+              actions={[]}
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Send Graphic Multi Feed To Me
             </NotificationButton>
-            <NotificationButton type="feed-nft" actions={[]} className="action">
+            <NotificationButton
+              type="feed-nft"
+              actions={[]}
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Send NFT Marketplace Feed To Me
             </NotificationButton>
-            <NotificationButton type="feed-data-tracker" actions={[]} className="action">
+            <NotificationButton
+              type="feed-data-tracker"
+              actions={[]}
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Send Data Tracker Feed To Me
             </NotificationButton>
-            <NotificationButton type="feed-cpu" actions={[]} className="action">
+            <NotificationButton
+              type="feed-cpu"
+              actions={[]}
+              className="action"
+              channels={selectedChannels}
+              toAll={selectedAll}>
               Send CPU Usage
             </NotificationButton>
           </div>
