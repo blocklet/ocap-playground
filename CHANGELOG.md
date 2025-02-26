@@ -1,3 +1,7 @@
+## 0.36.102 (February 26, 2025)
+
+- chore: bump version to 0.36.102
+
 ## 0.36.101 (January 22, 2025)
 
 - feat: remove declare in pre-start
