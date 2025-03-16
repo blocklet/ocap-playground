@@ -1,3 +1,7 @@
+## 0.36.106 (March 16, 2025)
+
+- chore: update deps
+
 ## 0.36.105 (March 10, 2025)
 
 - chore: bump version to 0.36.105

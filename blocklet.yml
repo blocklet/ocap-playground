@@ -10,7 +10,7 @@ files:
   - blocklet.md
   - README.md
   - dist
-version: 0.36.105
+version: 0.36.106
 author:
   name: ArcBlock
   email: blocklet@arcblock.io
@@ -86,6 +86,7 @@ interfaces:
             - avatar
           allowSwitchProfile: true
           blockUnauthorized: false
+    proxyBehavior: service
 timeout:
   start: 15
 requirements:
