@@ -1,3 +1,7 @@
+## 0.36.111 (April 16, 2025)
+
+- chore: bump deps and dedupe
+
 ## 0.36.110 (April 16, 2025)
 
 - chore: bump deps and dedupe
