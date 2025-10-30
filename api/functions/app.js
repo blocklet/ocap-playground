@@ -6,8 +6,8 @@ const morgan = require('morgan');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
-const fallback = require('@blocklet/sdk/lib/middlewares/fallback');
-const user = require('@blocklet/sdk/lib/middlewares/user');
+const { fallback } = require('@blocklet/sdk/lib/middlewares/fallback');
+const { sessionMiddleware } = require('@blocklet/sdk/lib/middlewares/session');
 const displayRoutes = require('express-routemap');
 
 const { walletHandlers, walletHandlersWithNoChainInfo } = require('../libs/auth');
@@ -25,7 +25,7 @@ app.use(express.json({ limit: '1 mb' }));
 app.use(express.urlencoded({ extended: true, limit: '1 mb' }));
 app.use(cors());
 
-app.use(user());
+app.use(sessionMiddleware());
 
 const router = express.Router();
 

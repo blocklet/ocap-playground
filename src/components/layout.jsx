@@ -55,5 +55,3 @@ export default function Layout({ children }) {
 Layout.propTypes = {
   children: PropTypes.any.isRequired,
 };
-
-Layout.defaultProps = {};

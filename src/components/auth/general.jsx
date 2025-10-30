@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import DidConnect from '@arcblock/did-connect/lib/Connect';
+import DidConnect from '@arcblock/did-connect-react/lib/Connect';
 import Button from '@arcblock/ux/lib/Button';
 
 import api from '../../libs/api';
@@ -13,12 +13,12 @@ export default function GeneralAuthButton({
   button,
   action,
   messages,
-  timeout,
-  extraParams,
-  autoConnect,
-  saveConnect,
-  forceConnected,
-  onSuccess,
+  timeout = 5 * 60 * 1000,
+  extraParams = {},
+  autoConnect = true,
+  saveConnect = true,
+  forceConnected = true,
+  onSuccess = () => {},
 }) {
   const [isOpen, setOpen] = useState(false);
 
@@ -61,11 +61,3 @@ GeneralAuthButton.propTypes = {
   onSuccess: PropTypes.func,
 };
 
-GeneralAuthButton.defaultProps = {
-  extraParams: {},
-  timeout: 5 * 60 * 1000,
-  autoConnect: true,
-  saveConnect: true,
-  forceConnected: true,
-  onSuccess: () => {},
-};

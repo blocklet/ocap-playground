@@ -21,7 +21,13 @@ module.exports = {
       if (JSON.parse(extraParams.boolean) !== params.boolean) {
         throw new Error('Your wallet is not handling boolean params correctly');
       }
-      if (JSON.stringify(extraParams.array) !== JSON.stringify(params.array)) {
+      // FIXME: @liushuang 这里接收到的 array 是以,相连的字符串
+      if (typeof extraParams.array === 'string' && extraParams.array !== params.array.join(',')) {
+        throw new Error('Your wallet is not handling array params correctly');
+      } else if (
+        Array.isArray(extraParams.array) &&
+        JSON.stringify(extraParams.array) !== JSON.stringify(params.array)
+      ) {
         throw new Error('Your wallet is not handling array params correctly');
       }
       // if (extraParams.object !== params.object) {

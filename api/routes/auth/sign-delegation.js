@@ -29,7 +29,7 @@ module.exports = {
         assert(app, 'You must generate an application account first');
 
         // 生成token的header和payload
-        const headerAndPayload = sign(
+        const headerAndPayload = await sign(
           userDid,
           undefined,
           {

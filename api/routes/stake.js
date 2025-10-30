@@ -1,10 +1,10 @@
-const middlewares = require('@blocklet/sdk/lib/middlewares');
+const { authMiddleware } = require('@blocklet/sdk/lib/middlewares/auth');
 const { toBN, fromUnitToToken } = require('@ocap/util');
 const { client, wallet } = require('../libs/auth');
 
 module.exports = {
   init(app) {
-    app.get('/api/stakes/claimable', middlewares.auth(), async (req, res) => {
+    app.get('/api/stakes/claimable', authMiddleware(), async (req, res) => {
       try {
         const userDid = req.user.did;
         const { transactions } = await client.listTransactions({
@@ -33,7 +33,7 @@ module.exports = {
       }
     });
 
-    app.post('/api/stakes/slash/:type', middlewares.auth(), async (req, res) => {
+    app.post('/api/stakes/slash/:type', authMiddleware(), async (req, res) => {
       const zero = toBN(0);
       const filters = {
         token: list => list.some(t => toBN(t.balance).gt(zero)),

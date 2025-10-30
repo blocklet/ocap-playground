@@ -42,3 +42,4 @@ blocklet.js
 dist/
 .yalc
 yalc.lock
+BREAKING_CHANGE.MD

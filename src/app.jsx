@@ -1,8 +1,9 @@
 import { useContext } from 'react';
-import { ThemeProvider as MuiThemeProvider, StyledEngineProvider } from '@mui/material/styles';
-import { Global, css, ThemeProvider as EmotionThemeProvider } from '@emotion/react';
+import {  StyledEngineProvider } from '@mui/material/styles';
+import { Global, css } from '@emotion/react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
+import { getWebWalletUrl } from '@arcblock/did-connect-react/lib/utils';
+import { ConfigProvider } from '@arcblock/ux/lib/Config';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -79,13 +80,11 @@ export default function Main() {
   return (
     <Router basename={basename}>
       <StyledEngineProvider injectFirst>
-        <MuiThemeProvider theme={theme}>
-          <EmotionThemeProvider theme={theme}>
-            <SessionProvider serviceHost={apiPrefix} webWalletUrl={webWalletUrl}>
-              <App />
-            </SessionProvider>
-          </EmotionThemeProvider>
-        </MuiThemeProvider>
+        <ConfigProvider fallbackLocale="en">
+          <SessionProvider serviceHost={apiPrefix} webWalletUrl={webWalletUrl}>
+            <App />
+          </SessionProvider>
+        </ConfigProvider>
       </StyledEngineProvider>
     </Router>
   );

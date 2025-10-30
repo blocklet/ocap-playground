@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import useToggle from 'react-use/lib/useToggle';
 
-import DidConnect from '@arcblock/did-connect/lib/Connect';
+import DidConnect from '@arcblock/did-connect-react/lib/Connect';
 import Button from '@arcblock/ux/lib/Button';
 
 import api from '../../libs/api';

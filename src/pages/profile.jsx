@@ -9,7 +9,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
-import Avatar from '@arcblock/did-connect/lib/Avatar';
+import Avatar from '@arcblock/did-connect-react/lib/Avatar';
 import Button from '@arcblock/ux/lib/Button';
 import useBrowser from '@arcblock/react-hooks/lib/useBrowser';
 
@@ -37,7 +37,12 @@ export default function ProfilePage() {
     <Layout title="Profile">
       <Main>
         <Grid container spacing={6}>
-          <Grid item xs={12} md={3} className="avatar">
+          <Grid
+            className="avatar"
+            size={{
+              xs: 12,
+              md: 3
+            }}>
             {user.avatar ? <img src={user.avatar} alt="user-avatar" /> : <Avatar size={240} did={user.did} />}
             <Button className="button" variant="contained" href="/orders">
               My Orders
@@ -48,7 +53,12 @@ export default function ProfilePage() {
               </Button>
             )}
           </Grid>
-          <Grid item xs={12} md={5} className="meta">
+          <Grid
+            className="meta"
+            size={{
+              xs: 12,
+              md: 5
+            }}>
             <Typography component="h3" variant="h4">
               My Profile
             </Typography>
@@ -83,7 +93,12 @@ export default function ProfilePage() {
               </ListItem>
             </List>
           </Grid>
-          <Grid item xs={12} md={4} className="meta">
+          <Grid
+            className="meta"
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             <Typography component="h3" variant="h5">
               Staking <small className="tip">Revocable</small>
             </Typography>

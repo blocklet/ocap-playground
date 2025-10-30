@@ -4,7 +4,7 @@ import capitalize from 'lodash/capitalize';
 
 import AuthButton from '../general';
 
-export default function SignatureClaim({ type }) {
+export default function SignatureClaim({ type = 'transaction' }) {
   return (
     <AuthButton
       button={`Sign ${capitalize(type)}`}
@@ -22,10 +22,4 @@ export default function SignatureClaim({ type }) {
 
 SignatureClaim.propTypes = {
   type: PropTypes.string,
-};
-
-SignatureClaim.defaultProps = {
-  type: 'transaction',
-  // type: 'text',
-  // type: 'html',
 };

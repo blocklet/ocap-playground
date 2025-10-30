@@ -8,7 +8,7 @@ import { SessionContext } from '../components/did-playground';
 const UserContext = createContext({});
 const { Provider, Consumer } = UserContext;
 
-function UserProvider({ children }) {
+function UserProvider({ children = null }) {
   const { session, api } = useContext(SessionContext);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -54,10 +54,6 @@ function UserProvider({ children }) {
 
 UserProvider.propTypes = {
   children: PropTypes.object,
-};
-
-UserProvider.defaultProps = {
-  children: null,
 };
 
 function useUserContext() {

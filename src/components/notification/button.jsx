@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import Button from '@arcblock/ux/lib/Button';
 import Toast from '../toast';
 
-export default function NotificationButton({ type, data, actions, children }) {
+export default function NotificationButton({ type, data = {}, actions = [], children }) {
   const [loading, setLoading] = useState(false);
 
   const sendNotification = () => {
@@ -54,7 +54,3 @@ NotificationButton.propTypes = {
   children: PropTypes.any.isRequired,
 };
 
-NotificationButton.defaultProps = {
-  actions: [],
-  data: {},
-};

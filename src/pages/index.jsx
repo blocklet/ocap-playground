@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import styled from '@emotion/styled';
 
 import Typography from '@mui/material/Typography';
-import { getWebWalletUrl } from '@arcblock/did-connect/lib/utils';
+import { getWebWalletUrl } from '@arcblock/did-connect-react/lib/utils';
 
 import { PlaygroundAction } from '../components/did-playground';
 import { UserContext } from '../context/user';

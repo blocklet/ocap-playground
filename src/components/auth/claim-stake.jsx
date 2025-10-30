@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import DidConnect from '@arcblock/did-connect/lib/Connect';
+import DidConnect from '@arcblock/did-connect-react/lib/Connect';
 import Button from '@arcblock/ux/lib/Button';
 import { Confirm } from '@arcblock/ux/lib/Dialog';
 
@@ -13,7 +13,7 @@ import Select from '@mui/material/Select';
 import Toast from '../toast';
 import api from '../../libs/api';
 
-export default function ClaimButton({ button, action, messages, timeout, extraParams }) {
+export default function ClaimButton({ button, action, messages, timeout = 5 * 60 * 1000, extraParams={} }) {
   const [claimable, setClaimable] = useState([]);
   const [isClaimableOpen, setClaimableOpen] = useState(false);
   const [isOpen, setOpen] = useState(false);
@@ -109,7 +109,3 @@ ClaimButton.propTypes = {
   extraParams: PropTypes.object,
 };
 
-ClaimButton.defaultProps = {
-  extraParams: {},
-  timeout: 5 * 60 * 1000,
-};

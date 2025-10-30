@@ -8,7 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 
-import DidConnect from '@arcblock/did-connect/lib/Connect';
+import DidConnect from '@arcblock/did-connect-react/lib/Connect';
 import Button from '@arcblock/ux/lib/Button';
 import { mergeProps } from '@arcblock/ux/lib/Util';
 
@@ -35,25 +35,25 @@ const CloseContainer = styled('div')`
 function PlaygroundAction(props) {
   const newProps = mergeProps(props, PlaygroundAction, ['buttonRounded', 'extraParams', 'timeout']);
   const {
-    autoClose,
+    autoClose = true, // 只在没有 successUrl 属性下有效
     action,
-    buttonText,
-    buttonColor,
-    buttonVariant,
-    buttonSize,
-    buttonRounded,
+    buttonText = '',
+    buttonColor = 'primary', // primary | secondary | reverse | error
+    buttonVariant = 'contained', // contained | outlined | default
+    buttonSize = 'large', // small | large | medium
+    buttonRounded = false,
     children,
     disableClose,
     title,
-    scanMessage,
-    successMessage,
-    successUrl,
-    successTarget,
-    frameProps,
-    confirmMessage,
-    extraParams,
-    timeout,
-    webWalletUrl,
+    scanMessage = 'Scan the QRCode with your DID Wallet',
+    successMessage = 'Operation success!',
+    successUrl = '',
+    successTarget = '_self',
+    frameProps = {},
+    confirmMessage = 'Confirm in your DID Wallet',
+    extraParams = {},
+    timeout = 5 * 60 * 1000,
+    webWalletUrl = '',
     ...rest
   } = newProps;
 
@@ -252,22 +252,5 @@ PlaygroundAction.propTypes = {
   webWalletUrl: PropTypes.string,
 };
 
-PlaygroundAction.defaultProps = {
-  autoClose: true, // 只在没有 successUrl 属性下有效
-  buttonText: '',
-  buttonColor: 'primary', // primary | secondary | reverse | error
-  buttonVariant: 'contained', // contained | outlined | default
-  buttonSize: 'large', // small | large | medium
-  buttonRounded: false,
-  scanMessage: 'Scan the QRCode with your DID Wallet',
-  confirmMessage: 'Confirm in your DID Wallet',
-  successMessage: 'Operation success!',
-  extraParams: {},
-  timeout: 5 * 60 * 1000,
-  successUrl: '',
-  successTarget: '_self',
-  frameProps: {},
-  webWalletUrl: '',
-};
 
 export default PlaygroundAction;
