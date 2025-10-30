@@ -15,5 +15,11 @@ module.exports = {
         ignore: ['setupProxy.js', 'App.test.js'],
       },
     ],
+    'react/require-default-props': [
+      'error',
+      {
+        functions: 'defaultArguments',
+      },
+    ],
   },
 };

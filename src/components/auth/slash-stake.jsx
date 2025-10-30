@@ -42,5 +42,3 @@ SlashButton.propTypes = {
   type: PropTypes.string.isRequired,
   action: PropTypes.string.isRequired,
 };
-
-SlashButton.defaultProps = {};

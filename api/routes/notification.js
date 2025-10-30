@@ -1,4 +1,4 @@
-const Notification = require('@blocklet/sdk/service/notification');
+const Notification = require('@blocklet/sdk/lib/service/notification');
 const Mcrypto = require('@ocap/mcrypto');
 const { fromTokenToUnit, toBase64 } = require('@ocap/util');
 const { fromRandom } = require('@ocap/wallet');

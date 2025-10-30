@@ -2,7 +2,7 @@
 import useToggle from 'react-use/lib/useToggle';
 import PropTypes from 'prop-types';
 
-import DidConnect from '@arcblock/did-connect/lib/Connect';
+import DidConnect from '@arcblock/did-connect-react/lib/Connect';
 import Button from '@arcblock/ux/lib/Button';
 
 import api from '../../libs/api';
