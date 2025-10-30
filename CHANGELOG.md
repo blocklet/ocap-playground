@@ -1,3 +1,7 @@
+## 0.37.0 (October 30, 2025)
+
+- feat: use a more secure signature mechanism
+
 ## 0.36.111 (April 16, 2025)
 
 - chore: bump deps and dedupe
