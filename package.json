@@ -88,7 +88,7 @@
     "start": "nodemon -w api api/dev.mjs",
     "bundle": "npm run clean && npm run bundle:client && npm run bundle:server",
     "bundle:client": "vite build",
-    "bundle:server": "blocklet bundle --compact --create-release",
+    "bundle:server": "blocklet bundle --compact --external @abtnode/auth --create-release",
     "deploy": "npm run bundle && blocklet deploy .blocklet/bundle",
     "upload": "npm run bundle && blocklet upload .blocklet/release/blocklet.json",
     "prepublishOnly": "npm run bundle",
