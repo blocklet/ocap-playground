@@ -109,7 +109,7 @@ components:
   - name: promotion-tool
     mountPoint: /promotion-tool
     source:
-      store: https://dev.store.blocklet.dev
+      store: https://test.store.blocklet.dev
       name: promotion-tool
       version: latest
 egress: true
