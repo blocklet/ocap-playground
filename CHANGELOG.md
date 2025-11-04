@@ -1,3 +1,7 @@
+## 0.37.1 (November 04, 2025)
+
+- chore: update deps
+
 ## 0.37.0 (October 30, 2025)
 
 - feat: use a more secure signature mechanism
