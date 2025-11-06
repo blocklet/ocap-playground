@@ -12,7 +12,7 @@
     "blocklet.yml",
     "README.md"
   ],
-  "version": "0.37.1",
+  "version": "0.37.2",
   "author": "wangshijun <shijun@arcblock.io> https://github.com/wangshijun",
   "keywords": [
     "dapp",
@@ -28,7 +28,7 @@
     "email": "shijun@arcblock.io"
   },
   "dependencies": {
-    "@abtnode/auth": "^1.17.0-beta-20251104-112713-e947b159",
+    "@abtnode/auth": "^1.17.0",
     "@arcblock/did": "^1.27.2",
     "@arcblock/did-connect-js": "^1.27.2",
     "@arcblock/did-connect-storage-nedb": "^1.8.0",
@@ -37,8 +37,8 @@
     "@arcblock/nft": "^1.27.2",
     "@arcblock/nft-template": "^1.27.2",
     "@arcblock/vc": "^1.27.2",
-    "@blocklet/constant": "^1.17.0-beta-20251104-112713-e947b159",
-    "@blocklet/sdk": "^1.17.0-beta-20251104-112713-e947b159",
+    "@blocklet/constant": "^1.17.0",
+    "@blocklet/sdk": "^1.17.0",
     "@ocap/asset": "^1.27.2",
     "@ocap/client": "^1.27.2",
     "@ocap/mcrypto": "^1.27.2",
@@ -110,12 +110,12 @@
     ]
   },
   "devDependencies": {
-    "@arcblock/did-connect-react": "^3.1.54",
+    "@arcblock/did-connect-react": "^3.2.0",
     "@arcblock/eslint-config": "0.3.3",
-    "@arcblock/react-hooks": "^3.1.54",
-    "@arcblock/ux": "^3.1.54",
-    "@blocklet/js-sdk": "^1.17.0-beta-20251104-112713-e947b159",
-    "@blocklet/ui-react": "^3.1.54",
+    "@arcblock/react-hooks": "^3.2.0",
+    "@arcblock/ux": "^3.2.0",
+    "@blocklet/js-sdk": "^1.17.0",
+    "@blocklet/ui-react": "^3.2.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.4",
@@ -145,7 +145,7 @@
     "vite-plugin-svgr": "^4.5.0"
   },
   "resolutions": {
-    "@abtnode/auth": "^1.17.0-beta-20251104-112713-e947b159",
+    "@abtnode/auth": "^1.17.0",
     "@arcblock/did": "^1.27.2",
     "@arcblock/did-connect-js": "^1.27.2",
     "@arcblock/did-ext": "^1.27.2",
@@ -156,9 +156,9 @@
     "@arcblock/nft-template": "^1.27.2",
     "@arcblock/vc": "^1.27.2",
     "@arcblock/ws": "^1.27.2",
-    "@blocklet/constant": "^1.17.0-beta-20251104-112713-e947b159",
-    "@blocklet/js-sdk": "^1.17.0-beta-20251104-112713-e947b159",
-    "@blocklet/sdk": "^1.17.0-beta-20251104-112713-e947b159",
+    "@blocklet/constant": "^1.17.0",
+    "@blocklet/js-sdk": "^1.17.0",
+    "@blocklet/sdk": "^1.17.0",
     "@ocap/asset": "^1.27.2",
     "@ocap/client": "^1.27.2",
     "@ocap/mcrypto": "^1.27.2",
