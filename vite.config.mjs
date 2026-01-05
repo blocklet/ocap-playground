@@ -7,6 +7,8 @@ import svgr from 'vite-plugin-svgr';
 // https://vitejs.dev/config/
 export default defineConfig(() => {
   return {
-    plugins: [react(), createBlockletPlugin(), svgr()],
+    plugins: [react(), createBlockletPlugin({
+      chunkSizeLimit: 4096,
+    }), svgr()],
   };
 });
