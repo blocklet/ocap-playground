@@ -94,6 +94,7 @@
     "prepublishOnly": "npm run bundle",
     "release": "npm run clean && npm run bundle",
     "update:deps": "npx -y taze latest -r -w -n '/@abtnode|@aigne|@arcblock|@blocklet|@did-connect|@did-pay|@did-space|@nft-store|@nft-studio|@ocap|vite-plugin-blocklet/' -w && pnpm i",
+    "verify": "npm run lint && npm run bundle",
     "dedupe": "npx yarn-deduplicate yarn.lock && yarn",
     "bump-version": "make bump-version"
   },
